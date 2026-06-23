@@ -7,6 +7,7 @@ from uuid import uuid4
 
 API_KEY_FILE = "config/api_keys_v031.json"
 LOG_FOLDER = "logs"
+REVOKED_LOCAL_DEV_KEY = "prmr_local_dev_key_v031"
 
 
 DEFAULT_ACCESS_CONFIG = {
@@ -40,13 +41,15 @@ DEFAULT_ACCESS_CONFIG = {
     },
     "api_keys": [
         {
-            "api_key": "prmr_local_dev_key_v031",
+            "api_key": None,
             "client_id": "local_dev_client",
             "client_name": "Local Development Client",
-            "status": "active",
+            "status": "revoked",
             "plan": "private_beta",
             "allowed_vaults": ["default_vault"],
-            "created_at": "local_seed"
+            "created_at": "local_seed",
+            "revoked_at": "v0.78.2_secret_cleanup",
+            "revoke_reason": "Old local/dev key material is revoked and must not be reused."
         }
     ]
 }
@@ -84,9 +87,17 @@ def ensure_access_config():
         for record in config.get("api_keys", [])
     ]
 
-    if "prmr_local_dev_key_v031" not in existing_keys:
+    if not any(record.get("client_id") == "local_dev_client" for record in config.get("api_keys", [])):
         config["api_keys"].append(DEFAULT_ACCESS_CONFIG["api_keys"][0])
         changed = True
+
+    for record in config.get("api_keys", []):
+        if record.get("api_key") == REVOKED_LOCAL_DEV_KEY or record.get("client_id") == "local_dev_client":
+            record["api_key"] = None
+            record["status"] = "revoked"
+            record["revoked_at"] = record.get("revoked_at") or "v0.78.2_secret_cleanup"
+            record["revoke_reason"] = "Old local/dev key material is revoked and must not be reused."
+            changed = True
 
     # Add missing fields to old client records.
     for record in config.get("api_keys", []):
