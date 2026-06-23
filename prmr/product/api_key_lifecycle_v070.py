@@ -384,7 +384,22 @@ class PRMRAPIKeyLifecycle:
         return {"ok": True, "status_code": 200, "client_id": client_id, "status": "active"}
 
     def get_client_usage(self, client_id: str) -> dict[str, Any]:
-        summary = self.foundation.usage_summary()
+        client_usage_events = [
+            event for event in self.foundation.usage_ledger if event.client_id == client_id
+        ]
+        summary: dict[str, Any] = {
+            "allowed_request_count": sum(1 for event in client_usage_events if event.allowed),
+            "blocked_request_count": sum(1 for event in client_usage_events if not event.allowed),
+            "by_client": {client_id: sum(event.count for event in client_usage_events)},
+            "by_vault": {},
+            "by_namespace": {},
+        }
+        for event in client_usage_events:
+            summary["by_vault"].setdefault(event.vault_id, 0)
+            summary["by_vault"][event.vault_id] += event.count
+            namespace_key = self.foundation.namespace_key(event.client_id, event.vault_id, event.namespace)
+            summary["by_namespace"].setdefault(namespace_key, 0)
+            summary["by_namespace"][namespace_key] += event.count
         client_logs = [log for log in self.foundation.request_log if log.client_id == client_id]
         return {
             "client_id": client_id,
