@@ -28,6 +28,7 @@ from prmr.product.hosted_api_wrapper_v075 import (
     scan_terms,
 )
 from prmr.product.hosted_backend_foundation_v069 import utc_now
+from prmr.product.hosted_test_scope_v079 import register_controlled_test_scope
 
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -230,6 +231,7 @@ def create_app(wrapper: PRMRHostedAPIWrapper | None = None, config: PRMRAPIConfi
 
     active_config = config or load_api_config()
     active_wrapper = wrapper or PRMRHostedAPIWrapper(config=active_config, reset_storage=False)
+    controlled_test_scope_v079 = register_controlled_test_scope(active_wrapper)
     app = FastAPI(
         title="PRMR Memory Core Local HTTP API V0.76",
         version="0.76",
@@ -237,6 +239,7 @@ def create_app(wrapper: PRMRHostedAPIWrapper | None = None, config: PRMRAPIConfi
     )
     app.state.prmr_wrapper = active_wrapper
     app.state.prmr_config = active_config
+    app.state.controlled_test_scope_v079 = controlled_test_scope_v079
     app.add_middleware(
         CORSMiddleware,
         allow_origins=active_config.allowed_origins,
@@ -292,6 +295,7 @@ def create_app(wrapper: PRMRHostedAPIWrapper | None = None, config: PRMRAPIConfi
                 "hosted_cors_policy_pending": True,
             },
             "wrapper_status": wrapper_health.get("status"),
+            "controlled_test_scope_v079": controlled_test_scope_v079,
         }
 
     @app.post("/v1/events/ingest")
