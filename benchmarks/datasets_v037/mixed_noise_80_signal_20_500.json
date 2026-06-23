@@ -1,0 +1,4217 @@
+{
+    "dataset_name": "mixed_noise_80_signal_20_500",
+    "description": "Mixed memory flood with 80% noise and 20% meaningful signal.",
+    "rows": [
+        {
+            "event_id": "mixed_noise_155",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 939777",
+            "status": "noise",
+            "junk": "random"
+        },
+        {
+            "event_id": "mixed_noise_222",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 367461",
+            "status": "noise",
+            "junk": "random"
+        },
+        {
+            "event_id": "mixed_noise_177",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 978432",
+            "status": "noise",
+            "junk": "random"
+        },
+        {
+            "event_id": "mixed_signal_4",
+            "memory_type": "signal",
+            "importance": "high",
+            "topic": "compression",
+            "active_state": "PRMR Memory Core first",
+            "latent_risk": "scattered projects dilute focus",
+            "lineage_reason": "signal survived inside a noisy memory flood",
+            "status": "active"
+        },
+        {
+            "event_id": "mixed_noise_441",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 218275",
+            "status": "noise",
+            "junk": "abc"
+        },
+        {
+            "event_id": "mixed_noise_266",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 927279",
+            "status": "noise",
+            "junk": "loose"
+        },
+        {
+            "event_id": "mixed_noise_490",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 937409",
+            "status": "noise",
+            "junk": "ignore"
+        },
+        {
+            "event_id": "mixed_signal_30",
+            "memory_type": "signal",
+            "importance": "high",
+            "topic": "compression",
+            "active_state": "symbolic templates should become rules",
+            "latent_risk": "old revoked key returns",
+            "lineage_reason": "signal survived inside a noisy memory flood",
+            "status": "active"
+        },
+        {
+            "event_id": "mixed_signal_1",
+            "memory_type": "signal",
+            "importance": "high",
+            "topic": "security",
+            "active_state": "vault isolation must hold",
+            "latent_risk": "AI-generation pressure returns",
+            "lineage_reason": "signal survived inside a noisy memory flood",
+            "status": "active"
+        },
+        {
+            "event_id": "mixed_signal_13",
+            "memory_type": "signal",
+            "importance": "high",
+            "topic": "canon",
+            "active_state": "noise should not fake compression",
+            "latent_risk": "noise flood hides signal",
+            "lineage_reason": "signal survived inside a noisy memory flood",
+            "status": "active"
+        },
+        {
+            "event_id": "mixed_noise_373",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 629975",
+            "status": "noise",
+            "junk": "abc"
+        },
+        {
+            "event_id": "mixed_noise_218",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 321240",
+            "status": "noise",
+            "junk": "abc"
+        },
+        {
+            "event_id": "mixed_noise_158",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 993468",
+            "status": "noise",
+            "junk": "random"
+        },
+        {
+            "event_id": "mixed_noise_169",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 876628",
+            "status": "noise",
+            "junk": "abc"
+        },
+        {
+            "event_id": "mixed_noise_390",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 723057",
+            "status": "noise",
+            "junk": "ignore"
+        },
+        {
+            "event_id": "mixed_noise_464",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 858260",
+            "status": "noise",
+            "junk": "abc"
+        },
+        {
+            "event_id": "mixed_noise_498",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 727779",
+            "status": "noise",
+            "junk": "ignore"
+        },
+        {
+            "event_id": "mixed_noise_462",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 802950",
+            "status": "noise",
+            "junk": "ignore"
+        },
+        {
+            "event_id": "mixed_noise_200",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 224237",
+            "status": "noise",
+            "junk": "random"
+        },
+        {
+            "event_id": "mixed_noise_283",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 258043",
+            "status": "noise",
+            "junk": "loose"
+        },
+        {
+            "event_id": "mixed_noise_254",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 245874",
+            "status": "noise",
+            "junk": "random"
+        },
+        {
+            "event_id": "mixed_noise_141",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 907933",
+            "status": "noise",
+            "junk": "random"
+        },
+        {
+            "event_id": "mixed_noise_321",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 100186",
+            "status": "noise",
+            "junk": "random"
+        },
+        {
+            "event_id": "mixed_noise_291",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 725030",
+            "status": "noise",
+            "junk": "abc"
+        },
+        {
+            "event_id": "mixed_noise_367",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 947730",
+            "status": "noise",
+            "junk": "ignore"
+        },
+        {
+            "event_id": "mixed_noise_252",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 225044",
+            "status": "noise",
+            "junk": "random"
+        },
+        {
+            "event_id": "mixed_noise_121",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 477412",
+            "status": "noise",
+            "junk": "random"
+        },
+        {
+            "event_id": "mixed_noise_280",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 436063",
+            "status": "noise",
+            "junk": "abc"
+        },
+        {
+            "event_id": "mixed_noise_449",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 566486",
+            "status": "noise",
+            "junk": "abc"
+        },
+        {
+            "event_id": "mixed_signal_61",
+            "memory_type": "signal",
+            "importance": "high",
+            "topic": "compression",
+            "active_state": "symbolic templates should become rules",
+            "latent_risk": "noise flood hides signal",
+            "lineage_reason": "signal survived inside a noisy memory flood",
+            "status": "active"
+        },
+        {
+            "event_id": "mixed_noise_114",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 540059",
+            "status": "noise",
+            "junk": "random"
+        },
+        {
+            "event_id": "mixed_noise_106",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 387356",
+            "status": "noise",
+            "junk": "ignore"
+        },
+        {
+            "event_id": "mixed_signal_5",
+            "memory_type": "signal",
+            "importance": "high",
+            "topic": "security",
+            "active_state": "PRMR Memory Core first",
+            "latent_risk": "old revoked key returns",
+            "lineage_reason": "signal survived inside a noisy memory flood",
+            "status": "active"
+        },
+        {
+            "event_id": "mixed_noise_363",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 748425",
+            "status": "noise",
+            "junk": "random"
+        },
+        {
+            "event_id": "mixed_noise_133",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 358031",
+            "status": "noise",
+            "junk": "temp"
+        },
+        {
+            "event_id": "mixed_signal_57",
+            "memory_type": "signal",
+            "importance": "high",
+            "topic": "compression",
+            "active_state": "PRMR Memory Core first",
+            "latent_risk": "scattered projects dilute focus",
+            "lineage_reason": "signal survived inside a noisy memory flood",
+            "status": "active"
+        },
+        {
+            "event_id": "mixed_noise_129",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 413719",
+            "status": "noise",
+            "junk": "ignore"
+        },
+        {
+            "event_id": "mixed_signal_97",
+            "memory_type": "signal",
+            "importance": "high",
+            "topic": "security",
+            "active_state": "symbolic templates should become rules",
+            "latent_risk": "scattered projects dilute focus",
+            "lineage_reason": "signal survived inside a noisy memory flood",
+            "status": "active"
+        },
+        {
+            "event_id": "mixed_signal_92",
+            "memory_type": "signal",
+            "importance": "high",
+            "topic": "security",
+            "active_state": "PRMR Memory Core first",
+            "latent_risk": "noise flood hides signal",
+            "lineage_reason": "signal survived inside a noisy memory flood",
+            "status": "active"
+        },
+        {
+            "event_id": "mixed_signal_7",
+            "memory_type": "signal",
+            "importance": "high",
+            "topic": "security",
+            "active_state": "AURA and MYTHRION stay separate",
+            "latent_risk": "template rule misses human pattern",
+            "lineage_reason": "signal survived inside a noisy memory flood",
+            "status": "active"
+        },
+        {
+            "event_id": "mixed_noise_282",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 137490",
+            "status": "noise",
+            "junk": "temp"
+        },
+        {
+            "event_id": "mixed_signal_67",
+            "memory_type": "signal",
+            "importance": "high",
+            "topic": "continuity",
+            "active_state": "vault isolation must hold",
+            "latent_risk": "AI-generation pressure returns",
+            "lineage_reason": "signal survived inside a noisy memory flood",
+            "status": "active"
+        },
+        {
+            "event_id": "mixed_noise_178",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 707856",
+            "status": "noise",
+            "junk": "loose"
+        },
+        {
+            "event_id": "mixed_noise_279",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 767930",
+            "status": "noise",
+            "junk": "abc"
+        },
+        {
+            "event_id": "mixed_noise_296",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 355792",
+            "status": "noise",
+            "junk": "ignore"
+        },
+        {
+            "event_id": "mixed_noise_309",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 580865",
+            "status": "noise",
+            "junk": "temp"
+        },
+        {
+            "event_id": "mixed_signal_66",
+            "memory_type": "signal",
+            "importance": "high",
+            "topic": "focus",
+            "active_state": "AURA and MYTHRION stay separate",
+            "latent_risk": "noise flood hides signal",
+            "lineage_reason": "signal survived inside a noisy memory flood",
+            "status": "active"
+        },
+        {
+            "event_id": "mixed_signal_84",
+            "memory_type": "signal",
+            "importance": "high",
+            "topic": "focus",
+            "active_state": "vault isolation must hold",
+            "latent_risk": "old revoked key returns",
+            "lineage_reason": "signal survived inside a noisy memory flood",
+            "status": "active"
+        },
+        {
+            "event_id": "mixed_signal_53",
+            "memory_type": "signal",
+            "importance": "high",
+            "topic": "security",
+            "active_state": "symbolic templates should become rules",
+            "latent_risk": "scattered projects dilute focus",
+            "lineage_reason": "signal survived inside a noisy memory flood",
+            "status": "active"
+        },
+        {
+            "event_id": "mixed_noise_258",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 786369",
+            "status": "noise",
+            "junk": "abc"
+        },
+        {
+            "event_id": "mixed_noise_216",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 139299",
+            "status": "noise",
+            "junk": "abc"
+        },
+        {
+            "event_id": "mixed_noise_426",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 285856",
+            "status": "noise",
+            "junk": "loose"
+        },
+        {
+            "event_id": "mixed_noise_112",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 646679",
+            "status": "noise",
+            "junk": "temp"
+        },
+        {
+            "event_id": "mixed_noise_136",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 384999",
+            "status": "noise",
+            "junk": "random"
+        },
+        {
+            "event_id": "mixed_noise_101",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 260740",
+            "status": "noise",
+            "junk": "loose"
+        },
+        {
+            "event_id": "mixed_noise_405",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 631590",
+            "status": "noise",
+            "junk": "abc"
+        },
+        {
+            "event_id": "mixed_signal_82",
+            "memory_type": "signal",
+            "importance": "high",
+            "topic": "compression",
+            "active_state": "noise should not fake compression",
+            "latent_risk": "old revoked key returns",
+            "lineage_reason": "signal survived inside a noisy memory flood",
+            "status": "active"
+        },
+        {
+            "event_id": "mixed_noise_297",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 614196",
+            "status": "noise",
+            "junk": "temp"
+        },
+        {
+            "event_id": "mixed_noise_197",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 802185",
+            "status": "noise",
+            "junk": "loose"
+        },
+        {
+            "event_id": "mixed_noise_440",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 648129",
+            "status": "noise",
+            "junk": "loose"
+        },
+        {
+            "event_id": "mixed_noise_198",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 946831",
+            "status": "noise",
+            "junk": "ignore"
+        },
+        {
+            "event_id": "mixed_noise_186",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 359749",
+            "status": "noise",
+            "junk": "loose"
+        },
+        {
+            "event_id": "mixed_noise_117",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 522107",
+            "status": "noise",
+            "junk": "abc"
+        },
+        {
+            "event_id": "mixed_signal_15",
+            "memory_type": "signal",
+            "importance": "high",
+            "topic": "continuity",
+            "active_state": "vault isolation must hold",
+            "latent_risk": "noise flood hides signal",
+            "lineage_reason": "signal survived inside a noisy memory flood",
+            "status": "active"
+        },
+        {
+            "event_id": "mixed_noise_301",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 405989",
+            "status": "noise",
+            "junk": "random"
+        },
+        {
+            "event_id": "mixed_noise_447",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 807307",
+            "status": "noise",
+            "junk": "loose"
+        },
+        {
+            "event_id": "mixed_noise_263",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 564581",
+            "status": "noise",
+            "junk": "abc"
+        },
+        {
+            "event_id": "mixed_noise_425",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 493077",
+            "status": "noise",
+            "junk": "random"
+        },
+        {
+            "event_id": "mixed_noise_396",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 938904",
+            "status": "noise",
+            "junk": "loose"
+        },
+        {
+            "event_id": "mixed_noise_358",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 161751",
+            "status": "noise",
+            "junk": "loose"
+        },
+        {
+            "event_id": "mixed_noise_347",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 753631",
+            "status": "noise",
+            "junk": "ignore"
+        },
+        {
+            "event_id": "mixed_noise_227",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 955189",
+            "status": "noise",
+            "junk": "random"
+        },
+        {
+            "event_id": "mixed_noise_318",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 230963",
+            "status": "noise",
+            "junk": "random"
+        },
+        {
+            "event_id": "mixed_signal_29",
+            "memory_type": "signal",
+            "importance": "high",
+            "topic": "continuity",
+            "active_state": "symbolic templates should become rules",
+            "latent_risk": "AI-generation pressure returns",
+            "lineage_reason": "signal survived inside a noisy memory flood",
+            "status": "active"
+        },
+        {
+            "event_id": "mixed_noise_245",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 521303",
+            "status": "noise",
+            "junk": "random"
+        },
+        {
+            "event_id": "mixed_noise_374",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 221983",
+            "status": "noise",
+            "junk": "ignore"
+        },
+        {
+            "event_id": "mixed_noise_183",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 302810",
+            "status": "noise",
+            "junk": "abc"
+        },
+        {
+            "event_id": "mixed_noise_212",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 862032",
+            "status": "noise",
+            "junk": "loose"
+        },
+        {
+            "event_id": "mixed_noise_418",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 711735",
+            "status": "noise",
+            "junk": "random"
+        },
+        {
+            "event_id": "mixed_noise_459",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 383742",
+            "status": "noise",
+            "junk": "ignore"
+        },
+        {
+            "event_id": "mixed_noise_376",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 707077",
+            "status": "noise",
+            "junk": "loose"
+        },
+        {
+            "event_id": "mixed_noise_469",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 631846",
+            "status": "noise",
+            "junk": "abc"
+        },
+        {
+            "event_id": "mixed_noise_326",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 685844",
+            "status": "noise",
+            "junk": "ignore"
+        },
+        {
+            "event_id": "mixed_noise_357",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 475477",
+            "status": "noise",
+            "junk": "temp"
+        },
+        {
+            "event_id": "mixed_signal_83",
+            "memory_type": "signal",
+            "importance": "high",
+            "topic": "focus",
+            "active_state": "noise should not fake compression",
+            "latent_risk": "AI-generation pressure returns",
+            "lineage_reason": "signal survived inside a noisy memory flood",
+            "status": "active"
+        },
+        {
+            "event_id": "mixed_noise_110",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 276875",
+            "status": "noise",
+            "junk": "temp"
+        },
+        {
+            "event_id": "mixed_noise_142",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 835414",
+            "status": "noise",
+            "junk": "abc"
+        },
+        {
+            "event_id": "mixed_noise_488",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 130419",
+            "status": "noise",
+            "junk": "random"
+        },
+        {
+            "event_id": "mixed_signal_18",
+            "memory_type": "signal",
+            "importance": "high",
+            "topic": "canon",
+            "active_state": "symbolic templates should become rules",
+            "latent_risk": "template rule misses human pattern",
+            "lineage_reason": "signal survived inside a noisy memory flood",
+            "status": "active"
+        },
+        {
+            "event_id": "mixed_noise_382",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 475258",
+            "status": "noise",
+            "junk": "abc"
+        },
+        {
+            "event_id": "mixed_noise_364",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 361810",
+            "status": "noise",
+            "junk": "random"
+        },
+        {
+            "event_id": "mixed_noise_320",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 418959",
+            "status": "noise",
+            "junk": "loose"
+        },
+        {
+            "event_id": "mixed_signal_48",
+            "memory_type": "signal",
+            "importance": "high",
+            "topic": "canon",
+            "active_state": "symbolic templates should become rules",
+            "latent_risk": "scattered projects dilute focus",
+            "lineage_reason": "signal survived inside a noisy memory flood",
+            "status": "active"
+        },
+        {
+            "event_id": "mixed_noise_485",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 227152",
+            "status": "noise",
+            "junk": "loose"
+        },
+        {
+            "event_id": "mixed_noise_420",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 308817",
+            "status": "noise",
+            "junk": "temp"
+        },
+        {
+            "event_id": "mixed_noise_346",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 465009",
+            "status": "noise",
+            "junk": "abc"
+        },
+        {
+            "event_id": "mixed_noise_417",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 632939",
+            "status": "noise",
+            "junk": "ignore"
+        },
+        {
+            "event_id": "mixed_noise_499",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 151980",
+            "status": "noise",
+            "junk": "abc"
+        },
+        {
+            "event_id": "mixed_noise_330",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 386553",
+            "status": "noise",
+            "junk": "random"
+        },
+        {
+            "event_id": "mixed_noise_190",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 867002",
+            "status": "noise",
+            "junk": "temp"
+        },
+        {
+            "event_id": "mixed_noise_491",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 827862",
+            "status": "noise",
+            "junk": "temp"
+        },
+        {
+            "event_id": "mixed_noise_493",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 874747",
+            "status": "noise",
+            "junk": "ignore"
+        },
+        {
+            "event_id": "mixed_noise_434",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 215870",
+            "status": "noise",
+            "junk": "abc"
+        },
+        {
+            "event_id": "mixed_noise_170",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 483863",
+            "status": "noise",
+            "junk": "random"
+        },
+        {
+            "event_id": "mixed_noise_393",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 648330",
+            "status": "noise",
+            "junk": "ignore"
+        },
+        {
+            "event_id": "mixed_noise_397",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 658048",
+            "status": "noise",
+            "junk": "ignore"
+        },
+        {
+            "event_id": "mixed_noise_274",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 631120",
+            "status": "noise",
+            "junk": "random"
+        },
+        {
+            "event_id": "mixed_noise_375",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 304333",
+            "status": "noise",
+            "junk": "ignore"
+        },
+        {
+            "event_id": "mixed_noise_483",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 924147",
+            "status": "noise",
+            "junk": "random"
+        },
+        {
+            "event_id": "mixed_noise_192",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 550403",
+            "status": "noise",
+            "junk": "abc"
+        },
+        {
+            "event_id": "mixed_noise_329",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 379888",
+            "status": "noise",
+            "junk": "loose"
+        },
+        {
+            "event_id": "mixed_noise_385",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 666882",
+            "status": "noise",
+            "junk": "abc"
+        },
+        {
+            "event_id": "mixed_signal_36",
+            "memory_type": "signal",
+            "importance": "high",
+            "topic": "continuity",
+            "active_state": "AURA and MYTHRION stay separate",
+            "latent_risk": "template rule misses human pattern",
+            "lineage_reason": "signal survived inside a noisy memory flood",
+            "status": "active"
+        },
+        {
+            "event_id": "mixed_noise_135",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 618225",
+            "status": "noise",
+            "junk": "loose"
+        },
+        {
+            "event_id": "mixed_noise_438",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 876524",
+            "status": "noise",
+            "junk": "temp"
+        },
+        {
+            "event_id": "mixed_signal_33",
+            "memory_type": "signal",
+            "importance": "high",
+            "topic": "security",
+            "active_state": "AURA and MYTHRION stay separate",
+            "latent_risk": "scattered projects dilute focus",
+            "lineage_reason": "signal survived inside a noisy memory flood",
+            "status": "active"
+        },
+        {
+            "event_id": "mixed_noise_174",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 385390",
+            "status": "noise",
+            "junk": "temp"
+        },
+        {
+            "event_id": "mixed_noise_349",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 227588",
+            "status": "noise",
+            "junk": "random"
+        },
+        {
+            "event_id": "mixed_noise_398",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 269904",
+            "status": "noise",
+            "junk": "temp"
+        },
+        {
+            "event_id": "mixed_noise_119",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 939927",
+            "status": "noise",
+            "junk": "ignore"
+        },
+        {
+            "event_id": "mixed_noise_149",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 473882",
+            "status": "noise",
+            "junk": "temp"
+        },
+        {
+            "event_id": "mixed_noise_474",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 989766",
+            "status": "noise",
+            "junk": "ignore"
+        },
+        {
+            "event_id": "mixed_signal_10",
+            "memory_type": "signal",
+            "importance": "high",
+            "topic": "compression",
+            "active_state": "vault isolation must hold",
+            "latent_risk": "AI-generation pressure returns",
+            "lineage_reason": "signal survived inside a noisy memory flood",
+            "status": "active"
+        },
+        {
+            "event_id": "mixed_noise_461",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 367277",
+            "status": "noise",
+            "junk": "ignore"
+        },
+        {
+            "event_id": "mixed_signal_8",
+            "memory_type": "signal",
+            "importance": "high",
+            "topic": "security",
+            "active_state": "AURA and MYTHRION stay separate",
+            "latent_risk": "old revoked key returns",
+            "lineage_reason": "signal survived inside a noisy memory flood",
+            "status": "active"
+        },
+        {
+            "event_id": "mixed_noise_223",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 599086",
+            "status": "noise",
+            "junk": "random"
+        },
+        {
+            "event_id": "mixed_signal_91",
+            "memory_type": "signal",
+            "importance": "high",
+            "topic": "focus",
+            "active_state": "vault isolation must hold",
+            "latent_risk": "old revoked key returns",
+            "lineage_reason": "signal survived inside a noisy memory flood",
+            "status": "active"
+        },
+        {
+            "event_id": "mixed_noise_172",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 696122",
+            "status": "noise",
+            "junk": "temp"
+        },
+        {
+            "event_id": "mixed_noise_402",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 782118",
+            "status": "noise",
+            "junk": "abc"
+        },
+        {
+            "event_id": "mixed_noise_409",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 947323",
+            "status": "noise",
+            "junk": "loose"
+        },
+        {
+            "event_id": "mixed_noise_159",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 179409",
+            "status": "noise",
+            "junk": "temp"
+        },
+        {
+            "event_id": "mixed_noise_336",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 798746",
+            "status": "noise",
+            "junk": "ignore"
+        },
+        {
+            "event_id": "mixed_noise_226",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 594358",
+            "status": "noise",
+            "junk": "random"
+        },
+        {
+            "event_id": "mixed_noise_127",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 194857",
+            "status": "noise",
+            "junk": "loose"
+        },
+        {
+            "event_id": "mixed_noise_345",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 748185",
+            "status": "noise",
+            "junk": "temp"
+        },
+        {
+            "event_id": "mixed_noise_131",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 399773",
+            "status": "noise",
+            "junk": "random"
+        },
+        {
+            "event_id": "mixed_noise_480",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 266918",
+            "status": "noise",
+            "junk": "ignore"
+        },
+        {
+            "event_id": "mixed_signal_99",
+            "memory_type": "signal",
+            "importance": "high",
+            "topic": "security",
+            "active_state": "vault isolation must hold",
+            "latent_risk": "template rule misses human pattern",
+            "lineage_reason": "signal survived inside a noisy memory flood",
+            "status": "active"
+        },
+        {
+            "event_id": "mixed_noise_404",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 534703",
+            "status": "noise",
+            "junk": "temp"
+        },
+        {
+            "event_id": "mixed_signal_34",
+            "memory_type": "signal",
+            "importance": "high",
+            "topic": "continuity",
+            "active_state": "noise should not fake compression",
+            "latent_risk": "old revoked key returns",
+            "lineage_reason": "signal survived inside a noisy memory flood",
+            "status": "active"
+        },
+        {
+            "event_id": "mixed_noise_234",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 867539",
+            "status": "noise",
+            "junk": "temp"
+        },
+        {
+            "event_id": "mixed_noise_196",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 721087",
+            "status": "noise",
+            "junk": "abc"
+        },
+        {
+            "event_id": "mixed_signal_22",
+            "memory_type": "signal",
+            "importance": "high",
+            "topic": "focus",
+            "active_state": "vault isolation must hold",
+            "latent_risk": "old revoked key returns",
+            "lineage_reason": "signal survived inside a noisy memory flood",
+            "status": "active"
+        },
+        {
+            "event_id": "mixed_noise_295",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 439018",
+            "status": "noise",
+            "junk": "temp"
+        },
+        {
+            "event_id": "mixed_noise_460",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 901018",
+            "status": "noise",
+            "junk": "ignore"
+        },
+        {
+            "event_id": "mixed_noise_338",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 493329",
+            "status": "noise",
+            "junk": "random"
+        },
+        {
+            "event_id": "mixed_signal_72",
+            "memory_type": "signal",
+            "importance": "high",
+            "topic": "continuity",
+            "active_state": "noise should not fake compression",
+            "latent_risk": "scattered projects dilute focus",
+            "lineage_reason": "signal survived inside a noisy memory flood",
+            "status": "active"
+        },
+        {
+            "event_id": "mixed_signal_26",
+            "memory_type": "signal",
+            "importance": "high",
+            "topic": "canon",
+            "active_state": "symbolic templates should become rules",
+            "latent_risk": "old revoked key returns",
+            "lineage_reason": "signal survived inside a noisy memory flood",
+            "status": "active"
+        },
+        {
+            "event_id": "mixed_signal_89",
+            "memory_type": "signal",
+            "importance": "high",
+            "topic": "security",
+            "active_state": "AURA and MYTHRION stay separate",
+            "latent_risk": "scattered projects dilute focus",
+            "lineage_reason": "signal survived inside a noisy memory flood",
+            "status": "active"
+        },
+        {
+            "event_id": "mixed_noise_154",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 660045",
+            "status": "noise",
+            "junk": "ignore"
+        },
+        {
+            "event_id": "mixed_signal_64",
+            "memory_type": "signal",
+            "importance": "high",
+            "topic": "continuity",
+            "active_state": "PRMR Memory Core first",
+            "latent_risk": "template rule misses human pattern",
+            "lineage_reason": "signal survived inside a noisy memory flood",
+            "status": "active"
+        },
+        {
+            "event_id": "mixed_noise_259",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 231245",
+            "status": "noise",
+            "junk": "abc"
+        },
+        {
+            "event_id": "mixed_noise_384",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 524246",
+            "status": "noise",
+            "junk": "temp"
+        },
+        {
+            "event_id": "mixed_noise_380",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 789661",
+            "status": "noise",
+            "junk": "loose"
+        },
+        {
+            "event_id": "mixed_signal_21",
+            "memory_type": "signal",
+            "importance": "high",
+            "topic": "canon",
+            "active_state": "noise should not fake compression",
+            "latent_risk": "scattered projects dilute focus",
+            "lineage_reason": "signal survived inside a noisy memory flood",
+            "status": "active"
+        },
+        {
+            "event_id": "mixed_noise_361",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 255999",
+            "status": "noise",
+            "junk": "ignore"
+        },
+        {
+            "event_id": "mixed_noise_250",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 187935",
+            "status": "noise",
+            "junk": "loose"
+        },
+        {
+            "event_id": "mixed_noise_470",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 194417",
+            "status": "noise",
+            "junk": "random"
+        },
+        {
+            "event_id": "mixed_noise_419",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 748074",
+            "status": "noise",
+            "junk": "random"
+        },
+        {
+            "event_id": "mixed_noise_317",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 153345",
+            "status": "noise",
+            "junk": "ignore"
+        },
+        {
+            "event_id": "mixed_noise_445",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 516345",
+            "status": "noise",
+            "junk": "temp"
+        },
+        {
+            "event_id": "mixed_noise_273",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 190443",
+            "status": "noise",
+            "junk": "ignore"
+        },
+        {
+            "event_id": "mixed_noise_422",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 555976",
+            "status": "noise",
+            "junk": "abc"
+        },
+        {
+            "event_id": "mixed_noise_147",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 929910",
+            "status": "noise",
+            "junk": "random"
+        },
+        {
+            "event_id": "mixed_noise_497",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 120761",
+            "status": "noise",
+            "junk": "ignore"
+        },
+        {
+            "event_id": "mixed_signal_41",
+            "memory_type": "signal",
+            "importance": "high",
+            "topic": "focus",
+            "active_state": "vault isolation must hold",
+            "latent_risk": "template rule misses human pattern",
+            "lineage_reason": "signal survived inside a noisy memory flood",
+            "status": "active"
+        },
+        {
+            "event_id": "mixed_noise_260",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 648889",
+            "status": "noise",
+            "junk": "random"
+        },
+        {
+            "event_id": "mixed_noise_310",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 394998",
+            "status": "noise",
+            "junk": "random"
+        },
+        {
+            "event_id": "mixed_noise_298",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 547656",
+            "status": "noise",
+            "junk": "temp"
+        },
+        {
+            "event_id": "mixed_noise_431",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 662175",
+            "status": "noise",
+            "junk": "loose"
+        },
+        {
+            "event_id": "mixed_noise_379",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 467628",
+            "status": "noise",
+            "junk": "random"
+        },
+        {
+            "event_id": "mixed_noise_353",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 548275",
+            "status": "noise",
+            "junk": "loose"
+        },
+        {
+            "event_id": "mixed_signal_14",
+            "memory_type": "signal",
+            "importance": "high",
+            "topic": "focus",
+            "active_state": "symbolic templates should become rules",
+            "latent_risk": "scattered projects dilute focus",
+            "lineage_reason": "signal survived inside a noisy memory flood",
+            "status": "active"
+        },
+        {
+            "event_id": "mixed_signal_50",
+            "memory_type": "signal",
+            "importance": "high",
+            "topic": "security",
+            "active_state": "AURA and MYTHRION stay separate",
+            "latent_risk": "old revoked key returns",
+            "lineage_reason": "signal survived inside a noisy memory flood",
+            "status": "active"
+        },
+        {
+            "event_id": "mixed_noise_224",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 557486",
+            "status": "noise",
+            "junk": "random"
+        },
+        {
+            "event_id": "mixed_noise_448",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 682534",
+            "status": "noise",
+            "junk": "ignore"
+        },
+        {
+            "event_id": "mixed_noise_428",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 363608",
+            "status": "noise",
+            "junk": "loose"
+        },
+        {
+            "event_id": "mixed_noise_288",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 348380",
+            "status": "noise",
+            "junk": "random"
+        },
+        {
+            "event_id": "mixed_noise_122",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 277287",
+            "status": "noise",
+            "junk": "temp"
+        },
+        {
+            "event_id": "mixed_noise_352",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 637225",
+            "status": "noise",
+            "junk": "temp"
+        },
+        {
+            "event_id": "mixed_noise_109",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 577786",
+            "status": "noise",
+            "junk": "random"
+        },
+        {
+            "event_id": "mixed_noise_388",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 851638",
+            "status": "noise",
+            "junk": "abc"
+        },
+        {
+            "event_id": "mixed_noise_355",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 139000",
+            "status": "noise",
+            "junk": "temp"
+        },
+        {
+            "event_id": "mixed_noise_278",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 719504",
+            "status": "noise",
+            "junk": "abc"
+        },
+        {
+            "event_id": "mixed_noise_261",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 975478",
+            "status": "noise",
+            "junk": "random"
+        },
+        {
+            "event_id": "mixed_signal_37",
+            "memory_type": "signal",
+            "importance": "high",
+            "topic": "canon",
+            "active_state": "AURA and MYTHRION stay separate",
+            "latent_risk": "AI-generation pressure returns",
+            "lineage_reason": "signal survived inside a noisy memory flood",
+            "status": "active"
+        },
+        {
+            "event_id": "mixed_noise_335",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 206524",
+            "status": "noise",
+            "junk": "random"
+        },
+        {
+            "event_id": "mixed_noise_108",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 813209",
+            "status": "noise",
+            "junk": "random"
+        },
+        {
+            "event_id": "mixed_noise_199",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 770523",
+            "status": "noise",
+            "junk": "random"
+        },
+        {
+            "event_id": "mixed_noise_195",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 168922",
+            "status": "noise",
+            "junk": "temp"
+        },
+        {
+            "event_id": "mixed_noise_194",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 724388",
+            "status": "noise",
+            "junk": "loose"
+        },
+        {
+            "event_id": "mixed_signal_24",
+            "memory_type": "signal",
+            "importance": "high",
+            "topic": "continuity",
+            "active_state": "noise should not fake compression",
+            "latent_risk": "AI-generation pressure returns",
+            "lineage_reason": "signal survived inside a noisy memory flood",
+            "status": "active"
+        },
+        {
+            "event_id": "mixed_noise_188",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 325468",
+            "status": "noise",
+            "junk": "abc"
+        },
+        {
+            "event_id": "mixed_signal_96",
+            "memory_type": "signal",
+            "importance": "high",
+            "topic": "compression",
+            "active_state": "noise should not fake compression",
+            "latent_risk": "template rule misses human pattern",
+            "lineage_reason": "signal survived inside a noisy memory flood",
+            "status": "active"
+        },
+        {
+            "event_id": "mixed_signal_62",
+            "memory_type": "signal",
+            "importance": "high",
+            "topic": "compression",
+            "active_state": "PRMR Memory Core first",
+            "latent_risk": "old revoked key returns",
+            "lineage_reason": "signal survived inside a noisy memory flood",
+            "status": "active"
+        },
+        {
+            "event_id": "mixed_signal_32",
+            "memory_type": "signal",
+            "importance": "high",
+            "topic": "compression",
+            "active_state": "symbolic templates should become rules",
+            "latent_risk": "AI-generation pressure returns",
+            "lineage_reason": "signal survived inside a noisy memory flood",
+            "status": "active"
+        },
+        {
+            "event_id": "mixed_noise_486",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 661200",
+            "status": "noise",
+            "junk": "random"
+        },
+        {
+            "event_id": "mixed_noise_150",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 395942",
+            "status": "noise",
+            "junk": "temp"
+        },
+        {
+            "event_id": "mixed_noise_471",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 181808",
+            "status": "noise",
+            "junk": "temp"
+        },
+        {
+            "event_id": "mixed_signal_31",
+            "memory_type": "signal",
+            "importance": "high",
+            "topic": "continuity",
+            "active_state": "vault isolation must hold",
+            "latent_risk": "old revoked key returns",
+            "lineage_reason": "signal survived inside a noisy memory flood",
+            "status": "active"
+        },
+        {
+            "event_id": "mixed_signal_49",
+            "memory_type": "signal",
+            "importance": "high",
+            "topic": "compression",
+            "active_state": "noise should not fake compression",
+            "latent_risk": "scattered projects dilute focus",
+            "lineage_reason": "signal survived inside a noisy memory flood",
+            "status": "active"
+        },
+        {
+            "event_id": "mixed_noise_316",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 956515",
+            "status": "noise",
+            "junk": "temp"
+        },
+        {
+            "event_id": "mixed_noise_489",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 811693",
+            "status": "noise",
+            "junk": "loose"
+        },
+        {
+            "event_id": "mixed_noise_482",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 859163",
+            "status": "noise",
+            "junk": "temp"
+        },
+        {
+            "event_id": "mixed_noise_479",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 465461",
+            "status": "noise",
+            "junk": "abc"
+        },
+        {
+            "event_id": "mixed_signal_25",
+            "memory_type": "signal",
+            "importance": "high",
+            "topic": "continuity",
+            "active_state": "PRMR Memory Core first",
+            "latent_risk": "old revoked key returns",
+            "lineage_reason": "signal survived inside a noisy memory flood",
+            "status": "active"
+        },
+        {
+            "event_id": "mixed_noise_202",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 777674",
+            "status": "noise",
+            "junk": "random"
+        },
+        {
+            "event_id": "mixed_noise_302",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 762605",
+            "status": "noise",
+            "junk": "random"
+        },
+        {
+            "event_id": "mixed_noise_219",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 605554",
+            "status": "noise",
+            "junk": "ignore"
+        },
+        {
+            "event_id": "mixed_noise_206",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 541038",
+            "status": "noise",
+            "junk": "loose"
+        },
+        {
+            "event_id": "mixed_noise_365",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 344443",
+            "status": "noise",
+            "junk": "abc"
+        },
+        {
+            "event_id": "mixed_signal_65",
+            "memory_type": "signal",
+            "importance": "high",
+            "topic": "continuity",
+            "active_state": "symbolic templates should become rules",
+            "latent_risk": "template rule misses human pattern",
+            "lineage_reason": "signal survived inside a noisy memory flood",
+            "status": "active"
+        },
+        {
+            "event_id": "mixed_noise_107",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 783813",
+            "status": "noise",
+            "junk": "ignore"
+        },
+        {
+            "event_id": "mixed_signal_75",
+            "memory_type": "signal",
+            "importance": "high",
+            "topic": "continuity",
+            "active_state": "AURA and MYTHRION stay separate",
+            "latent_risk": "template rule misses human pattern",
+            "lineage_reason": "signal survived inside a noisy memory flood",
+            "status": "active"
+        },
+        {
+            "event_id": "mixed_noise_372",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 561564",
+            "status": "noise",
+            "junk": "random"
+        },
+        {
+            "event_id": "mixed_noise_332",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 816342",
+            "status": "noise",
+            "junk": "random"
+        },
+        {
+            "event_id": "mixed_noise_146",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 380449",
+            "status": "noise",
+            "junk": "random"
+        },
+        {
+            "event_id": "mixed_noise_467",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 518363",
+            "status": "noise",
+            "junk": "temp"
+        },
+        {
+            "event_id": "mixed_noise_314",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 576099",
+            "status": "noise",
+            "junk": "temp"
+        },
+        {
+            "event_id": "mixed_noise_247",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 312515",
+            "status": "noise",
+            "junk": "random"
+        },
+        {
+            "event_id": "mixed_signal_28",
+            "memory_type": "signal",
+            "importance": "high",
+            "topic": "focus",
+            "active_state": "AURA and MYTHRION stay separate",
+            "latent_risk": "noise flood hides signal",
+            "lineage_reason": "signal survived inside a noisy memory flood",
+            "status": "active"
+        },
+        {
+            "event_id": "mixed_noise_215",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 773464",
+            "status": "noise",
+            "junk": "abc"
+        },
+        {
+            "event_id": "mixed_noise_179",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 384857",
+            "status": "noise",
+            "junk": "abc"
+        },
+        {
+            "event_id": "mixed_noise_203",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 237426",
+            "status": "noise",
+            "junk": "random"
+        },
+        {
+            "event_id": "mixed_noise_386",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 886294",
+            "status": "noise",
+            "junk": "random"
+        },
+        {
+            "event_id": "mixed_signal_79",
+            "memory_type": "signal",
+            "importance": "high",
+            "topic": "focus",
+            "active_state": "noise should not fake compression",
+            "latent_risk": "AI-generation pressure returns",
+            "lineage_reason": "signal survived inside a noisy memory flood",
+            "status": "active"
+        },
+        {
+            "event_id": "mixed_noise_416",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 739710",
+            "status": "noise",
+            "junk": "temp"
+        },
+        {
+            "event_id": "mixed_noise_328",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 361665",
+            "status": "noise",
+            "junk": "loose"
+        },
+        {
+            "event_id": "mixed_noise_307",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 555012",
+            "status": "noise",
+            "junk": "abc"
+        },
+        {
+            "event_id": "mixed_noise_221",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 478060",
+            "status": "noise",
+            "junk": "ignore"
+        },
+        {
+            "event_id": "mixed_noise_239",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 353920",
+            "status": "noise",
+            "junk": "ignore"
+        },
+        {
+            "event_id": "mixed_noise_102",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 665223",
+            "status": "noise",
+            "junk": "loose"
+        },
+        {
+            "event_id": "mixed_noise_272",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 109092",
+            "status": "noise",
+            "junk": "abc"
+        },
+        {
+            "event_id": "mixed_noise_492",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 911929",
+            "status": "noise",
+            "junk": "abc"
+        },
+        {
+            "event_id": "mixed_noise_366",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 481450",
+            "status": "noise",
+            "junk": "abc"
+        },
+        {
+            "event_id": "mixed_noise_437",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 584664",
+            "status": "noise",
+            "junk": "ignore"
+        },
+        {
+            "event_id": "mixed_noise_237",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 206578",
+            "status": "noise",
+            "junk": "temp"
+        },
+        {
+            "event_id": "mixed_noise_476",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 411227",
+            "status": "noise",
+            "junk": "abc"
+        },
+        {
+            "event_id": "mixed_signal_88",
+            "memory_type": "signal",
+            "importance": "high",
+            "topic": "compression",
+            "active_state": "symbolic templates should become rules",
+            "latent_risk": "old revoked key returns",
+            "lineage_reason": "signal survived inside a noisy memory flood",
+            "status": "active"
+        },
+        {
+            "event_id": "mixed_noise_168",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 309728",
+            "status": "noise",
+            "junk": "ignore"
+        },
+        {
+            "event_id": "mixed_noise_496",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 311508",
+            "status": "noise",
+            "junk": "loose"
+        },
+        {
+            "event_id": "mixed_noise_455",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 641477",
+            "status": "noise",
+            "junk": "ignore"
+        },
+        {
+            "event_id": "mixed_noise_241",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 969115",
+            "status": "noise",
+            "junk": "loose"
+        },
+        {
+            "event_id": "mixed_signal_54",
+            "memory_type": "signal",
+            "importance": "high",
+            "topic": "canon",
+            "active_state": "AURA and MYTHRION stay separate",
+            "latent_risk": "scattered projects dilute focus",
+            "lineage_reason": "signal survived inside a noisy memory flood",
+            "status": "active"
+        },
+        {
+            "event_id": "mixed_noise_407",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 788713",
+            "status": "noise",
+            "junk": "abc"
+        },
+        {
+            "event_id": "mixed_noise_230",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 737891",
+            "status": "noise",
+            "junk": "random"
+        },
+        {
+            "event_id": "mixed_noise_323",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 490606",
+            "status": "noise",
+            "junk": "loose"
+        },
+        {
+            "event_id": "mixed_noise_240",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 249511",
+            "status": "noise",
+            "junk": "loose"
+        },
+        {
+            "event_id": "mixed_noise_246",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 301654",
+            "status": "noise",
+            "junk": "loose"
+        },
+        {
+            "event_id": "mixed_noise_359",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 858576",
+            "status": "noise",
+            "junk": "ignore"
+        },
+        {
+            "event_id": "mixed_signal_74",
+            "memory_type": "signal",
+            "importance": "high",
+            "topic": "security",
+            "active_state": "PRMR Memory Core first",
+            "latent_risk": "AI-generation pressure returns",
+            "lineage_reason": "signal survived inside a noisy memory flood",
+            "status": "active"
+        },
+        {
+            "event_id": "mixed_noise_378",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 190044",
+            "status": "noise",
+            "junk": "loose"
+        },
+        {
+            "event_id": "mixed_signal_78",
+            "memory_type": "signal",
+            "importance": "high",
+            "topic": "canon",
+            "active_state": "vault isolation must hold",
+            "latent_risk": "template rule misses human pattern",
+            "lineage_reason": "signal survived inside a noisy memory flood",
+            "status": "active"
+        },
+        {
+            "event_id": "mixed_noise_232",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 403709",
+            "status": "noise",
+            "junk": "ignore"
+        },
+        {
+            "event_id": "mixed_noise_160",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 408521",
+            "status": "noise",
+            "junk": "random"
+        },
+        {
+            "event_id": "mixed_signal_23",
+            "memory_type": "signal",
+            "importance": "high",
+            "topic": "focus",
+            "active_state": "symbolic templates should become rules",
+            "latent_risk": "old revoked key returns",
+            "lineage_reason": "signal survived inside a noisy memory flood",
+            "status": "active"
+        },
+        {
+            "event_id": "mixed_signal_3",
+            "memory_type": "signal",
+            "importance": "high",
+            "topic": "focus",
+            "active_state": "vault isolation must hold",
+            "latent_risk": "scattered projects dilute focus",
+            "lineage_reason": "signal survived inside a noisy memory flood",
+            "status": "active"
+        },
+        {
+            "event_id": "mixed_noise_466",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 354436",
+            "status": "noise",
+            "junk": "ignore"
+        },
+        {
+            "event_id": "mixed_noise_257",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 925103",
+            "status": "noise",
+            "junk": "random"
+        },
+        {
+            "event_id": "mixed_noise_452",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 881144",
+            "status": "noise",
+            "junk": "temp"
+        },
+        {
+            "event_id": "mixed_noise_343",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 237988",
+            "status": "noise",
+            "junk": "ignore"
+        },
+        {
+            "event_id": "mixed_signal_17",
+            "memory_type": "signal",
+            "importance": "high",
+            "topic": "compression",
+            "active_state": "PRMR Memory Core first",
+            "latent_risk": "old revoked key returns",
+            "lineage_reason": "signal survived inside a noisy memory flood",
+            "status": "active"
+        },
+        {
+            "event_id": "mixed_noise_153",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 137086",
+            "status": "noise",
+            "junk": "ignore"
+        },
+        {
+            "event_id": "mixed_signal_9",
+            "memory_type": "signal",
+            "importance": "high",
+            "topic": "compression",
+            "active_state": "symbolic templates should become rules",
+            "latent_risk": "scattered projects dilute focus",
+            "lineage_reason": "signal survived inside a noisy memory flood",
+            "status": "active"
+        },
+        {
+            "event_id": "mixed_noise_429",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 399533",
+            "status": "noise",
+            "junk": "random"
+        },
+        {
+            "event_id": "mixed_noise_251",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 600801",
+            "status": "noise",
+            "junk": "abc"
+        },
+        {
+            "event_id": "mixed_noise_124",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 801542",
+            "status": "noise",
+            "junk": "random"
+        },
+        {
+            "event_id": "mixed_noise_293",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 809483",
+            "status": "noise",
+            "junk": "loose"
+        },
+        {
+            "event_id": "mixed_noise_342",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 527245",
+            "status": "noise",
+            "junk": "temp"
+        },
+        {
+            "event_id": "mixed_noise_453",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 327835",
+            "status": "noise",
+            "junk": "ignore"
+        },
+        {
+            "event_id": "mixed_noise_228",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 601831",
+            "status": "noise",
+            "junk": "random"
+        },
+        {
+            "event_id": "mixed_signal_51",
+            "memory_type": "signal",
+            "importance": "high",
+            "topic": "compression",
+            "active_state": "AURA and MYTHRION stay separate",
+            "latent_risk": "AI-generation pressure returns",
+            "lineage_reason": "signal survived inside a noisy memory flood",
+            "status": "active"
+        },
+        {
+            "event_id": "mixed_noise_156",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 312638",
+            "status": "noise",
+            "junk": "abc"
+        },
+        {
+            "event_id": "mixed_noise_171",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 391558",
+            "status": "noise",
+            "junk": "loose"
+        },
+        {
+            "event_id": "mixed_noise_410",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 577351",
+            "status": "noise",
+            "junk": "ignore"
+        },
+        {
+            "event_id": "mixed_noise_356",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 942381",
+            "status": "noise",
+            "junk": "ignore"
+        },
+        {
+            "event_id": "mixed_noise_435",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 494613",
+            "status": "noise",
+            "junk": "loose"
+        },
+        {
+            "event_id": "mixed_noise_348",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 783905",
+            "status": "noise",
+            "junk": "ignore"
+        },
+        {
+            "event_id": "mixed_noise_217",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 102348",
+            "status": "noise",
+            "junk": "random"
+        },
+        {
+            "event_id": "mixed_noise_249",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 220672",
+            "status": "noise",
+            "junk": "ignore"
+        },
+        {
+            "event_id": "mixed_noise_145",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 884167",
+            "status": "noise",
+            "junk": "abc"
+        },
+        {
+            "event_id": "mixed_signal_11",
+            "memory_type": "signal",
+            "importance": "high",
+            "topic": "canon",
+            "active_state": "noise should not fake compression",
+            "latent_risk": "noise flood hides signal",
+            "lineage_reason": "signal survived inside a noisy memory flood",
+            "status": "active"
+        },
+        {
+            "event_id": "mixed_noise_189",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 835889",
+            "status": "noise",
+            "junk": "ignore"
+        },
+        {
+            "event_id": "mixed_noise_311",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 281368",
+            "status": "noise",
+            "junk": "loose"
+        },
+        {
+            "event_id": "mixed_noise_167",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 984653",
+            "status": "noise",
+            "junk": "ignore"
+        },
+        {
+            "event_id": "mixed_signal_44",
+            "memory_type": "signal",
+            "importance": "high",
+            "topic": "security",
+            "active_state": "vault isolation must hold",
+            "latent_risk": "template rule misses human pattern",
+            "lineage_reason": "signal survived inside a noisy memory flood",
+            "status": "active"
+        },
+        {
+            "event_id": "mixed_signal_58",
+            "memory_type": "signal",
+            "importance": "high",
+            "topic": "continuity",
+            "active_state": "vault isolation must hold",
+            "latent_risk": "scattered projects dilute focus",
+            "lineage_reason": "signal survived inside a noisy memory flood",
+            "status": "active"
+        },
+        {
+            "event_id": "mixed_noise_432",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 197493",
+            "status": "noise",
+            "junk": "abc"
+        },
+        {
+            "event_id": "mixed_signal_100",
+            "memory_type": "signal",
+            "importance": "high",
+            "topic": "canon",
+            "active_state": "vault isolation must hold",
+            "latent_risk": "old revoked key returns",
+            "lineage_reason": "signal survived inside a noisy memory flood",
+            "status": "active"
+        },
+        {
+            "event_id": "mixed_noise_444",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 255845",
+            "status": "noise",
+            "junk": "abc"
+        },
+        {
+            "event_id": "mixed_noise_354",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 508676",
+            "status": "noise",
+            "junk": "loose"
+        },
+        {
+            "event_id": "mixed_noise_173",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 834254",
+            "status": "noise",
+            "junk": "temp"
+        },
+        {
+            "event_id": "mixed_signal_86",
+            "memory_type": "signal",
+            "importance": "high",
+            "topic": "canon",
+            "active_state": "vault isolation must hold",
+            "latent_risk": "old revoked key returns",
+            "lineage_reason": "signal survived inside a noisy memory flood",
+            "status": "active"
+        },
+        {
+            "event_id": "mixed_noise_208",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 970880",
+            "status": "noise",
+            "junk": "abc"
+        },
+        {
+            "event_id": "mixed_noise_369",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 147666",
+            "status": "noise",
+            "junk": "ignore"
+        },
+        {
+            "event_id": "mixed_signal_2",
+            "memory_type": "signal",
+            "importance": "high",
+            "topic": "security",
+            "active_state": "vault isolation must hold",
+            "latent_risk": "template rule misses human pattern",
+            "lineage_reason": "signal survived inside a noisy memory flood",
+            "status": "active"
+        },
+        {
+            "event_id": "mixed_noise_253",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 422548",
+            "status": "noise",
+            "junk": "random"
+        },
+        {
+            "event_id": "mixed_noise_243",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 585917",
+            "status": "noise",
+            "junk": "ignore"
+        },
+        {
+            "event_id": "mixed_noise_322",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 560890",
+            "status": "noise",
+            "junk": "random"
+        },
+        {
+            "event_id": "mixed_noise_163",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 950375",
+            "status": "noise",
+            "junk": "random"
+        },
+        {
+            "event_id": "mixed_noise_214",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 367036",
+            "status": "noise",
+            "junk": "ignore"
+        },
+        {
+            "event_id": "mixed_noise_472",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 645889",
+            "status": "noise",
+            "junk": "temp"
+        },
+        {
+            "event_id": "mixed_noise_213",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 183555",
+            "status": "noise",
+            "junk": "temp"
+        },
+        {
+            "event_id": "mixed_noise_130",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 740397",
+            "status": "noise",
+            "junk": "loose"
+        },
+        {
+            "event_id": "mixed_noise_255",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 140172",
+            "status": "noise",
+            "junk": "abc"
+        },
+        {
+            "event_id": "mixed_noise_105",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 543540",
+            "status": "noise",
+            "junk": "random"
+        },
+        {
+            "event_id": "mixed_noise_327",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 211323",
+            "status": "noise",
+            "junk": "temp"
+        },
+        {
+            "event_id": "mixed_noise_286",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 838298",
+            "status": "noise",
+            "junk": "loose"
+        },
+        {
+            "event_id": "mixed_noise_104",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 189454",
+            "status": "noise",
+            "junk": "ignore"
+        },
+        {
+            "event_id": "mixed_signal_27",
+            "memory_type": "signal",
+            "importance": "high",
+            "topic": "focus",
+            "active_state": "PRMR Memory Core first",
+            "latent_risk": "noise flood hides signal",
+            "lineage_reason": "signal survived inside a noisy memory flood",
+            "status": "active"
+        },
+        {
+            "event_id": "mixed_noise_454",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 998302",
+            "status": "noise",
+            "junk": "loose"
+        },
+        {
+            "event_id": "mixed_noise_304",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 621307",
+            "status": "noise",
+            "junk": "temp"
+        },
+        {
+            "event_id": "mixed_noise_399",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 217364",
+            "status": "noise",
+            "junk": "loose"
+        },
+        {
+            "event_id": "mixed_noise_381",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 188857",
+            "status": "noise",
+            "junk": "random"
+        },
+        {
+            "event_id": "mixed_signal_94",
+            "memory_type": "signal",
+            "importance": "high",
+            "topic": "canon",
+            "active_state": "symbolic templates should become rules",
+            "latent_risk": "template rule misses human pattern",
+            "lineage_reason": "signal survived inside a noisy memory flood",
+            "status": "active"
+        },
+        {
+            "event_id": "mixed_signal_90",
+            "memory_type": "signal",
+            "importance": "high",
+            "topic": "security",
+            "active_state": "PRMR Memory Core first",
+            "latent_risk": "noise flood hides signal",
+            "lineage_reason": "signal survived inside a noisy memory flood",
+            "status": "active"
+        },
+        {
+            "event_id": "mixed_signal_87",
+            "memory_type": "signal",
+            "importance": "high",
+            "topic": "canon",
+            "active_state": "symbolic templates should become rules",
+            "latent_risk": "AI-generation pressure returns",
+            "lineage_reason": "signal survived inside a noisy memory flood",
+            "status": "active"
+        },
+        {
+            "event_id": "mixed_noise_116",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 963531",
+            "status": "noise",
+            "junk": "ignore"
+        },
+        {
+            "event_id": "mixed_noise_139",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 425513",
+            "status": "noise",
+            "junk": "random"
+        },
+        {
+            "event_id": "mixed_signal_59",
+            "memory_type": "signal",
+            "importance": "high",
+            "topic": "continuity",
+            "active_state": "noise should not fake compression",
+            "latent_risk": "old revoked key returns",
+            "lineage_reason": "signal survived inside a noisy memory flood",
+            "status": "active"
+        },
+        {
+            "event_id": "mixed_noise_292",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 622294",
+            "status": "noise",
+            "junk": "temp"
+        },
+        {
+            "event_id": "mixed_noise_115",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 363205",
+            "status": "noise",
+            "junk": "temp"
+        },
+        {
+            "event_id": "mixed_noise_430",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 267167",
+            "status": "noise",
+            "junk": "temp"
+        },
+        {
+            "event_id": "mixed_noise_324",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 289712",
+            "status": "noise",
+            "junk": "ignore"
+        },
+        {
+            "event_id": "mixed_noise_477",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 409605",
+            "status": "noise",
+            "junk": "temp"
+        },
+        {
+            "event_id": "mixed_noise_191",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 507677",
+            "status": "noise",
+            "junk": "abc"
+        },
+        {
+            "event_id": "mixed_noise_244",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 230211",
+            "status": "noise",
+            "junk": "loose"
+        },
+        {
+            "event_id": "mixed_signal_60",
+            "memory_type": "signal",
+            "importance": "high",
+            "topic": "continuity",
+            "active_state": "PRMR Memory Core first",
+            "latent_risk": "AI-generation pressure returns",
+            "lineage_reason": "signal survived inside a noisy memory flood",
+            "status": "active"
+        },
+        {
+            "event_id": "mixed_noise_185",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 799396",
+            "status": "noise",
+            "junk": "ignore"
+        },
+        {
+            "event_id": "mixed_noise_242",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 845107",
+            "status": "noise",
+            "junk": "temp"
+        },
+        {
+            "event_id": "mixed_signal_20",
+            "memory_type": "signal",
+            "importance": "high",
+            "topic": "focus",
+            "active_state": "vault isolation must hold",
+            "latent_risk": "noise flood hides signal",
+            "lineage_reason": "signal survived inside a noisy memory flood",
+            "status": "active"
+        },
+        {
+            "event_id": "mixed_noise_392",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 210402",
+            "status": "noise",
+            "junk": "abc"
+        },
+        {
+            "event_id": "mixed_noise_313",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 213387",
+            "status": "noise",
+            "junk": "random"
+        },
+        {
+            "event_id": "mixed_noise_299",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 400999",
+            "status": "noise",
+            "junk": "temp"
+        },
+        {
+            "event_id": "mixed_noise_415",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 756169",
+            "status": "noise",
+            "junk": "random"
+        },
+        {
+            "event_id": "mixed_noise_389",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 806308",
+            "status": "noise",
+            "junk": "abc"
+        },
+        {
+            "event_id": "mixed_noise_276",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 110973",
+            "status": "noise",
+            "junk": "random"
+        },
+        {
+            "event_id": "mixed_signal_12",
+            "memory_type": "signal",
+            "importance": "high",
+            "topic": "security",
+            "active_state": "vault isolation must hold",
+            "latent_risk": "scattered projects dilute focus",
+            "lineage_reason": "signal survived inside a noisy memory flood",
+            "status": "active"
+        },
+        {
+            "event_id": "mixed_noise_148",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 397249",
+            "status": "noise",
+            "junk": "temp"
+        },
+        {
+            "event_id": "mixed_signal_95",
+            "memory_type": "signal",
+            "importance": "high",
+            "topic": "canon",
+            "active_state": "PRMR Memory Core first",
+            "latent_risk": "noise flood hides signal",
+            "lineage_reason": "signal survived inside a noisy memory flood",
+            "status": "active"
+        },
+        {
+            "event_id": "mixed_noise_351",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 740577",
+            "status": "noise",
+            "junk": "ignore"
+        },
+        {
+            "event_id": "mixed_noise_166",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 890311",
+            "status": "noise",
+            "junk": "loose"
+        },
+        {
+            "event_id": "mixed_signal_70",
+            "memory_type": "signal",
+            "importance": "high",
+            "topic": "security",
+            "active_state": "PRMR Memory Core first",
+            "latent_risk": "noise flood hides signal",
+            "lineage_reason": "signal survived inside a noisy memory flood",
+            "status": "active"
+        },
+        {
+            "event_id": "mixed_noise_463",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 777310",
+            "status": "noise",
+            "junk": "ignore"
+        },
+        {
+            "event_id": "mixed_noise_305",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 903062",
+            "status": "noise",
+            "junk": "random"
+        },
+        {
+            "event_id": "mixed_noise_439",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 847163",
+            "status": "noise",
+            "junk": "abc"
+        },
+        {
+            "event_id": "mixed_noise_285",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 277847",
+            "status": "noise",
+            "junk": "abc"
+        },
+        {
+            "event_id": "mixed_signal_6",
+            "memory_type": "signal",
+            "importance": "high",
+            "topic": "compression",
+            "active_state": "noise should not fake compression",
+            "latent_risk": "template rule misses human pattern",
+            "lineage_reason": "signal survived inside a noisy memory flood",
+            "status": "active"
+        },
+        {
+            "event_id": "mixed_noise_300",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 845125",
+            "status": "noise",
+            "junk": "loose"
+        },
+        {
+            "event_id": "mixed_signal_76",
+            "memory_type": "signal",
+            "importance": "high",
+            "topic": "compression",
+            "active_state": "vault isolation must hold",
+            "latent_risk": "old revoked key returns",
+            "lineage_reason": "signal survived inside a noisy memory flood",
+            "status": "active"
+        },
+        {
+            "event_id": "mixed_noise_433",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 395976",
+            "status": "noise",
+            "junk": "random"
+        },
+        {
+            "event_id": "mixed_noise_411",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 712933",
+            "status": "noise",
+            "junk": "temp"
+        },
+        {
+            "event_id": "mixed_noise_325",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 437966",
+            "status": "noise",
+            "junk": "random"
+        },
+        {
+            "event_id": "mixed_signal_85",
+            "memory_type": "signal",
+            "importance": "high",
+            "topic": "canon",
+            "active_state": "AURA and MYTHRION stay separate",
+            "latent_risk": "noise flood hides signal",
+            "lineage_reason": "signal survived inside a noisy memory flood",
+            "status": "active"
+        },
+        {
+            "event_id": "mixed_noise_193",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 807030",
+            "status": "noise",
+            "junk": "loose"
+        },
+        {
+            "event_id": "mixed_noise_275",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 407943",
+            "status": "noise",
+            "junk": "random"
+        },
+        {
+            "event_id": "mixed_noise_220",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 465519",
+            "status": "noise",
+            "junk": "ignore"
+        },
+        {
+            "event_id": "mixed_noise_269",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 248510",
+            "status": "noise",
+            "junk": "ignore"
+        },
+        {
+            "event_id": "mixed_noise_446",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 451909",
+            "status": "noise",
+            "junk": "random"
+        },
+        {
+            "event_id": "mixed_noise_181",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 234773",
+            "status": "noise",
+            "junk": "abc"
+        },
+        {
+            "event_id": "mixed_signal_73",
+            "memory_type": "signal",
+            "importance": "high",
+            "topic": "compression",
+            "active_state": "symbolic templates should become rules",
+            "latent_risk": "noise flood hides signal",
+            "lineage_reason": "signal survived inside a noisy memory flood",
+            "status": "active"
+        },
+        {
+            "event_id": "mixed_noise_451",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 136163",
+            "status": "noise",
+            "junk": "random"
+        },
+        {
+            "event_id": "mixed_noise_465",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 118947",
+            "status": "noise",
+            "junk": "loose"
+        },
+        {
+            "event_id": "mixed_noise_487",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 706519",
+            "status": "noise",
+            "junk": "loose"
+        },
+        {
+            "event_id": "mixed_noise_281",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 983076",
+            "status": "noise",
+            "junk": "temp"
+        },
+        {
+            "event_id": "mixed_noise_201",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 801367",
+            "status": "noise",
+            "junk": "abc"
+        },
+        {
+            "event_id": "mixed_noise_277",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 159232",
+            "status": "noise",
+            "junk": "abc"
+        },
+        {
+            "event_id": "mixed_noise_412",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 166304",
+            "status": "noise",
+            "junk": "temp"
+        },
+        {
+            "event_id": "mixed_signal_42",
+            "memory_type": "signal",
+            "importance": "high",
+            "topic": "compression",
+            "active_state": "vault isolation must hold",
+            "latent_risk": "noise flood hides signal",
+            "lineage_reason": "signal survived inside a noisy memory flood",
+            "status": "active"
+        },
+        {
+            "event_id": "mixed_noise_137",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 108182",
+            "status": "noise",
+            "junk": "temp"
+        },
+        {
+            "event_id": "mixed_noise_126",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 772604",
+            "status": "noise",
+            "junk": "loose"
+        },
+        {
+            "event_id": "mixed_noise_165",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 364946",
+            "status": "noise",
+            "junk": "random"
+        },
+        {
+            "event_id": "mixed_noise_290",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 144668",
+            "status": "noise",
+            "junk": "loose"
+        },
+        {
+            "event_id": "mixed_noise_157",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 706690",
+            "status": "noise",
+            "junk": "temp"
+        },
+        {
+            "event_id": "mixed_noise_427",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 841964",
+            "status": "noise",
+            "junk": "temp"
+        },
+        {
+            "event_id": "mixed_noise_207",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 156521",
+            "status": "noise",
+            "junk": "abc"
+        },
+        {
+            "event_id": "mixed_noise_265",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 992331",
+            "status": "noise",
+            "junk": "abc"
+        },
+        {
+            "event_id": "mixed_noise_151",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 791180",
+            "status": "noise",
+            "junk": "ignore"
+        },
+        {
+            "event_id": "mixed_noise_138",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 680346",
+            "status": "noise",
+            "junk": "ignore"
+        },
+        {
+            "event_id": "mixed_noise_162",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 321672",
+            "status": "noise",
+            "junk": "loose"
+        },
+        {
+            "event_id": "mixed_noise_152",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 534394",
+            "status": "noise",
+            "junk": "ignore"
+        },
+        {
+            "event_id": "mixed_noise_256",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 305074",
+            "status": "noise",
+            "junk": "random"
+        },
+        {
+            "event_id": "mixed_signal_40",
+            "memory_type": "signal",
+            "importance": "high",
+            "topic": "compression",
+            "active_state": "PRMR Memory Core first",
+            "latent_risk": "AI-generation pressure returns",
+            "lineage_reason": "signal survived inside a noisy memory flood",
+            "status": "active"
+        },
+        {
+            "event_id": "mixed_signal_80",
+            "memory_type": "signal",
+            "importance": "high",
+            "topic": "canon",
+            "active_state": "PRMR Memory Core first",
+            "latent_risk": "scattered projects dilute focus",
+            "lineage_reason": "signal survived inside a noisy memory flood",
+            "status": "active"
+        },
+        {
+            "event_id": "mixed_noise_287",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 447028",
+            "status": "noise",
+            "junk": "random"
+        },
+        {
+            "event_id": "mixed_noise_268",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 553841",
+            "status": "noise",
+            "junk": "loose"
+        },
+        {
+            "event_id": "mixed_noise_344",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 372735",
+            "status": "noise",
+            "junk": "loose"
+        },
+        {
+            "event_id": "mixed_noise_413",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 350521",
+            "status": "noise",
+            "junk": "ignore"
+        },
+        {
+            "event_id": "mixed_noise_125",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 446330",
+            "status": "noise",
+            "junk": "random"
+        },
+        {
+            "event_id": "mixed_signal_55",
+            "memory_type": "signal",
+            "importance": "high",
+            "topic": "canon",
+            "active_state": "noise should not fake compression",
+            "latent_risk": "scattered projects dilute focus",
+            "lineage_reason": "signal survived inside a noisy memory flood",
+            "status": "active"
+        },
+        {
+            "event_id": "mixed_noise_270",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 794066",
+            "status": "noise",
+            "junk": "random"
+        },
+        {
+            "event_id": "mixed_noise_443",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 121603",
+            "status": "noise",
+            "junk": "loose"
+        },
+        {
+            "event_id": "mixed_noise_362",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 947111",
+            "status": "noise",
+            "junk": "loose"
+        },
+        {
+            "event_id": "mixed_noise_118",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 228468",
+            "status": "noise",
+            "junk": "abc"
+        },
+        {
+            "event_id": "mixed_noise_421",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 382337",
+            "status": "noise",
+            "junk": "ignore"
+        },
+        {
+            "event_id": "mixed_noise_495",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 461288",
+            "status": "noise",
+            "junk": "abc"
+        },
+        {
+            "event_id": "mixed_noise_473",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 472654",
+            "status": "noise",
+            "junk": "temp"
+        },
+        {
+            "event_id": "mixed_noise_205",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 930854",
+            "status": "noise",
+            "junk": "abc"
+        },
+        {
+            "event_id": "mixed_noise_442",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 901094",
+            "status": "noise",
+            "junk": "temp"
+        },
+        {
+            "event_id": "mixed_noise_180",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 170003",
+            "status": "noise",
+            "junk": "abc"
+        },
+        {
+            "event_id": "mixed_signal_77",
+            "memory_type": "signal",
+            "importance": "high",
+            "topic": "focus",
+            "active_state": "PRMR Memory Core first",
+            "latent_risk": "noise flood hides signal",
+            "lineage_reason": "signal survived inside a noisy memory flood",
+            "status": "active"
+        },
+        {
+            "event_id": "mixed_noise_308",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 993657",
+            "status": "noise",
+            "junk": "abc"
+        },
+        {
+            "event_id": "mixed_noise_414",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 498863",
+            "status": "noise",
+            "junk": "abc"
+        },
+        {
+            "event_id": "mixed_noise_248",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 164440",
+            "status": "noise",
+            "junk": "temp"
+        },
+        {
+            "event_id": "mixed_noise_377",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 849130",
+            "status": "noise",
+            "junk": "random"
+        },
+        {
+            "event_id": "mixed_noise_468",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 403910",
+            "status": "noise",
+            "junk": "random"
+        },
+        {
+            "event_id": "mixed_noise_229",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 279598",
+            "status": "noise",
+            "junk": "abc"
+        },
+        {
+            "event_id": "mixed_noise_350",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 337853",
+            "status": "noise",
+            "junk": "abc"
+        },
+        {
+            "event_id": "mixed_noise_231",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 150401",
+            "status": "noise",
+            "junk": "temp"
+        },
+        {
+            "event_id": "mixed_signal_35",
+            "memory_type": "signal",
+            "importance": "high",
+            "topic": "compression",
+            "active_state": "AURA and MYTHRION stay separate",
+            "latent_risk": "noise flood hides signal",
+            "lineage_reason": "signal survived inside a noisy memory flood",
+            "status": "active"
+        },
+        {
+            "event_id": "mixed_signal_71",
+            "memory_type": "signal",
+            "importance": "high",
+            "topic": "canon",
+            "active_state": "noise should not fake compression",
+            "latent_risk": "template rule misses human pattern",
+            "lineage_reason": "signal survived inside a noisy memory flood",
+            "status": "active"
+        },
+        {
+            "event_id": "mixed_noise_484",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 917842",
+            "status": "noise",
+            "junk": "ignore"
+        },
+        {
+            "event_id": "mixed_noise_140",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 925191",
+            "status": "noise",
+            "junk": "ignore"
+        },
+        {
+            "event_id": "mixed_noise_113",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 245980",
+            "status": "noise",
+            "junk": "loose"
+        },
+        {
+            "event_id": "mixed_noise_176",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 305911",
+            "status": "noise",
+            "junk": "temp"
+        },
+        {
+            "event_id": "mixed_noise_370",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 837828",
+            "status": "noise",
+            "junk": "temp"
+        },
+        {
+            "event_id": "mixed_noise_211",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 967005",
+            "status": "noise",
+            "junk": "random"
+        },
+        {
+            "event_id": "mixed_noise_371",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 886636",
+            "status": "noise",
+            "junk": "abc"
+        },
+        {
+            "event_id": "mixed_signal_81",
+            "memory_type": "signal",
+            "importance": "high",
+            "topic": "canon",
+            "active_state": "symbolic templates should become rules",
+            "latent_risk": "noise flood hides signal",
+            "lineage_reason": "signal survived inside a noisy memory flood",
+            "status": "active"
+        },
+        {
+            "event_id": "mixed_noise_187",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 246732",
+            "status": "noise",
+            "junk": "abc"
+        },
+        {
+            "event_id": "mixed_noise_383",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 967572",
+            "status": "noise",
+            "junk": "abc"
+        },
+        {
+            "event_id": "mixed_noise_144",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 483164",
+            "status": "noise",
+            "junk": "temp"
+        },
+        {
+            "event_id": "mixed_noise_123",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 203801",
+            "status": "noise",
+            "junk": "loose"
+        },
+        {
+            "event_id": "mixed_noise_204",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 325541",
+            "status": "noise",
+            "junk": "random"
+        },
+        {
+            "event_id": "mixed_signal_47",
+            "memory_type": "signal",
+            "importance": "high",
+            "topic": "security",
+            "active_state": "PRMR Memory Core first",
+            "latent_risk": "scattered projects dilute focus",
+            "lineage_reason": "signal survived inside a noisy memory flood",
+            "status": "active"
+        },
+        {
+            "event_id": "mixed_noise_340",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 541828",
+            "status": "noise",
+            "junk": "loose"
+        },
+        {
+            "event_id": "mixed_signal_63",
+            "memory_type": "signal",
+            "importance": "high",
+            "topic": "continuity",
+            "active_state": "PRMR Memory Core first",
+            "latent_risk": "scattered projects dilute focus",
+            "lineage_reason": "signal survived inside a noisy memory flood",
+            "status": "active"
+        },
+        {
+            "event_id": "mixed_noise_360",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 291949",
+            "status": "noise",
+            "junk": "ignore"
+        },
+        {
+            "event_id": "mixed_signal_43",
+            "memory_type": "signal",
+            "importance": "high",
+            "topic": "focus",
+            "active_state": "noise should not fake compression",
+            "latent_risk": "old revoked key returns",
+            "lineage_reason": "signal survived inside a noisy memory flood",
+            "status": "active"
+        },
+        {
+            "event_id": "mixed_noise_458",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 458006",
+            "status": "noise",
+            "junk": "random"
+        },
+        {
+            "event_id": "mixed_noise_184",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 407967",
+            "status": "noise",
+            "junk": "random"
+        },
+        {
+            "event_id": "mixed_noise_475",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 800305",
+            "status": "noise",
+            "junk": "loose"
+        },
+        {
+            "event_id": "mixed_noise_337",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 502054",
+            "status": "noise",
+            "junk": "random"
+        },
+        {
+            "event_id": "mixed_signal_38",
+            "memory_type": "signal",
+            "importance": "high",
+            "topic": "focus",
+            "active_state": "noise should not fake compression",
+            "latent_risk": "scattered projects dilute focus",
+            "lineage_reason": "signal survived inside a noisy memory flood",
+            "status": "active"
+        },
+        {
+            "event_id": "mixed_noise_403",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 538363",
+            "status": "noise",
+            "junk": "loose"
+        },
+        {
+            "event_id": "mixed_noise_271",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 273207",
+            "status": "noise",
+            "junk": "temp"
+        },
+        {
+            "event_id": "mixed_signal_68",
+            "memory_type": "signal",
+            "importance": "high",
+            "topic": "compression",
+            "active_state": "AURA and MYTHRION stay separate",
+            "latent_risk": "noise flood hides signal",
+            "lineage_reason": "signal survived inside a noisy memory flood",
+            "status": "active"
+        },
+        {
+            "event_id": "mixed_noise_235",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 747678",
+            "status": "noise",
+            "junk": "temp"
+        },
+        {
+            "event_id": "mixed_noise_164",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 222223",
+            "status": "noise",
+            "junk": "loose"
+        },
+        {
+            "event_id": "mixed_noise_238",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 302385",
+            "status": "noise",
+            "junk": "random"
+        },
+        {
+            "event_id": "mixed_signal_45",
+            "memory_type": "signal",
+            "importance": "high",
+            "topic": "compression",
+            "active_state": "PRMR Memory Core first",
+            "latent_risk": "noise flood hides signal",
+            "lineage_reason": "signal survived inside a noisy memory flood",
+            "status": "active"
+        },
+        {
+            "event_id": "mixed_noise_391",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 197371",
+            "status": "noise",
+            "junk": "ignore"
+        },
+        {
+            "event_id": "mixed_noise_387",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 388447",
+            "status": "noise",
+            "junk": "abc"
+        },
+        {
+            "event_id": "mixed_signal_98",
+            "memory_type": "signal",
+            "importance": "high",
+            "topic": "canon",
+            "active_state": "PRMR Memory Core first",
+            "latent_risk": "scattered projects dilute focus",
+            "lineage_reason": "signal survived inside a noisy memory flood",
+            "status": "active"
+        },
+        {
+            "event_id": "mixed_signal_56",
+            "memory_type": "signal",
+            "importance": "high",
+            "topic": "focus",
+            "active_state": "symbolic templates should become rules",
+            "latent_risk": "AI-generation pressure returns",
+            "lineage_reason": "signal survived inside a noisy memory flood",
+            "status": "active"
+        },
+        {
+            "event_id": "mixed_noise_210",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 440636",
+            "status": "noise",
+            "junk": "ignore"
+        },
+        {
+            "event_id": "mixed_noise_120",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 679859",
+            "status": "noise",
+            "junk": "loose"
+        },
+        {
+            "event_id": "mixed_noise_408",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 307805",
+            "status": "noise",
+            "junk": "random"
+        },
+        {
+            "event_id": "mixed_noise_500",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 866149",
+            "status": "noise",
+            "junk": "abc"
+        },
+        {
+            "event_id": "mixed_signal_39",
+            "memory_type": "signal",
+            "importance": "high",
+            "topic": "compression",
+            "active_state": "noise should not fake compression",
+            "latent_risk": "scattered projects dilute focus",
+            "lineage_reason": "signal survived inside a noisy memory flood",
+            "status": "active"
+        },
+        {
+            "event_id": "mixed_noise_394",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 695913",
+            "status": "noise",
+            "junk": "abc"
+        },
+        {
+            "event_id": "mixed_noise_334",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 278387",
+            "status": "noise",
+            "junk": "loose"
+        },
+        {
+            "event_id": "mixed_noise_478",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 524040",
+            "status": "noise",
+            "junk": "temp"
+        },
+        {
+            "event_id": "mixed_signal_16",
+            "memory_type": "signal",
+            "importance": "high",
+            "topic": "continuity",
+            "active_state": "noise should not fake compression",
+            "latent_risk": "scattered projects dilute focus",
+            "lineage_reason": "signal survived inside a noisy memory flood",
+            "status": "active"
+        },
+        {
+            "event_id": "mixed_noise_395",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 656139",
+            "status": "noise",
+            "junk": "temp"
+        },
+        {
+            "event_id": "mixed_noise_436",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 388985",
+            "status": "noise",
+            "junk": "random"
+        },
+        {
+            "event_id": "mixed_noise_175",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 970856",
+            "status": "noise",
+            "junk": "ignore"
+        },
+        {
+            "event_id": "mixed_noise_450",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 205766",
+            "status": "noise",
+            "junk": "ignore"
+        },
+        {
+            "event_id": "mixed_noise_312",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 472658",
+            "status": "noise",
+            "junk": "random"
+        },
+        {
+            "event_id": "mixed_signal_69",
+            "memory_type": "signal",
+            "importance": "high",
+            "topic": "security",
+            "active_state": "AURA and MYTHRION stay separate",
+            "latent_risk": "noise flood hides signal",
+            "lineage_reason": "signal survived inside a noisy memory flood",
+            "status": "active"
+        },
+        {
+            "event_id": "mixed_noise_233",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 294279",
+            "status": "noise",
+            "junk": "abc"
+        },
+        {
+            "event_id": "mixed_noise_128",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 834111",
+            "status": "noise",
+            "junk": "temp"
+        },
+        {
+            "event_id": "mixed_noise_262",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 377892",
+            "status": "noise",
+            "junk": "random"
+        },
+        {
+            "event_id": "mixed_noise_341",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 919939",
+            "status": "noise",
+            "junk": "random"
+        },
+        {
+            "event_id": "mixed_signal_93",
+            "memory_type": "signal",
+            "importance": "high",
+            "topic": "compression",
+            "active_state": "symbolic templates should become rules",
+            "latent_risk": "scattered projects dilute focus",
+            "lineage_reason": "signal survived inside a noisy memory flood",
+            "status": "active"
+        },
+        {
+            "event_id": "mixed_signal_52",
+            "memory_type": "signal",
+            "importance": "high",
+            "topic": "focus",
+            "active_state": "AURA and MYTHRION stay separate",
+            "latent_risk": "AI-generation pressure returns",
+            "lineage_reason": "signal survived inside a noisy memory flood",
+            "status": "active"
+        },
+        {
+            "event_id": "mixed_noise_182",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 782667",
+            "status": "noise",
+            "junk": "random"
+        },
+        {
+            "event_id": "mixed_noise_306",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 133802",
+            "status": "noise",
+            "junk": "temp"
+        },
+        {
+            "event_id": "mixed_noise_319",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 879690",
+            "status": "noise",
+            "junk": "abc"
+        },
+        {
+            "event_id": "mixed_noise_294",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 809300",
+            "status": "noise",
+            "junk": "loose"
+        },
+        {
+            "event_id": "mixed_noise_368",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 310908",
+            "status": "noise",
+            "junk": "random"
+        },
+        {
+            "event_id": "mixed_noise_494",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 511924",
+            "status": "noise",
+            "junk": "random"
+        },
+        {
+            "event_id": "mixed_noise_267",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 934970",
+            "status": "noise",
+            "junk": "ignore"
+        },
+        {
+            "event_id": "mixed_noise_331",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 927832",
+            "status": "noise",
+            "junk": "loose"
+        },
+        {
+            "event_id": "mixed_noise_423",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 876731",
+            "status": "noise",
+            "junk": "ignore"
+        },
+        {
+            "event_id": "mixed_noise_132",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 507778",
+            "status": "noise",
+            "junk": "loose"
+        },
+        {
+            "event_id": "mixed_noise_134",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 294836",
+            "status": "noise",
+            "junk": "loose"
+        },
+        {
+            "event_id": "mixed_noise_143",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 746847",
+            "status": "noise",
+            "junk": "temp"
+        },
+        {
+            "event_id": "mixed_noise_481",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 655449",
+            "status": "noise",
+            "junk": "temp"
+        },
+        {
+            "event_id": "mixed_noise_424",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 954285",
+            "status": "noise",
+            "junk": "abc"
+        },
+        {
+            "event_id": "mixed_noise_264",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 837246",
+            "status": "noise",
+            "junk": "ignore"
+        },
+        {
+            "event_id": "mixed_signal_46",
+            "memory_type": "signal",
+            "importance": "high",
+            "topic": "focus",
+            "active_state": "vault isolation must hold",
+            "latent_risk": "AI-generation pressure returns",
+            "lineage_reason": "signal survived inside a noisy memory flood",
+            "status": "active"
+        },
+        {
+            "event_id": "mixed_noise_161",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 730258",
+            "status": "noise",
+            "junk": "abc"
+        },
+        {
+            "event_id": "mixed_noise_303",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 209346",
+            "status": "noise",
+            "junk": "ignore"
+        },
+        {
+            "event_id": "mixed_noise_209",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 369458",
+            "status": "noise",
+            "junk": "random"
+        },
+        {
+            "event_id": "mixed_noise_339",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 181896",
+            "status": "noise",
+            "junk": "abc"
+        },
+        {
+            "event_id": "mixed_signal_19",
+            "memory_type": "signal",
+            "importance": "high",
+            "topic": "canon",
+            "active_state": "vault isolation must hold",
+            "latent_risk": "template rule misses human pattern",
+            "lineage_reason": "signal survived inside a noisy memory flood",
+            "status": "active"
+        },
+        {
+            "event_id": "mixed_noise_284",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 231756",
+            "status": "noise",
+            "junk": "random"
+        },
+        {
+            "event_id": "mixed_noise_103",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 674928",
+            "status": "noise",
+            "junk": "abc"
+        },
+        {
+            "event_id": "mixed_noise_225",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 147370",
+            "status": "noise",
+            "junk": "temp"
+        },
+        {
+            "event_id": "mixed_noise_400",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 494279",
+            "status": "noise",
+            "junk": "abc"
+        },
+        {
+            "event_id": "mixed_noise_406",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 168097",
+            "status": "noise",
+            "junk": "loose"
+        },
+        {
+            "event_id": "mixed_noise_457",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 399546",
+            "status": "noise",
+            "junk": "abc"
+        },
+        {
+            "event_id": "mixed_noise_456",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 592888",
+            "status": "noise",
+            "junk": "ignore"
+        },
+        {
+            "event_id": "mixed_noise_236",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 277884",
+            "status": "noise",
+            "junk": "temp"
+        },
+        {
+            "event_id": "mixed_noise_111",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 544283",
+            "status": "noise",
+            "junk": "loose"
+        },
+        {
+            "event_id": "mixed_noise_315",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 193205",
+            "status": "noise",
+            "junk": "temp"
+        },
+        {
+            "event_id": "mixed_noise_401",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 486044",
+            "status": "noise",
+            "junk": "temp"
+        },
+        {
+            "event_id": "mixed_noise_333",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 919535",
+            "status": "noise",
+            "junk": "temp"
+        },
+        {
+            "event_id": "mixed_noise_289",
+            "memory_type": "noise",
+            "importance": "none",
+            "message": "noise filler random irrelevant duplicate 354959",
+            "status": "noise",
+            "junk": "abc"
+        }
+    ],
+    "expected": {
+        "must_reconstruct_exactly": true,
+        "signal_ratio": 0.2,
+        "must_preserve_active": [
+            "PRMR Memory Core first",
+            "vault isolation must hold",
+            "noise should not fake compression",
+            "symbolic templates should become rules"
+        ],
+        "must_not_treat_noise_as_meaning": true
+    }
+}

@@ -1,0 +1,58 @@
+{
+    "project": "PRMR Memory Core",
+    "version": "0.08",
+    "timestamp": "2026-06-07T15:31:26.704195",
+    "hypothesis": "Information can be represented as origin, transformation, lineage, and reconstruction rather than only snapshot storage.",
+    "tests": [
+        {
+            "test_name": "Core Causal Memory",
+            "target_state": "D",
+            "why": [
+                "D exists because C branched under condition X.",
+                "Rule: condition X activates D pathway",
+                "C exists because B became C.",
+                "Rule: expansion stabilises",
+                "B exists because A became B.",
+                "Rule: origin expands",
+                "A is an origin state."
+            ],
+            "reconstruction": [
+                "Origin found: A",
+                "Apply transition: A \u2192 B because origin expands",
+                "Apply transition: B \u2192 C because expansion stabilises",
+                "Apply branch: C \u2192 D under condition X because condition X activates D pathway",
+                "Final reconstructed state: D"
+            ],
+            "passed": true
+        },
+        {
+            "test_name": "Text Transformation Memory",
+            "normal_storage_size": 1602,
+            "prmr_storage_size": 626,
+            "difference": 976,
+            "reconstruction_match": true,
+            "passed": true
+        },
+        {
+            "test_name": "Image Transformation Memory",
+            "normal_storage_size": 714,
+            "prmr_storage_size": 306,
+            "difference": 408,
+            "reconstruction_match": true,
+            "passed": true
+        },
+        {
+            "test_name": "Video Transformation Memory",
+            "normal_storage_size": 7278,
+            "prmr_storage_size": 344,
+            "difference": 6934,
+            "reconstruction_match": true,
+            "passed": true
+        }
+    ],
+    "summary": {
+        "tests_run": 4,
+        "tests_passed": 4,
+        "all_tests_passed": true
+    }
+}

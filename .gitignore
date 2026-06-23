@@ -1,0 +1,50 @@
+# dependencies
+node_modules/
+frontend/node_modules/
+
+# builds
+.next/
+frontend/.next/
+dist/
+build/
+out/
+
+# env/secrets
+.env
+.env.*
+!.env.example
+
+# local/vercel
+.vercel/
+
+# python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# reports/private/local outputs
+reports/
+*.sqlite
+*.db
+
+# local temp/cache
+.tmp/
+.cache/
+.DS_Store
+Thumbs.db
+
+# uploaded/generated archives
+*.zip
+
+# root local/private/generated state
+/reports/
+/logs/
+/config/
+/data/
+/inputs/
+/design_sources/
+
+# build metadata
+*.tsbuildinfo
+frontend/tsconfig.tsbuildinfo

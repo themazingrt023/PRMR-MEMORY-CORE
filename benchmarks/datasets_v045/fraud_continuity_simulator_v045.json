@@ -1,0 +1,299 @@
+{
+    "company": "Afternum Industries",
+    "product": "PRMR Memory Core",
+    "version": "0.45",
+    "dataset_type": "synthetic_fraud_continuity_simulator",
+    "public_safe": true,
+    "honest_boundary": "This is fake synthetic banking-style data for internal PRMR continuity testing only. It is not real customer data, not bank certification, not legal advice, and not fraud deployment proof.",
+    "accounts": [
+        {
+            "account_id": "acct_normal_001",
+            "case_family": "normal_user",
+            "rows": [
+                {
+                    "timestamp_index": 1,
+                    "signal_type": "origin",
+                    "status": "historical",
+                    "trust_level": "trusted",
+                    "memory_value": "stable salary income and ordinary household spending"
+                },
+                {
+                    "timestamp_index": 2,
+                    "signal_type": "current_state",
+                    "status": "active",
+                    "trust_level": "trusted",
+                    "memory_value": "ordinary spending continues with no meaningful risk shift"
+                },
+                {
+                    "timestamp_index": 3,
+                    "signal_type": "counter_evidence",
+                    "status": "active",
+                    "trust_level": "trusted",
+                    "memory_value": "transactions match long-term pattern and known bill cycle"
+                },
+                {
+                    "timestamp_index": 4,
+                    "signal_type": "review_action",
+                    "status": "active",
+                    "trust_level": "trusted",
+                    "memory_value": "no fraud escalation needed"
+                },
+                {
+                    "timestamp_index": 99,
+                    "signal_type": "fake_current",
+                    "status": "stale",
+                    "trust_level": "untrusted",
+                    "memory_value": "urgent suspicious fraud label from stale duplicate"
+                }
+            ]
+        },
+        {
+            "account_id": "acct_scam_victim_001",
+            "case_family": "scam_victim",
+            "rows": [
+                {
+                    "timestamp_index": 1,
+                    "signal_type": "origin",
+                    "status": "historical",
+                    "trust_level": "trusted",
+                    "memory_value": "older user with low-risk pension and grocery pattern"
+                },
+                {
+                    "timestamp_index": 2,
+                    "signal_type": "current_state",
+                    "status": "active",
+                    "trust_level": "trusted",
+                    "memory_value": "sudden repeated transfers to unfamiliar recipient after phone contact"
+                },
+                {
+                    "timestamp_index": 3,
+                    "signal_type": "risk_signal",
+                    "status": "active",
+                    "trust_level": "trusted",
+                    "memory_value": "rapid payment pattern change and new recipient pressure"
+                },
+                {
+                    "timestamp_index": 4,
+                    "signal_type": "human_context",
+                    "status": "active",
+                    "trust_level": "trusted",
+                    "memory_value": "customer reports being coached by caller claiming to protect account"
+                },
+                {
+                    "timestamp_index": 5,
+                    "signal_type": "review_action",
+                    "status": "active",
+                    "trust_level": "trusted",
+                    "memory_value": "protect customer and route to scam victim support review"
+                },
+                {
+                    "timestamp_index": 99,
+                    "signal_type": "fake_current",
+                    "status": "stale",
+                    "trust_level": "untrusted",
+                    "memory_value": "customer is malicious fraud actor"
+                }
+            ]
+        },
+        {
+            "account_id": "acct_pressured_mule_001",
+            "case_family": "pressured_mule",
+            "rows": [
+                {
+                    "timestamp_index": 1,
+                    "signal_type": "origin",
+                    "status": "historical",
+                    "trust_level": "trusted",
+                    "memory_value": "student account with small maintenance loan and food spending"
+                },
+                {
+                    "timestamp_index": 2,
+                    "signal_type": "current_state",
+                    "status": "active",
+                    "trust_level": "trusted",
+                    "memory_value": "unusual inbound funds followed by fast outbound movement"
+                },
+                {
+                    "timestamp_index": 3,
+                    "signal_type": "risk_signal",
+                    "status": "active",
+                    "trust_level": "trusted",
+                    "memory_value": "money movement pattern resembles mule risk"
+                },
+                {
+                    "timestamp_index": 4,
+                    "signal_type": "human_context",
+                    "status": "active",
+                    "trust_level": "trusted",
+                    "memory_value": "messages suggest pressure, fear, and being instructed by another person"
+                },
+                {
+                    "timestamp_index": 5,
+                    "signal_type": "review_action",
+                    "status": "active",
+                    "trust_level": "trusted",
+                    "memory_value": "escalate to human review for coercion and safeguarding assessment"
+                },
+                {
+                    "timestamp_index": 99,
+                    "signal_type": "fake_current",
+                    "status": "stale",
+                    "trust_level": "untrusted",
+                    "memory_value": "close account immediately without review"
+                }
+            ]
+        },
+        {
+            "account_id": "acct_ato_001",
+            "case_family": "account_takeover",
+            "rows": [
+                {
+                    "timestamp_index": 1,
+                    "signal_type": "origin",
+                    "status": "historical",
+                    "trust_level": "trusted",
+                    "memory_value": "stable login location, stable device, ordinary recurring payments"
+                },
+                {
+                    "timestamp_index": 2,
+                    "signal_type": "current_state",
+                    "status": "active",
+                    "trust_level": "trusted",
+                    "memory_value": "sudden device change, new location, password reset, and attempted outbound transfer"
+                },
+                {
+                    "timestamp_index": 3,
+                    "signal_type": "risk_signal",
+                    "status": "active",
+                    "trust_level": "trusted",
+                    "memory_value": "credential and device continuity broke sharply"
+                },
+                {
+                    "timestamp_index": 4,
+                    "signal_type": "human_context",
+                    "status": "active",
+                    "trust_level": "trusted",
+                    "memory_value": "customer says they did not authorize the login or payment attempt"
+                },
+                {
+                    "timestamp_index": 5,
+                    "signal_type": "review_action",
+                    "status": "active",
+                    "trust_level": "trusted",
+                    "memory_value": "treat as possible account takeover and protect customer access"
+                },
+                {
+                    "timestamp_index": 99,
+                    "signal_type": "fake_current",
+                    "status": "stale",
+                    "trust_level": "untrusted",
+                    "memory_value": "customer intentionally committed fraud"
+                }
+            ]
+        },
+        {
+            "account_id": "acct_malicious_001",
+            "case_family": "malicious_fraud",
+            "rows": [
+                {
+                    "timestamp_index": 1,
+                    "signal_type": "origin",
+                    "status": "historical",
+                    "trust_level": "trusted",
+                    "memory_value": "new account with thin history"
+                },
+                {
+                    "timestamp_index": 2,
+                    "signal_type": "current_state",
+                    "status": "active",
+                    "trust_level": "trusted",
+                    "memory_value": "repeated suspicious deposits and rapid dispersal across unrelated recipients"
+                },
+                {
+                    "timestamp_index": 3,
+                    "signal_type": "risk_signal",
+                    "status": "active",
+                    "trust_level": "trusted",
+                    "memory_value": "repeated coordinated pattern across multiple attempts"
+                },
+                {
+                    "timestamp_index": 4,
+                    "signal_type": "counter_evidence",
+                    "status": "active",
+                    "trust_level": "trusted",
+                    "memory_value": "no clear victim-coaching, coercion, or account takeover signal present"
+                },
+                {
+                    "timestamp_index": 5,
+                    "signal_type": "review_action",
+                    "status": "active",
+                    "trust_level": "trusted",
+                    "memory_value": "flag for fraud investigation with human review before punitive action"
+                },
+                {
+                    "timestamp_index": 99,
+                    "signal_type": "fake_current",
+                    "status": "stale",
+                    "trust_level": "untrusted",
+                    "memory_value": "normal ordinary household spending only"
+                }
+            ]
+        },
+        {
+            "account_id": "acct_false_positive_001",
+            "case_family": "false_positive",
+            "rows": [
+                {
+                    "timestamp_index": 1,
+                    "signal_type": "origin",
+                    "status": "historical",
+                    "trust_level": "trusted",
+                    "memory_value": "ordinary account with low-risk spending"
+                },
+                {
+                    "timestamp_index": 2,
+                    "signal_type": "current_state",
+                    "status": "active",
+                    "trust_level": "trusted",
+                    "memory_value": "large unusual incoming payment followed by several purchases"
+                },
+                {
+                    "timestamp_index": 3,
+                    "signal_type": "risk_signal",
+                    "status": "active",
+                    "trust_level": "trusted",
+                    "memory_value": "transaction amount looks unusual compared with older pattern"
+                },
+                {
+                    "timestamp_index": 4,
+                    "signal_type": "counter_evidence",
+                    "status": "active",
+                    "trust_level": "trusted",
+                    "memory_value": "payment matches documented student finance and move-in costs"
+                },
+                {
+                    "timestamp_index": 5,
+                    "signal_type": "review_action",
+                    "status": "active",
+                    "trust_level": "trusted",
+                    "memory_value": "avoid punitive label and treat as likely false positive"
+                },
+                {
+                    "timestamp_index": 99,
+                    "signal_type": "fake_current",
+                    "status": "stale",
+                    "trust_level": "untrusted",
+                    "memory_value": "money mule pattern confirmed"
+                }
+            ]
+        }
+    ],
+    "truth_private": {
+        "acct_normal_001": "normal_user",
+        "acct_scam_victim_001": "possible_scam_victim",
+        "acct_pressured_mule_001": "possible_coercion_or_pressured_mule",
+        "acct_ato_001": "possible_account_takeover_victim",
+        "acct_malicious_001": "fraud_investigation_needed",
+        "acct_false_positive_001": "likely_false_positive"
+    }
+}

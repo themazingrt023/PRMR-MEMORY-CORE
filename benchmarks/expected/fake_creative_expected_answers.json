@@ -1,0 +1,18 @@
+{
+    "dataset_name": "fake_creative_world_memory",
+    "questions": [
+        {
+            "question": "How are Mythrion and AURA different?",
+            "expected_keywords": [
+                "Mythrion",
+                "human imagination",
+                "AURA",
+                "Authorship",
+                "Real Art",
+                "separate",
+                "human-made art"
+            ],
+            "expected_answer": "Mythrion is a human imagination creative mode, while AURA is separate and focuses on Authorship, Unity & Real Art and preserving human-made art."
+        }
+    ]
+}

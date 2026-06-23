@@ -1,0 +1,14 @@
+{
+  "framework": "nextjs",
+  "buildCommand": "npm run build",
+  "installCommand": "npm install",
+  "outputDirectory": ".next",
+  "env": {
+    "NEXT_PUBLIC_DEPLOYMENT_MODE": "public_frontend",
+    "LOCAL_REVIEW_ENABLED": "false",
+    "LOCAL_FILE_WRITES_ENABLED": "false",
+    "LOCAL_DEMO_BRIDGE_ENABLED": "false",
+    "PUBLIC_FORM_CAPTURE_ENABLED": "false",
+    "PUBLIC_DEMO_BRIDGE_ENABLED": "false"
+  }
+}

@@ -1,0 +1,30 @@
+{
+    "dataset_name": "fake_personal_ai_memory",
+    "type": "personal_ai_memory",
+    "events": [
+        {
+            "date": "2026-01-01",
+            "event": "User wanted to build many projects at once.",
+            "state": "old_goal",
+            "importance": "medium"
+        },
+        {
+            "date": "2026-02-05",
+            "event": "User became overwhelmed by switching between projects.",
+            "state": "problem",
+            "importance": "high"
+        },
+        {
+            "date": "2026-03-10",
+            "event": "User chose PRMR Memory Core as the first serious product blade.",
+            "state": "current_goal",
+            "importance": "high"
+        },
+        {
+            "date": "2026-04-02",
+            "event": "System should protect focus and avoid pulling user back into scattered builds.",
+            "state": "current_rule",
+            "importance": "high"
+        }
+    ]
+}

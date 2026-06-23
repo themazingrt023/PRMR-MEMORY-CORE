@@ -1,0 +1,17 @@
+{
+    "dataset_name": "fake_company_memory",
+    "questions": [
+        {
+            "question": "Why was Project Atlas delayed?",
+            "expected_keywords": [
+                "supplier approval",
+                "delayed",
+                "packaging",
+                "premium",
+                "budget",
+                "revisions"
+            ],
+            "expected_answer": "Project Atlas was delayed because supplier approval was delayed twice, the packaging decision changed to premium, and budget pressure caused repeated revisions."
+        }
+    ]
+}

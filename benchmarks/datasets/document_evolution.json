@@ -1,0 +1,26 @@
+{
+    "dataset_name": "document_evolution",
+    "type": "evolving_document",
+    "events": [
+        {
+            "month": "January",
+            "decision": "Team wanted cheap packaging.",
+            "status": "old_state"
+        },
+        {
+            "month": "February",
+            "decision": "Cheap packaging caused customer complaints.",
+            "status": "problem_detected"
+        },
+        {
+            "month": "March",
+            "decision": "Founder changed packaging strategy to premium positioning.",
+            "status": "current_rule"
+        },
+        {
+            "month": "April",
+            "decision": "New team member suggested cheap packaging again.",
+            "status": "mistake_risk"
+        }
+    ]
+}

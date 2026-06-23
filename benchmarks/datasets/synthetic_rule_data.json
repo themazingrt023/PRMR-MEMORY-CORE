@@ -1,0 +1,706 @@
+{
+    "dataset_name": "synthetic_rule_data",
+    "type": "structured_pattern",
+    "events": [
+        {
+            "branch": 1,
+            "project": "Atlas Branch 1",
+            "state": "review",
+            "priority": 1,
+            "rule": "even branches active, odd branches review"
+        },
+        {
+            "branch": 2,
+            "project": "Atlas Branch 2",
+            "state": "active",
+            "priority": 2,
+            "rule": "even branches active, odd branches review"
+        },
+        {
+            "branch": 3,
+            "project": "Atlas Branch 3",
+            "state": "review",
+            "priority": 3,
+            "rule": "even branches active, odd branches review"
+        },
+        {
+            "branch": 4,
+            "project": "Atlas Branch 4",
+            "state": "active",
+            "priority": 4,
+            "rule": "even branches active, odd branches review"
+        },
+        {
+            "branch": 5,
+            "project": "Atlas Branch 5",
+            "state": "review",
+            "priority": 0,
+            "rule": "even branches active, odd branches review"
+        },
+        {
+            "branch": 6,
+            "project": "Atlas Branch 6",
+            "state": "active",
+            "priority": 1,
+            "rule": "even branches active, odd branches review"
+        },
+        {
+            "branch": 7,
+            "project": "Atlas Branch 7",
+            "state": "review",
+            "priority": 2,
+            "rule": "even branches active, odd branches review"
+        },
+        {
+            "branch": 8,
+            "project": "Atlas Branch 8",
+            "state": "active",
+            "priority": 3,
+            "rule": "even branches active, odd branches review"
+        },
+        {
+            "branch": 9,
+            "project": "Atlas Branch 9",
+            "state": "review",
+            "priority": 4,
+            "rule": "even branches active, odd branches review"
+        },
+        {
+            "branch": 10,
+            "project": "Atlas Branch 10",
+            "state": "active",
+            "priority": 0,
+            "rule": "even branches active, odd branches review"
+        },
+        {
+            "branch": 11,
+            "project": "Atlas Branch 11",
+            "state": "review",
+            "priority": 1,
+            "rule": "even branches active, odd branches review"
+        },
+        {
+            "branch": 12,
+            "project": "Atlas Branch 12",
+            "state": "active",
+            "priority": 2,
+            "rule": "even branches active, odd branches review"
+        },
+        {
+            "branch": 13,
+            "project": "Atlas Branch 13",
+            "state": "review",
+            "priority": 3,
+            "rule": "even branches active, odd branches review"
+        },
+        {
+            "branch": 14,
+            "project": "Atlas Branch 14",
+            "state": "active",
+            "priority": 4,
+            "rule": "even branches active, odd branches review"
+        },
+        {
+            "branch": 15,
+            "project": "Atlas Branch 15",
+            "state": "review",
+            "priority": 0,
+            "rule": "even branches active, odd branches review"
+        },
+        {
+            "branch": 16,
+            "project": "Atlas Branch 16",
+            "state": "active",
+            "priority": 1,
+            "rule": "even branches active, odd branches review"
+        },
+        {
+            "branch": 17,
+            "project": "Atlas Branch 17",
+            "state": "review",
+            "priority": 2,
+            "rule": "even branches active, odd branches review"
+        },
+        {
+            "branch": 18,
+            "project": "Atlas Branch 18",
+            "state": "active",
+            "priority": 3,
+            "rule": "even branches active, odd branches review"
+        },
+        {
+            "branch": 19,
+            "project": "Atlas Branch 19",
+            "state": "review",
+            "priority": 4,
+            "rule": "even branches active, odd branches review"
+        },
+        {
+            "branch": 20,
+            "project": "Atlas Branch 20",
+            "state": "active",
+            "priority": 0,
+            "rule": "even branches active, odd branches review"
+        },
+        {
+            "branch": 21,
+            "project": "Atlas Branch 21",
+            "state": "review",
+            "priority": 1,
+            "rule": "even branches active, odd branches review"
+        },
+        {
+            "branch": 22,
+            "project": "Atlas Branch 22",
+            "state": "active",
+            "priority": 2,
+            "rule": "even branches active, odd branches review"
+        },
+        {
+            "branch": 23,
+            "project": "Atlas Branch 23",
+            "state": "review",
+            "priority": 3,
+            "rule": "even branches active, odd branches review"
+        },
+        {
+            "branch": 24,
+            "project": "Atlas Branch 24",
+            "state": "active",
+            "priority": 4,
+            "rule": "even branches active, odd branches review"
+        },
+        {
+            "branch": 25,
+            "project": "Atlas Branch 25",
+            "state": "review",
+            "priority": 0,
+            "rule": "even branches active, odd branches review"
+        },
+        {
+            "branch": 26,
+            "project": "Atlas Branch 26",
+            "state": "active",
+            "priority": 1,
+            "rule": "even branches active, odd branches review"
+        },
+        {
+            "branch": 27,
+            "project": "Atlas Branch 27",
+            "state": "review",
+            "priority": 2,
+            "rule": "even branches active, odd branches review"
+        },
+        {
+            "branch": 28,
+            "project": "Atlas Branch 28",
+            "state": "active",
+            "priority": 3,
+            "rule": "even branches active, odd branches review"
+        },
+        {
+            "branch": 29,
+            "project": "Atlas Branch 29",
+            "state": "review",
+            "priority": 4,
+            "rule": "even branches active, odd branches review"
+        },
+        {
+            "branch": 30,
+            "project": "Atlas Branch 30",
+            "state": "active",
+            "priority": 0,
+            "rule": "even branches active, odd branches review"
+        },
+        {
+            "branch": 31,
+            "project": "Atlas Branch 31",
+            "state": "review",
+            "priority": 1,
+            "rule": "even branches active, odd branches review"
+        },
+        {
+            "branch": 32,
+            "project": "Atlas Branch 32",
+            "state": "active",
+            "priority": 2,
+            "rule": "even branches active, odd branches review"
+        },
+        {
+            "branch": 33,
+            "project": "Atlas Branch 33",
+            "state": "review",
+            "priority": 3,
+            "rule": "even branches active, odd branches review"
+        },
+        {
+            "branch": 34,
+            "project": "Atlas Branch 34",
+            "state": "active",
+            "priority": 4,
+            "rule": "even branches active, odd branches review"
+        },
+        {
+            "branch": 35,
+            "project": "Atlas Branch 35",
+            "state": "review",
+            "priority": 0,
+            "rule": "even branches active, odd branches review"
+        },
+        {
+            "branch": 36,
+            "project": "Atlas Branch 36",
+            "state": "active",
+            "priority": 1,
+            "rule": "even branches active, odd branches review"
+        },
+        {
+            "branch": 37,
+            "project": "Atlas Branch 37",
+            "state": "review",
+            "priority": 2,
+            "rule": "even branches active, odd branches review"
+        },
+        {
+            "branch": 38,
+            "project": "Atlas Branch 38",
+            "state": "active",
+            "priority": 3,
+            "rule": "even branches active, odd branches review"
+        },
+        {
+            "branch": 39,
+            "project": "Atlas Branch 39",
+            "state": "review",
+            "priority": 4,
+            "rule": "even branches active, odd branches review"
+        },
+        {
+            "branch": 40,
+            "project": "Atlas Branch 40",
+            "state": "active",
+            "priority": 0,
+            "rule": "even branches active, odd branches review"
+        },
+        {
+            "branch": 41,
+            "project": "Atlas Branch 41",
+            "state": "review",
+            "priority": 1,
+            "rule": "even branches active, odd branches review"
+        },
+        {
+            "branch": 42,
+            "project": "Atlas Branch 42",
+            "state": "active",
+            "priority": 2,
+            "rule": "even branches active, odd branches review"
+        },
+        {
+            "branch": 43,
+            "project": "Atlas Branch 43",
+            "state": "review",
+            "priority": 3,
+            "rule": "even branches active, odd branches review"
+        },
+        {
+            "branch": 44,
+            "project": "Atlas Branch 44",
+            "state": "active",
+            "priority": 4,
+            "rule": "even branches active, odd branches review"
+        },
+        {
+            "branch": 45,
+            "project": "Atlas Branch 45",
+            "state": "review",
+            "priority": 0,
+            "rule": "even branches active, odd branches review"
+        },
+        {
+            "branch": 46,
+            "project": "Atlas Branch 46",
+            "state": "active",
+            "priority": 1,
+            "rule": "even branches active, odd branches review"
+        },
+        {
+            "branch": 47,
+            "project": "Atlas Branch 47",
+            "state": "review",
+            "priority": 2,
+            "rule": "even branches active, odd branches review"
+        },
+        {
+            "branch": 48,
+            "project": "Atlas Branch 48",
+            "state": "active",
+            "priority": 3,
+            "rule": "even branches active, odd branches review"
+        },
+        {
+            "branch": 49,
+            "project": "Atlas Branch 49",
+            "state": "review",
+            "priority": 4,
+            "rule": "even branches active, odd branches review"
+        },
+        {
+            "branch": 50,
+            "project": "Atlas Branch 50",
+            "state": "active",
+            "priority": 0,
+            "rule": "even branches active, odd branches review"
+        },
+        {
+            "branch": 51,
+            "project": "Atlas Branch 51",
+            "state": "review",
+            "priority": 1,
+            "rule": "even branches active, odd branches review"
+        },
+        {
+            "branch": 52,
+            "project": "Atlas Branch 52",
+            "state": "active",
+            "priority": 2,
+            "rule": "even branches active, odd branches review"
+        },
+        {
+            "branch": 53,
+            "project": "Atlas Branch 53",
+            "state": "review",
+            "priority": 3,
+            "rule": "even branches active, odd branches review"
+        },
+        {
+            "branch": 54,
+            "project": "Atlas Branch 54",
+            "state": "active",
+            "priority": 4,
+            "rule": "even branches active, odd branches review"
+        },
+        {
+            "branch": 55,
+            "project": "Atlas Branch 55",
+            "state": "review",
+            "priority": 0,
+            "rule": "even branches active, odd branches review"
+        },
+        {
+            "branch": 56,
+            "project": "Atlas Branch 56",
+            "state": "active",
+            "priority": 1,
+            "rule": "even branches active, odd branches review"
+        },
+        {
+            "branch": 57,
+            "project": "Atlas Branch 57",
+            "state": "review",
+            "priority": 2,
+            "rule": "even branches active, odd branches review"
+        },
+        {
+            "branch": 58,
+            "project": "Atlas Branch 58",
+            "state": "active",
+            "priority": 3,
+            "rule": "even branches active, odd branches review"
+        },
+        {
+            "branch": 59,
+            "project": "Atlas Branch 59",
+            "state": "review",
+            "priority": 4,
+            "rule": "even branches active, odd branches review"
+        },
+        {
+            "branch": 60,
+            "project": "Atlas Branch 60",
+            "state": "active",
+            "priority": 0,
+            "rule": "even branches active, odd branches review"
+        },
+        {
+            "branch": 61,
+            "project": "Atlas Branch 61",
+            "state": "review",
+            "priority": 1,
+            "rule": "even branches active, odd branches review"
+        },
+        {
+            "branch": 62,
+            "project": "Atlas Branch 62",
+            "state": "active",
+            "priority": 2,
+            "rule": "even branches active, odd branches review"
+        },
+        {
+            "branch": 63,
+            "project": "Atlas Branch 63",
+            "state": "review",
+            "priority": 3,
+            "rule": "even branches active, odd branches review"
+        },
+        {
+            "branch": 64,
+            "project": "Atlas Branch 64",
+            "state": "active",
+            "priority": 4,
+            "rule": "even branches active, odd branches review"
+        },
+        {
+            "branch": 65,
+            "project": "Atlas Branch 65",
+            "state": "review",
+            "priority": 0,
+            "rule": "even branches active, odd branches review"
+        },
+        {
+            "branch": 66,
+            "project": "Atlas Branch 66",
+            "state": "active",
+            "priority": 1,
+            "rule": "even branches active, odd branches review"
+        },
+        {
+            "branch": 67,
+            "project": "Atlas Branch 67",
+            "state": "review",
+            "priority": 2,
+            "rule": "even branches active, odd branches review"
+        },
+        {
+            "branch": 68,
+            "project": "Atlas Branch 68",
+            "state": "active",
+            "priority": 3,
+            "rule": "even branches active, odd branches review"
+        },
+        {
+            "branch": 69,
+            "project": "Atlas Branch 69",
+            "state": "review",
+            "priority": 4,
+            "rule": "even branches active, odd branches review"
+        },
+        {
+            "branch": 70,
+            "project": "Atlas Branch 70",
+            "state": "active",
+            "priority": 0,
+            "rule": "even branches active, odd branches review"
+        },
+        {
+            "branch": 71,
+            "project": "Atlas Branch 71",
+            "state": "review",
+            "priority": 1,
+            "rule": "even branches active, odd branches review"
+        },
+        {
+            "branch": 72,
+            "project": "Atlas Branch 72",
+            "state": "active",
+            "priority": 2,
+            "rule": "even branches active, odd branches review"
+        },
+        {
+            "branch": 73,
+            "project": "Atlas Branch 73",
+            "state": "review",
+            "priority": 3,
+            "rule": "even branches active, odd branches review"
+        },
+        {
+            "branch": 74,
+            "project": "Atlas Branch 74",
+            "state": "active",
+            "priority": 4,
+            "rule": "even branches active, odd branches review"
+        },
+        {
+            "branch": 75,
+            "project": "Atlas Branch 75",
+            "state": "review",
+            "priority": 0,
+            "rule": "even branches active, odd branches review"
+        },
+        {
+            "branch": 76,
+            "project": "Atlas Branch 76",
+            "state": "active",
+            "priority": 1,
+            "rule": "even branches active, odd branches review"
+        },
+        {
+            "branch": 77,
+            "project": "Atlas Branch 77",
+            "state": "review",
+            "priority": 2,
+            "rule": "even branches active, odd branches review"
+        },
+        {
+            "branch": 78,
+            "project": "Atlas Branch 78",
+            "state": "active",
+            "priority": 3,
+            "rule": "even branches active, odd branches review"
+        },
+        {
+            "branch": 79,
+            "project": "Atlas Branch 79",
+            "state": "review",
+            "priority": 4,
+            "rule": "even branches active, odd branches review"
+        },
+        {
+            "branch": 80,
+            "project": "Atlas Branch 80",
+            "state": "active",
+            "priority": 0,
+            "rule": "even branches active, odd branches review"
+        },
+        {
+            "branch": 81,
+            "project": "Atlas Branch 81",
+            "state": "review",
+            "priority": 1,
+            "rule": "even branches active, odd branches review"
+        },
+        {
+            "branch": 82,
+            "project": "Atlas Branch 82",
+            "state": "active",
+            "priority": 2,
+            "rule": "even branches active, odd branches review"
+        },
+        {
+            "branch": 83,
+            "project": "Atlas Branch 83",
+            "state": "review",
+            "priority": 3,
+            "rule": "even branches active, odd branches review"
+        },
+        {
+            "branch": 84,
+            "project": "Atlas Branch 84",
+            "state": "active",
+            "priority": 4,
+            "rule": "even branches active, odd branches review"
+        },
+        {
+            "branch": 85,
+            "project": "Atlas Branch 85",
+            "state": "review",
+            "priority": 0,
+            "rule": "even branches active, odd branches review"
+        },
+        {
+            "branch": 86,
+            "project": "Atlas Branch 86",
+            "state": "active",
+            "priority": 1,
+            "rule": "even branches active, odd branches review"
+        },
+        {
+            "branch": 87,
+            "project": "Atlas Branch 87",
+            "state": "review",
+            "priority": 2,
+            "rule": "even branches active, odd branches review"
+        },
+        {
+            "branch": 88,
+            "project": "Atlas Branch 88",
+            "state": "active",
+            "priority": 3,
+            "rule": "even branches active, odd branches review"
+        },
+        {
+            "branch": 89,
+            "project": "Atlas Branch 89",
+            "state": "review",
+            "priority": 4,
+            "rule": "even branches active, odd branches review"
+        },
+        {
+            "branch": 90,
+            "project": "Atlas Branch 90",
+            "state": "active",
+            "priority": 0,
+            "rule": "even branches active, odd branches review"
+        },
+        {
+            "branch": 91,
+            "project": "Atlas Branch 91",
+            "state": "review",
+            "priority": 1,
+            "rule": "even branches active, odd branches review"
+        },
+        {
+            "branch": 92,
+            "project": "Atlas Branch 92",
+            "state": "active",
+            "priority": 2,
+            "rule": "even branches active, odd branches review"
+        },
+        {
+            "branch": 93,
+            "project": "Atlas Branch 93",
+            "state": "review",
+            "priority": 3,
+            "rule": "even branches active, odd branches review"
+        },
+        {
+            "branch": 94,
+            "project": "Atlas Branch 94",
+            "state": "active",
+            "priority": 4,
+            "rule": "even branches active, odd branches review"
+        },
+        {
+            "branch": 95,
+            "project": "Atlas Branch 95",
+            "state": "review",
+            "priority": 0,
+            "rule": "even branches active, odd branches review"
+        },
+        {
+            "branch": 96,
+            "project": "Atlas Branch 96",
+            "state": "active",
+            "priority": 1,
+            "rule": "even branches active, odd branches review"
+        },
+        {
+            "branch": 97,
+            "project": "Atlas Branch 97",
+            "state": "review",
+            "priority": 2,
+            "rule": "even branches active, odd branches review"
+        },
+        {
+            "branch": 98,
+            "project": "Atlas Branch 98",
+            "state": "active",
+            "priority": 3,
+            "rule": "even branches active, odd branches review"
+        },
+        {
+            "branch": 99,
+            "project": "Atlas Branch 99",
+            "state": "review",
+            "priority": 4,
+            "rule": "even branches active, odd branches review"
+        },
+        {
+            "branch": 100,
+            "project": "Atlas Branch 100",
+            "state": "active",
+            "priority": 0,
+            "rule": "even branches active, odd branches review"
+        }
+    ]
+}

@@ -1,0 +1,30 @@
+{
+    "dataset_name": "fake_creative_world_memory",
+    "type": "creative_world_memory",
+    "events": [
+        {
+            "world": "Mythrion",
+            "event": "World began as a human imagination creative mode.",
+            "state": "origin",
+            "importance": "high"
+        },
+        {
+            "world": "Mythrion",
+            "event": "AI generation was rejected as the core creative mechanic.",
+            "state": "rule_update",
+            "importance": "high"
+        },
+        {
+            "world": "AURA",
+            "event": "AURA was defined as Authorship, Unity & Real Art.",
+            "state": "identity",
+            "importance": "high"
+        },
+        {
+            "world": "AURA",
+            "event": "AURA became separate from Mythrion and focused on preserving human-made art.",
+            "state": "separation",
+            "importance": "high"
+        }
+    ]
+}

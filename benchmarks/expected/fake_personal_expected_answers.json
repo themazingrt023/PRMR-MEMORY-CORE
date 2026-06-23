@@ -1,0 +1,16 @@
+{
+    "dataset_name": "fake_personal_ai_memory",
+    "questions": [
+        {
+            "question": "What is the user's current product focus?",
+            "expected_keywords": [
+                "PRMR Memory Core",
+                "first serious product",
+                "protect focus",
+                "avoid",
+                "scattered"
+            ],
+            "expected_answer": "The current focus is PRMR Memory Core as the first serious product blade, while protecting focus and avoiding scattered builds."
+        }
+    ]
+}

@@ -1,0 +1,5 @@
+<svg width="500" height="500" xmlns="http://www.w3.org/2000/svg">
+<rect width="100%" height="100%" fill="black"/>
+<text x="20" y="30" fill="white" font-size="20">Frame 10</text>
+<circle id="orb" cx="180" cy="250" r="35" fill="magenta" />
+</svg>

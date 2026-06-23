@@ -1,0 +1,36 @@
+{
+    "dataset_name": "fake_company_memory",
+    "type": "company_memory",
+    "events": [
+        {
+            "date": "2026-01-03",
+            "project": "Project Atlas",
+            "event": "Supplier approval delayed packaging samples.",
+            "importance": "high"
+        },
+        {
+            "date": "2026-02-14",
+            "project": "Project Atlas",
+            "event": "Supplier approval was delayed a second time.",
+            "importance": "high"
+        },
+        {
+            "date": "2026-03-08",
+            "project": "Project Atlas",
+            "event": "Packaging decision changed from cheap to premium.",
+            "importance": "high"
+        },
+        {
+            "date": "2026-03-28",
+            "project": "Project Atlas",
+            "event": "Budget pressure caused repeated launch revisions.",
+            "importance": "high"
+        },
+        {
+            "date": "2026-04-12",
+            "project": "Project Atlas",
+            "event": "Launch delay traced to supplier approval, packaging change, and budget revisions.",
+            "importance": "high"
+        }
+    ]
+}
