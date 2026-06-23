@@ -48,3 +48,7 @@ Thumbs.db
 # build metadata
 *.tsbuildinfo
 frontend/tsconfig.tsbuildinfo
+
+# revoked local state
+config_REVOKED_DO_NOT_USE_*/
+logs_REVOKED_DO_NOT_USE_*/
