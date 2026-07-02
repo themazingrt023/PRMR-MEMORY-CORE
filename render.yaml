@@ -8,6 +8,8 @@ services:
     envVars:
       - key: PRMR_API_MODE
         value: hosted_alpha
+      - key: PRMR_AUTH_BACKEND
+        value: supabase
       - key: PRMR_STORAGE_BACKEND
         value: postgres
       - key: DATABASE_URL
@@ -18,3 +20,7 @@ services:
         value: "true"
       - key: PRMR_ALLOWED_ORIGINS
         value: https://prmr-memory-core.vercel.app
+      - key: SUPABASE_PROJECT_URL
+        sync: false
+      - key: SUPABASE_PUBLISHABLE_KEY
+        sync: false

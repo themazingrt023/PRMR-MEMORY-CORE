@@ -42,9 +42,9 @@ export function Footer() {
             <p className="text-xs leading-5 text-mist/42">{boundaryStatement}</p>
           </div>
           <p className="mt-4 max-w-4xl text-xs leading-5 text-mist/34">
-            The protected API and frontend are hosted. Durable self-serve activation remains pending a verified
-            server-side Postgres connection. Production readiness, regulatory approval, legal approval, third-party
-            security certification, and field validation are not asserted.
+            The protected API and frontend are hosted. Self-serve access requires verified email and durable account
+            storage. Production readiness, regulatory approval, legal approval, third-party security certification,
+            and field validation are not asserted.
           </p>
           <p className="mt-4 max-w-4xl text-xs leading-5 text-mist/42">
             PRMR Memory Core is not an AI model. It is a continuity infrastructure layer that helps systems preserve useful state over time.

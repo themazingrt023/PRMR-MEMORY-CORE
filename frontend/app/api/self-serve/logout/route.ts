@@ -1,14 +1,17 @@
 import { NextResponse } from "next/server";
-import { SELF_SERVE_SESSION_COOKIE } from "@/lib/selfServeProxy";
+import {
+  createSupabaseServerClient,
+  supabaseServerConfigured
+} from "@/lib/supabaseServer";
 
 export async function POST() {
-  const response = NextResponse.json({ status: "ok", session_cleared: true });
-  response.cookies.set(SELF_SERVE_SESSION_COOKIE, "", {
-    httpOnly: true,
-    secure: process.env.NODE_ENV === "production",
-    sameSite: "strict",
-    path: "/",
-    maxAge: 0
+  if (supabaseServerConfigured()) {
+    const supabase = await createSupabaseServerClient();
+    await supabase.auth.signOut();
+  }
+  return NextResponse.json({
+    status: "ok",
+    supabase_session_cleared: true,
+    prmr_api_key_affected: false
   });
-  return response;
 }

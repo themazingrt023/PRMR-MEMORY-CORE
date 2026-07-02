@@ -169,6 +169,11 @@ def main() -> int:
         ROOT / "frontend" / "app" / "api" / "dashboard" / "state" / "route.ts",
         ROOT / "frontend" / "app" / "api" / "dashboard" / "keys" / "route.ts",
     ]
+    supabase_session_files = [
+        ROOT / "frontend" / "lib" / "supabaseServer.ts",
+        ROOT / "frontend" / "app" / "auth" / "callback" / "route.ts",
+    ]
+    v095_evidence = ROOT / "reports" / "v095" / "public_supabase_auth_real_email_v095.json"
 
     add(checks, "v093_evidence_exists", v093.exists())
     add(checks, "hosted_api_server_exists", server.exists())
@@ -177,7 +182,15 @@ def main() -> int:
     add(checks, "hosted_activation_docs_exist", docs.exists())
     add(checks, "frontend_proxy_routes_exist", all(path.exists() for path in proxy_files))
 
-    source_files = [server, runner, checkpoint, docs, render, *proxy_files]
+    source_files = [
+        server,
+        runner,
+        checkpoint,
+        docs,
+        render,
+        *proxy_files,
+        *supabase_session_files,
+    ]
     source_text = "\n".join(path.read_text(encoding="utf-8") for path in source_files if path.exists())
     add(checks, "no_continuum_specific_tailoring", "continuum" not in source_text.lower())
     add(
@@ -209,10 +222,31 @@ def main() -> int:
         "/tmp" in docs.read_text(encoding="utf-8")
         and "never count as" in docs.read_text(encoding="utf-8"),
     )
+    v095_audit_passed = False
+    if v095_evidence.exists():
+        v095_payload = json.loads(v095_evidence.read_text(encoding="utf-8"))
+        v095_audit_passed = (
+            v095_payload.get("audit", {}).get("result") == "PASS"
+            and v095_payload.get("audit", {}).get("checks_passed") == 21
+        )
+    legacy_cookie_boundary = (
+        "httpOnly: true" in source_text and 'sameSite: "strict"' in source_text
+    )
+    supabase_session_boundary = (
+        all(path.exists() for path in supabase_session_files)
+        and "createServerClient" in source_text
+        and "auth.getUser" in source_text
+        and "exchangeCodeForSession" in source_text
+        and v095_audit_passed
+    )
     add(
         checks,
-        "frontend_session_cookie_is_http_only",
-        "httpOnly: true" in source_text and 'sameSite: "strict"' in source_text,
+        "frontend_session_boundary_is_protected",
+        legacy_cookie_boundary or supabase_session_boundary,
+        {
+            "legacy_http_only_cookie": legacy_cookie_boundary,
+            "supabase_v095_verified_session": supabase_session_boundary,
+        },
     )
     add(
         checks,

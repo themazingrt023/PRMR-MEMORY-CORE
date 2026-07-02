@@ -17,6 +17,10 @@ from prmr.product.durable_self_serve_storage_v093 import (
     env_flag,
 )
 from prmr.product.postgres_self_serve_storage_v0941 import PostgresSelfServeProductV0941
+from prmr.product.supabase_auth_bridge_v095 import (
+    BOUNDARY_V095,
+    SupabaseAuthBridgeV095,
+)
 
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -40,6 +44,13 @@ def configured_storage_backend() -> str:
     backend = os.getenv("PRMR_STORAGE_BACKEND", "sqlite").strip().lower() or "sqlite"
     if backend not in {"sqlite", "postgres"}:
         raise ValueError("PRMR_STORAGE_BACKEND must be sqlite or postgres.")
+    return backend
+
+
+def configured_auth_backend() -> str:
+    backend = os.getenv("PRMR_AUTH_BACKEND", "local_mvp").strip().lower() or "local_mvp"
+    if backend not in {"local_mvp", "supabase"}:
+        raise ValueError("PRMR_AUTH_BACKEND must be local_mvp or supabase.")
     return backend
 
 
@@ -129,15 +140,22 @@ def protected_response(result: dict[str, Any]) -> JSONResponse:
 
 def create_app_v094(
     product: DurableSelfServeProductV093 | PostgresSelfServeProductV0941 | None = None,
+    auth_bridge: SupabaseAuthBridgeV095 | None = None,
 ) -> FastAPI:
     active_product = product or configured_product()
+    auth_backend = "supabase" if auth_bridge is not None else configured_auth_backend()
+    active_auth_bridge = auth_bridge
+    if auth_backend == "supabase" and active_auth_bridge is None:
+        active_auth_bridge = SupabaseAuthBridgeV095.from_environment(active_product)
     lock = RLock()
     app = FastAPI(
         title="PRMR Memory Core Self-Serve API",
-        version="0.94",
-        description=BOUNDARY_V094,
+        version="0.95" if auth_backend == "supabase" else "0.94",
+        description=BOUNDARY_V095 if auth_backend == "supabase" else BOUNDARY_V094,
     )
     app.state.self_serve_product_v094 = active_product
+    app.state.auth_backend_v095 = auth_backend
+    app.state.supabase_auth_bridge_v095 = active_auth_bridge
     app.add_middleware(
         CORSMiddleware,
         allow_origins=allowed_origins(),
@@ -168,13 +186,48 @@ def create_app_v094(
             )
         return None
 
+    def local_auth_guard() -> JSONResponse | None:
+        if auth_backend == "supabase":
+            return error(
+                410,
+                "local_mvp_auth_disabled",
+                "Hosted identity uses Supabase Auth. Local verification and password sessions are disabled.",
+            )
+        return None
+
+    def supabase_access_token(
+        authorization: str | None,
+    ) -> tuple[str | None, JSONResponse | None]:
+        if auth_backend != "supabase" or active_auth_bridge is None:
+            return None, error(
+                503,
+                "supabase_auth_not_configured",
+                "Supabase Auth is not configured for this API process.",
+            )
+        if not authorization or not authorization.startswith("Bearer "):
+            return None, error(
+                401,
+                "missing_supabase_access_token",
+                "A Supabase access token is required.",
+            )
+        token = authorization.removeprefix("Bearer ").strip()
+        if not token:
+            return None, error(
+                401,
+                "missing_supabase_access_token",
+                "A Supabase access token is required.",
+            )
+        return token, None
+
     @app.get("/health")
     def health() -> dict[str, Any]:
         state = active_product.health()
         return {
             **state,
-            "version": "0.94",
+            "version": "0.95" if auth_backend == "supabase" else "0.94",
             "operation": "health",
+            "auth_backend": auth_backend,
+            "real_email_verification_path": auth_backend == "supabase",
             "hosted_self_serve_activation": state["storage"]["durable_storage_claim_allowed"],
             "self_serve_routes": [
                 "POST /v1/self-serve/signup",
@@ -185,11 +238,19 @@ def create_app_v094(
                 "GET|POST|PATCH|DELETE /v1/self-serve/keys",
                 "GET /v1/self-serve/dashboard",
             ],
+            "supabase_auth_routes": [
+                "POST /v1/auth/supabase/activate",
+                "GET|POST|PATCH|DELETE /v1/auth/supabase/keys",
+                "GET /v1/auth/supabase/dashboard",
+            ],
+            "auth_boundary": BOUNDARY_V095,
             "boundary": BOUNDARY_V094,
         }
 
     @app.post("/v1/self-serve/signup")
     async def signup(request: Request) -> JSONResponse:
+        if auth_error := local_auth_guard():
+            return auth_error
         if storage_error := hosted_storage_guard():
             return storage_error
         body = await json_body(request)
@@ -203,6 +264,8 @@ def create_app_v094(
 
     @app.post("/v1/self-serve/verify")
     async def verify(request: Request) -> JSONResponse:
+        if auth_error := local_auth_guard():
+            return auth_error
         if storage_error := hosted_storage_guard():
             return storage_error
         body = await json_body(request)
@@ -214,6 +277,8 @@ def create_app_v094(
 
     @app.post("/v1/self-serve/login")
     async def login(request: Request) -> JSONResponse:
+        if auth_error := local_auth_guard():
+            return auth_error
         if storage_error := hosted_storage_guard():
             return storage_error
         body = await json_body(request)
@@ -227,6 +292,8 @@ def create_app_v094(
     async def require_session(
         authorization: str | None,
     ) -> tuple[str | None, JSONResponse | None]:
+        if auth_error := local_auth_guard():
+            return None, auth_error
         if storage_error := hosted_storage_guard():
             return None, storage_error
         token, auth_error = session_token(authorization)
@@ -332,6 +399,98 @@ def create_app_v094(
         if auth_error:
             return auth_error
         return result_response(active_product.dashboard_state(session_token=str(token)))
+
+    @app.post("/v1/auth/supabase/activate")
+    async def supabase_activate(
+        request: Request,
+        authorization: str | None = Header(default=None, alias="Authorization"),
+    ) -> JSONResponse:
+        if storage_error := hosted_storage_guard():
+            return storage_error
+        token, auth_error = supabase_access_token(authorization)
+        if auth_error:
+            return auth_error
+        body = await json_body(request)
+        return result_response(
+            locked_call(
+                active_auth_bridge.activate,
+                access_token=token,
+                plan_id=str(body.get("plan_id", "free")),
+            )
+        )
+
+    @app.get("/v1/auth/supabase/keys")
+    async def supabase_list_keys(
+        authorization: str | None = Header(default=None, alias="Authorization"),
+    ) -> JSONResponse:
+        token, auth_error = supabase_access_token(authorization)
+        if auth_error:
+            return auth_error
+        return result_response(
+            locked_call(active_auth_bridge.list_keys, access_token=token)
+        )
+
+    @app.post("/v1/auth/supabase/keys")
+    async def supabase_create_key(
+        request: Request,
+        authorization: str | None = Header(default=None, alias="Authorization"),
+    ) -> JSONResponse:
+        token, auth_error = supabase_access_token(authorization)
+        if auth_error:
+            return auth_error
+        body = await json_body(request)
+        return result_response(
+            locked_call(
+                active_auth_bridge.create_key,
+                access_token=token,
+                label=str(body.get("label", "")),
+            )
+        )
+
+    @app.patch("/v1/auth/supabase/keys")
+    async def supabase_rotate_key(
+        request: Request,
+        authorization: str | None = Header(default=None, alias="Authorization"),
+    ) -> JSONResponse:
+        token, auth_error = supabase_access_token(authorization)
+        if auth_error:
+            return auth_error
+        body = await json_body(request)
+        return result_response(
+            locked_call(
+                active_auth_bridge.rotate_key,
+                access_token=token,
+                key_id=str(body.get("key_id", "")),
+            )
+        )
+
+    @app.delete("/v1/auth/supabase/keys")
+    async def supabase_revoke_key(
+        request: Request,
+        authorization: str | None = Header(default=None, alias="Authorization"),
+    ) -> JSONResponse:
+        token, auth_error = supabase_access_token(authorization)
+        if auth_error:
+            return auth_error
+        body = await json_body(request)
+        return result_response(
+            locked_call(
+                active_auth_bridge.revoke_key,
+                access_token=token,
+                key_id=str(body.get("key_id", "")),
+            )
+        )
+
+    @app.get("/v1/auth/supabase/dashboard")
+    async def supabase_dashboard(
+        authorization: str | None = Header(default=None, alias="Authorization"),
+    ) -> JSONResponse:
+        token, auth_error = supabase_access_token(authorization)
+        if auth_error:
+            return auth_error
+        return result_response(
+            locked_call(active_auth_bridge.dashboard, access_token=token)
+        )
 
     async def protected_context(
         request: Request,

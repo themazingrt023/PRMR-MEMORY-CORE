@@ -1,40 +1,59 @@
 "use client";
 
-import { FormEvent, useState } from "react";
+import { FormEvent, useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
+import {
+  createSupabaseBrowserClient,
+  supabaseBrowserConfigured
+} from "@/lib/supabaseClient";
 
 export function LoginForm() {
   const router = useRouter();
   const [busy, setBusy] = useState(false);
   const [message, setMessage] = useState("");
 
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    if (params.get("verified") === "1") {
+      setMessage("Email verified. Sign in to continue.");
+    } else if (params.get("error") === "auth_callback_failed") {
+      setMessage("We could not complete email verification. Please sign in or request a new verification email.");
+    }
+  }, []);
+
   async function submit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     const form = new FormData(event.currentTarget);
+    const email = String(form.get("email") || "").trim().toLowerCase();
+    const password = String(form.get("password") || "");
+    if (!supabaseBrowserConfigured()) {
+      setMessage("Account sign-in is temporarily unavailable. Please try again shortly.");
+      return;
+    }
     setBusy(true);
-    setMessage("Checking your hosted session...");
+    setMessage("Signing in...");
     try {
-      const response = await fetch("/api/self-serve/login", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          email: String(form.get("email") || ""),
-          password: String(form.get("password") || "")
-        })
+      const supabase = createSupabaseBrowserClient();
+      const { data, error } = await supabase.auth.signInWithPassword({
+        email,
+        password
       });
-      const payload = (await response.json().catch(() => ({}))) as {
-        error?: { message?: string };
-      };
-      if (!response.ok) {
+      if (error) {
         setMessage(
-          payload.error?.message ||
-            "Hosted login is unavailable. The V0.94 Render deployment may not be active yet."
+          error.message.toLowerCase().includes("confirm")
+            ? "Verify your email before signing in."
+            : "We could not sign you in. Check your email and password, then try again."
         );
         return;
       }
-      router.push("/dashboard");
+      if (!data.user?.email_confirmed_at) {
+        await supabase.auth.signOut();
+        setMessage("Verify your email before signing in.");
+        return;
+      }
+      router.push("/start");
     } catch {
-      setMessage("The hosted login service could not be reached.");
+      setMessage("We could not reach the account service. Please try again in a moment.");
     } finally {
       setBusy(false);
     }
@@ -53,7 +72,7 @@ export function LoginForm() {
       <button className="silver-button px-6 py-4 font-mono text-xs uppercase tracking-[0.14em] disabled:opacity-40" disabled={busy} type="submit">
         {busy ? "Signing in..." : "Sign in"}
       </button>
-      <p className="text-sm text-mist/48">{message}</p>
+      <p aria-live="polite" className="text-sm text-mist/48">{message}</p>
     </form>
   );
 }
