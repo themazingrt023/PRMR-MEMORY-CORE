@@ -95,14 +95,15 @@ export function BookDemoForm() {
             Request a controlled PRMR Memory Core walkthrough.
           </h1>
           <p className="mt-5 text-sm leading-7 text-mist/68">
-            Use this form to request a local controlled demo conversation. Demo requests are reviewed manually by the
-            founder/team before any follow-up.
+            Use this form to request a controlled demo conversation, describe your use case, and decide whether PRMR is
+            worth exploring through a controlled alpha pilot. Demo requests are reviewed manually by the founder/team
+            before any follow-up.
           </p>
           <div className="mt-6 border border-silver/14 bg-white/[0.03] p-5">
             <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-silver/60">Boundary</p>
             <p className="mt-3 text-sm leading-7 text-mist/66">
               This does not grant live access, API keys, production use, or certified status. Demo requests are reviewed
-              manually.
+              manually, and any paid pilot discussion is arranged directly during controlled alpha.
             </p>
           </div>
           <p className="mt-5 text-xs leading-6 text-mist/44">

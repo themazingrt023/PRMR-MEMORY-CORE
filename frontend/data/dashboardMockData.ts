@@ -1,6 +1,7 @@
 export type DashboardKeyRecord = {
   keyId: string;
   clientId: string;
+  label: string;
   safeKeyPreview: string;
   status: "active" | "rotated" | "revoked";
   vaultId: string;
@@ -31,19 +32,21 @@ export type DashboardRequestLogRow = {
 };
 
 export const dashboardBoundary =
-  "This dashboard is a local controlled-alpha dashboard MVP. It uses synthetic/dev-only data and does not provide hosted customer authentication, billing, live API access, or production guarantees.";
+  "V0.92 is a generic self-serve API product MVP using local synthetic frontend data. The functional Python service implements account, plan, scoped key, quota, and protected API behavior. Real email, billing, durable hosted account storage, and production authentication remain separate work.";
 
 export const dashboardMockData = {
-  sourceVersions: ["0.69", "0.70", "0.71"],
+  sourceVersions: ["0.70", "0.79", "0.84", "0.88", "0.92"],
   clientOverview: {
-    clientId: "client_v071_synthetic_alpha",
-    organisation: "Synthetic V0.71 Alpha Client",
+    clientId: "client_ss_demo",
+    organisation: "Generic API Builder",
     status: "active",
     activeVaultCount: 1,
-    activeNamespaceCount: 2,
+    activeNamespaceCount: 1,
     syntheticOnly: true,
-    localModeAccess: "enabled_for_mvp_review",
-    publicModeAccess: "blocked_or_placeholder"
+    localModeAccess: "self_serve_mvp_preview",
+    publicModeAccess: "locked_until_hosted_account_auth",
+    vaultId: "vault_ss_demo",
+    namespace: "default"
   },
   apiKeyPanel: {
     manualOperatorApprovalRequired: true,
@@ -55,57 +58,29 @@ export const dashboardMockData = {
     },
     records: [
       {
-        keyId: "key_v070_6d47df6582",
-        clientId: "client_v070_synthetic_alpha",
-        safeKeyPreview: "prmr_alpha_dev_...16e1",
+        keyId: "key_ss_preview_active",
+        clientId: "client_ss_demo",
+        label: "Example server key",
+        safeKeyPreview: "prmr_alpha_local_...4a81",
         status: "active",
-        vaultId: "vault_v070_alpha",
+        vaultId: "vault_ss_demo",
         namespace: "default",
-        lastUsedAt: "2026-06-22T21:12:14.953551+00:00",
-        operatorNote: "Display uses preview only. Full key values are not present in dashboard data."
-      },
-      {
-        keyId: "key_v070_557d44d5e1",
-        clientId: "client_v070_synthetic_alpha",
-        safeKeyPreview: "prmr_alpha_dev_...6373",
-        status: "rotated",
-        vaultId: "vault_v070_alpha",
-        namespace: "default",
-        lastUsedAt: "2026-06-22T21:12:14.953551+00:00",
-        operatorNote: "Display uses preview only. Full key values are not present in dashboard data."
-      },
-      {
-        keyId: "key_v070_f2e84c8c58",
-        clientId: "client_v070_synthetic_alpha",
-        safeKeyPreview: "prmr_alpha_dev_...8097",
-        status: "revoked",
-        vaultId: "vault_v070_alpha",
-        namespace: "default",
-        lastUsedAt: "2026-06-22T21:12:14.953551+00:00",
-        operatorNote: "Display uses preview only. Full key values are not present in dashboard data."
+        lastUsedAt: "Synthetic preview",
+        operatorNote: "Display uses a non-functional preview only. Full key values are not stored in dashboard data."
       }
     ] satisfies DashboardKeyRecord[]
   },
   vaultNamespacePanel: {
-    crossClientBoundary: "Dashboard data is scoped to synthetic owner records; cross-client access remains denied by V0.71 evidence.",
+    crossClientBoundary: "Dashboard data is scoped to this approved synthetic client; V0.84 cross-client isolation remains enforced.",
     namespaces: [
       {
-        namespaceId: "client_v071_synthetic_alpha::vault_v071_alpha::default",
-        vaultId: "vault_v071_alpha",
+        namespaceId: "client_ss_demo::vault_ss_demo::default",
+        vaultId: "vault_ss_demo",
         namespace: "default",
         status: "active",
         eventCount: 1,
         packetCount: 1,
         publicReportCount: 1
-      },
-      {
-        namespaceId: "client_v071_synthetic_alpha::vault_v071_alpha::limit_test",
-        vaultId: "vault_v071_alpha",
-        namespace: "limit_test",
-        status: "active",
-        eventCount: 0,
-        packetCount: 0,
-        publicReportCount: 0
       }
     ] satisfies DashboardNamespace[]
   },
@@ -114,13 +89,13 @@ export const dashboardMockData = {
     blockedRequestCount: 8,
     totalRequestCount: 19,
     byVault: {
-      vault_v071_alpha: 18,
-      vault_v071_other: 1
+      vault_ss_demo: 18,
+      blocked_out_of_scope: 1
     },
     priorMilestoneComparison: {
-      v069Total: 8,
-      v070Total: 8,
-      v071Total: 19
+      v080Onboarding: 8,
+      v084Isolation: 16,
+      v092Dashboard: 19
     }
   },
   requestLogSummary: {
@@ -139,9 +114,9 @@ export const dashboardMockData = {
     rows: [
       {
         timestamp: "2026-06-22T21:33:17.773267+00:00",
-        clientId: "client_v071_synthetic_alpha",
+        clientId: "client_ss_demo",
         endpoint: "POST /v1/events/ingest",
-        vaultId: "vault_v071_alpha",
+        vaultId: "vault_ss_demo",
         namespace: "default",
         status: "ok",
         reason: "allowed",
@@ -149,9 +124,9 @@ export const dashboardMockData = {
       },
       {
         timestamp: "2026-06-22T21:33:17.773267+00:00",
-        clientId: "client_v071_synthetic_alpha",
+        clientId: "client_ss_demo",
         endpoint: "POST /v1/continuity/packet",
-        vaultId: "vault_v071_alpha",
+        vaultId: "vault_ss_demo",
         namespace: "default",
         status: "ok",
         reason: "allowed",
@@ -159,9 +134,9 @@ export const dashboardMockData = {
       },
       {
         timestamp: "2026-06-22T21:33:17.773267+00:00",
-        clientId: "client_v071_other",
+        clientId: "client_ss_other",
         endpoint: "POST /v1/events/ingest",
-        vaultId: "vault_v071_alpha",
+        vaultId: "vault_ss_demo",
         namespace: "default",
         status: "blocked",
         reason: "key_client_mismatch",
@@ -169,9 +144,9 @@ export const dashboardMockData = {
       },
       {
         timestamp: "2026-06-22T21:33:17.773267+00:00",
-        clientId: "client_v071_synthetic_alpha",
+        clientId: "client_ss_demo",
         endpoint: "POST /v1/continuity/packet",
-        vaultId: "vault_v071_other",
+        vaultId: "vault_ss_other",
         namespace: "default",
         status: "blocked",
         reason: "vault_denied",
@@ -183,10 +158,10 @@ export const dashboardMockData = {
     boundary: "Dashboard previews use public-safe report summaries only.",
     reports: [
       {
-        reportId: "report_8a55546259e8",
-        packetId: "packet_9ad7385f0a69",
-        clientId: "client_v071_synthetic_alpha",
-        vaultId: "vault_v071_alpha",
+        reportId: "report_ss_demo_001",
+        packetId: "packet_ss_demo_001",
+        clientId: "client_ss_demo",
+        vaultId: "vault_ss_demo",
         namespace: "default",
         publicSafe: true,
         eventCount: 1,

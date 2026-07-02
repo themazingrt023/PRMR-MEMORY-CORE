@@ -4,9 +4,12 @@ const navLinks = [
   { href: "/#problem", label: "Problem" },
   { href: "/#solution", label: "Solution" },
   { href: "/#api", label: "API" },
+  { href: "/market", label: "Market" },
+  { href: "/pilot", label: "Pilot" },
   { href: "/#demo", label: "Demo" },
-  { href: "/#evidence", label: "Evidence" },
-  { href: "/#access", label: "Access" },
+  { href: "/docs", label: "Docs" },
+  { href: "/alpha", label: "Alpha" },
+  { href: "/signup", label: "Get API Key" },
   { href: "/contact", label: "Contact" }
 ];
 
@@ -20,7 +23,7 @@ export function Navigation() {
             <p className="font-mono text-lg uppercase tracking-[-0.03em] text-mist drop-shadow-[0_0_14px_rgba(0,0,0,0.85)]">AFTERNUM</p>
           </div>
         </a>
-        <div className="hidden items-center gap-7 md:flex lg:gap-10">
+        <div className="hidden items-center gap-5 md:flex lg:gap-7">
           {navLinks.map((link) => (
             <a className="nav-link" href={link.href} key={link.href}>
               {link.label}

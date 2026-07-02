@@ -1,0 +1,184 @@
+{{ 'prmr-pilot.css' | asset_url | stylesheet_tag }}
+
+{% liquid
+  assign primary_label = section.settings.primary_cta_label | default: 'Request Pilot Access'
+  assign primary_url = section.settings.primary_cta_url | default: '/pages/contact'
+  assign secondary_label = section.settings.secondary_cta_label | default: 'Book Pilot Call'
+  assign secondary_url = section.settings.secondary_cta_url | default: '/pages/contact'
+%}
+
+<section class="prmr-pilot-page" data-section-id="{{ section.id }}">
+  <div class="prmr-pilot-ambient" aria-hidden="true"></div>
+
+  <div class="prmr-pilot-shell">
+    <header class="prmr-pilot-hero">
+      {% render 'prmr-pilot-badge', text: 'PRMR Controlled Alpha Pilot' %}
+      <p class="prmr-pilot-kicker">Afternum Industries</p>
+      <h1>Give your system memory that evolves.</h1>
+      <p class="prmr-pilot-subheading">
+        PRMR Memory Core is a continuity infrastructure layer that plugs into your product and helps it remember what matters as it grows, changes, and learns.
+      </p>
+      <p class="prmr-pilot-core-line">Storage remembers data. Retrieval finds data. PRMR preserves continuity.</p>
+      <p class="prmr-pilot-commercial-line">You build the app. PRMR preserves the memory layer underneath.</p>
+      <p class="prmr-pilot-commercial-line">Controlled Alpha Pilot from £250. Manual approval only.</p>
+      <div class="prmr-pilot-actions">
+        <a class="prmr-pilot-button prmr-pilot-button-primary" href="{{ primary_url }}">{{ primary_label }}</a>
+        <a class="prmr-pilot-button prmr-pilot-button-secondary" href="{{ secondary_url }}">{{ secondary_label }}</a>
+        <a class="prmr-pilot-button prmr-pilot-button-secondary" href="https://prmr-memory-core.vercel.app" rel="noopener" target="_blank">Learn more about PRMR Memory Core</a>
+      </div>
+      <p class="prmr-pilot-boundary">
+        Controlled alpha only. Access is manual, usage is limited, and sensitive data is not accepted without approval.
+      </p>
+    </header>
+
+    <div class="prmr-pilot-grid prmr-pilot-problem">
+      <div>
+        <p class="prmr-pilot-section-label">Problem</p>
+        <h2>Systems store history, but still lose continuity.</h2>
+      </div>
+      <div class="prmr-pilot-copy">
+        <p>AI products, agents, tools, games, workflows, and platforms can collect huge histories: chats, events, actions, tickets, logs, profiles, memories, and summaries.</p>
+        <p>But raw storage does not always preserve what changed, what still matters, what became stale, or what should be reviewed before the next step.</p>
+        <p>PRMR is being built for that continuity gap.</p>
+      </div>
+    </div>
+
+    <div class="prmr-pilot-section">
+      <p class="prmr-pilot-section-label">Who this is for</p>
+      <h2>Built for teams testing memory as infrastructure.</h2>
+      <div class="prmr-pilot-card-grid">
+        {% assign audiences = 'AI product teams|Agent builders|SaaS founders|Game and workflow builders|Support and operations teams|Research, education, legal, and risk sandbox evaluators' | split: '|' %}
+        {% for item in audiences %}
+          <article class="prmr-pilot-card">
+            <span>{{ forloop.index | prepend: '0' | slice: -2, 2 }}</span>
+            <h3>{{ item }}</h3>
+          </article>
+        {% endfor %}
+      </div>
+    </div>
+
+    <div class="prmr-pilot-grid">
+      <div>
+        <p class="prmr-pilot-section-label">What you get</p>
+        <h2>Controlled pilot access, manually reviewed.</h2>
+      </div>
+      <div class="prmr-pilot-list">
+        {% assign included = '15-minute onboarding call|Limited sandbox access|Manually issued test API key|Synthetic or approved non-sensitive data only|Usage limits|Continuity output/report|Integration recommendation|Feedback call|Manual revoke path' | split: '|' %}
+        {% for item in included %}
+          <div class="prmr-pilot-list-row">
+            <span>{{ forloop.index | prepend: '0' | slice: -2, 2 }}</span>
+            <p>{{ item }}</p>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+
+    <div class="prmr-pilot-infrastructure">
+      <p class="prmr-pilot-section-label">Why infrastructure matters</p>
+      <h2>Infrastructure prints leverage.</h2>
+      <p>Companies pay for APIs because they expect a return: faster development, lower cost, better products, stronger retention, and less time rebuilding the same layer from scratch.</p>
+      <p>PRMR Memory Core is being built as that kind of layer for memory and continuity.</p>
+      <p>Instead of every team building their own memory system, PRMR gives them a plug-in infrastructure layer that helps their product remember what matters as it evolves.</p>
+      <div class="prmr-pilot-callout">
+        <strong>They build the app.</strong>
+        <strong>PRMR preserves the continuity underneath.</strong>
+      </div>
+    </div>
+
+    <div class="prmr-pilot-grid">
+      <div>
+        <p class="prmr-pilot-section-label">Current controlled-alpha status</p>
+        <h2>Public-safe evidence, not production certification.</h2>
+      </div>
+      <div class="prmr-pilot-copy">
+        <p>PRMR has internal/local and controlled hosted evidence for the alpha flow, including hosted smoke checks, scoped key access, multi-client isolation, public/private report hygiene, and dashboard access boundaries.</p>
+        <p>The protected PRMR engine is not exposed through this page. This page does not provide self-serve API access or automatic key delivery.</p>
+      </div>
+    </div>
+
+    <div class="prmr-pilot-price" id="pilot-price">
+      <div>
+        <p class="prmr-pilot-section-label">Pilot price</p>
+        <h2>Controlled Alpha Pilot — from £250</h2>
+        <p>Paid pilot access is manually approved and arranged directly during controlled alpha.</p>
+      </div>
+      <div class="prmr-pilot-actions">
+        <a class="prmr-pilot-button prmr-pilot-button-primary" href="{{ primary_url }}">{{ primary_label }}</a>
+        <a class="prmr-pilot-button prmr-pilot-button-secondary" href="{{ secondary_url }}">{{ secondary_label }}</a>
+        <a class="prmr-pilot-button prmr-pilot-button-secondary" href="https://prmr-memory-core.vercel.app" rel="noopener" target="_blank">Learn more about PRMR Memory Core</a>
+      </div>
+    </div>
+
+    <div class="prmr-pilot-section">
+      <p class="prmr-pilot-section-label">FAQ</p>
+      <h2>Clear boundaries before access.</h2>
+      <div class="prmr-pilot-faq">
+        <details>
+          <summary>Is this a self-serve production API?</summary>
+          <p>No. Access is manual, scoped, and limited during controlled alpha.</p>
+        </details>
+        <details>
+          <summary>Will I receive an API key automatically?</summary>
+          <p>No. Test API keys are manually issued only after review.</p>
+        </details>
+        <details>
+          <summary>Can I use sensitive production data?</summary>
+          <p>No sensitive data is accepted without explicit approval. Synthetic or approved non-sensitive data is the default.</p>
+        </details>
+        <details>
+          <summary>Does this expose the protected PRMR engine?</summary>
+          <p>No. The protected PRMR engine, private internals, credentials, and private reports are not exposed.</p>
+        </details>
+        <details>
+          <summary>What does the pilot prove?</summary>
+          <p>It helps evaluate whether PRMR's continuity layer is useful for your product or workflow. It is not production readiness, compliance approval, legal approval, bank approval, or external security certification.</p>
+        </details>
+      </div>
+    </div>
+
+    <footer class="prmr-pilot-final-cta">
+      {% render 'prmr-pilot-badge', text: 'Manual review required' %}
+      <h2>Build the product. Preserve the continuity underneath.</h2>
+      <p>Request a controlled alpha pilot or book a pilot call to discuss whether PRMR fits your product, agent, workflow, or platform.</p>
+      <div class="prmr-pilot-actions">
+        <a class="prmr-pilot-button prmr-pilot-button-primary" href="{{ primary_url }}">{{ primary_label }}</a>
+        <a class="prmr-pilot-button prmr-pilot-button-secondary" href="{{ secondary_url }}">{{ secondary_label }}</a>
+      </div>
+    </footer>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "PRMR Controlled Alpha Pilot",
+  "settings": [
+    {
+      "type": "text",
+      "id": "primary_cta_label",
+      "label": "Primary CTA label",
+      "default": "Request Pilot Access"
+    },
+    {
+      "type": "url",
+      "id": "primary_cta_url",
+      "label": "Primary CTA URL"
+    },
+    {
+      "type": "text",
+      "id": "secondary_cta_label",
+      "label": "Secondary CTA label",
+      "default": "Book Pilot Call"
+    },
+    {
+      "type": "url",
+      "id": "secondary_cta_url",
+      "label": "Secondary CTA URL"
+    }
+  ],
+  "presets": [
+    {
+      "name": "PRMR Controlled Alpha Pilot"
+    }
+  ]
+}
+{% endschema %}

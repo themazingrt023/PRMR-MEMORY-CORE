@@ -1,8 +1,13 @@
-# PRMR Memory Core V0.55 Frontend Shell
+# PRMR Memory Core Frontend
 
-This is the local frontend product shell for Afternum Industries / PRMR Memory Core, with V0.55 local-only demo connection.
+This is the Afternum Industries / PRMR Memory Core frontend. The public site is
+deployed, while dashboard key controls remain a local synthetic approved-client
+preview until production authentication and hosted dashboard persistence exist.
 
-It is a local shell only. It is not a hosted API. It does not include billing, external authentication, external service calls, or real sensitive data. Current evidence is internal/local controlled-alpha evidence. External validation and deployment hardening are separate future milestones.
+The PRMR backend is hosted separately and has passed controlled synthetic
+protected-route smoke. This frontend does not provide production
+authentication, automatic onboarding, completed Whop billing, or permission to
+submit sensitive data.
 
 ## Run Locally
 
@@ -25,6 +30,11 @@ To test the connected local demo flow, open `http://localhost:3000/demo`, select
 - `/alpha`
 - `/docs`
 - `/contact`
+- `/dashboard`
+- `/market`
+- `/pilot`
+- `/public-proof`
+- `/whop`
 - `/capabilities/event-ingestion`
 - `/capabilities/continuity-packets`
 - `/capabilities/state-reconstruction`
@@ -161,15 +171,32 @@ The mark-only asset is available only for small placements such as nav icon, flo
 ## Current Limitations
 
 - Synthetic/demo data only.
-- Local demo connection only.
-- No billing.
-- No payment provider integration.
-- No live authentication.
-- No hosted backend.
-- No credential issuance.
+- Public dashboard remains locked without controlled authentication.
+- Dashboard create/rotate/revoke controls are local synthetic previews.
+- Whop checkout URL is configurable but not verified as externally configured.
+- Whop webhook/manual-review entrypoint is local and not deployed.
+- No completed billing automation.
+- No production authentication.
+- Hosted backend storage durability is not yet verified.
+- Manual approved-client credential issuance only.
 - No external validation asserted.
-- No deployment hardening asserted.
 - No banking, regulatory, legal, or third-party security sign-off asserted.
+
+## V0.88-V0.91 Product Path
+
+- V0.88: approved-client dashboard and copy-once key-management MVP.
+- V0.89: `/whop` offer and controlled access funnel with a safe manual fallback.
+- V0.90: signed Whop-event intake to SQLite-backed manual review; no automatic key issuing.
+- V0.91: first local internal server-side consumer using a temporary `.env`.
+
+Configure the public checkout destination with:
+
+```env
+NEXT_PUBLIC_WHOP_CHECKOUT_URL=https://whop.com/<YOUR-OFFER-OR-CHECKOUT-PATH>
+```
+
+Only an official HTTPS `whop.com` URL is accepted. The page falls back to the
+manual alpha request when the variable is absent or invalid.
 
 ## Integration Boundary
 

@@ -1,0 +1,17 @@
+{
+  "sections": {
+    "main": {
+      "type": "prmr-pilot",
+      "settings": {
+        "primary_cta_label": "Request Pilot Access",
+        "primary_cta_url": "/products/prmr-pilot",
+        "secondary_cta_label": "Book Pilot Call",
+        "secondary_cta_url": "/pages/contact"
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}
+

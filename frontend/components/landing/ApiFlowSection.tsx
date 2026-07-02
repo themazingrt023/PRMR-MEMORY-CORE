@@ -26,7 +26,9 @@ export function ApiFlowSection() {
             report outputs.
           </p>
           <p className="text-sm leading-7 text-mist/48">
-            Current implementation evidence is local controlled-alpha and API-shaped. It is not a hosted service.
+            Controlled alpha access is limited because the protected core, keys, vaults, namespaces, reports, and
+            dashboard state need manual review before any external tester receives scoped access. The protected core
+            remains private while public pages show only safe product proof and boundaries.
           </p>
         </div>
 

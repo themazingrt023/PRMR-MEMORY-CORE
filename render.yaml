@@ -1,0 +1,20 @@
+services:
+  - type: web
+    name: prmr-memory-core-api
+    runtime: python
+    buildCommand: pip install -r requirements-api.txt
+    startCommand: uvicorn prmr.product.api_server_v094:app --host 0.0.0.0 --port $PORT
+    healthCheckPath: /health
+    envVars:
+      - key: PRMR_API_MODE
+        value: hosted_alpha
+      - key: PRMR_STORAGE_BACKEND
+        value: postgres
+      - key: DATABASE_URL
+        sync: false
+      - key: PRMR_DURABLE_STORAGE_VERIFIED
+        value: "true"
+      - key: PRMR_SYNTHETIC_ONLY
+        value: "true"
+      - key: PRMR_ALLOWED_ORIGINS
+        value: https://prmr-memory-core.vercel.app

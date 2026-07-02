@@ -3,7 +3,7 @@ import { NextResponse } from "next/server";
 export type DeploymentMode = "local" | "public_frontend";
 
 export const PUBLIC_FRONTEND_BOUNDARY =
-  "Public frontend mode is presentation-only. It does not provide hosted backend access, production onboarding, billing, live API access, API key issuing, external validation, bank approval, compliance approval, legal approval, external security certification, or real-world validation.";
+  "Public frontend mode does not yet connect browser signup, billing, or dashboard sessions to a durable hosted account registry. Protected PRMR API access exists separately; keys remain server-side. No production certification, regulatory approval, external security certification, or guaranteed scale is claimed.";
 
 export function getDeploymentMode(): DeploymentMode {
   const configured = process.env.NEXT_PUBLIC_DEPLOYMENT_MODE;

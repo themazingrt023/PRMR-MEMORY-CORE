@@ -1,4 +1,5 @@
 import { KimiSectionShell } from "@/components/visual/KimiSectionShell";
+import { commercialBoundary, pilotOffer } from "@/data/commercialAlphaCopy";
 import { boundaryStatement } from "@/data/evidence";
 
 const fields = ["Name", "Email", "Organisation", "Use case"];
@@ -9,12 +10,13 @@ export function AlphaAccessSection() {
       <div className="mx-auto grid max-w-5xl gap-20 lg:grid-cols-[0.85fr_1.15fr]">
         <div className="space-y-7">
           <p className="text-lg font-extralight leading-9 text-mist/74">
-            This is a local frontend placeholder for controlled-alpha interest. It does not submit to a live service
-            yet and does not issue credentials.
+            Controlled alpha requests are reviewed manually. Approved evaluators can discuss a demo, request scoped
+            sandbox access, or explore a paid pilot path without receiving automatic credentials.
           </p>
+          <p className="text-sm leading-7 text-mist/58">{pilotOffer.pricing}</p>
           <p className="text-sm leading-7 text-mist/50">{boundaryStatement}</p>
           <p className="text-sm leading-7 text-mist/42">
-            Use synthetic, anonymised, or explicitly approved data only.
+            Use synthetic, anonymised, or explicitly approved non-sensitive data only. {commercialBoundary}
           </p>
         </div>
 
@@ -42,7 +44,8 @@ export function AlphaAccessSection() {
               Apply for Alpha Access
             </button>
             <p className="mt-5 text-xs leading-5 text-mist/40">
-              Placeholder only. No backend connection, billing, authentication, or live service access.
+              Public homepage placeholder only. No automatic API keys, checkout, billing automation, or unreviewed live
+              access.
             </p>
           </div>
         </form>

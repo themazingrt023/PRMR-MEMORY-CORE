@@ -38,12 +38,13 @@ export function Footer() {
 
         <div className="mt-20 border-t border-white/[0.06] pt-6">
           <div className="grid gap-4 md:grid-cols-[0.7fr_1.3fr]">
-            <p className="text-xs text-mist/42">Copyright 2026. Local controlled-alpha frontend shell.</p>
+            <p className="text-xs text-mist/42">Copyright 2026. Hosted controlled-alpha product shell.</p>
             <p className="text-xs leading-5 text-mist/42">{boundaryStatement}</p>
           </div>
           <p className="mt-4 max-w-4xl text-xs leading-5 text-mist/34">
-            No hosted service, deployment readiness, banking sign-off, regulatory sign-off, legal sign-off, third-party
-            security sign-off, or field validation is asserted by this local shell.
+            The protected API and frontend are hosted. Durable self-serve activation remains pending a verified
+            server-side Postgres connection. Production readiness, regulatory approval, legal approval, third-party
+            security certification, and field validation are not asserted.
           </p>
           <p className="mt-4 max-w-4xl text-xs leading-5 text-mist/42">
             PRMR Memory Core is not an AI model. It is a continuity infrastructure layer that helps systems preserve useful state over time.

@@ -7,14 +7,14 @@ export function ClientOverview() {
     <section className="border border-silver/12 bg-[var(--afternum-bg-panel)] p-6 silver-hover">
       <div className="flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
         <div>
-          <p className="kimi-section-label">Client Dashboard MVP</p>
+          <p className="kimi-section-label">Self-Serve API Dashboard</p>
           <h1 className="mt-5 max-w-4xl font-display text-[clamp(42px,6vw,86px)] leading-[0.98] text-white">
-            Local client view for controlled-alpha evidence.
+            Your PRMR API workspace.
           </h1>
           <p className="mt-6 max-w-3xl text-base leading-7 text-mist/62">{dashboardBoundary}</p>
           <p className="mt-4 max-w-3xl text-base leading-7 text-mist/58">
-            The dashboard lets clients see safe key previews, vaults, namespaces, usage, blocked requests, public-safe
-            reports, and memory health. It is visibility for the local MVP, not hosted customer access.
+            Create a local MVP key, keep its one-time value server-side, and monitor the scoped memory layer from one
+            place. Hosted public account access remains locked until durable authentication is configured.
           </p>
         </div>
         <div className="grid gap-3 font-mono text-xs uppercase tracking-[0.14em] text-mist/58 sm:grid-cols-3 lg:min-w-[420px]">
@@ -25,7 +25,7 @@ export function ClientOverview() {
       </div>
 
       <div className="mt-10 grid gap-4 text-sm text-mist/62 md:grid-cols-3">
-        <Info label="Synthetic client" value={overview.clientId} />
+        <Info label="Client" value={overview.clientId} />
         <Info label="Organisation" value={overview.organisation} />
         <Info label="Public frontend" value={overview.publicModeAccess} />
       </div>

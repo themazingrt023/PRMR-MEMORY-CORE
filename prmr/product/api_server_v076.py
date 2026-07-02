@@ -29,6 +29,7 @@ from prmr.product.hosted_api_wrapper_v075 import (
 )
 from prmr.product.hosted_backend_foundation_v069 import utc_now
 from prmr.product.hosted_test_scope_v079 import register_controlled_test_scope
+from prmr.product.storage_mode_v083 import public_storage_health_payload
 
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -296,6 +297,7 @@ def create_app(wrapper: PRMRHostedAPIWrapper | None = None, config: PRMRAPIConfi
             },
             "wrapper_status": wrapper_health.get("status"),
             "controlled_test_scope_v079": controlled_test_scope_v079,
+            "storage_boundary_v083": public_storage_health_payload(active_config),
         }
 
     @app.post("/v1/events/ingest")

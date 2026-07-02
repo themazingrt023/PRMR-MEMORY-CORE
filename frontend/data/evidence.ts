@@ -11,4 +11,4 @@ export const evidenceItems = [
 ];
 
 export const boundaryStatement =
-  "Internal/local controlled-alpha evidence only. External validation and production hardening are separate future milestones.";
+  "Current evidence combines internal/local tests and controlled hosted API smoke. External validation and production hardening are separate future milestones.";

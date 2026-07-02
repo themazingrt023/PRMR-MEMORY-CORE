@@ -6,6 +6,7 @@ import { DemoPreviewSection } from "@/components/landing/DemoPreviewSection";
 import { EvidenceSection } from "@/components/landing/EvidenceSection";
 import { Footer } from "@/components/landing/Footer";
 import { HeroSection } from "@/components/landing/HeroSection";
+import { InfrastructureLeverageSection } from "@/components/landing/InfrastructureLeverageSection";
 import { Navigation } from "@/components/landing/Navigation";
 import { ProblemSection } from "@/components/landing/ProblemSection";
 import { SolutionSection } from "@/components/landing/SolutionSection";
@@ -16,6 +17,7 @@ export default function HomePage() {
     <main>
       <Navigation />
       <HeroSection />
+      <InfrastructureLeverageSection />
       <ProblemSection />
       <SolutionSection />
       <ApiFlowSection />

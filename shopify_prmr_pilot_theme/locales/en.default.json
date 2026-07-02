@@ -1,0 +1,14 @@
+{
+  "general": {
+    "accessibility": {
+      "skip_to_content": "Skip to content"
+    }
+  },
+  "prmr": {
+    "pilot": {
+      "title": "PRMR Controlled Alpha Pilot",
+      "primary_cta": "Request Pilot Access",
+      "secondary_cta": "Book Pilot Call"
+    }
+  }
+}

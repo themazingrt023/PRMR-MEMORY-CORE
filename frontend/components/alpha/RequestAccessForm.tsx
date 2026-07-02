@@ -88,7 +88,8 @@ export function RequestAccessForm() {
     <LabFrame className="mt-6 p-8">
       <h2 className="font-display text-3xl text-silver">Request controlled alpha access</h2>
       <p className="mt-3 text-sm leading-7 text-mist/62">
-        Submissions are stored locally for founder/team review. No live service access is granted by this form.
+        Submissions are stored locally for founder/team review. Include the use case you want to test, expected data
+        shape, and whether you want demo review or pilot discussion. No live service access is granted by this form.
       </p>
 
       <form className="mt-7 grid gap-5" onSubmit={submit}>
@@ -141,7 +142,7 @@ export function RequestAccessForm() {
         />
         <Checkbox
           checked={form.confirm_alpha_boundary}
-          label="I understand this is not production or certified access, and no live service access is granted by this form."
+          label="I understand this is controlled alpha review only. It is not production access, automated billing, or certified access, and no live service access is granted by this form."
           onChange={(checked) => update("confirm_alpha_boundary", checked)}
         />
 

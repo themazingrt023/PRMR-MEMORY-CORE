@@ -135,3 +135,79 @@ python examples/run_backend_hosted_smoke_v0781.py
 ```
 
 This still does not claim live API access unless V0.78 smoke passes against the real URL.
+
+## V0.90 Staged Whop Webhook Entrypoint
+
+V0.90 adds a separate deployable entrypoint:
+
+```bash
+uvicorn prmr.product.api_server_v090:app --host 0.0.0.0 --port $PORT
+```
+
+It retains the V0.76 API routes and adds:
+
+```text
+POST /v1/integrations/whop/webhook
+```
+
+Do not switch the live Render service to this entrypoint until the Whop product,
+checkout/waitlist link, fresh webhook secret, expected company ID, expected
+product ID, and durable storage path are configured and a Whop test event passes.
+
+Required server-only values:
+
+```env
+WHOP_WEBHOOK_SECRET=
+WHOP_EXPECTED_COMPANY_ID=
+WHOP_EXPECTED_PRODUCT_ID=
+```
+
+The webhook route uses `standardwebhooks==1.0.1`, verifies the raw request
+before parsing, deduplicates on `webhook-id`, and creates a manual-review record
+only. It cannot issue PRMR keys or dashboard access.
+
+See `docs/whop_manual_approval_workflow_v090.md`.
+
+## V0.94 Hosted Self-Serve Activation Entrypoint
+
+V0.94 replaces the deployment entrypoint with:
+
+```bash
+uvicorn prmr.product.api_server_v094:app --host 0.0.0.0 --port $PORT
+```
+
+Current V0.94.1 Render Postgres configuration:
+
+```env
+PRMR_API_MODE=hosted_alpha
+PRMR_STORAGE_BACKEND=postgres
+DATABASE_URL=<POOLED_POSTGRES_CONNECTION_STRING>
+PRMR_DURABLE_STORAGE_VERIFIED=true
+PRMR_SYNTHETIC_ONLY=true
+PRMR_ALLOWED_ORIGINS=https://prmr-memory-core.vercel.app
+```
+
+Enter `DATABASE_URL` privately in Render. Do not commit it or expose it to
+Vercel/browser code. Set `PRMR_DURABLE_STORAGE_VERIFIED=true` only after the
+connection and non-destructive schema initialization succeed. `/tmp` remains
+ephemeral smoke storage and is not used for durable self-serve records.
+
+The deployable route surface adds:
+
+```text
+POST /v1/self-serve/signup
+POST /v1/self-serve/verify
+POST /v1/self-serve/login
+POST /v1/self-serve/plan
+POST /v1/self-serve/provision
+GET|POST|PATCH|DELETE /v1/self-serve/keys
+GET /v1/self-serve/dashboard
+```
+
+Existing protected PRMR routes use keys created by this same durable service.
+V0.94 still uses local/test verification and hash-backed MVP sessions. It is
+not real email verification, Stripe billing, or production auth hardening.
+
+See `docs/postgres_durable_storage_v0941.md`. The earlier
+`docs/hosted_self_serve_key_activation_v094.md` disk path remains historical
+V0.94 documentation and is not the current Render Free deployment direction.

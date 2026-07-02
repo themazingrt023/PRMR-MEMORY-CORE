@@ -42,8 +42,9 @@ export function ProblemSection() {
             the next action. That is the continuity gap PRMR Memory Core is built for.
           </p>
           <p className="mt-8 max-w-2xl text-lg font-extralight leading-9 text-mist/68">
-            PRMR can make limited context feel wider by giving systems smaller, cleaner continuity packets instead of
-            raw history dumps. It does not literally increase a model&apos;s official context window.
+            Developers and companies can use PRMR beside their existing database, model, workflow, game, agent, or
+            support system. It helps both AI and non-AI systems preserve useful state across time without pretending
+            raw storage, retrieval, or summaries are enough on their own.
           </p>
         </div>
 
