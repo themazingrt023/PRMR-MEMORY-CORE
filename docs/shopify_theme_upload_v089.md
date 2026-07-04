@@ -24,7 +24,7 @@ It is not the main PRMR company site. The company site builds trust; this Shopif
 9. Use manual fulfilment only.
 10. Do not enable automatic API key delivery.
 11. Link CTA buttons to the product page, an application page, or a booking page.
-12. Keep the PRMR company site linked as `Learn more`: `https://prmr-memory-core.vercel.app`.
+12. Keep the PRMR company site linked as `Learn more`: `https://afternumindustries.co.uk`.
 
 ## Recommended Shopify Product Setup
 

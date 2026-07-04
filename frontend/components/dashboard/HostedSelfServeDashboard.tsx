@@ -69,7 +69,24 @@ export function HostedSelfServeDashboard() {
   }
 
   useEffect(() => {
-    void load();
+    let cancelled = false;
+    void fetch("/api/dashboard/state", { cache: "no-store" })
+      .then(async (response) => (await response.json().catch(() => ({}))) as DashboardResponse)
+      .then((body) => {
+        if (!cancelled) {
+          setPayload(body);
+          setLoading(false);
+        }
+      })
+      .catch(() => {
+        if (!cancelled) {
+          setPayload(null);
+          setLoading(false);
+        }
+      });
+    return () => {
+      cancelled = true;
+    };
   }, []);
 
   async function keyAction(method: "POST" | "PATCH" | "DELETE", keyId?: string) {
@@ -129,6 +146,8 @@ export function HostedSelfServeDashboard() {
   const env = [
     "PRMR_API_BASE_URL=https://prmr-memory-core-api.onrender.com",
     "PRMR_API_KEY=<YOUR_PRMR_KEY>",
+    "",
+    "# Optional explicit scope assertions:",
     `PRMR_CLIENT_ID=${scope.client_id}`,
     `PRMR_VAULT_ID=${scope.vault_id}`,
     `PRMR_NAMESPACE=${scope.namespace}`
@@ -218,7 +237,10 @@ export function HostedSelfServeDashboard() {
       <section className="grid gap-6 lg:grid-cols-2">
         <Panel title="Server quickstart">
           <pre className="overflow-x-auto whitespace-pre-wrap border border-white/10 bg-black/25 p-4 font-mono text-xs leading-6 text-mist/72">{env}</pre>
-          <p className="mt-4 text-sm text-mist/48">Keep the key server-side. Never place it in frontend code.</p>
+          <p className="mt-4 text-sm text-mist/48">
+            Bearer authentication is sufficient; PRMR resolves this key&apos;s scope. Optional scope headers are
+            checked when supplied. Keep the key server-side and never place it in frontend code.
+          </p>
         </Panel>
         <Panel title="Storage boundary">
           <p>{payload.storage?.hosted_storage_boundary || "Hosted durable storage has not been verified."}</p>

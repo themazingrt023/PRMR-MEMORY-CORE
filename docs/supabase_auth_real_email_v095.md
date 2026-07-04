@@ -37,18 +37,22 @@ or external security certification.
 4. Set the production Site URL to:
 
    ```text
-   https://prmr-memory-core.vercel.app
+   https://afternumindustries.co.uk
    ```
 
 5. Add exact redirect URLs:
 
    ```text
+   https://afternumindustries.co.uk/auth/callback
+   https://www.afternumindustries.co.uk/auth/callback
    https://prmr-memory-core.vercel.app/auth/callback
    http://localhost:3000/auth/callback
    ```
 
    Production confirmation tests should use
-   `https://prmr-memory-core.vercel.app`. If a Vercel preview deployment is
+   `https://afternumindustries.co.uk`. Keep the Vercel callback during the
+   domain transition so links started on the fallback domain still complete.
+   If a Vercel preview deployment is
    tested, add that exact preview callback URL separately:
 
    ```text
@@ -96,7 +100,7 @@ Existing storage values remain:
 PRMR_STORAGE_BACKEND=postgres
 DATABASE_URL=<POOLED_POSTGRES_CONNECTION_STRING>
 PRMR_DURABLE_STORAGE_VERIFIED=true
-PRMR_ALLOWED_ORIGINS=https://prmr-memory-core.vercel.app
+PRMR_ALLOWED_ORIGINS=https://afternumindustries.co.uk,https://www.afternumindustries.co.uk,https://prmr-memory-core.vercel.app
 ```
 
 `DATABASE_URL` remains server-only. No Supabase service-role key is required by

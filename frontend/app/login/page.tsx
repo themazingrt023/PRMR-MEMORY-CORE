@@ -1,7 +1,19 @@
+import Link from "next/link";
 import { Navigation } from "@/components/landing/Navigation";
 import { LoginForm } from "@/components/self-serve/LoginForm";
 
-export default function LoginPage() {
+type LoginPageProps = {
+  searchParams: Promise<{ verified?: string; error?: string }>;
+};
+
+export default async function LoginPage({ searchParams }: LoginPageProps) {
+  const params = await searchParams;
+  const initialMessage =
+    params.verified === "1"
+      ? "Email verified. Sign in to continue."
+      : params.error === "auth_callback_failed"
+        ? "We could not complete email verification. Please sign in or request a new verification email."
+        : "";
   return (
     <main className="relative min-h-screen overflow-hidden bg-[var(--afternum-bg)] text-mist">
       <Navigation />
@@ -12,8 +24,8 @@ export default function LoginPage() {
           Sign in to continue to your API workspace. PRMR API keys remain
           separate and are never used as dashboard login credentials.
         </p>
-        <LoginForm />
-        <a className="mt-5 text-sm text-white/70 underline" href="/signup">Create a Free workspace</a>
+        <LoginForm initialMessage={initialMessage} />
+        <Link className="mt-5 text-sm text-white/70 underline" href="/signup">Create a Free workspace</Link>
       </section>
     </main>
   );

@@ -1,24 +1,30 @@
 "use client";
 
-import { FormEvent, useEffect, useState } from "react";
+import Link from "next/link";
+import { FormEvent, useEffect, useRef, useState } from "react";
 import {
   createSupabaseBrowserClient,
   supabaseBrowserConfigured
 } from "@/lib/supabaseClient";
 
 export function VerifyEmailPanel() {
-  const [email, setEmail] = useState("");
+  const emailInput = useRef<HTMLInputElement>(null);
   const [message, setMessage] = useState(
     "Use the verification link we sent to your inbox."
   );
   const [busy, setBusy] = useState(false);
 
   useEffect(() => {
-    setEmail(sessionStorage.getItem("prmr-pending-verification-email") || "");
+    if (emailInput.current) {
+      emailInput.current.value =
+        sessionStorage.getItem("prmr-pending-verification-email") || "";
+    }
   }, []);
 
   async function resend(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
+    const form = new FormData(event.currentTarget);
+    const email = String(form.get("email") || "").trim().toLowerCase();
     if (!supabaseBrowserConfigured()) {
       setMessage("Email verification is temporarily unavailable. Please try again shortly.");
       return;
@@ -53,10 +59,10 @@ export function VerifyEmailPanel() {
       <form className="mt-6 flex flex-col gap-3 sm:flex-row" onSubmit={resend}>
         <input
           className="field-input"
-          onChange={(event) => setEmail(event.target.value)}
-          placeholder="you@company.com"
+          name="email"
+          placeholder="developer@example.com"
+          ref={emailInput}
           type="email"
-          value={email}
         />
         <button
           className="ghost-button shrink-0 px-5 py-3 font-mono text-xs uppercase disabled:opacity-40"
@@ -69,9 +75,9 @@ export function VerifyEmailPanel() {
       <p aria-live="polite" className="mt-4 text-sm text-mist/48">
         {message}
       </p>
-      <a className="mt-5 inline-block text-sm text-white/70 underline" href="/login">
+      <Link className="mt-5 inline-block text-sm text-white/70 underline" href="/login">
         Return to login
-      </a>
+      </Link>
     </div>
   );
 }

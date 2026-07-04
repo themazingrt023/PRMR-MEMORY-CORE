@@ -1,25 +1,16 @@
 "use client";
 
-import { FormEvent, useEffect, useState } from "react";
+import { FormEvent, useState } from "react";
 import { useRouter } from "next/navigation";
 import {
   createSupabaseBrowserClient,
   supabaseBrowserConfigured
 } from "@/lib/supabaseClient";
 
-export function LoginForm() {
+export function LoginForm({ initialMessage = "" }: { initialMessage?: string }) {
   const router = useRouter();
   const [busy, setBusy] = useState(false);
-  const [message, setMessage] = useState("");
-
-  useEffect(() => {
-    const params = new URLSearchParams(window.location.search);
-    if (params.get("verified") === "1") {
-      setMessage("Email verified. Sign in to continue.");
-    } else if (params.get("error") === "auth_callback_failed") {
-      setMessage("We could not complete email verification. Please sign in or request a new verification email.");
-    }
-  }, []);
+  const [message, setMessage] = useState(initialMessage);
 
   async function submit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -63,7 +54,7 @@ export function LoginForm() {
     <form className="mt-10 max-w-2xl space-y-5" onSubmit={submit}>
       <label className="block">
         <span className="font-mono text-[10px] uppercase tracking-[0.18em] text-mist/48">Email</span>
-        <input className="field-input mt-2" name="email" placeholder="you@company.com" required type="email" />
+        <input className="field-input mt-2" name="email" placeholder="developer@example.com" required type="email" />
       </label>
       <label className="block">
         <span className="font-mono text-[10px] uppercase tracking-[0.18em] text-mist/48">Password</span>

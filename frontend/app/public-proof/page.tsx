@@ -12,7 +12,8 @@ const evidenceLadder = [
 ];
 
 const statusRows = [
-  ["Frontend", "https://prmr-memory-core.vercel.app"],
+  ["Official frontend", "https://afternumindustries.co.uk"],
+  ["Vercel fallback", "https://prmr-memory-core.vercel.app"],
   ["Backend", "https://prmr-memory-core-api.onrender.com"],
   ["Protected hosted smoke", "V0.79 PASS_FULL_CONTROLLED_HOSTED_SMOKE"],
   ["Multi-client isolation", "V0.84 PASS"],

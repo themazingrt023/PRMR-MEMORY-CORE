@@ -7,6 +7,7 @@ reports or lifecycle history.
 
 from __future__ import annotations
 
+import hmac
 import json
 from dataclasses import asdict, dataclass
 from uuid import uuid4
@@ -15,6 +16,7 @@ from typing import Any
 from prmr.product.hosted_backend_foundation_v069 import (
     AccessDecision,
     PRMRHostedBackendFoundation,
+    normalize_api_key,
     safe_hash,
     utc_now,
 )
@@ -207,11 +209,12 @@ class PRMRAPIKeyLifecycle:
         }
 
     def find_lifecycle_key_by_raw(self, raw_key: str | None) -> LifecycleKeyRecord | None:
-        if not raw_key:
+        normalized = normalize_api_key(raw_key)
+        if not normalized:
             return None
-        hashed = safe_hash(raw_key)
+        hashed = safe_hash(normalized)
         for record in self.lifecycle_keys.values():
-            if record.key_hash == hashed:
+            if hmac.compare_digest(record.key_hash, hashed):
                 return record
         return None
 

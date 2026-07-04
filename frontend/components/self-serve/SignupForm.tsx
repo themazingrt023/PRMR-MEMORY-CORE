@@ -61,7 +61,7 @@ export function SignupForm() {
     <form className="mt-10 space-y-6" onSubmit={submit}>
       <div className="grid gap-5 md:grid-cols-2">
         <Field label="Name" name="name" placeholder="Your name" />
-        <Field label="Email" name="email" placeholder="you@company.com" type="email" />
+        <Field label="Email" name="email" placeholder="developer@example.com" type="email" />
       </div>
       <Field label="Password" name="password" placeholder="At least 10 characters" type="password" />
       <label className="flex items-start gap-3 border-t border-white/[0.08] pt-5 text-sm leading-6 text-mist/58">

@@ -9,7 +9,7 @@ from uuid import uuid4
 
 from prmr.product.api_key_lifecycle_v070 import LifecycleKeyRecord
 from prmr.product.controlled_alpha_api_v071 import PRMRControlledAlphaAPI
-from prmr.product.hosted_backend_foundation_v069 import safe_hash, utc_now
+from prmr.product.hosted_backend_foundation_v069 import normalize_api_key, safe_hash, utc_now
 from prmr.product.self_serve_accounts_v092 import SelfServeAccount, SelfServeAccountsV092
 from prmr.product.self_serve_plans_v092 import PlanDefinition, SelfServePlansV092
 
@@ -236,6 +236,78 @@ class SelfServeAPIKeysV092:
         if record.status != "active":
             return False, f"{record.status}_key"
         return True, "allowed"
+
+    def resolve_request_scope(
+        self,
+        *,
+        raw_key: str | None,
+        client_id: str,
+        vault_id: str,
+        namespace: str,
+    ) -> tuple[dict[str, str], dict[str, Any]]:
+        normalized_key = normalize_api_key(raw_key)
+        supplied = {
+            "client_id": str(client_id or "").strip(),
+            "vault_id": str(vault_id or "").strip(),
+            "namespace": str(namespace or "").strip(),
+        }
+        record = self.lifecycle.find_lifecycle_key_by_raw(normalized_key)
+        key_prefix_type = (
+            "prmr_live"
+            if normalized_key.startswith("prmr_live_")
+            else "prmr_alpha"
+            if normalized_key.startswith("prmr_alpha_")
+            else "unknown"
+        )
+        key_length = len(normalized_key)
+        length_bucket = "too_short" if key_length < 24 else "too_long" if key_length > 160 else "expected"
+        resolved = dict(supplied)
+        if record is not None:
+            resolved = {
+                "client_id": supplied["client_id"] or record.client_id,
+                "vault_id": supplied["vault_id"] or record.vault_id,
+                "namespace": supplied["namespace"] or record.namespace,
+            }
+        tenant_matched = bool(
+            record is not None
+            and (not supplied["client_id"] or supplied["client_id"] == record.client_id)
+            and (not supplied["vault_id"] or supplied["vault_id"] == record.vault_id)
+            and (not supplied["namespace"] or supplied["namespace"] == record.namespace)
+        )
+        status = record.status if record is not None else None
+        rejection_reason = (
+            "missing_header"
+            if not normalized_key
+            else "invalid_format"
+            if key_prefix_type == "unknown" or length_bucket != "expected"
+            else "key_not_found"
+            if record is None
+            else "revoked"
+            if status == "revoked"
+            else "inactive"
+            if status != "active"
+            else "tenant_mismatch"
+            if not tenant_matched
+            else "allowed"
+        )
+        diagnostic = {
+            "keyFormatRecognized": key_prefix_type != "unknown" and length_bucket == "expected",
+            "keyPrefixType": key_prefix_type,
+            "keyLengthBucket": length_bucket,
+            "lookupAttempted": bool(normalized_key),
+            "keyRecordFound": record is not None,
+            "hashMatched": record is not None,
+            "keyActive": status == "active",
+            "keyRevoked": status == "revoked",
+            "keyExpired": False,
+            "tenantMatched": tenant_matched,
+            "scopeInferred": bool(
+                record is not None
+                and not all(supplied.values())
+            ),
+            "rejectionReason": rejection_reason,
+        }
+        return resolved, diagnostic
 
     def public_scope(self, scope: SelfServeClientScope) -> dict[str, Any]:
         return {

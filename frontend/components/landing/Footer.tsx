@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { AfternumMark } from "@/components/brand/AfternumMark";
 import { boundaryStatement } from "@/data/evidence";
 
@@ -20,17 +21,17 @@ export function Footer() {
             <div>
               <p className="kimi-section-label mb-5">Product</p>
               <div className="flex flex-col gap-3 font-mono text-xs uppercase tracking-[0.18em]">
-                <a href="/demo">Demo</a>
-                <a href="/#access">Alpha</a>
-                <a href="/docs">Docs</a>
+                <Link href="/demo">Demo</Link>
+                <Link href="/#access">Alpha</Link>
+                <Link href="/docs">Docs</Link>
               </div>
             </div>
             <div>
               <p className="kimi-section-label mb-5">Company</p>
               <div className="flex flex-col gap-3 font-mono text-xs uppercase tracking-[0.18em]">
-                <a href="/contact">Contact</a>
-                <a href="/#evidence">Evidence</a>
-                <a href="/#use-cases">Use Cases</a>
+                <Link href="/contact">Contact</Link>
+                <Link href="/#evidence">Evidence</Link>
+                <Link href="/#use-cases">Use Cases</Link>
               </div>
             </div>
           </div>
@@ -43,8 +44,8 @@ export function Footer() {
           </div>
           <p className="mt-4 max-w-4xl text-xs leading-5 text-mist/34">
             The protected API and frontend are hosted. Self-serve access requires verified email and durable account
-            storage. Production readiness, regulatory approval, legal approval, third-party security certification,
-            and field validation are not asserted.
+            storage. No production readiness, regulatory approval, legal approval, third-party security certification,
+            or field validation is asserted.
           </p>
           <p className="mt-4 max-w-4xl text-xs leading-5 text-mist/42">
             PRMR Memory Core is not an AI model. It is a continuity infrastructure layer that helps systems preserve useful state over time.

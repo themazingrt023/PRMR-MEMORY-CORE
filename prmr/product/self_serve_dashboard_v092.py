@@ -38,6 +38,7 @@ class SelfServeDashboardV092:
             accounts=self.accounts,
             plans=self.plans,
         )
+        self.api_key_diagnostics: list[dict[str, Any]] = []
 
     def signup(self, *, name: str, email: str, password: str) -> dict[str, Any]:
         return self.accounts.create_user(name=name, email=email, password=password)
@@ -85,6 +86,15 @@ class SelfServeDashboardV092:
     ) -> dict[str, Any]:
         """Run one protected PRMR operation and enforce the selected plan."""
 
+        resolved_scope, diagnostic = self.keys.resolve_request_scope(
+            raw_key=api_key,
+            client_id=client_id,
+            vault_id=vault_id,
+            namespace=namespace,
+        )
+        client_id = resolved_scope["client_id"]
+        vault_id = resolved_scope["vault_id"]
+        namespace = resolved_scope["namespace"]
         base_payload = {
             "api_key": api_key,
             "client_id": client_id,
@@ -94,9 +104,15 @@ class SelfServeDashboardV092:
         }
         owner_user_id = self.keys.user_by_client.get(client_id)
         valid_key, _ = self.keys.preflight_key(raw_key=api_key, client_id=client_id)
+        plan_allows_usage = False
         if valid_key and owner_user_id:
             allowed, reason = self.plans.can_consume(owner_user_id)
+            plan_allows_usage = allowed
             if not allowed:
+                diagnostic["planAllowsUsage"] = False
+                diagnostic["rejectionReason"] = "plan_required"
+                self.api_key_diagnostics.append(diagnostic)
+                del self.api_key_diagnostics[:-200]
                 endpoint = self.endpoint_for(operation)
                 self.api.api_request_log.append(
                     APIRequestLog(
@@ -122,6 +138,11 @@ class SelfServeDashboardV092:
                         "boundary": PRODUCT_BOUNDARY_V092,
                     },
                 }
+        diagnostic["planAllowsUsage"] = plan_allows_usage
+        if valid_key and diagnostic["rejectionReason"] == "allowed" and not plan_allows_usage:
+            diagnostic["rejectionReason"] = "plan_required"
+        self.api_key_diagnostics.append(diagnostic)
+        del self.api_key_diagnostics[:-200]
 
         response = self.dispatch(operation, base_payload)
         if response.get("status_code") == 200 and owner_user_id:

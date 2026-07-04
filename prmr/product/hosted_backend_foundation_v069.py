@@ -7,6 +7,7 @@ hosted backend and does not issue real client credentials.
 from __future__ import annotations
 
 import hashlib
+import hmac
 from dataclasses import asdict, dataclass, field
 from datetime import datetime, timezone
 from pathlib import Path
@@ -58,6 +59,10 @@ def utc_now() -> str:
 
 def safe_hash(raw_value: str) -> str:
     return hashlib.sha256(raw_value.encode("utf-8")).hexdigest()
+
+
+def normalize_api_key(raw_value: str | None) -> str:
+    return str(raw_value or "").strip()
 
 
 def key_fingerprint(raw_value: str) -> str:
@@ -297,11 +302,12 @@ class PRMRHostedBackendFoundation:
         return f"{client_id}::{vault_id}::{namespace}"
 
     def active_key_for_raw(self, raw_key: str | None) -> APIKeyRecord | None:
-        if not raw_key:
+        normalized = normalize_api_key(raw_key)
+        if not normalized:
             return None
-        hashed = safe_hash(raw_key)
+        hashed = safe_hash(normalized)
         for record in self.api_keys.values():
-            if record.key_hash == hashed:
+            if hmac.compare_digest(record.key_hash, hashed):
                 return record
         return None
 
@@ -311,6 +317,7 @@ class PRMRHostedBackendFoundation:
             "invalid_key": "The provided access key is not valid for this request.",
             "revoked_key": "The provided access key is no longer active.",
             "rotated_key": "The provided access key has been rotated.",
+            "inactive_key": "The provided access key is not active.",
             "client_not_found": "The requested client is not available.",
             "client_not_active": "The requested client is not active.",
             "key_client_mismatch": "The access key is not valid for this client.",
@@ -412,6 +419,12 @@ class PRMRHostedBackendFoundation:
 
         if key_record.status == "rotated":
             decision = self.access_decision(False, 403, "rotated_key")
+            self.log_request(client_id, operation, decision)
+            self.log_usage(client_id, vault_id, namespace, operation, count, False)
+            return decision
+
+        if key_record.status != "active":
+            decision = self.access_decision(False, 403, "inactive_key")
             self.log_request(client_id, operation, decision)
             self.log_usage(client_id, vault_id, namespace, operation, count, False)
             return decision

@@ -2,6 +2,8 @@
 
 from __future__ import annotations
 
+import json
+import logging
 import os
 from pathlib import Path
 from threading import RLock
@@ -31,6 +33,7 @@ BOUNDARY_V094 = (
     "approval, legal approval, or external security certification."
 )
 DEFAULT_BACKEND_URL = "https://prmr-memory-core-api.onrender.com"
+AUTH_LOGGER = logging.getLogger("prmr.api.auth")
 
 
 def configured_storage_path() -> Path:
@@ -228,6 +231,14 @@ def create_app_v094(
             "operation": "health",
             "auth_backend": auth_backend,
             "real_email_verification_path": auth_backend == "supabase",
+            "api_key_auth": {
+                "contract": "Authorization: Bearer <PRMR_API_KEY>",
+                "scope_inference": True,
+                "explicit_scope_headers_optional": True,
+                "mismatched_explicit_scope_denied": True,
+                "raw_keys_logged": False,
+                "validation_revision": "external_consumer_scope_v1",
+            },
             "hosted_self_serve_activation": state["storage"]["durable_storage_claim_allowed"],
             "self_serve_routes": [
                 "POST /v1/self-serve/signup",
@@ -532,6 +543,19 @@ def create_app_v094(
         context.update(extra)
         with lock:
             result = active_product.execute(operation, **context)
+            product_diagnostics = getattr(active_product.product, "api_key_diagnostics", [])
+            if product_diagnostics:
+                diagnostic = {
+                    "authHeaderPresent": bool(authorization),
+                    "bearerPrefixValid": bool(
+                        authorization and authorization.startswith("Bearer ")
+                    ),
+                    **product_diagnostics[-1],
+                }
+                AUTH_LOGGER.info(
+                    "api_key_validation %s",
+                    json.dumps(diagnostic, separators=(",", ":"), sort_keys=True),
+                )
         return protected_response(result)
 
     def protected_headers(
