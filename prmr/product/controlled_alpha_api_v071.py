@@ -6,6 +6,7 @@ but it is not a live hosted API unless separately deployed and smoke-tested.
 
 from __future__ import annotations
 
+from collections import Counter
 import json
 from dataclasses import asdict, dataclass
 from typing import Any
@@ -50,6 +51,30 @@ UNSAFE_PUBLIC_LANGUAGE = [
     "definitely fraud",
     "blacklist",
     "close account immediately",
+]
+
+UNSAFE_METADATA_TERMS = [
+    "authorization",
+    "api_key",
+    "apikey",
+    "access_token",
+    "refresh_token",
+    "token",
+    "secret",
+    "password",
+    "credential",
+    "private_key",
+    "card_number",
+    "payment_card",
+    "database_url",
+    "service_role",
+    "file_contents",
+    "raw_file",
+    "file_path",
+    "filepath",
+    "local_path",
+    "absolute_path",
+    "raw_path",
 ]
 
 
@@ -196,7 +221,7 @@ class PRMRControlledAlphaAPI:
 
     def events_ingest(self, request_payload: dict[str, Any]) -> dict[str, Any]:
         endpoint = "POST /v1/events/ingest"
-        events = request_payload.get("events")
+        events = self.event_batch_from_payload(request_payload)
         count = len(events) if isinstance(events, list) else 1
         context, error = self.require_access(endpoint, request_payload, "events_ingest", count=count)
         if error:
@@ -208,17 +233,10 @@ class PRMRControlledAlphaAPI:
         for index, event in enumerate(events):
             if not isinstance(event, dict):
                 return self.response(400, {"status": "error", "error": {"code": "payload_invalid", "message": "each event must be an object."}, "public_safe": True})
-            safe_events.append(
-                {
-                    "event_id": str(event.get("event_id") or f"evt_{uuid4().hex[:12]}")[:120],
-                    "user_id": str(event.get("user_id", "synthetic_user"))[:120],
-                    "type": str(event.get("type", "memory_event"))[:120],
-                    "content": str(event.get("content", ""))[:1200],
-                    "timestamp": str(event.get("timestamp", utc_now()))[:120],
-                    "timestamp_index": int(event.get("timestamp_index", index + 1)),
-                    "synthetic": True,
-                }
-            )
+            normalized, normalize_error = self.normalize_event(event, index)
+            if normalize_error:
+                return self.response(400, {"status": "error", "error": {"code": "payload_invalid", "message": normalize_error}, "public_safe": True})
+            safe_events.append(normalized)
         scope = self.scope_key(context["client_id"], context["vault_id"], context["namespace"])
         self.events.setdefault(scope, []).extend(safe_events)
         return self.public_ok(
@@ -231,6 +249,137 @@ class PRMRControlledAlphaAPI:
             },
         )
 
+    def event_batch_from_payload(self, request_payload: dict[str, Any]) -> Any:
+        events = request_payload.get("events")
+        if isinstance(events, list):
+            return events
+        external_keys = {
+            "event_type",
+            "signal",
+            "metadata",
+            "occurred_at",
+            "actor_reference",
+            "workspace_reference",
+            "idempotency_key",
+            "summary",
+            "type",
+            "content",
+        }
+        if any(key in request_payload for key in external_keys):
+            return [
+                {
+                    key: value
+                    for key, value in request_payload.items()
+                    if key not in {"api_key", "client_id", "vault_id", "namespace"}
+                }
+            ]
+        return events
+
+    def normalize_event(self, event: dict[str, Any], index: int) -> tuple[dict[str, Any], str | None]:
+        event_type = event.get("event_type")
+        signal = event.get("signal")
+        occurred_at = event.get("occurred_at")
+        actor_reference = event.get("actor_reference")
+        workspace_reference = event.get("workspace_reference")
+        idempotency_key = event.get("idempotency_key")
+        raw_timestamp_index = event.get("timestamp_index", index + 1)
+        try:
+            timestamp_index = int(raw_timestamp_index)
+        except (TypeError, ValueError):
+            return {}, "timestamp_index must be an integer when provided."
+
+        external_metadata = self.safe_external_metadata(event)
+        normalized = {
+            "event_id": str(event.get("event_id") or idempotency_key or f"evt_{uuid4().hex[:12]}")[:120],
+            "user_id": str(event.get("user_id") or actor_reference or "synthetic_user")[:120],
+            "type": str(event.get("type") or event_type or "memory_event")[:120],
+            "content": str(event.get("content") or signal or event.get("summary") or "")[:1200],
+            "timestamp": str(event.get("timestamp") or occurred_at or utc_now())[:120],
+            "timestamp_index": timestamp_index,
+            "synthetic": True,
+        }
+        if external_metadata:
+            normalized["external_metadata"] = external_metadata
+        return normalized, None
+
+    def safe_external_metadata(self, event: dict[str, Any]) -> dict[str, Any]:
+        preserved: dict[str, Any] = {}
+        for source_key, target_key in [
+            ("metadata", "metadata"),
+            ("source_app", "source_app"),
+            ("workspace_reference", "workspace_reference"),
+            ("actor_reference", "actor_reference"),
+            ("idempotency_key", "idempotency_key"),
+            ("event_type", "external_event_type"),
+            ("occurred_at", "occurred_at"),
+        ]:
+            if source_key in event:
+                preserved[target_key] = self.sanitize_metadata_value(event[source_key])
+        unknown = {
+            key: value
+            for key, value in event.items()
+            if key
+            not in {
+                "event_id",
+                "user_id",
+                "type",
+                "content",
+                "timestamp",
+                "timestamp_index",
+                "synthetic",
+                "metadata",
+                "source_app",
+                "workspace_reference",
+                "actor_reference",
+                "idempotency_key",
+                "event_type",
+                "occurred_at",
+                "signal",
+                "summary",
+            }
+        }
+        if unknown:
+            preserved["unknown_fields"] = self.sanitize_metadata_value(unknown)
+        return preserved
+
+    def sanitize_metadata_value(self, value: Any, depth: int = 0) -> Any:
+        if depth > 4:
+            return "[redacted_depth_limit]"
+        if isinstance(value, dict):
+            safe: dict[str, Any] = {}
+            for key, item in value.items():
+                clean_key = str(key)[:120]
+                if self.unsafe_metadata_key(clean_key):
+                    safe[clean_key] = "[redacted]"
+                else:
+                    safe[clean_key] = self.sanitize_metadata_value(item, depth + 1)
+            return safe
+        if isinstance(value, list):
+            return [self.sanitize_metadata_value(item, depth + 1) for item in value[:50]]
+        if isinstance(value, (str, int, float, bool)) or value is None:
+            if isinstance(value, str):
+                if self.looks_sensitive_metadata_value(value):
+                    return "[redacted]"
+                return value[:500]
+            return value
+        return str(value)[:500]
+
+    def unsafe_metadata_key(self, key: str) -> bool:
+        lowered = key.lower()
+        return any(term in lowered for term in UNSAFE_METADATA_TERMS)
+
+    def looks_sensitive_metadata_value(self, value: str) -> bool:
+        lowered = value.lower()
+        if "authorization:" in lowered or "bearer " in lowered:
+            return True
+        if "postgres://" in lowered or "postgresql://" in lowered:
+            return True
+        if "sk-" in value or "github_pat_" in value or "ghp_" in value:
+            return True
+        if "prmr_alpha_" in value or "prmr_live_" in value:
+            return True
+        return False
+
     def continuity_packet(self, request_payload: dict[str, Any]) -> dict[str, Any]:
         endpoint = "POST /v1/continuity/packet"
         context, error = self.require_access(endpoint, request_payload, "continuity_packet")
@@ -238,21 +387,14 @@ class PRMRControlledAlphaAPI:
             return error
         scope = self.scope_key(context["client_id"], context["vault_id"], context["namespace"])
         events = self.events.get(scope, [])
-        if not events:
-            return self.response(404, {"status": "error", "error": {"code": "events_not_found", "message": "No scoped events are available."}, "public_safe": True})
 
         packet_id = f"packet_{uuid4().hex[:12]}"
-        latest = sorted(events, key=lambda item: item.get("timestamp_index", 0))[-1]
         packet = {
+            **self.build_theory_packet(events),
             "packet_id": packet_id,
             "client_id": context["client_id"],
             "vault_id": context["vault_id"],
             "namespace": context["namespace"],
-            "event_count": len(events),
-            "current_state": latest["content"],
-            "summary": "Continuity packet generated from synthetic events.",
-            "active_signals": sorted({event["type"] for event in events}),
-            "stale_signals": [],
             "public_safe": True,
         }
         self.packets[packet_id] = packet
@@ -283,8 +425,265 @@ class PRMRControlledAlphaAPI:
                 "packet_id": packet_id,
                 "report_id": report_id,
                 "summary": packet["summary"],
+                "packet": packet,
             },
         )
+
+    def build_theory_packet(self, events: list[dict[str, Any]]) -> dict[str, Any]:
+        ordered = sorted(
+            events,
+            key=lambda item: (
+                int(item.get("timestamp_index", 0)),
+                str(item.get("timestamp", "")),
+                str(item.get("event_id", "")),
+            ),
+        )
+        event_count = len(ordered)
+        latest = ordered[-1] if ordered else {}
+        horizon_window_size = min(5, max(1, event_count))
+        recent = ordered[-horizon_window_size:] if ordered else []
+        historical = ordered[:-horizon_window_size] if event_count > horizon_window_size else ordered
+        all_signals = [self.event_signal(event) for event in ordered]
+        recent_signals = [self.event_signal(event) for event in recent]
+        historical_signals = [self.event_signal(event) for event in historical]
+        signal_counts = Counter(all_signals)
+        recent_set = set(recent_signals)
+        historical_set = set(historical_signals)
+        latent_set = historical_set - recent_set
+        decayed_set = latent_set
+        repeated_signals = sorted(signal for signal, count in signal_counts.items() if count > 1)
+        lineage_information = self.lineage_information(ordered, signal_counts)
+        repeated_patterns = self.repeated_patterns(ordered, signal_counts)
+        transition_pairs = self.transition_pairs(ordered)
+        source_distribution = Counter(
+            str((event.get("external_metadata") or {}).get("metadata", {}).get("source_app")
+                or (event.get("external_metadata") or {}).get("source_app")
+                or "unknown")
+            for event in ordered
+        )
+        active_information = [
+            {
+                "signal": signal,
+                "recent_count": recent_signals.count(signal),
+                "total_count": signal_counts[signal],
+                "latest_content": self.latest_content_for_signal(recent, signal),
+                "last_seen": self.last_seen_for_signal(ordered, signal),
+            }
+            for signal in sorted(recent_set)
+        ]
+        latent_information = [
+            {
+                "signal": signal,
+                "historical_count": signal_counts[signal],
+                "last_seen": self.last_seen_for_signal(ordered, signal),
+                "decay_reason": "historically present but absent from recent horizon",
+            }
+            for signal in sorted(latent_set)
+        ]
+        packet = {
+            "current_state": str(latest.get("content", "")) if latest else "",
+            "active_information": active_information,
+            "latent_information": latent_information,
+            "lineage_information": lineage_information,
+            "causal_signature": {
+                "top_event_types": [signal for signal, _ in signal_counts.most_common(5)],
+                "recurring_signal_names": repeated_signals,
+                "signal_frequency_distribution": dict(sorted(signal_counts.items())),
+                "first_seen_last_seen_by_signal": self.first_last_by_signal(ordered),
+                "transition_pairs": transition_pairs,
+                "stable_repeated_patterns": repeated_patterns,
+                "metadata_source_app_distribution": dict(sorted(source_distribution.items())),
+                "actor_continuity_markers": self.safe_sorted_refs(ordered, "actor_reference"),
+                "workspace_continuity_markers": self.safe_sorted_refs(ordered, "workspace_reference"),
+            },
+            "recursive_horizon": {
+                "short_horizon_event_count": len(recent),
+                "long_horizon_event_count": len(historical),
+                "horizon_window_size": horizon_window_size,
+                "recent_signal_set": sorted(recent_set),
+                "historical_signal_set": sorted(historical_set),
+                "overlapping_signals": sorted(recent_set & historical_set),
+                "decayed_or_missing_signals": sorted(decayed_set),
+            },
+            "coherence_score": self.coherence_score(ordered, recent_set, historical_set, signal_counts),
+            "recoverability_score": self.recoverability_score(ordered, lineage_information),
+            "re_emergence_signals": self.re_emergence_signals(ordered),
+            "decayed_signals": sorted(decayed_set),
+            "repeated_patterns": repeated_patterns,
+            "state_transition_summary": self.state_transition_summary(ordered),
+            "event_count": event_count,
+            "last_updated": str(latest.get("timestamp", "")) if latest else None,
+            "summary": "Continuity packet generated deterministically from scoped events.",
+            "active_signals": sorted(recent_set),
+            "stale_signals": sorted(decayed_set),
+        }
+        if event_count == 0:
+            packet["summary"] = "Empty continuity packet generated for scoped namespace with no events."
+        return packet
+
+    def event_signal(self, event: dict[str, Any]) -> str:
+        return str(event.get("type") or "memory_event")[:120]
+
+    def latest_content_for_signal(self, events: list[dict[str, Any]], signal: str) -> str:
+        for event in reversed(events):
+            if self.event_signal(event) == signal:
+                return str(event.get("content", ""))[:300]
+        return ""
+
+    def last_seen_for_signal(self, events: list[dict[str, Any]], signal: str) -> str | None:
+        for event in reversed(events):
+            if self.event_signal(event) == signal:
+                return str(event.get("timestamp", ""))
+        return None
+
+    def first_last_by_signal(self, events: list[dict[str, Any]]) -> dict[str, dict[str, Any]]:
+        output: dict[str, dict[str, Any]] = {}
+        for event in events:
+            signal = self.event_signal(event)
+            row = output.setdefault(
+                signal,
+                {
+                    "first_seen": str(event.get("timestamp", "")),
+                    "last_seen": str(event.get("timestamp", "")),
+                    "count": 0,
+                },
+            )
+            row["last_seen"] = str(event.get("timestamp", ""))
+            row["count"] += 1
+        return dict(sorted(output.items()))
+
+    def lineage_information(self, events: list[dict[str, Any]], signal_counts: Counter[str]) -> list[dict[str, Any]]:
+        lineage = []
+        for signal in sorted(signal for signal, count in signal_counts.items() if count > 1):
+            signal_events = [event for event in events if self.event_signal(event) == signal]
+            lineage.append(
+                {
+                    "signal": signal,
+                    "count": len(signal_events),
+                    "first_event_id": str(signal_events[0].get("event_id", "")),
+                    "latest_event_id": str(signal_events[-1].get("event_id", "")),
+                    "first_seen": str(signal_events[0].get("timestamp", "")),
+                    "last_seen": str(signal_events[-1].get("timestamp", "")),
+                    "timestamp_indexes": [event.get("timestamp_index") for event in signal_events],
+                }
+            )
+        return lineage
+
+    def transition_pairs(self, events: list[dict[str, Any]]) -> dict[str, int]:
+        pairs: Counter[str] = Counter()
+        for previous, current in zip(events, events[1:]):
+            pairs[f"{self.event_signal(previous)} -> {self.event_signal(current)}"] += 1
+        return dict(sorted(pairs.items()))
+
+    def repeated_patterns(self, events: list[dict[str, Any]], signal_counts: Counter[str]) -> list[dict[str, Any]]:
+        patterns = [
+            {
+                "pattern": signal,
+                "count": count,
+                "basis": "repeated signal type",
+            }
+            for signal, count in sorted(signal_counts.items())
+            if count > 1
+        ]
+        for pair, count in self.transition_pairs(events).items():
+            if count > 1:
+                patterns.append({"pattern": pair, "count": count, "basis": "repeated transition pair"})
+        return patterns
+
+    def safe_sorted_refs(self, events: list[dict[str, Any]], key: str) -> list[str]:
+        refs = set()
+        for event in events:
+            metadata = event.get("external_metadata") or {}
+            value = metadata.get(key)
+            if isinstance(value, str) and value and value != "[redacted]":
+                refs.add(value[:120])
+        return sorted(refs)
+
+    def coherence_score(
+        self,
+        events: list[dict[str, Any]],
+        recent_set: set[str],
+        historical_set: set[str],
+        signal_counts: Counter[str],
+    ) -> float:
+        if not events:
+            return 0.0
+        repeated_ratio = sum(count for count in signal_counts.values() if count > 1) / len(events)
+        overlap_ratio = len(recent_set & historical_set) / max(1, len(recent_set | historical_set))
+        workspace_refs = self.safe_sorted_refs(events, "workspace_reference")
+        actor_refs = self.safe_sorted_refs(events, "actor_reference")
+        workspace_consistency = 1.0 if len(workspace_refs) == 1 else 0.5 if workspace_refs else 0.0
+        actor_consistency = 1.0 if len(actor_refs) == 1 else 0.5 if actor_refs else 0.0
+        sparsity = min(1.0, len(events) / 8)
+        score = (
+            repeated_ratio * 0.35
+            + overlap_ratio * 0.25
+            + workspace_consistency * 0.15
+            + actor_consistency * 0.10
+            + sparsity * 0.15
+        )
+        return round(max(0.0, min(1.0, score)), 4)
+
+    def recoverability_score(self, events: list[dict[str, Any]], lineage: list[dict[str, Any]]) -> float:
+        if not events:
+            return 0.0
+        has_content = sum(1 for event in events if str(event.get("content", "")).strip()) / len(events)
+        has_order = sum(1 for event in events if isinstance(event.get("timestamp_index"), int)) / len(events)
+        has_anchor = sum(1 for event in events if str(event.get("event_id", "")).strip()) / len(events)
+        has_timestamp = sum(1 for event in events if str(event.get("timestamp", "")).strip()) / len(events)
+        lineage_factor = min(1.0, len(lineage) / max(1, len({self.event_signal(event) for event in events})))
+        event_volume = min(1.0, len(events) / 6)
+        score = (
+            has_content * 0.25
+            + has_order * 0.20
+            + has_anchor * 0.20
+            + has_timestamp * 0.15
+            + lineage_factor * 0.10
+            + event_volume * 0.10
+        )
+        return round(max(0.0, min(1.0, score)), 4)
+
+    def re_emergence_signals(self, events: list[dict[str, Any]]) -> list[dict[str, Any]]:
+        positions: dict[str, list[int]] = {}
+        for index, event in enumerate(events):
+            positions.setdefault(self.event_signal(event), []).append(index)
+        output = []
+        for signal, indexes in sorted(positions.items()):
+            gaps = [right - left for left, right in zip(indexes, indexes[1:])]
+            max_gap = max(gaps) if gaps else 0
+            if len(indexes) >= 2 and max_gap >= 3:
+                output.append(
+                    {
+                        "signal": signal,
+                        "gap_event_count": max_gap - 1,
+                        "first_position": indexes[0],
+                        "latest_position": indexes[-1],
+                    }
+                )
+        return output
+
+    def state_transition_summary(self, events: list[dict[str, Any]]) -> dict[str, Any]:
+        if not events:
+            return {
+                "previous_state": None,
+                "current_state": "",
+                "changed": False,
+                "transition": "no_events",
+            }
+        current = str(events[-1].get("content", ""))
+        previous = str(events[-2].get("content", "")) if len(events) > 1 else None
+        return {
+            "previous_state": previous,
+            "current_state": current,
+            "changed": previous != current if previous is not None else True,
+            "previous_signal": self.event_signal(events[-2]) if len(events) > 1 else None,
+            "current_signal": self.event_signal(events[-1]),
+            "transition": (
+                f"{self.event_signal(events[-2])} -> {self.event_signal(events[-1])}"
+                if len(events) > 1
+                else f"start -> {self.event_signal(events[-1])}"
+            ),
+        }
 
     def memory_reconstruct(self, request_payload: dict[str, Any]) -> dict[str, Any]:
         endpoint = "POST /v1/memory/reconstruct"

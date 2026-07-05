@@ -39,6 +39,52 @@ curl -X POST \
   https://prmr-memory-core-api.onrender.com/v1/events/ingest
 ```
 
+Generic external event write:
+
+```bash
+curl -X POST \
+  -H "Authorization: Bearer $PRMR_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "event_type": "external.project.updated",
+    "signal": "User updated a project in an external product.",
+    "metadata": {
+      "source_app": "external_product"
+    },
+    "occurred_at": "2026-07-05T00:00:00.000Z",
+    "actor_reference": "hashed_actor",
+    "workspace_reference": "hashed_workspace",
+    "idempotency_key": "stable-event-id"
+  }' \
+  https://prmr-memory-core-api.onrender.com/v1/events/ingest
+```
+
+PRMR also accepts a generic batch shape:
+
+```json
+{
+  "events": [
+    {
+      "event_type": "external.project.updated",
+      "signal": "User updated a project in an external product.",
+      "metadata": {
+        "source_app": "external_product"
+      },
+      "occurred_at": "2026-07-05T00:00:00.000Z",
+      "actor_reference": "hashed_actor",
+      "workspace_reference": "hashed_workspace",
+      "idempotency_key": "stable-event-id"
+    }
+  ]
+}
+```
+
+Generic fields are normalized into PRMR memory events: `event_type` becomes
+the internal event `type`, `signal` becomes `content`, `occurred_at` becomes
+`timestamp`, `actor_reference` maps to `user_id`, and `idempotency_key` may be
+used as the event ID. Safe metadata is retained for future continuity packet
+improvements; unsafe credential-like metadata is redacted.
+
 Continuity packet:
 
 ```bash

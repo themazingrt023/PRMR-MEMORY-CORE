@@ -136,7 +136,7 @@ def run_smoke() -> tuple[
     add(
         checks,
         "login_copy_is_professional",
-        "Email verified. Sign in to continue." in login_form
+        "Email verified. Sign in to continue." in login_page + login_form
         and "We could not sign you in." in login_form
         and "Supabase Auth Login" not in login_page,
     )
@@ -179,8 +179,11 @@ def run_smoke() -> tuple[
     add(
         checks,
         "login_handles_verified_query",
-        'params.get("verified") === "1"' in login_form
-        and "Email verified. Sign in to continue." in login_form,
+        (
+            'params.get("verified") === "1"' in login_form
+            or 'params.verified === "1"' in login_page
+        )
+        and "Email verified. Sign in to continue." in login_page + login_form,
     )
     add(
         checks,
