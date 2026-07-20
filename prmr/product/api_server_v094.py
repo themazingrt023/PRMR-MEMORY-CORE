@@ -9,7 +9,7 @@ from pathlib import Path
 from threading import RLock
 from typing import Any, Callable
 
-from fastapi import FastAPI, Header, Request
+from fastapi import FastAPI, Header, Query, Request
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
 
@@ -246,17 +246,61 @@ def create_app_v094(
                 "POST /v1/self-serve/login",
                 "POST /v1/self-serve/plan",
                 "POST /v1/self-serve/provision",
+                "GET|POST /v1/self-serve/applications",
                 "GET|POST|PATCH|DELETE /v1/self-serve/keys",
                 "GET /v1/self-serve/dashboard",
             ],
             "supabase_auth_routes": [
                 "POST /v1/auth/supabase/activate",
+                "GET|POST /v1/auth/supabase/applications",
                 "GET|POST|PATCH|DELETE /v1/auth/supabase/keys",
                 "GET /v1/auth/supabase/dashboard",
+                "GET /v1/auth/supabase/dashboard/logs",
+                "GET /v1/auth/supabase/dashboard/reports",
+                "GET /v1/auth/supabase/dashboard/reports/{report_id}",
+                "POST /v1/auth/supabase/dashboard/packet",
             ],
             "auth_boundary": BOUNDARY_V095,
             "boundary": BOUNDARY_V094,
         }
+
+    @app.get("/health/live")
+    def health_live() -> dict[str, Any]:
+        return {
+            "status": "ok",
+            "operation": "liveness",
+            "api_version": "v1",
+            "public_safe": True,
+        }
+
+    @app.get("/health/ready")
+    def health_ready() -> JSONResponse:
+        state = active_product.health()
+        storage = state.get("storage", {})
+        ready = bool(
+            state.get("status") == "ok"
+            and (
+                storage.get("database_connected") is True
+                or storage.get("durable_storage_claim_allowed") is True
+                or storage.get("storage_mode") == "local_sqlite"
+            )
+        )
+        return JSONResponse(
+            status_code=200 if ready else 503,
+            content={
+                "status": "ok" if ready else "not_ready",
+                "operation": "readiness",
+                "api_version": "v1",
+                "database_connectivity": bool(storage.get("database_connected") is True),
+                "storage_mode": storage.get("storage_mode"),
+                "durable_storage_verified": bool(storage.get("durable_storage_verified")),
+                "dependency_status": {
+                    "storage": "ready" if ready else "not_ready",
+                    "auth_backend": auth_backend,
+                },
+                "public_safe": True,
+            },
+        )
 
     @app.post("/v1/self-serve/signup")
     async def signup(request: Request) -> JSONResponse:
@@ -351,6 +395,34 @@ def create_app_v094(
             return auth_error
         return result_response(active_product.list_keys(session_token=str(token)))
 
+    @app.get("/v1/self-serve/applications")
+    async def list_applications(
+        authorization: str | None = Header(default=None, alias="Authorization"),
+    ) -> JSONResponse:
+        token, auth_error = await require_session(authorization)
+        if auth_error:
+            return auth_error
+        return result_response(active_product.list_applications(session_token=str(token)))
+
+    @app.post("/v1/self-serve/applications")
+    async def create_application(
+        request: Request,
+        authorization: str | None = Header(default=None, alias="Authorization"),
+    ) -> JSONResponse:
+        token, auth_error = await require_session(authorization)
+        if auth_error:
+            return auth_error
+        body = await json_body(request)
+        return result_response(
+            locked_call(
+                active_product.create_application,
+                session_token=str(token),
+                name=str(body.get("name", "")),
+                application_reference=str(body.get("application_reference", "")),
+                environment=str(body.get("environment", "production")),
+            )
+        )
+
     @app.post("/v1/self-serve/keys")
     async def create_key(
         request: Request,
@@ -365,6 +437,8 @@ def create_app_v094(
                 active_product.create_key,
                 session_token=str(token),
                 label=str(body.get("label", "")),
+                application_reference=str(body.get("application_reference", "app_main")),
+                environment=str(body.get("environment", "")),
             )
         )
 
@@ -441,6 +515,36 @@ def create_app_v094(
             locked_call(active_auth_bridge.list_keys, access_token=token)
         )
 
+    @app.get("/v1/auth/supabase/applications")
+    async def supabase_list_applications(
+        authorization: str | None = Header(default=None, alias="Authorization"),
+    ) -> JSONResponse:
+        token, auth_error = supabase_access_token(authorization)
+        if auth_error:
+            return auth_error
+        return result_response(
+            locked_call(active_auth_bridge.list_applications, access_token=token)
+        )
+
+    @app.post("/v1/auth/supabase/applications")
+    async def supabase_create_application(
+        request: Request,
+        authorization: str | None = Header(default=None, alias="Authorization"),
+    ) -> JSONResponse:
+        token, auth_error = supabase_access_token(authorization)
+        if auth_error:
+            return auth_error
+        body = await json_body(request)
+        return result_response(
+            locked_call(
+                active_auth_bridge.create_application,
+                access_token=token,
+                name=str(body.get("name", "")),
+                application_reference=str(body.get("application_reference", "")),
+                environment=str(body.get("environment", "production")),
+            )
+        )
+
     @app.post("/v1/auth/supabase/keys")
     async def supabase_create_key(
         request: Request,
@@ -455,6 +559,8 @@ def create_app_v094(
                 active_auth_bridge.create_key,
                 access_token=token,
                 label=str(body.get("label", "")),
+                application_reference=str(body.get("application_reference", "app_main")),
+                environment=str(body.get("environment", "")),
             )
         )
 
@@ -501,6 +607,130 @@ def create_app_v094(
             return auth_error
         return result_response(
             locked_call(active_auth_bridge.dashboard, access_token=token)
+        )
+
+    @app.get("/v1/auth/supabase/dashboard/logs")
+    async def supabase_dashboard_logs(
+        authorization: str | None = Header(default=None, alias="Authorization"),
+        limit: int = Query(default=25, ge=1, le=100),
+        offset: int = Query(default=0, ge=0),
+        status: str = Query(default=""),
+        endpoint: str = Query(default=""),
+        method: str = Query(default=""),
+    ) -> JSONResponse:
+        token, auth_error = supabase_access_token(authorization)
+        if auth_error:
+            return auth_error
+        return result_response(
+            locked_call(
+                active_auth_bridge.dashboard_logs,
+                access_token=token,
+                limit=limit,
+                offset=offset,
+                status=status,
+                endpoint=endpoint,
+                method=method,
+            )
+        )
+
+    @app.get("/v1/auth/supabase/dashboard/reports")
+    async def supabase_dashboard_reports(
+        authorization: str | None = Header(default=None, alias="Authorization"),
+        limit: int = Query(default=25, ge=1, le=100),
+        offset: int = Query(default=0, ge=0),
+    ) -> JSONResponse:
+        token, auth_error = supabase_access_token(authorization)
+        if auth_error:
+            return auth_error
+        return result_response(
+            locked_call(
+                active_auth_bridge.dashboard_reports,
+                access_token=token,
+                limit=limit,
+                offset=offset,
+            )
+        )
+
+    @app.get("/v1/auth/supabase/dashboard/reports/{report_id}")
+    async def supabase_dashboard_report_detail(
+        report_id: str,
+        authorization: str | None = Header(default=None, alias="Authorization"),
+    ) -> JSONResponse:
+        token, auth_error = supabase_access_token(authorization)
+        if auth_error:
+            return auth_error
+        return result_response(
+            locked_call(
+                active_auth_bridge.dashboard_report_detail,
+                access_token=token,
+                report_id=report_id,
+            )
+        )
+
+    @app.post("/v1/auth/supabase/dashboard/packet")
+    async def supabase_dashboard_packet(
+        request: Request,
+        authorization: str | None = Header(default=None, alias="Authorization"),
+    ) -> JSONResponse:
+        token, auth_error = supabase_access_token(authorization)
+        if auth_error:
+            return auth_error
+        body = await json_body(request)
+        return result_response(
+            locked_call(
+                active_auth_bridge.dashboard_generate_packet,
+                access_token=token,
+                packet_scope=body,
+            )
+        )
+
+    @app.get("/v1/auth/supabase/dashboard/plan")
+    async def supabase_dashboard_plan(
+        authorization: str | None = Header(default=None, alias="Authorization"),
+    ) -> JSONResponse:
+        token, auth_error = supabase_access_token(authorization)
+        if auth_error:
+            return auth_error
+        dashboard_result = locked_call(active_auth_bridge.dashboard, access_token=token)
+        dashboard_payload = dashboard_result.get("dashboard", {})
+        return result_response(
+            {
+                "ok": dashboard_result.get("ok", False),
+                "status_code": dashboard_result.get("status_code", 200),
+                "plan": dashboard_payload.get("plan"),
+                "billing_live": False,
+                "upgrade_shell": {
+                    "title": "Upgrade plan",
+                    "message": "Billing is not connected yet. Builder and Pilot access are currently handled manually during controlled beta.",
+                    "tiers": [
+                        {"name": "Free", "requests_per_month": 100, "status": "available"},
+                        {"name": "Builder", "requests_per_month": 10000, "status": "manual_beta"},
+                        {"name": "Controlled Pilot", "requests_per_month": "custom", "status": "manual"},
+                    ],
+                    "payment_checkout_live": False,
+                },
+            }
+        )
+
+    @app.get("/v1/auth/supabase/dashboard/storage")
+    async def supabase_dashboard_storage(
+        authorization: str | None = Header(default=None, alias="Authorization"),
+    ) -> JSONResponse:
+        token, auth_error = supabase_access_token(authorization)
+        if auth_error:
+            return auth_error
+        dashboard_result = locked_call(active_auth_bridge.dashboard, access_token=token)
+        return result_response(
+            {
+                "ok": dashboard_result.get("ok", False),
+                "status_code": dashboard_result.get("status_code", 200),
+                "storage": dashboard_result.get("storage") or active_product.storage_status,
+                "raw_key_storage": False,
+                "raw_password_storage": False,
+                "database_url_exposed": False,
+                "service_role_key_exposed": False,
+                "public_safe": True,
+            }
         )
 
     async def protected_context(

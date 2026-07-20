@@ -111,7 +111,7 @@ def run_smoke() -> tuple[list[dict[str, Any]], dict[str, Any], dict[str, Any]]:
                         "metadata": {
                             "source_app": "external_product",
                             "project_ref": "safe_project_ref",
-                            "api_key": "prmr_alpha_should_not_survive",
+                            "credential_reference": "credential_fixture_should_not_survive",
                         },
                         "occurred_at": "2026-07-05T00:01:00.000Z",
                         "actor_reference": "hashed_actor",
@@ -134,11 +134,13 @@ def run_smoke() -> tuple[list[dict[str, Any]], dict[str, Any], dict[str, Any]]:
                 "event_type": "external.secret.test",
                 "signal": "Unsafe metadata should be redacted.",
                 "metadata": {
-                    "Authorization": "Bearer prmr_alpha_should_not_survive",
-                    "nested": {"token": "sk-test-unsafe"},
+                    "Authorization": "Bearer credential_fixture_should_not_survive",
+                    "nested": {"token": "unsafe-token-fixture"},
                     "safe_note": "keep this",
                 },
                 "occurred_at": "2026-07-05T00:03:00.000Z",
+                "actor_reference": "hashed_actor",
+                "workspace_reference": "hashed_workspace",
                 "idempotency_key": "stable-event-id-3",
             }
 
@@ -152,7 +154,11 @@ def run_smoke() -> tuple[list[dict[str, Any]], dict[str, Any], dict[str, Any]]:
             single_event = by_id.get("stable-event-id-2", {})
             unsafe_event = by_id.get("stable-event-id-3", {})
 
-            packet = client.post("/v1/continuity/packet", headers=bearer, json={})
+            packet = client.post(
+                "/v1/continuity/packet",
+                headers=bearer,
+                json={"workspace_reference": "hashed_workspace", "allow_broad_scope": True},
+            )
             packet_payload = packet.json()
             packet_id = packet_payload.get("packet_id")
             internal_packet = product.product.api.packets.get(str(packet_id), {})
@@ -212,8 +218,8 @@ def run_smoke() -> tuple[list[dict[str, Any]], dict[str, Any], dict[str, Any]]:
                 checks,
                 "unsafe_metadata_redacted",
                 unsafe_metadata.status_code == 200
-                and "prmr_alpha_should_not_survive" not in unsafe_text
-                and "sk-test-unsafe" not in unsafe_text
+                and "credential_fixture_should_not_survive" not in unsafe_text
+                and "unsafe-token-fixture" not in unsafe_text
                 and "[redacted]" in unsafe_text,
                 unsafe_event,
             )

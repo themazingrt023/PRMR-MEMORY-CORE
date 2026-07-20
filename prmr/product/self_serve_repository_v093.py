@@ -24,7 +24,7 @@ from prmr.product.hosted_backend_foundation_v069 import (
     utc_now,
 )
 from prmr.product.self_serve_accounts_v092 import LocalSession, SelfServeAccount
-from prmr.product.self_serve_api_keys_v092 import SelfServeClientScope
+from prmr.product.self_serve_api_keys_v092 import SelfServeApplication, SelfServeClientScope
 from prmr.product.self_serve_dashboard_v092 import SelfServeDashboardV092
 from prmr.product.self_serve_plans_v092 import PlanSubscription
 
@@ -35,10 +35,12 @@ TABLES = (
     "sessions",
     "plans",
     "clients",
+    "applications",
     "vaults",
     "namespaces",
     "usage_limits",
     "api_keys",
+    "key_applications",
     "monthly_usage",
     "usage_events",
     "request_logs",
@@ -126,6 +128,16 @@ class SelfServeRepositoryV093:
                     FOREIGN KEY(user_id) REFERENCES users(user_id),
                     FOREIGN KEY(usage_limit_id) REFERENCES usage_limits(usage_limit_id)
                 );
+                CREATE TABLE IF NOT EXISTS applications (
+                    application_reference TEXT NOT NULL,
+                    client_id TEXT NOT NULL,
+                    name TEXT NOT NULL,
+                    environment TEXT NOT NULL,
+                    status TEXT NOT NULL,
+                    created_at TEXT NOT NULL,
+                    PRIMARY KEY(application_reference, client_id),
+                    FOREIGN KEY(client_id) REFERENCES clients(client_id)
+                );
                 CREATE TABLE IF NOT EXISTS vaults (
                     vault_id TEXT PRIMARY KEY,
                     client_id TEXT NOT NULL,
@@ -160,6 +172,13 @@ class SelfServeRepositoryV093:
                     label TEXT NOT NULL,
                     FOREIGN KEY(client_id) REFERENCES clients(client_id),
                     FOREIGN KEY(usage_limit_id) REFERENCES usage_limits(usage_limit_id)
+                );
+                CREATE TABLE IF NOT EXISTS key_applications (
+                    key_id TEXT PRIMARY KEY,
+                    application_reference TEXT NOT NULL,
+                    client_id TEXT NOT NULL,
+                    FOREIGN KEY(key_id) REFERENCES api_keys(key_id),
+                    FOREIGN KEY(application_reference, client_id) REFERENCES applications(application_reference, client_id)
                 );
                 CREATE TABLE IF NOT EXISTS monthly_usage (
                     user_id TEXT NOT NULL,
@@ -329,6 +348,21 @@ class SelfServeRepositoryV093:
                 ],
             )
             connection.executemany(
+                "INSERT INTO applications VALUES (?, ?, ?, ?, ?, ?)",
+                [
+                    (
+                        app.application_reference,
+                        app.client_id,
+                        app.name,
+                        app.environment,
+                        app.status,
+                        app.created_at,
+                    )
+                    for applications in product.keys.applications_by_client.values()
+                    for app in applications.values()
+                ],
+            )
+            connection.executemany(
                 "INSERT INTO vaults VALUES (?, ?, ?, ?)",
                 [
                     (item.vault_id, item.client_id, item.status, item.created_at)
@@ -370,6 +404,18 @@ class SelfServeRepositoryV093:
                     )
                     for item in lifecycle.lifecycle_keys.values()
                     if item.key_id in foundation.api_keys
+                ],
+            )
+            connection.executemany(
+                "INSERT INTO key_applications VALUES (?, ?, ?)",
+                [
+                    (
+                        key_id,
+                        application_reference,
+                        lifecycle.lifecycle_keys[key_id].client_id,
+                    )
+                    for key_id, application_reference in product.keys.key_applications.items()
+                    if key_id in lifecycle.lifecycle_keys
                 ],
             )
             connection.executemany(
@@ -499,6 +545,13 @@ class SelfServeRepositoryV093:
             connection.execute(
                 """
                 INSERT INTO audit_metadata(metadata_key, metadata_json, updated_at)
+                VALUES('activation_events', ?, ?)
+                """,
+                (self._json({"events": product.activation_events}), utc_now()),
+            )
+            connection.execute(
+                """
+                INSERT INTO audit_metadata(metadata_key, metadata_json, updated_at)
                 VALUES('saved_state', ?, ?)
                 """,
                 (
@@ -576,6 +629,9 @@ class SelfServeRepositoryV093:
                     created_at=row["created_at"],
                 )
                 foundation.namespaces[row["namespace_id"]] = namespace
+            for row in connection.execute("SELECT * FROM applications"):
+                app = SelfServeApplication(**dict(row))
+                product.keys.applications_by_client.setdefault(app.client_id, {})[app.application_reference] = app
             for row in connection.execute("SELECT * FROM api_keys"):
                 lifecycle_record = LifecycleKeyRecord(
                     key_id=row["key_id"],
@@ -603,6 +659,12 @@ class SelfServeRepositoryV093:
                     key_fingerprint=row["key_fingerprint"],
                 )
                 product.keys.key_labels[lifecycle_record.key_id] = row["label"]
+            for row in connection.execute("SELECT * FROM key_applications"):
+                product.keys.key_applications[row["key_id"]] = row["application_reference"]
+            for scope in product.keys.scopes_by_user.values():
+                product.keys.ensure_default_application(scope.client_id)
+            for key_id, record in lifecycle.lifecycle_keys.items():
+                product.keys.key_applications.setdefault(key_id, "app_main")
             for row in connection.execute("SELECT * FROM usage_events ORDER BY id"):
                 foundation.usage_ledger.append(
                     UsageEvent(
@@ -661,6 +723,12 @@ class SelfServeRepositoryV093:
                     product.api.public_reports[row["report_id"]] = payload
                 else:
                     product.api.private_reports[row["report_id"]] = payload
+            activation_row = connection.execute(
+                "SELECT metadata_json FROM audit_metadata WHERE metadata_key = 'activation_events'"
+            ).fetchone()
+            if activation_row:
+                activation_payload = json.loads(activation_row["metadata_json"])
+                product.activation_events = list(activation_payload.get("events", []))[-500:]
             validation = connection.execute(
                 "SELECT metadata_json FROM audit_metadata WHERE metadata_key = 'validation_outcomes'"
             ).fetchone()
@@ -754,9 +822,11 @@ class SelfServeRepositoryV093:
             "request_logs",
             "usage_events",
             "monthly_usage",
+            "key_applications",
             "api_keys",
             "namespaces",
             "vaults",
+            "applications",
             "clients",
             "usage_limits",
             "plans",
@@ -766,7 +836,7 @@ class SelfServeRepositoryV093:
         for table in delete_order:
             connection.execute(f"DELETE FROM {table}")
         connection.execute(
-            "DELETE FROM audit_metadata WHERE metadata_key IN ('validation_outcomes', 'saved_state')"
+            "DELETE FROM audit_metadata WHERE metadata_key IN ('validation_outcomes', 'activation_events', 'saved_state')"
         )
 
     def _safe_dashboard_snapshot(

@@ -33,6 +33,16 @@ class SelfServeClientScope:
     created_at: str
 
 
+@dataclass
+class SelfServeApplication:
+    application_reference: str
+    client_id: str
+    name: str
+    environment: str
+    status: str
+    created_at: str
+
+
 class SelfServeAPIKeysV092:
     def __init__(
         self,
@@ -48,6 +58,8 @@ class SelfServeAPIKeysV092:
         self.scopes_by_user: dict[str, SelfServeClientScope] = {}
         self.user_by_client: dict[str, str] = {}
         self.key_labels: dict[str, str] = {}
+        self.applications_by_client: dict[str, dict[str, SelfServeApplication]] = {}
+        self.key_applications: dict[str, str] = {}
 
     def provision_default_scope(self, *, session_token: str) -> dict[str, Any]:
         account = self.accounts.validate_session(session_token)
@@ -92,6 +104,7 @@ class SelfServeAPIKeysV092:
         )
         self.scopes_by_user[account.user_id] = scope
         self.user_by_client[client_id] = account.user_id
+        self.ensure_default_application(scope.client_id)
         return {
             "ok": True,
             "status_code": 201,
@@ -100,7 +113,90 @@ class SelfServeAPIKeysV092:
             "boundary": KEY_BOUNDARY_V092,
         }
 
-    def create_key(self, *, session_token: str, label: str) -> dict[str, Any]:
+    def ensure_default_application(self, client_id: str) -> SelfServeApplication:
+        apps = self.applications_by_client.setdefault(client_id, {})
+        existing = apps.get("app_main")
+        if existing:
+            return existing
+        app = SelfServeApplication(
+            application_reference="app_main",
+            client_id=client_id,
+            name="My First Application",
+            environment="sandbox",
+            status="active",
+            created_at=utc_now(),
+        )
+        apps[app.application_reference] = app
+        return app
+
+    def create_application(
+        self,
+        *,
+        session_token: str,
+        name: str,
+        application_reference: str = "",
+        environment: str = "production",
+    ) -> dict[str, Any]:
+        account, scope, _, error = self.authorized_context(session_token)
+        if error:
+            return error
+        assert account and scope
+        clean_name = " ".join(str(name).split()).strip()
+        if not 2 <= len(clean_name) <= 80:
+            return self.error(400, "invalid_application_name")
+        clean_environment = self.clean_reference(environment or "sandbox", fallback="sandbox")
+        if clean_environment not in {"sandbox", "production", "staging", "development", "test"}:
+            return self.error(400, "invalid_application_environment")
+        reference = self.clean_reference(
+            application_reference or f"app_{clean_name.lower().replace(' ', '_')}",
+            fallback="app_main",
+        )
+        apps = self.applications_by_client.setdefault(scope.client_id, {})
+        if reference in apps:
+            return self.error(409, "application_reference_exists")
+        app = SelfServeApplication(
+            application_reference=reference,
+            client_id=scope.client_id,
+            name=clean_name,
+            environment=clean_environment,
+            status="active",
+            created_at=utc_now(),
+        )
+        apps[reference] = app
+        return {
+            "ok": True,
+            "status_code": 201,
+            "application": self.public_application(app),
+            "boundary": KEY_BOUNDARY_V092,
+        }
+
+    def list_applications(self, *, session_token: str) -> dict[str, Any]:
+        account, scope, _, error = self.authorized_context(session_token)
+        if error:
+            return error
+        assert account and scope
+        self.ensure_default_application(scope.client_id)
+        apps = [
+            self.public_application(app)
+            for app in self.applications_by_client.get(scope.client_id, {}).values()
+        ]
+        apps.sort(key=lambda item: (item["environment"], item["name"]))
+        return {
+            "ok": True,
+            "status_code": 200,
+            "applications": apps,
+            "public_safe": True,
+            "boundary": KEY_BOUNDARY_V092,
+        }
+
+    def create_key(
+        self,
+        *,
+        session_token: str,
+        label: str,
+        application_reference: str = "app_main",
+        environment: str = "",
+    ) -> dict[str, Any]:
         account, scope, plan, error = self.authorized_context(session_token)
         if error:
             return error
@@ -115,7 +211,11 @@ class SelfServeAPIKeysV092:
         )
         if active_count >= plan.max_active_keys:
             return self.error(409, "active_key_limit_reached")
-        return self._create_key(account=account, scope=scope, label=clean_label)
+        app_ref = self.clean_reference(application_reference or "app_main", fallback="app_main")
+        self.ensure_default_application(scope.client_id)
+        if app_ref not in self.applications_by_client.get(scope.client_id, {}):
+            return self.error(404, "application_not_found")
+        return self._create_key(account=account, scope=scope, label=clean_label, application_reference=app_ref)
 
     def _create_key(
         self,
@@ -123,6 +223,7 @@ class SelfServeAPIKeysV092:
         account: SelfServeAccount,
         scope: SelfServeClientScope,
         label: str,
+        application_reference: str = "app_main",
     ) -> dict[str, Any]:
         raw_key = f"prmr_alpha_{secrets.token_urlsafe(32)}"
         key_id = f"key_ss_{uuid4().hex[:12]}"
@@ -150,6 +251,7 @@ class SelfServeAPIKeysV092:
             status="active",
         )
         self.key_labels[key_id] = label
+        self.key_applications[key_id] = application_reference
         return {
             "ok": True,
             "status_code": 201,
@@ -157,6 +259,8 @@ class SelfServeAPIKeysV092:
             "label": label,
             "raw_api_key": raw_key,
             "safe_key_preview": record.safe_key_preview,
+            "application_reference": application_reference,
+            "environment": self.applications_by_client.get(scope.client_id, {}).get(application_reference, self.ensure_default_application(scope.client_id)).environment,
             "returned_once": True,
             "copy_warning": "Copy this key now. PRMR will not show it again.",
             "plan_id": subscription.plan_id,
@@ -179,6 +283,8 @@ class SelfServeAPIKeysV092:
                 "client_id": record.client_id,
                 "vault_id": record.vault_id,
                 "namespace": record.namespace,
+                "application_reference": self.key_applications.get(record.key_id, "app_main"),
+                "environment": self.applications_by_client.get(record.client_id, {}).get(self.key_applications.get(record.key_id, "app_main"), self.ensure_default_application(record.client_id)).environment,
             }
             for record in self.lifecycle.lifecycle_keys.values()
             if record.client_id == scope.client_id
@@ -206,6 +312,7 @@ class SelfServeAPIKeysV092:
             account=account,
             scope=scope,
             label=self.key_labels.get(key_id, "Rotated key"),
+            application_reference=self.key_applications.get(key_id, "app_main"),
         )
         return {
             **replacement,
@@ -320,6 +427,58 @@ class SelfServeAPIKeysV092:
             "status": scope.status,
             "created_at": scope.created_at,
         }
+
+    def public_application(self, app: SelfServeApplication) -> dict[str, Any]:
+        scope_key_prefix = f"{app.client_id}::"
+        event_count = 0
+        packet_count = 0
+        last_successful_ingest = None
+        last_packet = None
+        for scope_key, events in self.api.events.items():
+            if not scope_key.startswith(scope_key_prefix):
+                continue
+            matching_events = [
+                event
+                for event in events
+                if str(event.get("application_reference") or "app_main") == app.application_reference
+            ]
+            event_count += len(matching_events)
+            if matching_events:
+                last_successful_ingest = max(
+                    [str(event.get("timestamp", "")) for event in matching_events] + ([last_successful_ingest] if last_successful_ingest else [])
+                )
+        for packet in self.api.packets.values():
+            if packet.get("client_id") == app.client_id and str(packet.get("application_reference") or "app_main") == app.application_reference:
+                packet_count += 1
+                latest = str(packet.get("last_updated") or "")
+                if latest and (last_packet is None or latest >= last_packet):
+                    last_packet = latest
+        key_count = sum(
+            1
+            for key_id, app_ref in self.key_applications.items()
+            if app_ref == app.application_reference
+            and (record := self.lifecycle.lifecycle_keys.get(key_id)) is not None
+            and record.client_id == app.client_id
+        )
+        return {
+            "application_reference": app.application_reference,
+            "name": app.name,
+            "environment": app.environment,
+            "status": app.status,
+            "created_at": app.created_at,
+            "event_count": event_count,
+            "packet_count": packet_count,
+            "last_request": last_successful_ingest or last_packet,
+            "last_successful_ingest": last_successful_ingest,
+            "last_packet": last_packet,
+            "health_status": "active" if event_count or packet_count else "ready",
+            "associated_key_count": key_count,
+        }
+
+    def clean_reference(self, value: str, *, fallback: str) -> str:
+        cleaned = "".join(ch if ch.isalnum() or ch in {"_", "-"} else "_" for ch in str(value).strip().lower())
+        cleaned = "_".join(part for part in cleaned.split("_") if part)
+        return (cleaned or fallback)[:80]
 
     def authorized_context(
         self,

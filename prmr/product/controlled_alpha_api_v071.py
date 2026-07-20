@@ -7,6 +7,7 @@ but it is not a live hosted API unless separately deployed and smoke-tested.
 from __future__ import annotations
 
 from collections import Counter
+import hashlib
 import json
 from dataclasses import asdict, dataclass
 from typing import Any
@@ -76,6 +77,22 @@ UNSAFE_METADATA_TERMS = [
     "absolute_path",
     "raw_path",
 ]
+
+ENTITY_SCOPE_FIELDS = [
+    "application_reference",
+    "actor_reference",
+    "workspace_reference",
+    "entity_reference",
+    "session_reference",
+]
+USABLE_ENTITY_SCOPE_FIELDS = [
+    "application_reference",
+    "actor_reference",
+    "workspace_reference",
+    "entity_reference",
+]
+ALGORITHM_REVISION = "prmr_packet_entity_scope_v1"
+PACKET_VERSION = "v1.entity_scope"
 
 
 @dataclass
@@ -229,23 +246,37 @@ class PRMRControlledAlphaAPI:
         if not isinstance(events, list) or not events:
             return self.response(400, {"status": "error", "error": {"code": "payload_invalid", "message": "events must be a non-empty list."}, "public_safe": True})
 
+        scope = self.scope_key(context["client_id"], context["vault_id"], context["namespace"])
+        existing_event_ids = {str(event.get("event_id", "")) for event in self.events.get(scope, [])}
         safe_events = []
+        duplicate_events = []
         for index, event in enumerate(events):
             if not isinstance(event, dict):
                 return self.response(400, {"status": "error", "error": {"code": "payload_invalid", "message": "each event must be an object."}, "public_safe": True})
             normalized, normalize_error = self.normalize_event(event, index)
             if normalize_error:
                 return self.response(400, {"status": "error", "error": {"code": "payload_invalid", "message": normalize_error}, "public_safe": True})
+            if str(normalized.get("event_id", "")) in existing_event_ids:
+                duplicate_events.append(
+                    {
+                        "event_id": str(normalized.get("event_id", "")),
+                        "status": "duplicate_ignored",
+                        "reason": "idempotency_key_or_event_id_already_exists_in_authorized_scope",
+                    }
+                )
+                continue
+            existing_event_ids.add(str(normalized.get("event_id", "")))
             safe_events.append(normalized)
-        scope = self.scope_key(context["client_id"], context["vault_id"], context["namespace"])
         self.events.setdefault(scope, []).extend(safe_events)
         return self.public_ok(
             endpoint,
             context,
             {
                 "accepted_event_count": len(safe_events),
+                "duplicate_event_count": len(duplicate_events),
+                "duplicates": duplicate_events[:50],
                 "total_event_count": len(self.events[scope]),
-                "summary": "Synthetic events accepted into the scoped controlled-alpha namespace.",
+                "summary": "Events accepted into the scoped PRMR namespace.",
             },
         )
 
@@ -258,8 +289,11 @@ class PRMRControlledAlphaAPI:
             "signal",
             "metadata",
             "occurred_at",
+            "application_reference",
             "actor_reference",
             "workspace_reference",
+            "entity_reference",
+            "session_reference",
             "idempotency_key",
             "summary",
             "type",
@@ -279,8 +313,11 @@ class PRMRControlledAlphaAPI:
         event_type = event.get("event_type")
         signal = event.get("signal")
         occurred_at = event.get("occurred_at")
+        application_reference = event.get("application_reference")
         actor_reference = event.get("actor_reference")
         workspace_reference = event.get("workspace_reference")
+        entity_reference = event.get("entity_reference")
+        session_reference = event.get("session_reference")
         idempotency_key = event.get("idempotency_key")
         raw_timestamp_index = event.get("timestamp_index", index + 1)
         try:
@@ -297,6 +334,11 @@ class PRMRControlledAlphaAPI:
             "timestamp": str(event.get("timestamp") or occurred_at or utc_now())[:120],
             "timestamp_index": timestamp_index,
             "synthetic": True,
+            "application_reference": self.clean_scope_reference(application_reference),
+            "actor_reference": self.clean_scope_reference(actor_reference),
+            "workspace_reference": self.clean_scope_reference(workspace_reference),
+            "entity_reference": self.clean_scope_reference(entity_reference),
+            "session_reference": self.clean_scope_reference(session_reference),
         }
         if external_metadata:
             normalized["external_metadata"] = external_metadata
@@ -307,8 +349,11 @@ class PRMRControlledAlphaAPI:
         for source_key, target_key in [
             ("metadata", "metadata"),
             ("source_app", "source_app"),
+            ("application_reference", "application_reference"),
             ("workspace_reference", "workspace_reference"),
             ("actor_reference", "actor_reference"),
+            ("entity_reference", "entity_reference"),
+            ("session_reference", "session_reference"),
             ("idempotency_key", "idempotency_key"),
             ("event_type", "external_event_type"),
             ("occurred_at", "occurred_at"),
@@ -329,8 +374,11 @@ class PRMRControlledAlphaAPI:
                 "synthetic",
                 "metadata",
                 "source_app",
+                "application_reference",
                 "workspace_reference",
                 "actor_reference",
+                "entity_reference",
+                "session_reference",
                 "idempotency_key",
                 "event_type",
                 "occurred_at",
@@ -380,41 +428,106 @@ class PRMRControlledAlphaAPI:
             return True
         return False
 
+    def clean_scope_reference(self, value: Any) -> str:
+        if value is None:
+            return ""
+        text = " ".join(str(value).split()).strip()
+        if not text or self.looks_sensitive_metadata_value(text):
+            return ""
+        return text[:160]
+
     def continuity_packet(self, request_payload: dict[str, Any]) -> dict[str, Any]:
         endpoint = "POST /v1/continuity/packet"
         context, error = self.require_access(endpoint, request_payload, "continuity_packet")
         if error:
             return error
-        scope = self.scope_key(context["client_id"], context["vault_id"], context["namespace"])
-        events = self.events.get(scope, [])
+        return self.create_continuity_packet_response(endpoint, context, request_payload)
 
-        packet_id = f"packet_{uuid4().hex[:12]}"
+    def create_continuity_packet_response(
+        self,
+        endpoint: str,
+        context: dict[str, Any],
+        request_payload: dict[str, Any] | None = None,
+    ) -> dict[str, Any]:
+        scope = self.scope_key(context["client_id"], context["vault_id"], context["namespace"])
+        namespace_events = self.events.get(scope, [])
+        entity_scope = self.requested_entity_scope(request_payload or {})
+        filtered_events, excluded_events, scope_error = self.events_for_requested_scope(
+            namespace_events,
+            entity_scope,
+            allow_broad_scope=bool((request_payload or {}).get("allow_broad_scope")),
+        )
+        if scope_error:
+            return self.response(
+                400,
+                {
+                    "status": "error",
+                    "error": {
+                        "code": "entity_scope_required",
+                        "message": scope_error,
+                        "fields": {
+                            "application_reference": "Optional but recommended application scope.",
+                            "actor_reference": "Provide to request an actor-scoped packet.",
+                            "workspace_reference": "Provide to request a workspace-scoped packet.",
+                            "entity_reference": "Provide to request an entity-scoped packet.",
+                        },
+                        "retryable": False,
+                    },
+                    "public_safe": True,
+                    "packet_version": PACKET_VERSION,
+                    "algorithm_revision": ALGORITHM_REVISION,
+                },
+            )
+
+        previous_packet = self.previous_packet_for_scope(context, entity_scope)
+        packet_id = self.deterministic_packet_id(context, entity_scope, filtered_events)
         packet = {
-            **self.build_theory_packet(events),
+            **self.build_theory_packet(filtered_events),
             "packet_id": packet_id,
+            "report_id": f"report_{packet_id.removeprefix('packet_')}",
             "client_id": context["client_id"],
             "vault_id": context["vault_id"],
             "namespace": context["namespace"],
+            **entity_scope,
+            "scope_mode": self.scope_mode(entity_scope, namespace_events),
+            "source_event_count": len(filtered_events),
+            "first_event_at": str(filtered_events[0].get("timestamp", "")) if filtered_events else None,
+            "packet_version": PACKET_VERSION,
+            "algorithm_revision": ALGORITHM_REVISION,
+            "provenance": self.packet_provenance(
+                filtered_events,
+                excluded_events,
+                entity_scope,
+                previous_packet,
+            ),
             "public_safe": True,
         }
+        packet["report_id"] = str(packet["report_id"])
+        packet["provenance"]["packet_reproducible"] = True
+        packet["provenance"]["deterministic_packet_hash"] = packet_id.removeprefix("packet_")
         self.packets[packet_id] = packet
-        report_id = f"report_{uuid4().hex[:12]}"
+        report_id = packet["report_id"]
         public_report = {
             "report_id": report_id,
             "packet_id": packet_id,
             "client_id": context["client_id"],
             "vault_id": context["vault_id"],
             "namespace": context["namespace"],
-            "summary": "Public-safe controlled-alpha continuity report generated from synthetic events.",
-            "event_count": len(events),
+            **entity_scope,
+            "summary": "Public-safe continuity report generated from scoped application events.",
+            "event_count": len(filtered_events),
+            "source_event_count": len(filtered_events),
+            "packet_version": PACKET_VERSION,
+            "algorithm_revision": ALGORITHM_REVISION,
             "public_safe": True,
             "boundary": BOUNDARY_V071,
         }
         private_report = {
             **public_report,
             "public_safe": False,
-            "synthetic_event_trace": events,
-            "private_note": "Private report contains synthetic event trace only; no raw API keys are persisted.",
+            "event_trace": filtered_events,
+            "excluded_event_summary": self.safe_excluded_event_summary(excluded_events),
+            "private_note": "Private report contains scoped sanitized event trace only; no raw API keys are persisted.",
         }
         self.public_reports[report_id] = public_report
         self.private_reports[report_id] = private_report
@@ -425,9 +538,201 @@ class PRMRControlledAlphaAPI:
                 "packet_id": packet_id,
                 "report_id": report_id,
                 "summary": packet["summary"],
+                **packet,
                 "packet": packet,
             },
         )
+
+    def requested_entity_scope(self, request_payload: dict[str, Any]) -> dict[str, str]:
+        return {
+            field: self.clean_scope_reference(request_payload.get(field))
+            for field in ENTITY_SCOPE_FIELDS
+        }
+
+    def event_has_any_scope(self, event: dict[str, Any]) -> bool:
+        return any(str(event.get(field, "")).strip() for field in USABLE_ENTITY_SCOPE_FIELDS)
+
+    def event_matches_scope(self, event: dict[str, Any], entity_scope: dict[str, str]) -> bool:
+        for field, requested in entity_scope.items():
+            if requested and str(event.get(field, "")) != requested:
+                return False
+        return True
+
+    def events_for_requested_scope(
+        self,
+        events: list[dict[str, Any]],
+        entity_scope: dict[str, str],
+        *,
+        allow_broad_scope: bool = False,
+    ) -> tuple[list[dict[str, Any]], list[dict[str, Any]], str | None]:
+        has_requested_scope = any(entity_scope.get(field) for field in USABLE_ENTITY_SCOPE_FIELDS)
+        has_scoped_events = any(self.event_has_any_scope(event) for event in events)
+        if not has_requested_scope:
+            if has_scoped_events:
+                return [], self.safe_excluded_event_summary(events), (
+                    "At least one of application_reference, actor_reference, workspace_reference, "
+                    "or entity_reference is required when scoped application events exist. "
+                    "Namespace-wide packet generation is disabled to avoid accidental global memory mixing."
+                )
+            return list(events), [], None
+
+        included = [event for event in events if self.event_matches_scope(event, entity_scope)]
+        excluded = [
+            {
+                "event_id": str(event.get("event_id", "")),
+                "event_type": self.event_signal(event),
+                "reason": self.exclusion_reason(event, entity_scope),
+            }
+            for event in events
+            if not self.event_matches_scope(event, entity_scope)
+        ]
+        broad_fields = [
+            field
+            for field in ["actor_reference", "workspace_reference", "entity_reference"]
+            if not entity_scope.get(field)
+            and len({str(event.get(field, "")) for event in included if str(event.get(field, "")).strip()}) > 1
+        ]
+        if broad_fields and not allow_broad_scope:
+            return [], excluded, (
+                "The requested scope matches multiple "
+                f"{', '.join(broad_fields)} values. Set allow_broad_scope=true to explicitly request this broader packet."
+            )
+        return included, excluded, None
+
+    def exclusion_reason(self, event: dict[str, Any], entity_scope: dict[str, str]) -> str:
+        mismatches = [
+            field
+            for field, requested in entity_scope.items()
+            if requested and str(event.get(field, "")) != requested
+        ]
+        return "scope_mismatch:" + ",".join(mismatches) if mismatches else "not_excluded"
+
+    def scope_mode(self, entity_scope: dict[str, str], namespace_events: list[dict[str, Any]]) -> str:
+        if any(entity_scope.get(field) for field in USABLE_ENTITY_SCOPE_FIELDS):
+            return "entity_scoped"
+        if any(self.event_has_any_scope(event) for event in namespace_events):
+            return "blocked_global_scope"
+        return "legacy_namespace_scope"
+
+    def deterministic_packet_id(
+        self,
+        context: dict[str, Any],
+        entity_scope: dict[str, str],
+        events: list[dict[str, Any]],
+    ) -> str:
+        material = {
+            "algorithm_revision": ALGORITHM_REVISION,
+            "client_id": context["client_id"],
+            "vault_id": context["vault_id"],
+            "namespace": context["namespace"],
+            "entity_scope": entity_scope,
+            "source_event_ids": [str(event.get("event_id", "")) for event in events],
+            "source_event_versions": [
+                [
+                    str(event.get("event_id", "")),
+                    str(event.get("type", "")),
+                    str(event.get("timestamp", "")),
+                    str(event.get("timestamp_index", "")),
+                    str(event.get("content", "")),
+                ]
+                for event in events
+            ],
+        }
+        digest = hashlib.sha256(json.dumps(material, sort_keys=True, separators=(",", ":")).encode("utf-8")).hexdigest()
+        return f"packet_{digest[:24]}"
+
+    def previous_packet_for_scope(self, context: dict[str, Any], entity_scope: dict[str, str]) -> dict[str, Any] | None:
+        candidates = [
+            packet
+            for packet in self.packets.values()
+            if packet.get("client_id") == context["client_id"]
+            and packet.get("vault_id") == context["vault_id"]
+            and packet.get("namespace") == context["namespace"]
+            and all(str(packet.get(field, "")) == str(entity_scope.get(field, "")) for field in ENTITY_SCOPE_FIELDS)
+        ]
+        if not candidates:
+            return None
+        return sorted(candidates, key=lambda item: str(item.get("last_updated") or ""))[-1]
+
+    def packet_provenance(
+        self,
+        events: list[dict[str, Any]],
+        excluded_events: list[dict[str, Any]],
+        entity_scope: dict[str, str],
+        previous_packet: dict[str, Any] | None,
+    ) -> dict[str, Any]:
+        ordered = sorted(
+            events,
+            key=lambda item: (
+                int(item.get("timestamp_index", 0)),
+                str(item.get("timestamp", "")),
+                str(item.get("event_id", "")),
+            ),
+        )
+        event_count = len(ordered)
+        horizon_window_size = min(5, max(1, event_count))
+        recent = ordered[-horizon_window_size:] if ordered else []
+        historical = ordered[:-horizon_window_size] if event_count > horizon_window_size else ordered
+        signal_counts = Counter(self.event_signal(event) for event in ordered)
+        recent_set = {self.event_signal(event) for event in recent}
+        historical_set = {self.event_signal(event) for event in historical}
+        current_signals = sorted(signal_counts)
+        previous_signals = sorted((previous_packet or {}).get("causal_signature", {}).get("signal_frequency_distribution", {}).keys())
+        transition_sequence = [
+            {
+                "from_event_id": str(previous.get("event_id", "")),
+                "to_event_id": str(current.get("event_id", "")),
+                "transition": f"{self.event_signal(previous)} -> {self.event_signal(current)}",
+            }
+            for previous, current in zip(ordered, ordered[1:])
+        ]
+        return {
+            "source_event_ids": [str(event.get("event_id", "")) for event in ordered],
+            "normalized_event_types": [self.event_signal(event) for event in ordered],
+            "events_included": [
+                {
+                    "event_id": str(event.get("event_id", "")),
+                    "event_type": self.event_signal(event),
+                    "occurred_at": str(event.get("timestamp", "")),
+                    "application_reference": str(event.get("application_reference", "")),
+                    "actor_reference": str(event.get("actor_reference", "")),
+                    "workspace_reference": str(event.get("workspace_reference", "")),
+                    "entity_reference": str(event.get("entity_reference", "")),
+                }
+                for event in ordered
+            ],
+            "events_excluded": excluded_events,
+            "recent_horizon_boundary": str(recent[0].get("timestamp", "")) if recent else None,
+            "historical_horizon_boundary": str(historical[-1].get("timestamp", "")) if historical else None,
+            "active_classification_basis": "signals present inside the recent deterministic horizon",
+            "latent_classification_basis": "historical signals absent from the recent deterministic horizon",
+            "lineage_classification_basis": "signals with repeated occurrences across ordered event history",
+            "coherence_factor_breakdown": self.coherence_factor_breakdown(ordered, recent_set, historical_set, signal_counts),
+            "recoverability_factor_breakdown": self.recoverability_factor_breakdown(ordered),
+            "transition_sequence": transition_sequence,
+            "previous_packet_id": previous_packet.get("packet_id") if previous_packet else None,
+            "diff_from_previous_packet": {
+                "added_signals": sorted(set(current_signals) - set(previous_signals)),
+                "removed_signals": sorted(set(previous_signals) - set(current_signals)),
+                "current_state_changed": (
+                    previous_packet.get("current_state") != (ordered[-1].get("content") if ordered else "")
+                    if previous_packet
+                    else True
+                ),
+            },
+            "entity_scope": entity_scope,
+            "algorithm_revision": ALGORITHM_REVISION,
+        }
+
+    def safe_excluded_event_summary(self, excluded_events: list[dict[str, Any]]) -> list[dict[str, Any]]:
+        return [
+            {
+                "event_id": str(event.get("event_id", ""))[:120],
+                "event_type": str(event.get("event_type") or event.get("type") or "")[:120],
+                "reason": str(event.get("reason", "excluded"))[:160],
+            }
+            for event in excluded_events[:200]
+        ]
 
     def build_theory_packet(self, events: list[dict[str, Any]]) -> dict[str, Any]:
         ordered = sorted(
@@ -493,8 +798,10 @@ class PRMRControlledAlphaAPI:
                 "transition_pairs": transition_pairs,
                 "stable_repeated_patterns": repeated_patterns,
                 "metadata_source_app_distribution": dict(sorted(source_distribution.items())),
+                "application_continuity_markers": self.safe_sorted_refs(ordered, "application_reference"),
                 "actor_continuity_markers": self.safe_sorted_refs(ordered, "actor_reference"),
                 "workspace_continuity_markers": self.safe_sorted_refs(ordered, "workspace_reference"),
+                "entity_continuity_markers": self.safe_sorted_refs(ordered, "entity_reference"),
             },
             "recursive_horizon": {
                 "short_horizon_event_count": len(recent),
@@ -593,11 +900,83 @@ class PRMRControlledAlphaAPI:
     def safe_sorted_refs(self, events: list[dict[str, Any]], key: str) -> list[str]:
         refs = set()
         for event in events:
-            metadata = event.get("external_metadata") or {}
-            value = metadata.get(key)
+            value = event.get(key)
             if isinstance(value, str) and value and value != "[redacted]":
-                refs.add(value[:120])
+                refs.add(value[:160])
+            metadata = event.get("external_metadata") or {}
+            metadata_value = metadata.get(key)
+            if isinstance(metadata_value, str) and metadata_value and metadata_value != "[redacted]":
+                refs.add(metadata_value[:160])
         return sorted(refs)
+
+    def coherence_factor_breakdown(
+        self,
+        events: list[dict[str, Any]],
+        recent_set: set[str],
+        historical_set: set[str],
+        signal_counts: Counter[str],
+    ) -> dict[str, Any]:
+        if not events:
+            return {
+                "repeated_ratio": 0.0,
+                "overlap_ratio": 0.0,
+                "workspace_consistency": 0.0,
+                "actor_consistency": 0.0,
+                "event_volume_factor": 0.0,
+                "weights": {
+                    "repeated_ratio": 0.35,
+                    "overlap_ratio": 0.25,
+                    "workspace_consistency": 0.15,
+                    "actor_consistency": 0.10,
+                    "event_volume_factor": 0.15,
+                },
+            }
+        repeated_ratio = sum(count for count in signal_counts.values() if count > 1) / len(events)
+        overlap_ratio = len(recent_set & historical_set) / max(1, len(recent_set | historical_set))
+        workspace_refs = self.safe_sorted_refs(events, "workspace_reference")
+        actor_refs = self.safe_sorted_refs(events, "actor_reference")
+        return {
+            "repeated_ratio": round(repeated_ratio, 4),
+            "overlap_ratio": round(overlap_ratio, 4),
+            "workspace_consistency": 1.0 if len(workspace_refs) == 1 else 0.5 if workspace_refs else 0.0,
+            "actor_consistency": 1.0 if len(actor_refs) == 1 else 0.5 if actor_refs else 0.0,
+            "event_volume_factor": round(min(1.0, len(events) / 8), 4),
+            "weights": {
+                "repeated_ratio": 0.35,
+                "overlap_ratio": 0.25,
+                "workspace_consistency": 0.15,
+                "actor_consistency": 0.10,
+                "event_volume_factor": 0.15,
+            },
+        }
+
+    def recoverability_factor_breakdown(self, events: list[dict[str, Any]]) -> dict[str, Any]:
+        if not events:
+            return {
+                "has_content_ratio": 0.0,
+                "has_order_ratio": 0.0,
+                "has_anchor_ratio": 0.0,
+                "has_timestamp_ratio": 0.0,
+                "event_volume_factor": 0.0,
+            }
+        signal_count = len({self.event_signal(event) for event in events})
+        lineage = self.lineage_information(events, Counter(self.event_signal(event) for event in events))
+        return {
+            "has_content_ratio": round(sum(1 for event in events if str(event.get("content", "")).strip()) / len(events), 4),
+            "has_order_ratio": round(sum(1 for event in events if isinstance(event.get("timestamp_index"), int)) / len(events), 4),
+            "has_anchor_ratio": round(sum(1 for event in events if str(event.get("event_id", "")).strip()) / len(events), 4),
+            "has_timestamp_ratio": round(sum(1 for event in events if str(event.get("timestamp", "")).strip()) / len(events), 4),
+            "lineage_factor": round(min(1.0, len(lineage) / max(1, signal_count)), 4),
+            "event_volume_factor": round(min(1.0, len(events) / 6), 4),
+            "weights": {
+                "has_content_ratio": 0.25,
+                "has_order_ratio": 0.20,
+                "has_anchor_ratio": 0.20,
+                "has_timestamp_ratio": 0.15,
+                "lineage_factor": 0.10,
+                "event_volume_factor": 0.10,
+            },
+        }
 
     def coherence_score(
         self,
@@ -608,38 +987,27 @@ class PRMRControlledAlphaAPI:
     ) -> float:
         if not events:
             return 0.0
-        repeated_ratio = sum(count for count in signal_counts.values() if count > 1) / len(events)
-        overlap_ratio = len(recent_set & historical_set) / max(1, len(recent_set | historical_set))
-        workspace_refs = self.safe_sorted_refs(events, "workspace_reference")
-        actor_refs = self.safe_sorted_refs(events, "actor_reference")
-        workspace_consistency = 1.0 if len(workspace_refs) == 1 else 0.5 if workspace_refs else 0.0
-        actor_consistency = 1.0 if len(actor_refs) == 1 else 0.5 if actor_refs else 0.0
-        sparsity = min(1.0, len(events) / 8)
+        factors = self.coherence_factor_breakdown(events, recent_set, historical_set, signal_counts)
         score = (
-            repeated_ratio * 0.35
-            + overlap_ratio * 0.25
-            + workspace_consistency * 0.15
-            + actor_consistency * 0.10
-            + sparsity * 0.15
+            factors["repeated_ratio"] * 0.35
+            + factors["overlap_ratio"] * 0.25
+            + factors["workspace_consistency"] * 0.15
+            + factors["actor_consistency"] * 0.10
+            + factors["event_volume_factor"] * 0.15
         )
         return round(max(0.0, min(1.0, score)), 4)
 
     def recoverability_score(self, events: list[dict[str, Any]], lineage: list[dict[str, Any]]) -> float:
         if not events:
             return 0.0
-        has_content = sum(1 for event in events if str(event.get("content", "")).strip()) / len(events)
-        has_order = sum(1 for event in events if isinstance(event.get("timestamp_index"), int)) / len(events)
-        has_anchor = sum(1 for event in events if str(event.get("event_id", "")).strip()) / len(events)
-        has_timestamp = sum(1 for event in events if str(event.get("timestamp", "")).strip()) / len(events)
-        lineage_factor = min(1.0, len(lineage) / max(1, len({self.event_signal(event) for event in events})))
-        event_volume = min(1.0, len(events) / 6)
+        factors = self.recoverability_factor_breakdown(events)
         score = (
-            has_content * 0.25
-            + has_order * 0.20
-            + has_anchor * 0.20
-            + has_timestamp * 0.15
-            + lineage_factor * 0.10
-            + event_volume * 0.10
+            factors["has_content_ratio"] * 0.25
+            + factors["has_order_ratio"] * 0.20
+            + factors["has_anchor_ratio"] * 0.20
+            + factors["has_timestamp_ratio"] * 0.15
+            + min(1.0, len(lineage) / max(1, len({self.event_signal(event) for event in events}))) * 0.10
+            + factors["event_volume_factor"] * 0.10
         )
         return round(max(0.0, min(1.0, score)), 4)
 

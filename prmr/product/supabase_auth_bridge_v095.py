@@ -159,6 +159,20 @@ class SupabaseAuthBridgeV095:
             return error
         assert context
         identity, account, internal_session = context
+        if hasattr(self.storage_product, "bootstrap_account"):
+            bootstrapped = self.storage_product.bootstrap_account(
+                session_token=internal_session,
+                plan_id=plan_id,
+                create_key=True,
+            )
+            if not bootstrapped.get("ok"):
+                return bootstrapped
+            return {
+                **bootstrapped,
+                "identity": self._public_identity(identity, account),
+                "provisioned": bool(bootstrapped.get("scope")),
+                "boundary": BOUNDARY_V095,
+            }
         selected = self.storage_product.choose_plan(
             session_token=internal_session,
             plan_id=plan_id,
@@ -204,11 +218,87 @@ class SupabaseAuthBridgeV095:
         _, _, internal_session = context
         return self.storage_product.dashboard_state(session_token=internal_session)
 
+    def dashboard_logs(
+        self,
+        *,
+        access_token: str | None,
+        limit: int = 25,
+        offset: int = 0,
+        status: str = "",
+        endpoint: str = "",
+        method: str = "",
+    ) -> dict[str, Any]:
+        context, error = self._authenticated_context(access_token)
+        if error:
+            return error
+        assert context
+        _, _, internal_session = context
+        return self.storage_product.dashboard_request_logs(
+            session_token=internal_session,
+            limit=limit,
+            offset=offset,
+            status=status,
+            endpoint=endpoint,
+            method=method,
+        )
+
+    def dashboard_reports(
+        self,
+        *,
+        access_token: str | None,
+        limit: int = 25,
+        offset: int = 0,
+    ) -> dict[str, Any]:
+        context, error = self._authenticated_context(access_token)
+        if error:
+            return error
+        assert context
+        _, _, internal_session = context
+        return self.storage_product.dashboard_reports(
+            session_token=internal_session,
+            limit=limit,
+            offset=offset,
+        )
+
+    def dashboard_report_detail(
+        self,
+        *,
+        access_token: str | None,
+        report_id: str,
+    ) -> dict[str, Any]:
+        context, error = self._authenticated_context(access_token)
+        if error:
+            return error
+        assert context
+        _, _, internal_session = context
+        return self.storage_product.dashboard_report_detail(
+            session_token=internal_session,
+            report_id=report_id,
+        )
+
+    def dashboard_generate_packet(
+        self,
+        *,
+        access_token: str | None,
+        packet_scope: dict[str, Any] | None = None,
+    ) -> dict[str, Any]:
+        context, error = self._authenticated_context(access_token)
+        if error:
+            return error
+        assert context
+        _, _, internal_session = context
+        return self.storage_product.dashboard_generate_packet(
+            session_token=internal_session,
+            packet_scope=packet_scope or {},
+        )
+
     def create_key(
         self,
         *,
         access_token: str | None,
         label: str,
+        application_reference: str = "app_main",
+        environment: str = "",
     ) -> dict[str, Any]:
         context, error = self._authenticated_context(access_token)
         if error:
@@ -218,7 +308,37 @@ class SupabaseAuthBridgeV095:
         return self.storage_product.create_key(
             session_token=internal_session,
             label=label,
+            application_reference=application_reference,
+            environment=environment,
         )
+
+    def create_application(
+        self,
+        *,
+        access_token: str | None,
+        name: str,
+        application_reference: str = "",
+        environment: str = "production",
+    ) -> dict[str, Any]:
+        context, error = self._authenticated_context(access_token)
+        if error:
+            return error
+        assert context
+        _, _, internal_session = context
+        return self.storage_product.create_application(
+            session_token=internal_session,
+            name=name,
+            application_reference=application_reference,
+            environment=environment,
+        )
+
+    def list_applications(self, *, access_token: str | None) -> dict[str, Any]:
+        context, error = self._authenticated_context(access_token)
+        if error:
+            return error
+        assert context
+        _, _, internal_session = context
+        return self.storage_product.list_applications(session_token=internal_session)
 
     def list_keys(self, *, access_token: str | None) -> dict[str, Any]:
         context, error = self._authenticated_context(access_token)
@@ -295,6 +415,19 @@ class SupabaseAuthBridgeV095:
             )
             self.product.accounts.accounts[user_id] = account
             self.product.accounts.email_index[identity.email] = user_id
+            if hasattr(self.product, "record_activation"):
+                self.product.record_activation(
+                    user_id=user_id,
+                    event_type="account_created",
+                    detail={"identity_provider": "supabase", "public_safe": True},
+                    once=True,
+                )
+                self.product.record_activation(
+                    user_id=user_id,
+                    event_type="email_verified",
+                    detail={"identity_provider": "supabase", "public_safe": True},
+                    once=True,
+                )
         else:
             account.status = "verified"
             account.email_verification_mode = "supabase_auth_email_confirmed"

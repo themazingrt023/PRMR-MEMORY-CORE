@@ -93,8 +93,23 @@ class PostgresSelfServeProductV0941:
     def provision_default_scope(self, *, session_token: str) -> dict[str, Any]:
         return self._save(self.product.provision_default_scope(session_token=session_token))
 
-    def create_key(self, *, session_token: str, label: str) -> dict[str, Any]:
-        return self._save(self.product.create_key(session_token=session_token, label=label))
+    def bootstrap_account(self, *, session_token: str, plan_id: str = "free", create_key: bool = True) -> dict[str, Any]:
+        return self._save(
+            self.product.bootstrap_account(
+                session_token=session_token,
+                plan_id=plan_id,
+                create_key=create_key,
+            )
+        )
+
+    def create_application(self, **kwargs: Any) -> dict[str, Any]:
+        return self._save(self.product.create_application(**kwargs))
+
+    def list_applications(self, **kwargs: Any) -> dict[str, Any]:
+        return self.product.list_applications(**kwargs)
+
+    def create_key(self, **kwargs: Any) -> dict[str, Any]:
+        return self._save(self.product.create_key(**kwargs))
 
     def list_keys(self, *, session_token: str) -> dict[str, Any]:
         return self.product.list_keys(session_token=session_token)
@@ -130,6 +145,18 @@ class PostgresSelfServeProductV0941:
         if response.get("ok"):
             response["storage"] = self.storage_status
         return response
+
+    def dashboard_request_logs(self, **kwargs: Any) -> dict[str, Any]:
+        return self.product.dashboard_request_logs(**kwargs)
+
+    def dashboard_reports(self, **kwargs: Any) -> dict[str, Any]:
+        return self.product.dashboard_reports(**kwargs)
+
+    def dashboard_report_detail(self, **kwargs: Any) -> dict[str, Any]:
+        return self.product.dashboard_report_detail(**kwargs)
+
+    def dashboard_generate_packet(self, **kwargs: Any) -> dict[str, Any]:
+        return self._save(self.product.dashboard_generate_packet(**kwargs))
 
     def health(self) -> dict[str, Any]:
         counts = self.repository.table_counts()

@@ -49,7 +49,7 @@ export async function POST(request: NextRequest) {
     {
       ...payload,
       supabase_access_token_exposed: false,
-      api_key_created: false,
+      raw_api_key_exposed_once: Boolean(payload.raw_api_key),
       boundary: SELF_SERVE_PROXY_BOUNDARY
     },
     { status: response.status }

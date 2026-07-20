@@ -20,7 +20,7 @@ from prmr.product.hosted_backend_foundation_v069 import (
     utc_now,
 )
 from prmr.product.self_serve_accounts_v092 import LocalSession, SelfServeAccount
-from prmr.product.self_serve_api_keys_v092 import SelfServeClientScope
+from prmr.product.self_serve_api_keys_v092 import SelfServeApplication, SelfServeClientScope
 from prmr.product.self_serve_dashboard_v092 import SelfServeDashboardV092
 from prmr.product.self_serve_plans_v092 import PlanSubscription
 
@@ -32,10 +32,12 @@ TABLES = (
     "sessions",
     "plans",
     "clients",
+    "applications",
     "vaults",
     "namespaces",
     "usage_limits",
     "api_keys",
+    "key_applications",
     "monthly_usage",
     "usage_events",
     "request_logs",
@@ -167,6 +169,19 @@ class SelfServeRepositoryPostgresV0941:
             )
             cursor.execute(
                 f"""
+                CREATE TABLE IF NOT EXISTS {SCHEMA_NAME}.applications (
+                    application_reference TEXT NOT NULL,
+                    client_id TEXT NOT NULL REFERENCES {SCHEMA_NAME}.clients(client_id),
+                    name TEXT NOT NULL,
+                    environment TEXT NOT NULL,
+                    status TEXT NOT NULL,
+                    created_at TEXT NOT NULL,
+                    PRIMARY KEY(application_reference, client_id)
+                )
+                """
+            )
+            cursor.execute(
+                f"""
                 CREATE TABLE IF NOT EXISTS {SCHEMA_NAME}.vaults (
                     vault_id TEXT PRIMARY KEY,
                     client_id TEXT NOT NULL REFERENCES {SCHEMA_NAME}.clients(client_id),
@@ -205,6 +220,17 @@ class SelfServeRepositoryPostgresV0941:
                     vault_id TEXT NOT NULL,
                     namespace TEXT NOT NULL,
                     label TEXT NOT NULL
+                )
+                """
+            )
+            cursor.execute(
+                f"""
+                CREATE TABLE IF NOT EXISTS {SCHEMA_NAME}.key_applications (
+                    key_id TEXT PRIMARY KEY REFERENCES {SCHEMA_NAME}.api_keys(key_id),
+                    application_reference TEXT NOT NULL,
+                    client_id TEXT NOT NULL,
+                    FOREIGN KEY(application_reference, client_id)
+                        REFERENCES {SCHEMA_NAME}.applications(application_reference, client_id)
                 )
                 """
             )
@@ -327,11 +353,14 @@ class SelfServeRepositoryPostgresV0941:
             for index_name, table, column in (
                 ("sessions_user_id_idx", "sessions", "user_id"),
                 ("clients_usage_limit_id_idx", "clients", "usage_limit_id"),
+                ("applications_client_id_idx", "applications", "client_id"),
+                ("applications_environment_idx", "applications", "environment"),
                 ("vaults_client_id_idx", "vaults", "client_id"),
                 ("namespaces_vault_id_idx", "namespaces", "vault_id"),
                 ("namespaces_client_id_idx", "namespaces", "client_id"),
                 ("api_keys_client_id_idx", "api_keys", "client_id"),
                 ("api_keys_usage_limit_id_idx", "api_keys", "usage_limit_id"),
+                ("key_applications_client_id_idx", "key_applications", "client_id"),
                 ("monthly_usage_user_id_idx", "monthly_usage", "user_id"),
                 ("reports_client_id_idx", "reports", "client_id"),
             ):
@@ -479,6 +508,30 @@ class SelfServeRepositoryPostgresV0941:
             self._executemany(
                 cursor,
                 f"""
+                INSERT INTO {SCHEMA_NAME}.applications(
+                    application_reference, client_id, name, environment, status, created_at
+                ) VALUES (%s, %s, %s, %s, %s, %s)
+                ON CONFLICT(application_reference, client_id) DO UPDATE SET
+                    name=EXCLUDED.name,
+                    environment=EXCLUDED.environment,
+                    status=EXCLUDED.status
+                """,
+                [
+                    (
+                        app.application_reference,
+                        app.client_id,
+                        app.name,
+                        app.environment,
+                        app.status,
+                        app.created_at,
+                    )
+                    for applications in product.keys.applications_by_client.values()
+                    for app in applications.values()
+                ],
+            )
+            self._executemany(
+                cursor,
+                f"""
                 INSERT INTO {SCHEMA_NAME}.vaults(vault_id, client_id, status, created_at)
                 VALUES (%s, %s, %s, %s)
                 ON CONFLICT(vault_id) DO UPDATE SET
@@ -554,6 +607,26 @@ class SelfServeRepositoryPostgresV0941:
                     )
                     for item in lifecycle.lifecycle_keys.values()
                     if item.key_id in foundation.api_keys
+                ],
+            )
+            self._executemany(
+                cursor,
+                f"""
+                INSERT INTO {SCHEMA_NAME}.key_applications(
+                    key_id, application_reference, client_id
+                ) VALUES (%s, %s, %s)
+                ON CONFLICT(key_id) DO UPDATE SET
+                    application_reference=EXCLUDED.application_reference,
+                    client_id=EXCLUDED.client_id
+                """,
+                [
+                    (
+                        key_id,
+                        application_reference,
+                        lifecycle.lifecycle_keys[key_id].client_id,
+                    )
+                    for key_id, application_reference in product.keys.key_applications.items()
+                    if key_id in lifecycle.lifecycle_keys
                 ],
             )
             self._executemany(
@@ -638,6 +711,7 @@ class SelfServeRepositoryPostgresV0941:
                 ],
             )
             self._upsert_metadata(cursor, "validation_outcomes", lifecycle.validation_outcomes)
+            self._upsert_metadata(cursor, "activation_events", {"events": product.activation_events})
             self._upsert_metadata(
                 cursor,
                 "saved_state",
@@ -722,6 +796,9 @@ class SelfServeRepositoryPostgresV0941:
                     created_at=row["created_at"],
                 )
                 foundation.namespaces[row["namespace_id"]] = namespace
+            for row in self._fetchall(cursor, f"SELECT * FROM {SCHEMA_NAME}.applications"):
+                app = SelfServeApplication(**row)
+                product.keys.applications_by_client.setdefault(app.client_id, {})[app.application_reference] = app
             for row in self._fetchall(cursor, f"SELECT * FROM {SCHEMA_NAME}.api_keys"):
                 lifecycle_record = LifecycleKeyRecord(
                     key_id=row["key_id"],
@@ -749,6 +826,12 @@ class SelfServeRepositoryPostgresV0941:
                     key_fingerprint=row["key_fingerprint"],
                 )
                 product.keys.key_labels[lifecycle_record.key_id] = row["label"]
+            for row in self._fetchall(cursor, f"SELECT * FROM {SCHEMA_NAME}.key_applications"):
+                product.keys.key_applications[row["key_id"]] = row["application_reference"]
+            for scope in product.keys.scopes_by_user.values():
+                product.keys.ensure_default_application(scope.client_id)
+            for key_id in lifecycle.lifecycle_keys:
+                product.keys.key_applications.setdefault(key_id, "app_main")
             for row in self._fetchall(
                 cursor, f"SELECT * FROM {SCHEMA_NAME}.usage_events ORDER BY row_order"
             ):
@@ -828,6 +911,18 @@ class SelfServeRepositoryPostgresV0941:
             lifecycle.validation_outcomes = (
                 self._json_value(validation["metadata_json"]) if validation else []
             )
+            cursor.execute(
+                f"""
+                SELECT metadata_json FROM {SCHEMA_NAME}.audit_metadata
+                WHERE metadata_key = %s
+                """,
+                ("activation_events",),
+            )
+            activation = cursor.fetchone()
+            if activation:
+                product.activation_events = list(
+                    self._json_value(activation["metadata_json"]).get("events", [])
+                )[-500:]
         return product
 
     def table_counts(self) -> dict[str, int]:

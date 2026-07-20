@@ -55,8 +55,8 @@ def provision(client: TestClient, email: str) -> tuple[str, str, dict[str, Any]]
     return session_token, key, scope
 
 
-def packet(client: TestClient, key: str) -> dict[str, Any]:
-    response = client.post("/v1/continuity/packet", headers={"Authorization": f"Bearer {key}"}, json={})
+def packet(client: TestClient, key: str, scope: dict[str, Any] | None = None) -> dict[str, Any]:
+    response = client.post("/v1/continuity/packet", headers={"Authorization": f"Bearer {key}"}, json=scope or {})
     body = response.json()
     return {"status_code": response.status_code, "body": body, "packet": body.get("packet", {})}
 
@@ -80,6 +80,10 @@ def run_flow() -> tuple[list[dict[str, Any]], dict[str, Any], dict[str, Any]]:
                     "content": "Project opened.",
                     "timestamp": "2026-07-05T00:00:00Z",
                     "timestamp_index": 1,
+                    "application_reference": "app_v099",
+                    "actor_reference": "hashed_actor",
+                    "workspace_reference": "hashed_workspace",
+                    "entity_reference": "project_v099",
                 },
                 {
                     "event_type": "habit.completed",
@@ -88,6 +92,8 @@ def run_flow() -> tuple[list[dict[str, Any]], dict[str, Any], dict[str, Any]]:
                     "occurred_at": "2026-07-05T00:01:00Z",
                     "actor_reference": "hashed_actor",
                     "workspace_reference": "hashed_workspace",
+                    "application_reference": "app_v099",
+                    "entity_reference": "project_v099",
                     "idempotency_key": "evt_002",
                     "timestamp_index": 2,
                 },
@@ -98,6 +104,8 @@ def run_flow() -> tuple[list[dict[str, Any]], dict[str, Any], dict[str, Any]]:
                     "occurred_at": "2026-07-05T00:02:00Z",
                     "actor_reference": "hashed_actor",
                     "workspace_reference": "hashed_workspace",
+                    "application_reference": "app_v099",
+                    "entity_reference": "project_v099",
                     "idempotency_key": "evt_003",
                     "timestamp_index": 3,
                 },
@@ -108,6 +116,8 @@ def run_flow() -> tuple[list[dict[str, Any]], dict[str, Any], dict[str, Any]]:
                     "occurred_at": "2026-07-05T00:03:00Z",
                     "actor_reference": "hashed_actor",
                     "workspace_reference": "hashed_workspace",
+                    "application_reference": "app_v099",
+                    "entity_reference": "project_v099",
                     "idempotency_key": "evt_004",
                     "timestamp_index": 4,
                 },
@@ -118,6 +128,8 @@ def run_flow() -> tuple[list[dict[str, Any]], dict[str, Any], dict[str, Any]]:
                     "occurred_at": "2026-07-05T00:04:00Z",
                     "actor_reference": "hashed_actor",
                     "workspace_reference": "hashed_workspace",
+                    "application_reference": "app_v099",
+                    "entity_reference": "project_v099",
                     "idempotency_key": "evt_005",
                     "timestamp_index": 5,
                 },
@@ -128,6 +140,8 @@ def run_flow() -> tuple[list[dict[str, Any]], dict[str, Any], dict[str, Any]]:
                     "occurred_at": "2026-07-05T00:05:00Z",
                     "actor_reference": "hashed_actor",
                     "workspace_reference": "hashed_workspace",
+                    "application_reference": "app_v099",
+                    "entity_reference": "project_v099",
                     "idempotency_key": "evt_006",
                     "timestamp_index": 6,
                 },
@@ -136,6 +150,10 @@ def run_flow() -> tuple[list[dict[str, Any]], dict[str, Any], dict[str, Any]]:
                     "content": "Status was reviewed.",
                     "timestamp": "2026-07-05T00:06:00Z",
                     "timestamp_index": 7,
+                    "application_reference": "app_v099",
+                    "actor_reference": "hashed_actor",
+                    "workspace_reference": "hashed_workspace",
+                    "entity_reference": "project_v099",
                 },
                 {
                     "event_type": "project_updated",
@@ -144,12 +162,23 @@ def run_flow() -> tuple[list[dict[str, Any]], dict[str, Any], dict[str, Any]]:
                     "occurred_at": "2026-07-05T00:07:00Z",
                     "actor_reference": "hashed_actor",
                     "workspace_reference": "hashed_workspace",
+                    "application_reference": "app_v099",
+                    "entity_reference": "project_v099",
                     "idempotency_key": "evt_008",
                     "timestamp_index": 8,
                 },
             ]
             ingest = client.post("/v1/events/ingest", headers=headers, json={"events": events})
-            rich = packet(client, raw_key)
+            rich = packet(
+                client,
+                raw_key,
+                {
+                    "application_reference": "app_v099",
+                    "actor_reference": "hashed_actor",
+                    "workspace_reference": "hashed_workspace",
+                    "entity_reference": "project_v099",
+                },
+            )
             rich_packet = rich["packet"]
             active_signals = {item["signal"] for item in rich_packet.get("active_information", [])}
             latent_signals = {item["signal"] for item in rich_packet.get("latent_information", [])}
