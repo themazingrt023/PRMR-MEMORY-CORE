@@ -701,7 +701,7 @@ class PRMRControlledAlphaAPI:
                 }
                 for event in ordered
             ],
-            "events_excluded": excluded_events,
+            "events_excluded": self.excluded_event_summary(excluded_events),
             "recent_horizon_boundary": str(recent[0].get("timestamp", "")) if recent else None,
             "historical_horizon_boundary": str(historical[-1].get("timestamp", "")) if historical else None,
             "active_classification_basis": "signals present inside the recent deterministic horizon",
@@ -724,15 +724,18 @@ class PRMRControlledAlphaAPI:
             "algorithm_revision": ALGORITHM_REVISION,
         }
 
-    def safe_excluded_event_summary(self, excluded_events: list[dict[str, Any]]) -> list[dict[str, Any]]:
-        return [
-            {
-                "event_id": str(event.get("event_id", ""))[:120],
-                "event_type": str(event.get("event_type") or event.get("type") or "")[:120],
-                "reason": str(event.get("reason", "excluded"))[:160],
-            }
-            for event in excluded_events[:200]
-        ]
+    def excluded_event_summary(self, excluded_events: list[dict[str, Any]]) -> dict[str, Any]:
+        reasons = Counter(str(event.get("reason", "excluded"))[:160] for event in excluded_events)
+        return {
+            "excluded_event_count": len(excluded_events),
+            "reason_counts": dict(sorted(reasons.items())),
+            "scope_values_exposed": False,
+            "event_ids_exposed": False,
+            "note": "Excluded events are counted only so scoped packets do not reveal other actors, workspaces, or entities.",
+        }
+
+    def safe_excluded_event_summary(self, excluded_events: list[dict[str, Any]]) -> dict[str, Any]:
+        return self.excluded_event_summary(excluded_events)
 
     def build_theory_packet(self, events: list[dict[str, Any]]) -> dict[str, Any]:
         ordered = sorted(

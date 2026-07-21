@@ -419,8 +419,8 @@ export function HostedSelfServeDashboard() {
   ].join("\n");
 
   return (
-    <div className="relative mx-auto max-w-[1500px] space-y-6 px-6 pb-24 pt-32">
-      <section className="border border-white/12 bg-[var(--afternum-bg-panel)] p-6">
+    <div className="relative mx-auto max-w-[1500px] space-y-6 px-6 pb-24 pt-8">
+      <section id="overview" className="border border-white/12 bg-[var(--afternum-bg-panel)] p-6">
         <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
           <div>
             <p className="kimi-section-label">Afternum API Dashboard</p>
@@ -441,6 +441,7 @@ export function HostedSelfServeDashboard() {
         storage={payload.storage}
       />
 
+      <div id="playground">
       <ActivationPlayground
         activation={dashboard.activation}
         busy={busy}
@@ -454,6 +455,7 @@ export function HostedSelfServeDashboard() {
         onSendEvent={sendPlaygroundEvent}
         onGeneratePacket={generatePlaygroundPacket}
       />
+      </div>
 
       <section className="grid gap-5 border border-white/10 bg-white/[0.012] p-6 lg:grid-cols-3">
         <Info label="Client ID" value={scope.client_id} />
@@ -461,6 +463,7 @@ export function HostedSelfServeDashboard() {
         <Info label="Namespace" value={scope.namespace} />
       </section>
 
+      <div id="applications">
       <ApplicationsSection
         applications={dashboard.applications || []}
         busy={busy}
@@ -473,7 +476,9 @@ export function HostedSelfServeDashboard() {
         onReference={setApplicationReference}
         reference={applicationReference}
       />
+      </div>
 
+      <div id="api-keys">
       <ApiKeySection
         apiKeys={dashboard.api_keys}
         busy={busy}
@@ -484,6 +489,7 @@ export function HostedSelfServeDashboard() {
         oneTimeKey={oneTimeKey}
         onStored={() => setOneTimeKey("")}
       />
+      </div>
 
       <section className="grid gap-6 lg:grid-cols-2">
         <Panel title="Server quickstart">
@@ -506,12 +512,15 @@ export function HostedSelfServeDashboard() {
       />
 
       <section className="grid gap-6 xl:grid-cols-2">
+        <div id="request-logs">
         <RequestLogsPanel
           hasMore={logsHasMore}
           logs={logs}
           onMore={() => loadLogs(logs.length, true)}
           total={logsTotal}
         />
+        </div>
+        <div id="packets">
         <ReportsPanel
           hasMore={reportsHasMore}
           onMore={() => loadReports(reports.length, true)}
@@ -519,6 +528,7 @@ export function HostedSelfServeDashboard() {
           reports={reports}
           total={reportsTotal}
         />
+        </div>
       </section>
 
       {selectedReport ? <ReportDetailModal report={selectedReport} onClose={() => setSelectedReport(null)} /> : null}
