@@ -1,73 +1,47 @@
 "use client";
 
-import { useEffect, useState, type ReactNode } from "react";
+import { useEffect, useMemo, useState, type ReactNode } from "react";
 
-type KeyRecord = {
-  key_id: string;
-  label: string;
-  safe_key_preview: string;
-  status: string;
-  created_at: string;
-  last_used_at?: string | null;
-  application_reference?: string;
-  environment?: string;
+type ActivationStep = { event_type: string; label: string; completed: boolean };
+type Dashboard = {
+  account: { name: string; email: string };
+  plan: { usage: { requests_used: number; requests_limit: number; requests_remaining: number } };
+  applications: { application_reference: string; name: string; environment: string; event_count: number; packet_count: number }[];
+  api_keys: KeyRecord[];
+  activation?: { steps: ActivationStep[]; completed_count: number; total_count: number };
 };
-
-type ApplicationRecord = {
-  application_reference: string;
-  name: string;
-  environment: string;
+type KeyRecord = { key_id: string; label: string; safe_key_preview: string; status: string; created_at: string; last_used_at?: string | null };
+type EventRecord = {
+  event_id: string;
+  actor_reference: string;
+  entity_reference: string;
+  event_type: string;
   status: string;
-  created_at: string;
+  occurred_at: string;
+  received_at: string;
+  readable_summary: string;
+  payload?: unknown;
+  associated_packets?: string[];
+};
+type PacketRecord = {
+  packet_id?: string;
+  report_id?: string;
+  actor_reference?: string;
+  created?: string | null;
+  events_considered?: number;
+  status?: string;
+  summary?: string;
+};
+type ActorRecord = {
+  actor_reference: string;
+  latest_activity?: string | null;
   event_count: number;
   packet_count: number;
-  last_request?: string | null;
-  last_successful_ingest?: string | null;
-  last_packet?: string | null;
-  health_status: string;
-  associated_key_count: number;
+  status: string;
+  latest_packet_id?: string | null;
+  current_continuity?: string | null;
 };
-
-type Dashboard = {
-  account: { name: string; email: string; status: string };
-  plan: {
-    subscription: { plan_id: string; status: string; billing_status: string };
-    usage: { requests_used: number; requests_limit: number; requests_remaining: number };
-  };
-  client_scope: { client_id: string; vault_id: string; namespace: string; status: string };
-  applications: ApplicationRecord[];
-  api_keys: KeyRecord[];
-  request_logs: DashboardLog[];
-  reports: ReportSummary[];
-  billing: { live: boolean; status: string; message: string };
-  support: { mode: string };
-  activation?: {
-    steps: { event_type: string; label: string; completed: boolean }[];
-    completed_count: number;
-    total_count: number;
-  };
-};
-
-type StorageBoundary = {
-  storage_backend?: string;
-  storage_mode?: string;
-  database_connected?: boolean;
-  durable_storage_verified?: boolean;
-  durable_storage_claim_allowed?: boolean;
-  raw_key_storage?: boolean;
-  raw_password_storage?: boolean;
-  public_safe?: boolean;
-  hosted_storage_boundary?: string;
-};
-
-type DashboardResponse = {
-  status?: string;
-  dashboard?: Dashboard;
-  storage?: StorageBoundary;
-  error?: { code?: string; message?: string };
-};
-
-type DashboardLog = {
+type LogRecord = {
   log_id?: string;
   timestamp: string;
   method?: string;
@@ -76,980 +50,545 @@ type DashboardLog = {
   allowed?: boolean;
   reason?: string;
   rejection_reason?: string | null;
-  latency_ms?: number | null;
   public_safe_message?: string;
-  client_scope?: { client_id: string; vault_id: string; namespace: string };
 };
-
-type LogsResponse = {
-  logs?: DashboardLog[];
-  total_count?: number;
-  limit?: number;
-  offset?: number;
-  has_more?: boolean;
-};
-
-type ReportSummary = {
-  report_id: string;
-  created_timestamp?: string | null;
-  summary: string;
-  packet_id?: string | null;
-  endpoint_source?: string;
-  event_count?: number;
-  public_safe: boolean;
-};
-
-type ReportsResponse = {
-  reports?: ReportSummary[];
-  total_count?: number;
-  limit?: number;
-  offset?: number;
-  has_more?: boolean;
-};
-
 type PacketDetail = Record<string, unknown>;
-
-type ReportDetailResponse = {
-  report?: ReportSummary & {
-    older_report_format?: boolean;
-    older_report_message?: string | null;
-    packet?: PacketDetail | null;
-  };
-  error?: { code?: string; message?: string };
+type Usage = {
+  events_received: number;
+  packets_generated: number;
+  active_actors: number;
+  api_requests: number;
+  requests_used: number;
+  requests_remaining: number;
+  requests_limit: number;
+  storage_used: null | string;
+  storage_measured: boolean;
+  billing_live: boolean;
 };
 
-type PacketResponse = {
-  packet?: PacketDetail;
-  report_id?: string;
-  error?: { code?: string; message?: string };
-};
-
-type PacketScope = {
-  application_reference: string;
-  actor_reference: string;
-  workspace_reference: string;
-  entity_reference: string;
-  session_reference: string;
-  allow_broad_scope: boolean;
-};
-
-type PlaygroundState = {
-  api_key: string;
-  application_reference: string;
-  actor_reference: string;
-  workspace_reference: string;
-  entity_reference: string;
-  event_type: string;
-  signal: string;
-};
-
-const emptyPacketScope: PacketScope = {
-  application_reference: "app_main",
-  actor_reference: "",
-  workspace_reference: "",
-  entity_reference: "",
-  session_reference: "",
-  allow_broad_scope: false
-};
-
-const PAGE_SIZE = 25;
-
-const defaultPlayground: PlaygroundState = {
-  api_key: "",
-  application_reference: "app_main",
-  actor_reference: "user_123",
-  workspace_reference: "workspace_demo",
-  entity_reference: "entity_demo",
-  event_type: "prmr.playground.first_event",
-  signal: "A first sandbox event was sent to PRMR."
-};
+const PAGE_SIZE = 50;
 
 export function HostedSelfServeDashboard() {
-  const [payload, setPayload] = useState<DashboardResponse | null>(null);
-  const [logs, setLogs] = useState<DashboardLog[]>([]);
-  const [logsTotal, setLogsTotal] = useState(0);
-  const [logsHasMore, setLogsHasMore] = useState(false);
-  const [reports, setReports] = useState<ReportSummary[]>([]);
-  const [reportsTotal, setReportsTotal] = useState(0);
-  const [reportsHasMore, setReportsHasMore] = useState(false);
-  const [selectedReport, setSelectedReport] = useState<ReportDetailResponse["report"] | null>(null);
-  const [packetResult, setPacketResult] = useState<PacketResponse | null>(null);
-  const [upgradeOpen, setUpgradeOpen] = useState(false);
-  const [loading, setLoading] = useState(true);
-  const [message, setMessage] = useState("");
-  const [label, setLabel] = useState("Sandbox server key");
-  const [applicationName, setApplicationName] = useState("My First Application");
-  const [applicationReference, setApplicationReference] = useState("app_main");
-  const [applicationEnvironment, setApplicationEnvironment] = useState("sandbox");
-  const [packetScope, setPacketScope] = useState<PacketScope>(emptyPacketScope);
+  const [dashboard, setDashboard] = useState<Dashboard | null>(null);
+  const [events, setEvents] = useState<EventRecord[]>([]);
+  const [packets, setPackets] = useState<PacketRecord[]>([]);
+  const [actors, setActors] = useState<ActorRecord[]>([]);
+  const [logs, setLogs] = useState<LogRecord[]>([]);
+  const [usage, setUsage] = useState<Usage | null>(null);
   const [oneTimeKey, setOneTimeKey] = useState("");
-  const [playground, setPlayground] = useState<PlaygroundState>(defaultPlayground);
-  const [playgroundEventResult, setPlaygroundEventResult] = useState<Record<string, unknown> | null>(null);
-  const [playgroundPacketResult, setPlaygroundPacketResult] = useState<PacketResponse | null>(null);
+  const [keyName, setKeyName] = useState("Server key");
+  const [playgroundJson, setPlaygroundJson] = useState('{"actor_id":"test_actor","event_type":"task.completed","payload":{"summary":"A test task was completed."}}');
+  const [playgroundPacket, setPlaygroundPacket] = useState<PacketDetail | null>(null);
+  const [selectedPacket, setSelectedPacket] = useState<PacketDetail | null>(null);
+  const [selectedEvent, setSelectedEvent] = useState<EventRecord | null>(null);
+  const [message, setMessage] = useState("");
+  const [loading, setLoading] = useState(true);
   const [busy, setBusy] = useState(false);
 
-  async function loadDashboard() {
-    const response = await fetch("/api/dashboard/state", { cache: "no-store" });
-    const body = (await response.json().catch(() => ({}))) as DashboardResponse;
-    setPayload(body);
-    return body;
-  }
-
-  async function loadLogs(offset = 0, append = false) {
-    const response = await fetch(`/api/dashboard/logs?limit=${PAGE_SIZE}&offset=${offset}`, { cache: "no-store" });
-    const body = (await response.json().catch(() => ({}))) as LogsResponse;
-    setLogs((current) => append ? [...current, ...(body.logs || [])] : body.logs || []);
-    setLogsTotal(body.total_count || 0);
-    setLogsHasMore(Boolean(body.has_more));
-  }
-
-  async function loadReports(offset = 0, append = false) {
-    const response = await fetch(`/api/dashboard/reports?limit=${PAGE_SIZE}&offset=${offset}`, { cache: "no-store" });
-    const body = (await response.json().catch(() => ({}))) as ReportsResponse;
-    setReports((current) => append ? [...current, ...(body.reports || [])] : body.reports || []);
-    setReportsTotal(body.total_count || 0);
-    setReportsHasMore(Boolean(body.has_more));
+  async function json<T>(path: string, init?: RequestInit): Promise<T> {
+    const response = await fetch(path, { cache: "no-store", ...init });
+    const body = await response.json().catch(() => ({}));
+    if (!response.ok) throw new Error(body?.error?.message || body?.error?.code || "request_failed");
+    return body as T;
   }
 
   async function loadAll() {
     setLoading(true);
     try {
-      const body = await loadDashboard();
-      if (body.dashboard) {
-        await Promise.all([loadLogs(), loadReports()]);
-      }
+      const [state, eventBody, packetBody, actorBody, logBody, usageBody] = await Promise.all([
+        json<{ dashboard?: Dashboard }>("/api/dashboard/state"),
+        json<{ events?: EventRecord[] }>(`/api/dashboard/events?limit=${PAGE_SIZE}`),
+        json<{ packets?: PacketRecord[] }>(`/api/dashboard/packets?limit=${PAGE_SIZE}`),
+        json<{ actors?: ActorRecord[] }>(`/api/dashboard/actors?limit=${PAGE_SIZE}`),
+        json<{ logs?: LogRecord[] }>(`/api/dashboard/logs?limit=${PAGE_SIZE}`),
+        json<{ usage?: Usage }>("/api/dashboard/usage/live")
+      ]);
+      setDashboard(state.dashboard || null);
+      setEvents(eventBody.events || []);
+      setPackets(packetBody.packets || []);
+      setActors(actorBody.actors || []);
+      setLogs(logBody.logs || []);
+      setUsage(usageBody.usage || null);
     } finally {
       setLoading(false);
     }
   }
 
   useEffect(() => {
-    let cancelled = false;
-    void (async () => {
-      await loadAll();
-      if (cancelled) return;
-    })();
-    return () => {
-      cancelled = true;
-    };
-  }, []);
-
-  useEffect(() => {
+    void loadAll();
     const stored = window.sessionStorage.getItem("prmr_one_time_activation_key") || "";
     if (stored) {
       setOneTimeKey(stored);
-      setPlayground((current) => ({ ...current, api_key: stored }));
       window.sessionStorage.removeItem("prmr_one_time_activation_key");
-      setMessage("Copy this key now. PRMR will not show it again.");
     }
   }, []);
 
-  async function keyAction(method: "POST" | "PATCH" | "DELETE", keyId?: string) {
+  const activeApp = dashboard?.applications?.[0];
+  const activationSteps = dashboard?.activation?.steps || [];
+  const firstRunDone = Boolean(usage && usage.events_received > 0 && usage.packets_generated > 0);
+  const latestEvent = events[0];
+  const latestPacket = packets[0];
+  const recentErrors = logs.filter((row) => row.allowed === false || row.status !== "ok").slice(0, 3);
+
+  async function createKey() {
     setBusy(true);
     setMessage("");
     try {
-      const response = await fetch("/api/dashboard/keys", {
-        method,
+      const body = await json<{ raw_api_key?: string }>("/api/dashboard/keys", {
+        method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(
-          method === "POST"
-            ? { label, application_reference: applicationReference, environment: applicationEnvironment }
-            : { key_id: keyId }
-        )
+        body: JSON.stringify({ label: keyName })
       });
-      const body = (await response.json().catch(() => ({}))) as {
-        raw_api_key?: string;
-        error?: { message?: string };
-      };
-      if (!response.ok) {
-        setMessage(body.error?.message || "The key action was blocked.");
-        return;
-      }
-      if (body.raw_api_key) {
-        setOneTimeKey(body.raw_api_key);
-        setMessage("Copy this key now. PRMR will not show it again.");
-      } else {
-        setMessage(method === "DELETE" ? "Key revoked." : "Key updated.");
-      }
+      if (body.raw_api_key) setOneTimeKey(body.raw_api_key);
+      setMessage(body.raw_api_key ? "Copy this key now. PRMR will not show it again." : "Key created.");
       await loadAll();
-    } catch {
-      setMessage("The hosted key service could not be reached.");
+    } catch (error) {
+      setMessage(error instanceof Error ? error.message : "Key action failed.");
     } finally {
       setBusy(false);
     }
   }
 
-  async function createApplication() {
+  async function keyAction(method: "PATCH" | "DELETE", keyId: string) {
     setBusy(true);
     setMessage("");
     try {
-      const response = await fetch("/api/dashboard/applications", {
+      const body = await json<{ raw_api_key?: string }>("/api/dashboard/keys", {
+        method,
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ key_id: keyId })
+      });
+      if (body.raw_api_key) setOneTimeKey(body.raw_api_key);
+      setMessage(method === "PATCH" ? "Key rotated. Copy the replacement now if shown." : "Key revoked.");
+      await loadAll();
+    } catch (error) {
+      setMessage(error instanceof Error ? error.message : "Key action failed.");
+    } finally {
+      setBusy(false);
+    }
+  }
+
+  async function generateTestPacket() {
+    setBusy(true);
+    setMessage("");
+    try {
+      const parsed = JSON.parse(playgroundJson || "{}") as Record<string, unknown>;
+      const validation = validatePlayground(parsed);
+      if (validation) {
+        setMessage(validation);
+        return;
+      }
+      await json("/api/dashboard/playground/event", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          name: applicationName,
-          application_reference: applicationReference,
-          environment: applicationEnvironment
+          actor_reference: String(parsed.actor_id),
+          event_type: String(parsed.event_type),
+          signal: JSON.stringify(parsed.payload || {}),
+          payload: JSON.stringify(parsed.payload || {}),
+          timestamp: String(parsed.timestamp || new Date().toISOString())
         })
       });
-      const body = (await response.json().catch(() => ({}))) as { error?: { message?: string; code?: string } };
-      if (!response.ok) {
-        setMessage(body.error?.message || body.error?.code || "Application creation was blocked.");
-        return;
-      }
-      setPacketScope((current) => ({ ...current, application_reference: applicationReference }));
-      setMessage("Application created.");
-      await loadDashboard();
-    } catch {
-      setMessage("The application service could not be reached.");
-    } finally {
-      setBusy(false);
-    }
-  }
-
-  async function generatePacket() {
-    setBusy(true);
-    setMessage("");
-    try {
-      const response = await fetch("/api/dashboard/packet", {
+      const packet = await json<{ packet?: PacketDetail }>("/api/dashboard/playground/packet", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(packetScope)
+        body: JSON.stringify({ actor_reference: String(parsed.actor_id), entity_reference: String(parsed.actor_id) })
       });
-      const body = (await response.json().catch(() => ({}))) as PacketResponse;
-      if (!response.ok) {
-        setMessage(body.error?.message || "Packet generation was blocked.");
-        return;
-      }
-      setPacketResult(body);
-      await Promise.all([loadDashboard(), loadLogs(), loadReports()]);
-    } catch {
-      setMessage("The packet service could not be reached.");
+      setPlaygroundPacket(packet.packet || null);
+      setMessage("TEST MODE packet generated. Live continuity was not touched.");
+    } catch (error) {
+      setMessage(error instanceof Error ? error.message : "Playground failed.");
     } finally {
       setBusy(false);
     }
   }
 
-  async function sendPlaygroundEvent() {
+  async function resetPlayground() {
     setBusy(true);
-    setMessage("");
     try {
-      const response = await fetch("/api/dashboard/playground/event", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(playground)
-      });
-      const body = (await response.json().catch(() => ({}))) as Record<string, unknown> & { error?: { message?: string; code?: string } };
-      if (!response.ok) {
-        setMessage(body.error?.message || body.error?.code || "The playground event was blocked.");
-        return;
-      }
-      setPlaygroundEventResult(body);
-      setMessage("First sandbox event accepted through the public API contract.");
-      await Promise.all([loadDashboard(), loadLogs()]);
-    } catch {
-      setMessage("The hosted playground event route could not be reached.");
+      await json("/api/dashboard/playground", { method: "DELETE" });
+      setPlaygroundPacket(null);
+      setMessage("TEST MODE data reset. Live Events, Packets and Actors were not touched.");
+    } catch (error) {
+      setMessage(error instanceof Error ? error.message : "Reset failed.");
     } finally {
       setBusy(false);
     }
   }
 
-  async function generatePlaygroundPacket() {
-    setBusy(true);
-    setMessage("");
+  async function openPacket(packetId?: string) {
+    if (!packetId) return;
     try {
-      const response = await fetch("/api/dashboard/playground/packet", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(playground)
-      });
-      const body = (await response.json().catch(() => ({}))) as PacketResponse;
-      if (!response.ok) {
-        setMessage(body.error?.message || "The playground packet was blocked.");
-        return;
-      }
-      setPlaygroundPacketResult(body);
-      setMessage("Continuity packet generated from your sandbox event history.");
-      await Promise.all([loadDashboard(), loadLogs(), loadReports()]);
-    } catch {
-      setMessage("The hosted playground packet route could not be reached.");
-    } finally {
-      setBusy(false);
+      const body = await json<{ packet?: PacketDetail }>(`/api/dashboard/packets/${encodeURIComponent(packetId)}`);
+      setSelectedPacket(body.packet || null);
+    } catch (error) {
+      setMessage(error instanceof Error ? error.message : "Packet could not be opened.");
     }
   }
 
-  async function openReport(reportId: string) {
-    const response = await fetch(`/api/dashboard/reports/${encodeURIComponent(reportId)}`, { cache: "no-store" });
-    const body = (await response.json().catch(() => ({}))) as ReportDetailResponse;
-    if (response.ok && body.report) setSelectedReport(body.report);
-    else setMessage(body.error?.message || "The report could not be opened.");
-  }
-
-  async function logout() {
-    await fetch("/api/self-serve/logout", { method: "POST" });
-    window.location.href = "/signup";
-  }
-
-  if (loading) {
-    return <State title="Loading workspace" detail="Checking your hosted self-serve session..." />;
-  }
-  if (!payload?.dashboard) {
+  if (loading) return <State title="Loading Memory Core" detail="Checking your console session..." />;
+  if (!dashboard) {
     return (
-      <State
-        title="Dashboard access is locked"
-        detail="Create a hosted Free workspace first. If activation is unavailable, the Render backend still needs a verified server-side Postgres connection."
-      >
-        <a className="silver-button mt-7 inline-block px-6 py-4 font-mono text-xs uppercase tracking-[0.14em]" href="/signup">
-          Create workspace
-        </a>
+      <State title="Console locked" detail="Sign in or create an account to activate Memory Core.">
+        <a className="silver-button mt-6 inline-block px-5 py-3 text-xs" href="/signup">Start building</a>
       </State>
     );
   }
 
-  const dashboard = payload.dashboard;
-  const scope = dashboard.client_scope;
-  const env = [
-    "PRMR_API_BASE_URL=https://prmr-memory-core-api.onrender.com",
-    "PRMR_API_KEY=<YOUR_PRMR_KEY>",
-    "",
-    "# Optional explicit scope assertions:",
-    `PRMR_CLIENT_ID=${scope.client_id}`,
-    `PRMR_VAULT_ID=${scope.vault_id}`,
-    `PRMR_NAMESPACE=${scope.namespace}`
-  ].join("\n");
-
   return (
-    <div className="relative mx-auto max-w-[1500px] space-y-6 px-6 pb-24 pt-8">
-      <section id="overview" className="border border-white/12 bg-[var(--afternum-bg-panel)] p-6">
-        <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
+    <div className="mx-auto max-w-[1500px] space-y-6 px-6 pb-24 pt-8">
+      <section id="home" className="border border-white/10 bg-[var(--afternum-bg-panel)] p-6">
+        <div className="flex flex-col gap-6 xl:flex-row xl:items-start xl:justify-between">
           <div>
-            <p className="kimi-section-label">Afternum API Dashboard</p>
-            <h1 className="mt-5 font-display text-[clamp(44px,6vw,84px)] leading-[0.96] text-white">
-              {dashboard.account.name}
+            <p className="kimi-section-label">Memory Core Home</p>
+            <h1 className="mt-4 font-display text-[clamp(42px,6vw,76px)] leading-none text-white">
+              {firstRunDone ? "Memory Core is working." : "Your Memory Core is ready."}
             </h1>
-            <p className="mt-5 text-sm text-mist/58">{dashboard.account.email}</p>
+            <p className="mt-5 max-w-3xl text-sm leading-7 text-mist/58">
+              {firstRunDone
+                ? "Your software has sent events and PRMR has generated continuity packets."
+                : "Copy your API key, send your first event, then generate your first continuity packet."}
+            </p>
           </div>
-          <button className="ghost-button px-4 py-3 font-mono text-[10px] uppercase tracking-[0.14em]" onClick={logout} type="button">
+          <button className="ghost-button px-4 py-3 text-xs" onClick={() => void fetch("/api/self-serve/logout", { method: "POST" }).then(() => { window.location.href = "/login"; })} type="button">
             Sign out
           </button>
         </div>
-      </section>
-
-      <PlanStorageBand
-        dashboard={dashboard}
-        onUpgrade={() => setUpgradeOpen(true)}
-        storage={payload.storage}
-      />
-
-      <div id="playground">
-      <ActivationPlayground
-        activation={dashboard.activation}
-        busy={busy}
-        message={message}
-        oneTimeKey={oneTimeKey}
-        onStored={() => setOneTimeKey("")}
-        playground={playground}
-        setPlayground={setPlayground}
-        eventResult={playgroundEventResult}
-        packetResult={playgroundPacketResult}
-        onSendEvent={sendPlaygroundEvent}
-        onGeneratePacket={generatePlaygroundPacket}
-      />
-      </div>
-
-      <section className="grid gap-5 border border-white/10 bg-white/[0.012] p-6 lg:grid-cols-3">
-        <Info label="Client ID" value={scope.client_id} />
-        <Info label="Vault ID" value={scope.vault_id} />
-        <Info label="Namespace" value={scope.namespace} />
-      </section>
-
-      <div id="applications">
-      <ApplicationsSection
-        applications={dashboard.applications || []}
-        busy={busy}
-        environment={applicationEnvironment}
-        message={message}
-        name={applicationName}
-        onCreate={createApplication}
-        onEnvironment={setApplicationEnvironment}
-        onName={setApplicationName}
-        onReference={setApplicationReference}
-        reference={applicationReference}
-      />
-      </div>
-
-      <div id="api-keys">
-      <ApiKeySection
-        apiKeys={dashboard.api_keys}
-        busy={busy}
-        label={label}
-        message={message}
-        onAction={keyAction}
-        onLabel={setLabel}
-        oneTimeKey={oneTimeKey}
-        onStored={() => setOneTimeKey("")}
-      />
-      </div>
-
-      <section className="grid gap-6 lg:grid-cols-2">
-        <Panel title="Server quickstart">
-          <pre className="overflow-x-auto whitespace-pre-wrap border border-white/10 bg-black/25 p-4 font-mono text-xs leading-6 text-mist/72">{env}</pre>
-          <p className="mt-4 text-sm text-mist/48">
-            Bearer authentication is sufficient; PRMR resolves this key&apos;s scope. Optional scope headers are checked when supplied.
-            Keep the key server-side and never place it in frontend code.
-          </p>
-        </Panel>
-        <StorageBoundaryPanel storage={payload.storage} />
-      </section>
-
-      <PacketTester
-        applications={dashboard.applications || []}
-        busy={busy}
-        packetResult={packetResult}
-        packetScope={packetScope}
-        setPacketScope={setPacketScope}
-        onGenerate={generatePacket}
-      />
-
-      <section className="grid gap-6 xl:grid-cols-2">
-        <div id="request-logs">
-        <RequestLogsPanel
-          hasMore={logsHasMore}
-          logs={logs}
-          onMore={() => loadLogs(logs.length, true)}
-          total={logsTotal}
-        />
+        <div className="mt-8 grid gap-4 md:grid-cols-2 xl:grid-cols-5">
+          <Metric label="Events received" value={String(usage?.events_received ?? 0)} />
+          <Metric label="Packets generated" value={String(usage?.packets_generated ?? 0)} />
+          <Metric label="Active actors" value={String(usage?.active_actors ?? 0)} />
+          <Metric label="Usage this month" value={`${usage?.requests_used ?? 0}/${usage?.requests_limit ?? 0}`} />
+          <Metric label="Attention required" value={recentErrors.length ? `${recentErrors.length} issue(s)` : "None"} />
         </div>
-        <div id="packets">
-        <ReportsPanel
-          hasMore={reportsHasMore}
-          onMore={() => loadReports(reports.length, true)}
-          onOpen={openReport}
-          reports={reports}
-          total={reportsTotal}
-        />
+        <div className="mt-8 grid gap-4 lg:grid-cols-2">
+          <Panel title="First-run progress">
+            <Progress steps={activationSteps} oneTimeKey={oneTimeKey} />
+            <div className="mt-5 flex flex-wrap gap-3">
+              {oneTimeKey ? <button className="silver-button px-4 py-3 text-xs" onClick={() => navigator.clipboard.writeText(oneTimeKey)} type="button">Copy API Key</button> : null}
+              <a className="ghost-button px-4 py-3 text-xs" href="#playground">Open Playground</a>
+              <a className="ghost-button px-4 py-3 text-xs" href="#how-to-use">View How to Use</a>
+            </div>
+          </Panel>
+          <Panel title="Recent activity">
+            <Activity label="Latest event" value={latestEvent ? `${latestEvent.actor_reference} / ${latestEvent.event_type}` : "No live events yet"} />
+            <Activity label="Latest packet" value={latestPacket?.packet_id || "No live packets yet"} />
+            <Activity label="Current application" value={activeApp?.name || "My First Application"} />
+          </Panel>
         </div>
       </section>
 
-      {selectedReport ? <ReportDetailModal report={selectedReport} onClose={() => setSelectedReport(null)} /> : null}
-      {upgradeOpen ? <UpgradeModal onClose={() => setUpgradeOpen(false)} /> : null}
+      <section id="playground" className="border border-white/10 bg-[var(--afternum-bg-panel)] p-6">
+        <p className="kimi-section-label">TEST MODE</p>
+        <h2 className="mt-3 font-display text-5xl text-white">Playground</h2>
+        <p className="mt-4 max-w-3xl text-sm leading-7 text-mist/58">
+          Data created here is isolated and will not affect live continuity. The Playground uses the real Memory Core engine in a resettable test boundary.
+        </p>
+        <div className="mt-6 grid gap-5 lg:grid-cols-[0.8fr_1.2fr]">
+          <Panel title="Paste JSON">
+            <textarea className="field-input min-h-56" value={playgroundJson} onChange={(event) => setPlaygroundJson(event.target.value)} />
+            <p className="mt-3 text-sm text-mist/48">Required mapping: Actor ID, Event Type, Timestamp, Payload.</p>
+            <div className="mt-5 flex flex-wrap gap-3">
+              <button className="silver-button px-4 py-3 text-xs disabled:opacity-40" disabled={busy} onClick={generateTestPacket} type="button">Generate Test Packet</button>
+              <button className="ghost-button px-4 py-3 text-xs disabled:opacity-40" disabled={busy} onClick={resetPlayground} type="button">Reset Test Data</button>
+              <button className="ghost-button px-4 py-3 text-xs" onClick={() => setPlaygroundJson(samplePlaygroundJson)} type="button">Sample Data</button>
+            </div>
+          </Panel>
+          <Panel title="Results">
+            <TabsJson packet={playgroundPacket} empty="No TEST MODE packet generated yet." />
+          </Panel>
+        </div>
+      </section>
+
+      <section id="events" className="border border-white/10 bg-[var(--afternum-bg-panel)] p-6">
+        <SectionTitle title="Events" detail="Live customer activity received by Memory Core." />
+        <DataTable
+          columns={["Actor", "Event", "Status", "Received"]}
+          rows={events.map((event) => [
+            event.actor_reference,
+            event.event_type,
+            event.status,
+            event.received_at,
+            <button className="ghost-button px-3 py-2 text-xs" onClick={() => setSelectedEvent(event)} type="button" key={event.event_id}>Detail</button>
+          ])}
+          empty="No live events yet."
+        />
+      </section>
+
+      <section id="packets" className="border border-white/10 bg-[var(--afternum-bg-panel)] p-6">
+        <SectionTitle title="Packets" detail="Continuity packets are the primary Memory Core output." />
+        <DataTable
+          columns={["Packet ID", "Actor", "Created", "Events Considered", "Status"]}
+          rows={packets.map((packet) => [
+            packet.packet_id || "",
+            packet.actor_reference || "",
+            packet.created || "",
+            String(packet.events_considered || 0),
+            packet.status || "Ready",
+            <button className="ghost-button px-3 py-2 text-xs" onClick={() => openPacket(packet.packet_id)} type="button" key={packet.packet_id}>Open</button>
+          ])}
+          empty="No live packets yet."
+        />
+      </section>
+
+      <section id="actors" className="border border-white/10 bg-[var(--afternum-bg-panel)] p-6">
+        <SectionTitle title="Actors" detail="An actor is the person or thing whose continuity Memory Core is preserving." />
+        <DataTable
+          columns={["Actor ID", "Latest Activity", "Events", "Packets", "Status"]}
+          rows={actors.map((actor) => [
+            actor.actor_reference,
+            actor.latest_activity || "",
+            String(actor.event_count),
+            String(actor.packet_count),
+            actor.status
+          ])}
+          empty="No actors yet. Send an event to create the first actor."
+        />
+      </section>
+
+      <section id="api-keys" className="border border-white/10 bg-[var(--afternum-bg-panel)] p-6">
+        <SectionTitle title="API Keys" detail="Keys are server-side credentials. Raw key values are shown once only." />
+        {oneTimeKey ? (
+          <div className="mb-5 border border-white/25 bg-white/[0.03] p-5">
+            <p className="font-semibold text-white">Copy this key now. PRMR will not show it again.</p>
+            <code className="mt-4 block overflow-x-auto border border-white/10 bg-black/30 p-4 text-xs text-mist/80">{oneTimeKey}</code>
+            <button className="ghost-button mt-4 px-4 py-2 text-xs" onClick={() => setOneTimeKey("")} type="button">I stored it</button>
+          </div>
+        ) : null}
+        <div className="mb-6 flex flex-wrap gap-3">
+          <input className="field-input max-w-sm" value={keyName} onChange={(event) => setKeyName(event.target.value)} />
+          <button className="silver-button px-4 py-3 text-xs disabled:opacity-40" disabled={busy || keyName.trim().length < 2} onClick={createKey} type="button">Create Key</button>
+        </div>
+        <DataTable
+          columns={["Name", "Created", "Last Used", "Status"]}
+          rows={(dashboard.api_keys || []).map((key) => [
+            key.label,
+            key.created_at,
+            key.last_used_at || "Never",
+            key.status,
+            <span className="flex gap-2" key={key.key_id}>
+              <button className="ghost-button px-3 py-2 text-xs" disabled={busy || key.status !== "active"} onClick={() => keyAction("PATCH", key.key_id)} type="button">Rotate</button>
+              <button className="ghost-button px-3 py-2 text-xs" disabled={busy || key.status !== "active"} onClick={() => keyAction("DELETE", key.key_id)} type="button">Revoke</button>
+            </span>
+          ])}
+          empty="No API keys yet."
+        />
+      </section>
+
+      <section id="usage" className="border border-white/10 bg-[var(--afternum-bg-panel)] p-6">
+        <SectionTitle title="Usage" detail="Truthful operational usage. Billing is hidden until real metering and payment flows exist." />
+        <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-5">
+          <Metric label="Events Received" value={String(usage?.events_received ?? 0)} />
+          <Metric label="Packets Generated" value={String(usage?.packets_generated ?? 0)} />
+          <Metric label="Active Actors" value={String(usage?.active_actors ?? 0)} />
+          <Metric label="API Requests" value={String(usage?.api_requests ?? 0)} />
+          <Metric label="Storage Used" value={usage?.storage_measured ? String(usage.storage_used) : "Not measured"} />
+        </div>
+      </section>
+
+      <section id="logs" className="border border-white/10 bg-[var(--afternum-bg-panel)] p-6">
+        <SectionTitle title="Logs" detail="API/system interactions. Events are customer activity; logs are request behavior." />
+        <p className="mb-4 text-sm text-mist/54">Why did this request fail? Open the log detail and use the plain-language reason plus corrected example.</p>
+        <DataTable
+          columns={["Time", "Request", "Status", "Duration"]}
+          rows={logs.map((log) => [
+            log.timestamp,
+            `${log.method || ""} ${log.endpoint}`,
+            log.allowed ? "Success" : "Error",
+            "Not measured",
+            log.rejection_reason || log.reason || log.public_safe_message || ""
+          ])}
+          empty="No logs yet."
+        />
+      </section>
+
+      <section id="how-to-use" className="border border-white/10 bg-[var(--afternum-bg-panel)] p-6">
+        <SectionTitle title="How to Use Memory Core" detail="Send events. Generate continuity packets. Use them inside your software." />
+        <p className="mb-5 text-sm text-mist/54">Which events created the packet? Open a packet and inspect Source Events and Provenance.</p>
+        <div className="grid gap-4 lg:grid-cols-2">
+          <Panel title="Quickstart">
+            <ol className="space-y-3 text-sm text-mist/64">
+              <li>1. Copy your API key</li>
+              <li>2. Send an event</li>
+              <li>3. Generate a packet</li>
+              <li>4. Use the packet inside your software</li>
+            </ol>
+          </Panel>
+          <Panel title="cURL">
+            <pre className="overflow-auto whitespace-pre-wrap text-xs text-mist/70">{curlExample}</pre>
+          </Panel>
+          <Panel title="Node.js">
+            <pre className="overflow-auto whitespace-pre-wrap text-xs text-mist/70">{nodeExample}</pre>
+          </Panel>
+          <Panel title="Python">
+            <pre className="overflow-auto whitespace-pre-wrap text-xs text-mist/70">{pythonExample}</pre>
+          </Panel>
+        </div>
+      </section>
+
+      <section id="settings" className="border border-white/10 bg-[var(--afternum-bg-panel)] p-6">
+        <SectionTitle title="Settings" detail="Simple controls first. Infrastructure details are kept under Advanced." />
+        <div className="grid gap-4 lg:grid-cols-2">
+          <Panel title="General"><Activity label="Application Name" value={activeApp?.name || "My First Application"} /><Activity label="Timezone" value="Browser/default" /></Panel>
+          <Panel title="Security"><Activity label="API Key Activity" value={`${dashboard.api_keys.length} key record(s)`} /><Activity label="Allowed Origins" value="Managed server-side" /></Panel>
+          <Panel title="Data"><Activity label="Export Data" value="Planned" /><Activity label="Delete Actor Data" value="Requires backend confirmation flow before enabling" /></Panel>
+          <Panel title="Advanced"><Activity label="Application ID" value={activeApp?.application_reference || "app_main"} /><Activity label="Storage Boundary" value="Visible in backend health/reporting, hidden from primary workflow" /></Panel>
+        </div>
+      </section>
+
+      <p aria-live="polite" className="text-sm text-mist/54">{message}</p>
+      {selectedEvent ? <Modal title="Event Detail" onClose={() => setSelectedEvent(null)}><TabsJson packet={selectedEvent as unknown as PacketDetail} empty="" /></Modal> : null}
+      {selectedPacket ? <Modal title="Packet Detail" onClose={() => setSelectedPacket(null)}><HumanPacket packet={selectedPacket} /><TabsJson packet={selectedPacket} empty="" /></Modal> : null}
     </div>
   );
 }
 
-function PlanStorageBand({ dashboard, storage, onUpgrade }: { dashboard: Dashboard; storage?: StorageBoundary; onUpgrade: () => void }) {
-  const usage = dashboard.plan.usage;
-  return (
-    <section className="grid gap-4 lg:grid-cols-[1.4fr_1fr_1fr_1fr]">
-      <div className="border border-white/10 bg-[var(--afternum-bg-panel)] p-5">
-        <p className="font-mono text-[10px] uppercase tracking-[0.14em] text-mist/38">Current plan</p>
-        <p className="mt-3 text-2xl capitalize text-white">{dashboard.plan.subscription.plan_id}</p>
-        <p className="mt-2 text-sm text-mist/50">{usage.requests_limit} requests/month. {usage.requests_remaining} remaining.</p>
-        <button className="silver-button mt-5 px-4 py-3 font-mono text-xs uppercase tracking-[0.14em]" onClick={onUpgrade} type="button">
-          Upgrade plan
-        </button>
-      </div>
-      <Metric label="Requests used" value={String(usage.requests_used)} />
-      <Metric label="Requests left" value={String(usage.requests_remaining)} />
-      <Metric label="Storage" value={storage?.storage_mode || "unverified"} />
-    </section>
-  );
+function validatePlayground(payload: Record<string, unknown>) {
+  if (!payload.actor_id || typeof payload.actor_id !== "string") return "Validation: Actor ID is required.";
+  if (!payload.event_type || typeof payload.event_type !== "string") return "Validation: Event Type is required.";
+  if (payload.timestamp && Number.isNaN(Date.parse(String(payload.timestamp)))) return "Validation: Timestamp must be parseable.";
+  if (payload.payload === undefined) return "Validation: Payload is required.";
+  return "";
 }
 
-function ActivationPlayground({
-  activation,
-  busy,
-  message,
-  oneTimeKey,
-  onStored,
-  playground,
-  setPlayground,
-  eventResult,
-  packetResult,
-  onSendEvent,
-  onGeneratePacket
-}: {
-  activation?: Dashboard["activation"];
-  busy: boolean;
-  message: string;
-  oneTimeKey: string;
-  onStored: () => void;
-  playground: PlaygroundState;
-  setPlayground: (value: PlaygroundState) => void;
-  eventResult: Record<string, unknown> | null;
-  packetResult: PacketResponse | null;
-  onSendEvent: () => void;
-  onGeneratePacket: () => void;
-}) {
-  function update(field: keyof PlaygroundState, value: string) {
-    setPlayground({ ...playground, [field]: value });
-  }
-  return (
-    <section className="border border-white/12 bg-[var(--afternum-bg-panel)] p-6">
-      <div className="grid gap-8 xl:grid-cols-[0.95fr_1.05fr]">
-        <div>
-          <p className="kimi-section-label">First run</p>
-          <h2 className="mt-4 font-display text-[clamp(34px,4vw,58px)] leading-none text-white">
-            Send events. Receive continuity.
-          </h2>
-          <p className="mt-5 max-w-xl text-sm leading-7 text-mist/60">
-            Your sandbox starts with one application, one scoped client/vault/namespace,
-            and one copy-once server key. Use synthetic data here; keep live product keys server-side.
-          </p>
-          <div className="mt-6 grid gap-3 sm:grid-cols-2">
-            {(activation?.steps || []).map((step) => (
-              <div className="border border-white/[0.08] bg-white/[0.012] p-4" key={step.event_type}>
-                <p className="font-mono text-[10px] uppercase tracking-[0.14em] text-mist/38">
-                  {step.completed ? "Complete" : "Pending"}
-                </p>
-                <p className="mt-2 text-sm text-white">{step.label}</p>
-              </div>
-            ))}
-          </div>
-          {oneTimeKey ? (
-            <div className="mt-6 border border-white/25 bg-white/[0.03] p-5">
-              <p className="text-sm font-semibold text-white">Copy this API key now. PRMR will not show it again.</p>
-              <code className="mt-4 block overflow-x-auto border border-white/10 bg-black/30 p-4 text-xs text-mist/80">{oneTimeKey}</code>
-              <div className="mt-4 flex flex-wrap gap-3">
-                <button className="ghost-button px-4 py-2 text-xs" onClick={() => navigator.clipboard.writeText(oneTimeKey)} type="button">
-                  Copy key
-                </button>
-                <button className="ghost-button px-4 py-2 text-xs" onClick={onStored} type="button">
-                  I stored it
-                </button>
-              </div>
-            </div>
-          ) : null}
-        </div>
-        <div className="border border-white/[0.08] bg-white/[0.012] p-5">
-          <p className="font-mono text-[10px] uppercase tracking-[0.16em] text-mist/42">Public API playground</p>
-          <div className="mt-5 grid gap-3">
-            <input
-              className="field-input"
-              onChange={(event) => update("api_key", event.target.value)}
-              placeholder="Paste your PRMR API key for this sandbox test only"
-              type="password"
-              value={playground.api_key}
-            />
-            <div className="grid gap-3 md:grid-cols-2">
-              <input className="field-input" onChange={(event) => update("application_reference", event.target.value)} value={playground.application_reference} />
-              <input className="field-input" onChange={(event) => update("actor_reference", event.target.value)} value={playground.actor_reference} />
-              <input className="field-input" onChange={(event) => update("workspace_reference", event.target.value)} value={playground.workspace_reference} />
-              <input className="field-input" onChange={(event) => update("entity_reference", event.target.value)} value={playground.entity_reference} />
-            </div>
-            <input className="field-input" onChange={(event) => update("event_type", event.target.value)} value={playground.event_type} />
-            <textarea className="field-input min-h-24" onChange={(event) => update("signal", event.target.value)} value={playground.signal} />
-          </div>
-          <div className="mt-5 flex flex-wrap gap-3">
-            <button className="silver-button px-5 py-3 font-mono text-xs uppercase tracking-[0.14em] disabled:opacity-40" disabled={busy || !playground.api_key} onClick={onSendEvent} type="button">
-              Send Test Event
-            </button>
-            <button className="ghost-button px-5 py-3 text-xs disabled:opacity-40" disabled={busy || !playground.api_key} onClick={onGeneratePacket} type="button">
-              Generate Packet
-            </button>
-          </div>
-          <p aria-live="polite" className="mt-4 text-sm text-mist/52">{message}</p>
-          {eventResult ? (
-            <p className="mt-4 border border-white/[0.08] p-3 text-sm text-mist/64">
-              Event result: {String(eventResult.status || "ok")} / accepted {String(eventResult.accepted_event_count ?? "unknown")}
-            </p>
-          ) : null}
-          {packetResult?.packet ? <PacketFields packet={packetResult.packet} /> : null}
-        </div>
-      </div>
-    </section>
-  );
-}
-
-function ApiKeySection({
-  apiKeys,
-  busy,
-  label,
-  message,
-  onAction,
-  onLabel,
-  oneTimeKey,
-  onStored
-}: {
-  apiKeys: KeyRecord[];
-  busy: boolean;
-  label: string;
-  message: string;
-  onAction: (method: "POST" | "PATCH" | "DELETE", keyId?: string) => void;
-  onLabel: (value: string) => void;
-  oneTimeKey: string;
-  onStored: () => void;
-}) {
-  return (
-    <section className="border border-white/10 bg-[var(--afternum-bg-panel)] p-6">
-      <p className="kimi-section-label">API Keys</p>
-      <div className="mt-5 flex flex-col gap-3 sm:flex-row">
-        <input className="field-input max-w-md" onChange={(event) => onLabel(event.target.value)} value={label} />
-        <button
-          className="silver-button px-5 py-3 font-mono text-xs uppercase tracking-[0.14em] disabled:opacity-40"
-          disabled={busy || label.trim().length < 2}
-          onClick={() => onAction("POST")}
-          type="button"
-        >
-          Create API Key
-        </button>
-      </div>
-      <p className="mt-3 text-sm text-mist/48">{message}</p>
-      {oneTimeKey ? (
-        <div className="mt-5 border border-white/25 bg-white/[0.03] p-5">
-          <p className="text-sm font-semibold text-white">Copy this key now. PRMR will not show it again.</p>
-          <code className="mt-4 block overflow-x-auto border border-white/10 bg-black/30 p-4 text-xs text-mist/80">{oneTimeKey}</code>
-          <div className="mt-4 flex gap-3">
-            <button className="ghost-button px-4 py-2 text-xs" onClick={() => navigator.clipboard.writeText(oneTimeKey)} type="button">
-              Copy key
-            </button>
-            <button className="ghost-button px-4 py-2 text-xs" onClick={onStored} type="button">
-              I stored it
-            </button>
-          </div>
-        </div>
-      ) : null}
-      <div className="mt-6 space-y-3">
-        {apiKeys.length ? apiKeys.map((key) => (
-          <article className="grid gap-4 border border-white/[0.08] p-4 md:grid-cols-[1fr_1fr_auto]" key={key.key_id}>
-            <div>
-              <p className="text-sm text-white">{key.label}</p>
-              <p className="mt-2 font-mono text-xs text-mist/48">{key.safe_key_preview}</p>
-              <p className="mt-2 font-mono text-[10px] uppercase tracking-[0.12em] text-mist/36">
-                {key.application_reference || "app_main"} / {key.environment || "production"}
-              </p>
-            </div>
-            <p className="font-mono text-xs uppercase tracking-[0.12em] text-mist/54">{key.status}</p>
-            <div className="flex gap-2">
-              <button className="ghost-button px-3 py-2 text-xs disabled:opacity-30" disabled={busy || key.status !== "active"} onClick={() => onAction("PATCH", key.key_id)} type="button">
-                Rotate
-              </button>
-              <button className="ghost-button px-3 py-2 text-xs disabled:opacity-30" disabled={busy || key.status !== "active"} onClick={() => onAction("DELETE", key.key_id)} type="button">
-                Revoke
-              </button>
-            </div>
-          </article>
-        )) : <p className="text-sm text-mist/48">No API key yet.</p>}
-      </div>
-    </section>
-  );
-}
-
-function ApplicationsSection({
-  applications,
-  busy,
-  environment,
-  message,
-  name,
-  onCreate,
-  onEnvironment,
-  onName,
-  onReference,
-  reference
-}: {
-  applications: ApplicationRecord[];
-  busy: boolean;
-  environment: string;
-  message: string;
-  name: string;
-  onCreate: () => void;
-  onEnvironment: (value: string) => void;
-  onName: (value: string) => void;
-  onReference: (value: string) => void;
-  reference: string;
-}) {
-  return (
-    <section className="border border-white/10 bg-[var(--afternum-bg-panel)] p-6">
-      <p className="kimi-section-label">Applications</p>
-      <div className="mt-5 grid gap-3 lg:grid-cols-[1.2fr_1fr_0.8fr_auto]">
-        <input className="field-input" onChange={(event) => onName(event.target.value)} placeholder="Application name" value={name} />
-        <input className="field-input" onChange={(event) => onReference(event.target.value)} placeholder="application_reference" value={reference} />
-        <select className="field-input" onChange={(event) => onEnvironment(event.target.value)} value={environment}>
-          <option value="sandbox">sandbox</option>
-          <option value="production">production</option>
-          <option value="staging">staging</option>
-          <option value="development">development</option>
-          <option value="test">test</option>
-        </select>
-        <button className="silver-button px-5 py-3 font-mono text-xs uppercase tracking-[0.14em] disabled:opacity-40" disabled={busy || name.trim().length < 2} onClick={onCreate} type="button">
-          Create Application
-        </button>
-      </div>
-      <p className="mt-3 text-sm text-mist/48">{message}</p>
-      <div className="mt-6 grid gap-3 lg:grid-cols-2">
-        {applications.map((app) => (
-          <article className="border border-white/[0.08] bg-white/[0.018] p-4" key={`${app.application_reference}-${app.environment}`}>
-            <div className="flex items-start justify-between gap-4">
-              <div>
-                <p className="text-sm text-white">{app.name}</p>
-                <p className="mt-2 font-mono text-xs text-mist/48">{app.application_reference}</p>
-              </div>
-              <p className="font-mono text-[10px] uppercase tracking-[0.12em] text-mist/44">{app.environment}</p>
-            </div>
-            <div className="mt-5 grid grid-cols-3 gap-3 text-sm">
-              <Info label="Events" value={String(app.event_count || 0)} />
-              <Info label="Packets" value={String(app.packet_count || 0)} />
-              <Info label="Health" value={app.health_status || "ready"} />
-            </div>
-          </article>
-        ))}
-      </div>
-    </section>
-  );
-}
-
-function PacketTester({
-  applications,
-  busy,
-  packetResult,
-  packetScope,
-  setPacketScope,
-  onGenerate
-}: {
-  applications: ApplicationRecord[];
-  busy: boolean;
-  packetResult: PacketResponse | null;
-  packetScope: PacketScope;
-  setPacketScope: (value: PacketScope) => void;
-  onGenerate: () => void;
-}) {
-  function update(field: keyof PacketScope, value: string | boolean) {
-    setPacketScope({ ...packetScope, [field]: value });
-  }
-  return (
-    <Panel title="Continuity packet tester">
-      <p>
-        Generate a deterministic continuity packet for a requested application, actor, workspace, or entity.
-        This uses server-side dashboard authentication and does not expose API keys.
-      </p>
-      <div className="mt-5 grid gap-3 lg:grid-cols-5">
-        <select className="field-input" onChange={(event) => update("application_reference", event.target.value)} value={packetScope.application_reference}>
-          <option value="">application optional</option>
-          {applications.map((app) => (
-            <option key={app.application_reference} value={app.application_reference}>{app.application_reference}</option>
-          ))}
-        </select>
-        <input className="field-input" onChange={(event) => update("actor_reference", event.target.value)} placeholder="actor_reference" value={packetScope.actor_reference} />
-        <input className="field-input" onChange={(event) => update("workspace_reference", event.target.value)} placeholder="workspace_reference" value={packetScope.workspace_reference} />
-        <input className="field-input" onChange={(event) => update("entity_reference", event.target.value)} placeholder="entity_reference" value={packetScope.entity_reference} />
-        <input className="field-input" onChange={(event) => update("session_reference", event.target.value)} placeholder="session_reference optional" value={packetScope.session_reference} />
-      </div>
-      <label className="mt-4 flex items-center gap-3 text-sm text-mist/54">
-        <input checked={packetScope.allow_broad_scope} onChange={(event) => update("allow_broad_scope", event.target.checked)} type="checkbox" />
-        Allow deliberate broad packet when the scope matches multiple actors, workspaces, or entities.
-      </label>
-      <button className="silver-button mt-5 px-5 py-3 font-mono text-xs uppercase tracking-[0.14em] disabled:opacity-40" disabled={busy} onClick={onGenerate} type="button">
-        Generate Continuity Packet
-      </button>
-      {packetResult?.packet ? <PacketFields packet={packetResult.packet} /> : null}
-    </Panel>
-  );
-}
-
-function RequestLogsPanel({ logs, total, hasMore, onMore }: { logs: DashboardLog[]; total: number; hasMore: boolean; onMore: () => void }) {
-  return (
-    <Panel title={`Request logs (${total})`}>
-      <div className="overflow-x-auto">
-        <table className="w-full min-w-[860px] text-left text-sm">
-          <thead className="font-mono text-[10px] uppercase tracking-[0.16em] text-mist/38">
-            <tr className="border-b border-white/[0.08]">
-              <th className="py-3 pr-4 font-normal">Time</th>
-              <th className="py-3 pr-4 font-normal">Method</th>
-              <th className="py-3 pr-4 font-normal">Endpoint</th>
-              <th className="py-3 pr-4 font-normal">Status</th>
-              <th className="py-3 pr-4 font-normal">Reason</th>
-              <th className="py-3 font-normal">Log ID</th>
-            </tr>
-          </thead>
-          <tbody>
-            {logs.map((row, index) => (
-              <tr className="border-b border-white/[0.055] text-mist/62" key={row.log_id || `${row.timestamp}-${row.endpoint}-${index}`}>
-                <td className="py-4 pr-4 font-mono text-xs">{row.timestamp}</td>
-                <td className="py-4 pr-4 font-mono text-xs">{row.method || ""}</td>
-                <td className="py-4 pr-4 font-mono text-xs text-white">{row.endpoint}</td>
-                <td className={row.allowed ? "py-4 pr-4 text-white" : "py-4 pr-4 text-mist/44"}>{row.allowed ? "allowed" : "denied"}</td>
-                <td className="py-4 pr-4">{row.rejection_reason || row.reason || "allowed"}</td>
-                <td className="py-4 font-mono text-xs text-mist/42">{row.log_id}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
-      {!logs.length ? <p>No requests recorded yet.</p> : null}
-      {hasMore ? <button className="ghost-button mt-5 px-4 py-2 text-xs" onClick={onMore} type="button">Load more</button> : null}
-    </Panel>
-  );
-}
-
-function ReportsPanel({ reports, total, hasMore, onMore, onOpen }: { reports: ReportSummary[]; total: number; hasMore: boolean; onMore: () => void; onOpen: (reportId: string) => void }) {
-  return (
-    <Panel title={`Continuity reports (${total})`}>
-      <div className="space-y-3">
-        {reports.map((report) => (
-          <article className="border border-white/[0.08] bg-white/[0.018] p-4" key={report.report_id}>
-            <div className="flex flex-col gap-3 md:flex-row md:items-start md:justify-between">
-              <div>
-                <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-mist/36">{report.report_id}</p>
-                <h3 className="mt-2 font-display text-2xl text-white">{report.summary}</h3>
-                <p className="mt-2 text-xs text-mist/44">Packet {report.packet_id || "limited"} / {report.event_count ?? "unknown"} events</p>
-              </div>
-              <button className="ghost-button h-fit px-4 py-2 text-xs" onClick={() => onOpen(report.report_id)} type="button">
-                View detail
-              </button>
-            </div>
-          </article>
-        ))}
-      </div>
-      {!reports.length ? <p>No reports generated yet.</p> : null}
-      {hasMore ? <button className="ghost-button mt-5 px-4 py-2 text-xs" onClick={onMore} type="button">Load more</button> : null}
-    </Panel>
-  );
-}
-
-function ReportDetailModal({ report, onClose }: { report: NonNullable<ReportDetailResponse["report"]>; onClose: () => void }) {
-  return (
-    <Modal title="Continuity report detail" onClose={onClose}>
-      <p className="font-mono text-xs text-mist/46">{report.report_id}</p>
-      <p className="mt-3 text-white">{report.summary}</p>
-      {report.older_report_format ? <p className="mt-4 text-sm text-mist/50">{report.older_report_message}</p> : null}
-      {report.packet ? <PacketFields packet={report.packet} /> : null}
-    </Modal>
-  );
-}
-
-function PacketFields({ packet }: { packet: PacketDetail }) {
-  const fields = [
-    "current_state",
-    "active_information",
-    "latent_information",
-    "lineage_information",
-    "causal_signature",
-    "recursive_horizon",
-    "coherence_score",
-    "recoverability_score",
-    "re_emergence_signals",
-    "decayed_signals",
-    "repeated_patterns",
-    "state_transition_summary",
-    "event_count",
-    "last_updated"
+function Progress({ steps, oneTimeKey }: { steps: ActivationStep[]; oneTimeKey: string }) {
+  const rendered = steps.length ? steps : [
+    { event_type: "account_created", label: "Account created", completed: true },
+    { event_type: "sandbox_key_created", label: "API key created", completed: Boolean(oneTimeKey) },
+    { event_type: "first_event_ingested", label: "First event received", completed: false },
+    { event_type: "first_continuity_packet_generated", label: "First packet generated", completed: false }
   ];
   return (
-    <div className="mt-6 grid gap-3">
-      {fields.map((field) => (
-        <div className="border border-white/[0.08] p-4" key={field}>
-          <p className="font-mono text-[10px] uppercase tracking-[0.14em] text-mist/38">{field}</p>
-          <pre className="mt-3 max-h-64 overflow-auto whitespace-pre-wrap text-xs leading-5 text-mist/68">{formatValue(packet[field])}</pre>
+    <div className="grid gap-3">
+      {rendered.map((step) => (
+        <div className="flex items-center gap-3 text-sm" key={step.event_type}>
+          <span className={step.completed ? "text-white" : "text-mist/36"}>{step.completed ? "✓" : "○"}</span>
+          <span className={step.completed ? "text-white" : "text-mist/52"}>{step.label.replace("Default client/vault/namespace ready", "Memory Core ready").replace("Sandbox key created", "API key created")}</span>
         </div>
       ))}
+      {oneTimeKey ? <div className="border border-white/20 p-4"><code className="break-all text-xs text-mist/78">{oneTimeKey}</code></div> : null}
     </div>
   );
 }
 
-function StorageBoundaryPanel({ storage }: { storage?: StorageBoundary }) {
+function HumanPacket({ packet }: { packet: PacketDetail }) {
   return (
-    <Panel title="Storage boundary">
-      <p>
-        PRMR stores account, key metadata, usage logs, reports, and continuity state in hosted managed Postgres.
-        Raw API keys are shown once and are not stored. Stored key material remains hashed.
-      </p>
-      <div className="mt-5 grid gap-3 sm:grid-cols-2">
-        <Info label="Storage backend" value={storage?.storage_backend || "unknown"} />
-        <Info label="Storage mode" value={storage?.storage_mode || "unknown"} />
-        <Info label="Database connected" value={String(Boolean(storage?.database_connected))} />
-        <Info label="Durable storage verified" value={String(Boolean(storage?.durable_storage_verified))} />
-        <Info label="Raw key storage" value="false" />
-        <Info label="Raw password storage" value="false" />
-        <Info label="Public safe" value={String(storage?.public_safe ?? true)} />
-      </div>
-      <p className="mt-5 text-mist/48">{storage?.hosted_storage_boundary || "Hosted storage boundary has not been verified for this session."}</p>
-    </Panel>
-  );
-}
-
-function UpgradeModal({ onClose }: { onClose: () => void }) {
-  return (
-    <Modal title="Upgrade plan" onClose={onClose}>
-      <p className="text-mist/62">
-        Billing is not connected yet. Builder and Pilot access are currently handled manually during controlled beta.
-      </p>
-      <div className="mt-6 grid gap-3">
-        <Tier name="Free" detail="100 requests/month" />
-        <Tier name="Builder" detail="10,000 requests/month. Manual beta access." />
-        <Tier name="Controlled Pilot" detail="Custom/manual access." />
-      </div>
-      <div className="mt-6 flex flex-wrap gap-3">
-        <a className="silver-button px-4 py-3 text-xs" href="/contact">Request Builder access</a>
-        <a className="ghost-button px-4 py-3 text-xs" href="/contact">Request Controlled Pilot</a>
-        <a className="ghost-button px-4 py-3 text-xs" href="/contact">Contact Afternum</a>
-      </div>
-    </Modal>
-  );
-}
-
-function Tier({ name, detail }: { name: string; detail: string }) {
-  return (
-    <div className="border border-white/[0.08] p-4">
-      <p className="text-white">{name}</p>
-      <p className="mt-2 text-sm text-mist/50">{detail}</p>
+    <div className="grid gap-3">
+      <Activity label="Current State" value={format(packet.current_state)} />
+      <Activity label="Recent Changes" value={format(packet.active_information)} />
+      <Activity label="Important History" value={format(packet.latent_information)} />
+      <Activity label="Open Threads" value={format(packet.re_emergence_signals)} />
+      <Activity label="Relevant Relationships" value={format(packet.lineage_information)} />
+      <Activity label="Supporting Events" value={format((packet.provenance as Record<string, unknown> | undefined)?.source_event_ids)} />
     </div>
   );
+}
+
+function TabsJson({ packet, empty }: { packet: PacketDetail | null; empty: string }) {
+  if (!packet) return <p className="text-sm text-mist/48">{empty}</p>;
+  return (
+    <div className="mt-4 grid gap-3">
+      <HumanPacket packet={packet} />
+      <details className="border border-white/[0.08] p-4">
+        <summary className="cursor-pointer text-sm text-white">JSON / Timeline / Source Events / Provenance</summary>
+        <pre className="mt-4 max-h-96 overflow-auto whitespace-pre-wrap text-xs leading-5 text-mist/68">{JSON.stringify(packet, null, 2)}</pre>
+      </details>
+      <div className="flex flex-wrap gap-3">
+        <button className="ghost-button px-3 py-2 text-xs" onClick={() => navigator.clipboard.writeText(JSON.stringify(packet, null, 2))} type="button">Copy JSON</button>
+        <button className="ghost-button px-3 py-2 text-xs" onClick={() => navigator.clipboard.writeText(nodeExample)} type="button">Copy Node.js Example</button>
+        <button className="ghost-button px-3 py-2 text-xs" onClick={() => navigator.clipboard.writeText(pythonExample)} type="button">Copy Python Example</button>
+        <button className="ghost-button px-3 py-2 text-xs" onClick={() => navigator.clipboard.writeText(curlExample)} type="button">Copy cURL Example</button>
+      </div>
+    </div>
+  );
+}
+
+function SectionTitle({ title, detail }: { title: string; detail: string }) {
+  return (
+    <div className="mb-6">
+      <p className="kimi-section-label">{title}</p>
+      <h2 className="mt-3 font-display text-5xl text-white">{title}</h2>
+      <p className="mt-3 max-w-3xl text-sm leading-7 text-mist/58">{detail}</p>
+    </div>
+  );
+}
+
+function DataTable({ columns, rows, empty }: { columns: string[]; rows: ReactNode[][]; empty: string }) {
+  return (
+    <div className="overflow-x-auto">
+      <table className="w-full min-w-[760px] text-left text-sm">
+        <thead className="font-mono text-[10px] uppercase tracking-[0.16em] text-mist/38">
+          <tr className="border-b border-white/[0.08]">{columns.map((column) => <th className="py-3 pr-4 font-normal" key={column}>{column}</th>)}<th /></tr>
+        </thead>
+        <tbody>
+          {rows.map((row, index) => (
+            <tr className="border-b border-white/[0.055] text-mist/62" key={index}>
+              {row.map((cell, cellIndex) => <td className="py-4 pr-4" key={cellIndex}>{cell}</td>)}
+            </tr>
+          ))}
+        </tbody>
+      </table>
+      {!rows.length ? <p className="mt-4 text-sm text-mist/48">{empty}</p> : null}
+    </div>
+  );
+}
+
+function Panel({ title, children }: { title: string; children: ReactNode }) {
+  return <section className="border border-white/[0.08] bg-white/[0.012] p-5"><h3 className="font-display text-2xl text-white">{title}</h3><div className="mt-4 text-sm leading-6 text-mist/58">{children}</div></section>;
+}
+
+function Metric({ label, value }: { label: string; value: string }) {
+  return <div className="border border-white/10 bg-white/[0.012] p-5"><p className="font-mono text-[10px] uppercase tracking-[0.14em] text-mist/38">{label}</p><p className="mt-3 break-words text-xl text-white">{value}</p></div>;
+}
+
+function Activity({ label, value }: { label: string; value: string }) {
+  return <div className="border-b border-white/[0.06] py-3"><p className="font-mono text-[10px] uppercase tracking-[0.14em] text-mist/36">{label}</p><p className="mt-2 break-words text-white">{value}</p></div>;
 }
 
 function Modal({ title, children, onClose }: { title: string; children: ReactNode; onClose: () => void }) {
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 px-4 py-8">
       <section className="max-h-[88vh] w-full max-w-5xl overflow-auto border border-white/14 bg-[var(--afternum-bg-panel)] p-6 shadow-2xl">
-        <div className="flex items-start justify-between gap-5">
-          <h2 className="font-display text-4xl text-white">{title}</h2>
-          <button className="ghost-button px-3 py-2 text-xs" onClick={onClose} type="button">Close</button>
-        </div>
+        <div className="flex items-start justify-between gap-5"><h2 className="font-display text-4xl text-white">{title}</h2><button className="ghost-button px-3 py-2 text-xs" onClick={onClose} type="button">Close</button></div>
         <div className="mt-6 text-sm leading-6 text-mist/56">{children}</div>
       </section>
     </div>
   );
 }
 
-function formatValue(value: unknown) {
+function State({ title, detail, children }: { title: string; detail: string; children?: ReactNode }) {
+  return <section className="relative mx-auto flex min-h-screen max-w-4xl flex-col justify-center px-6 py-32"><p className="kimi-section-label">Memory Core</p><h1 className="mt-5 font-display text-[clamp(44px,7vw,92px)] leading-[0.96] text-white">{title}</h1><p className="mt-6 max-w-3xl text-base leading-7 text-mist/62">{detail}</p>{children}</section>;
+}
+
+function format(value: unknown) {
   if (value === undefined || value === null || value === "") return "Not available";
-  if (typeof value === "string" || typeof value === "number" || typeof value === "boolean") return String(value);
+  if (typeof value === "string") return value;
   return JSON.stringify(value, null, 2);
 }
 
-function State({ title, detail, children }: { title: string; detail: string; children?: ReactNode }) {
-  return (
-    <section className="relative mx-auto flex min-h-screen max-w-4xl flex-col justify-center px-6 py-32">
-      <p className="kimi-section-label">PRMR Dashboard</p>
-      <h1 className="mt-5 font-display text-[clamp(44px,7vw,92px)] leading-[0.96] text-white">{title}</h1>
-      <p className="mt-6 max-w-3xl text-base leading-7 text-mist/62">{detail}</p>
-      {children}
-    </section>
-  );
-}
+const samplePlaygroundJson = `{
+  "actor_id": "test_actor",
+  "event_type": "project.updated",
+  "timestamp": "2026-07-21T12:00:00Z",
+  "payload": {
+    "summary": "A test project changed deadline and added a blocker."
+  }
+}`;
 
-function Metric({ label, value }: { label: string; value: string }) {
-  return (
-    <div className="border border-white/10 bg-white/[0.012] p-5">
-      <p className="font-mono text-[10px] uppercase tracking-[0.14em] text-mist/38">{label}</p>
-      <p className="mt-3 break-words text-xl text-white">{value}</p>
-    </div>
-  );
-}
+const curlExample = `curl -X POST "$PRMR_API_BASE_URL/v1/events/ingest" \\
+  -H "Authorization: Bearer <PRMR_API_KEY>" \\
+  -H "Content-Type: application/json" \\
+  -d '{"events":[{"actor_reference":"actor_123","event_type":"project.updated","signal":"Deadline changed.","occurred_at":"2026-07-21T12:00:00Z","metadata":{"source_app":"your_app"}}]}'`;
 
-function Info({ label, value }: { label: string; value: string }) {
-  return (
-    <div>
-      <p className="font-mono text-[10px] uppercase tracking-[0.14em] text-mist/38">{label}</p>
-      <p className="mt-3 break-all text-sm text-mist/72">{value}</p>
-    </div>
-  );
-}
+const nodeExample = `await fetch(process.env.PRMR_API_BASE_URL + "/v1/continuity/packet", {
+  method: "POST",
+  headers: { Authorization: "Bearer " + process.env.PRMR_API_KEY, "Content-Type": "application/json" },
+  body: JSON.stringify({ actor_reference: "actor_123" })
+});`;
 
-function Panel({ title, children }: { title: string; children: ReactNode }) {
-  return (
-    <section className="border border-white/10 bg-[var(--afternum-bg-panel)] p-6 text-sm leading-6 text-mist/56">
-      <h2 className="font-display text-3xl text-white">{title}</h2>
-      <div className="mt-5">{children}</div>
-    </section>
-  );
-}
+const pythonExample = `import os, requests
+requests.post(
+  os.environ["PRMR_API_BASE_URL"] + "/v1/events/ingest",
+  headers={"Authorization": "Bearer " + os.environ["PRMR_API_KEY"]},
+  json={"events": [{"actor_reference": "actor_123", "event_type": "project.updated", "signal": "Deadline changed."}]},
+)`;

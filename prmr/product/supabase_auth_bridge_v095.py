@@ -292,6 +292,70 @@ class SupabaseAuthBridgeV095:
             packet_scope=packet_scope or {},
         )
 
+    def dashboard_events(self, *, access_token: str | None, **filters: Any) -> dict[str, Any]:
+        context, error = self._authenticated_context(access_token)
+        if error:
+            return error
+        assert context
+        _, _, internal_session = context
+        return self.storage_product.dashboard_events(session_token=internal_session, **filters)
+
+    def dashboard_packets(self, *, access_token: str | None, limit: int = 50, offset: int = 0) -> dict[str, Any]:
+        context, error = self._authenticated_context(access_token)
+        if error:
+            return error
+        assert context
+        _, _, internal_session = context
+        return self.storage_product.dashboard_packets(session_token=internal_session, limit=limit, offset=offset)
+
+    def dashboard_packet_detail(self, *, access_token: str | None, packet_id: str) -> dict[str, Any]:
+        context, error = self._authenticated_context(access_token)
+        if error:
+            return error
+        assert context
+        _, _, internal_session = context
+        return self.storage_product.dashboard_packet_detail(session_token=internal_session, packet_id=packet_id)
+
+    def dashboard_actors(self, *, access_token: str | None, limit: int = 50, offset: int = 0) -> dict[str, Any]:
+        context, error = self._authenticated_context(access_token)
+        if error:
+            return error
+        assert context
+        _, _, internal_session = context
+        return self.storage_product.dashboard_actors(session_token=internal_session, limit=limit, offset=offset)
+
+    def dashboard_usage(self, *, access_token: str | None) -> dict[str, Any]:
+        context, error = self._authenticated_context(access_token)
+        if error:
+            return error
+        assert context
+        _, _, internal_session = context
+        return self.storage_product.dashboard_usage(session_token=internal_session)
+
+    def dashboard_playground_event(self, *, access_token: str | None, event_payload: dict[str, Any]) -> dict[str, Any]:
+        context, error = self._authenticated_context(access_token)
+        if error:
+            return error
+        assert context
+        _, _, internal_session = context
+        return self.storage_product.dashboard_playground_event(session_token=internal_session, event_payload=event_payload)
+
+    def dashboard_playground_packet(self, *, access_token: str | None, packet_scope: dict[str, Any]) -> dict[str, Any]:
+        context, error = self._authenticated_context(access_token)
+        if error:
+            return error
+        assert context
+        _, _, internal_session = context
+        return self.storage_product.dashboard_playground_packet(session_token=internal_session, packet_scope=packet_scope)
+
+    def dashboard_playground_reset(self, *, access_token: str | None) -> dict[str, Any]:
+        context, error = self._authenticated_context(access_token)
+        if error:
+            return error
+        assert context
+        _, _, internal_session = context
+        return self.storage_product.dashboard_playground_reset(session_token=internal_session)
+
     def create_key(
         self,
         *,

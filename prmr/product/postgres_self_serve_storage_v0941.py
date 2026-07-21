@@ -158,6 +158,30 @@ class PostgresSelfServeProductV0941:
     def dashboard_generate_packet(self, **kwargs: Any) -> dict[str, Any]:
         return self._save(self.product.dashboard_generate_packet(**kwargs))
 
+    def dashboard_events(self, **kwargs: Any) -> dict[str, Any]:
+        return self.product.dashboard_events(**kwargs)
+
+    def dashboard_packets(self, **kwargs: Any) -> dict[str, Any]:
+        return self.product.dashboard_packets(**kwargs)
+
+    def dashboard_packet_detail(self, **kwargs: Any) -> dict[str, Any]:
+        return self.product.dashboard_packet_detail(**kwargs)
+
+    def dashboard_actors(self, **kwargs: Any) -> dict[str, Any]:
+        return self.product.dashboard_actors(**kwargs)
+
+    def dashboard_usage(self, **kwargs: Any) -> dict[str, Any]:
+        return self.product.dashboard_usage(**kwargs)
+
+    def dashboard_playground_event(self, **kwargs: Any) -> dict[str, Any]:
+        return self.product.dashboard_playground_event(**kwargs)
+
+    def dashboard_playground_packet(self, **kwargs: Any) -> dict[str, Any]:
+        return self.product.dashboard_playground_packet(**kwargs)
+
+    def dashboard_playground_reset(self, **kwargs: Any) -> dict[str, Any]:
+        return self.product.dashboard_playground_reset(**kwargs)
+
     def health(self) -> dict[str, Any]:
         counts = self.repository.table_counts()
         return {

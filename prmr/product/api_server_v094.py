@@ -684,6 +684,118 @@ def create_app_v094(
             )
         )
 
+    @app.get("/v1/auth/supabase/dashboard/events")
+    async def supabase_dashboard_events(
+        authorization: str | None = Header(default=None, alias="Authorization"),
+        limit: int = Query(default=50, ge=1, le=100),
+        offset: int = Query(default=0, ge=0),
+        status: str = Query(default=""),
+        actor_reference: str = Query(default=""),
+        event_type: str = Query(default=""),
+        event_id: str = Query(default=""),
+    ) -> JSONResponse:
+        token, auth_error = supabase_access_token(authorization)
+        if auth_error:
+            return auth_error
+        return result_response(
+            locked_call(
+                active_auth_bridge.dashboard_events,
+                access_token=token,
+                limit=limit,
+                offset=offset,
+                status=status,
+                actor_reference=actor_reference,
+                event_type=event_type,
+                event_id=event_id,
+            )
+        )
+
+    @app.get("/v1/auth/supabase/dashboard/packets")
+    async def supabase_dashboard_packets(
+        authorization: str | None = Header(default=None, alias="Authorization"),
+        limit: int = Query(default=50, ge=1, le=100),
+        offset: int = Query(default=0, ge=0),
+    ) -> JSONResponse:
+        token, auth_error = supabase_access_token(authorization)
+        if auth_error:
+            return auth_error
+        return result_response(
+            locked_call(active_auth_bridge.dashboard_packets, access_token=token, limit=limit, offset=offset)
+        )
+
+    @app.get("/v1/auth/supabase/dashboard/packets/{packet_id}")
+    async def supabase_dashboard_packet_detail(
+        packet_id: str,
+        authorization: str | None = Header(default=None, alias="Authorization"),
+    ) -> JSONResponse:
+        token, auth_error = supabase_access_token(authorization)
+        if auth_error:
+            return auth_error
+        return result_response(
+            locked_call(active_auth_bridge.dashboard_packet_detail, access_token=token, packet_id=packet_id)
+        )
+
+    @app.get("/v1/auth/supabase/dashboard/actors")
+    async def supabase_dashboard_actors(
+        authorization: str | None = Header(default=None, alias="Authorization"),
+        limit: int = Query(default=50, ge=1, le=100),
+        offset: int = Query(default=0, ge=0),
+    ) -> JSONResponse:
+        token, auth_error = supabase_access_token(authorization)
+        if auth_error:
+            return auth_error
+        return result_response(
+            locked_call(active_auth_bridge.dashboard_actors, access_token=token, limit=limit, offset=offset)
+        )
+
+    @app.get("/v1/auth/supabase/dashboard/usage")
+    async def supabase_dashboard_usage(
+        authorization: str | None = Header(default=None, alias="Authorization"),
+    ) -> JSONResponse:
+        token, auth_error = supabase_access_token(authorization)
+        if auth_error:
+            return auth_error
+        return result_response(
+            locked_call(active_auth_bridge.dashboard_usage, access_token=token)
+        )
+
+    @app.post("/v1/auth/supabase/dashboard/playground/event")
+    async def supabase_dashboard_playground_event(
+        request: Request,
+        authorization: str | None = Header(default=None, alias="Authorization"),
+    ) -> JSONResponse:
+        token, auth_error = supabase_access_token(authorization)
+        if auth_error:
+            return auth_error
+        body = await json_body(request)
+        return result_response(
+            locked_call(active_auth_bridge.dashboard_playground_event, access_token=token, event_payload=body)
+        )
+
+    @app.post("/v1/auth/supabase/dashboard/playground/packet")
+    async def supabase_dashboard_playground_packet(
+        request: Request,
+        authorization: str | None = Header(default=None, alias="Authorization"),
+    ) -> JSONResponse:
+        token, auth_error = supabase_access_token(authorization)
+        if auth_error:
+            return auth_error
+        body = await json_body(request)
+        return result_response(
+            locked_call(active_auth_bridge.dashboard_playground_packet, access_token=token, packet_scope=body)
+        )
+
+    @app.delete("/v1/auth/supabase/dashboard/playground")
+    async def supabase_dashboard_playground_reset(
+        authorization: str | None = Header(default=None, alias="Authorization"),
+    ) -> JSONResponse:
+        token, auth_error = supabase_access_token(authorization)
+        if auth_error:
+            return auth_error
+        return result_response(
+            locked_call(active_auth_bridge.dashboard_playground_reset, access_token=token)
+        )
+
     @app.get("/v1/auth/supabase/dashboard/plan")
     async def supabase_dashboard_plan(
         authorization: str | None = Header(default=None, alias="Authorization"),

@@ -2,12 +2,10 @@ import Link from "next/link";
 import { AfternumMark } from "@/components/brand/AfternumMark";
 
 const navLinks = [
-  { href: "/#problem", label: "Problem" },
-  { href: "/#solution", label: "Solution" },
-  { href: "/#api", label: "API" },
-  { href: "/market", label: "Market" },
-  { href: "/pilot", label: "Pilot" },
-  { href: "/#demo", label: "Demo" },
+  { href: "/#product", label: "Product" },
+  { href: "/#api", label: "How It Works" },
+  { href: "/#use-cases", label: "Use Cases" },
+  { href: "/pilot", label: "Pricing" },
   { href: "/login", label: "Sign in" },
   { href: "/signup", label: "Start building" }
 ];

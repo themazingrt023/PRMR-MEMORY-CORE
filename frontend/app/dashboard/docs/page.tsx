@@ -1,5 +1,5 @@
 import { redirect } from "next/navigation";
 
 export default function DashboardDocsPage() {
-  redirect("/dashboard#quickstart");
+  redirect("/dashboard#how-to-use");
 }
