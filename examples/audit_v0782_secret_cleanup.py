@@ -40,6 +40,34 @@ ALLOWED_TRACKED_PREFIXES = [
     "frontend/data/",
 ]
 
+ALLOWED_TRACKED_REPORTS = {
+    "reports/core_release_candidate/km1_release_lock.json",
+    "reports/core_release_candidate/km1_release_file_manifest.json",
+}
+
+ALLOWED_TRACKED_CONFIGS = {
+    "config/prmr.postgres.example.toml",
+    "config/prmr.sqlite.example.toml",
+    "config/prmr.worker.example.toml",
+}
+
+SYNTHETIC_SECRET_FIXTURES = {
+    "examples/run_core_release_candidate.py": (
+        "prmr_live_example_secret",
+    ),
+    "examples/run_core_source_ledger_provenance.py": (
+        "malicious_bearer_1234567890",
+        "ghp_" + "ABCDEFGHIJKLMNOPQRSTUVWXYZ123456",
+        "-----BEGIN " + "PRIVATE KEY-----",
+    ),
+    "prmr/core/candidate_fixtures.py": (
+        "prmr_live_candidate_fixture_secret_1234567890",
+    ),
+    "prmr/core/source_fixtures.py": (
+        "fixture_token_1234567890",
+    ),
+}
+
 DATABASE_SUFFIXES = [
     ".sqlite",
     ".sqlite3",
@@ -140,6 +168,9 @@ def scan_tracked_secrets(files: list[str]) -> list[dict[str, Any]]:
         for line_number, line in enumerate(text.splitlines(), start=1):
             if line_is_placeholder(line):
                 continue
+            fixture_markers = SYNTHETIC_SECRET_FIXTURES.get(path, ())
+            if any(marker in line for marker in fixture_markers):
+                continue
             for name, pattern in SECRET_PATTERNS:
                 if pattern.search(line):
                     hits.append({"file": path, "line": line_number, "pattern": name})
@@ -165,6 +196,57 @@ def scan_public_reports() -> dict[str, Any]:
                 if pattern.search(line):
                     hits.append({"file": str(report.relative_to(ROOT)).replace("\\", "/"), "line": line_number, "pattern": name})
     return {"public_report_count": len(public_reports), "secret_hits": hits}
+
+
+def km1_lock_artifact_safe() -> tuple[bool, dict[str, Any]]:
+    relative = "reports/core_release_candidate/km1_release_lock.json"
+    path = ROOT / relative
+    if not path.is_file():
+        return False, {"path": relative, "reason": "missing"}
+    try:
+        payload = json.loads(path.read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError):
+        return False, {"path": relative, "reason": "invalid_json"}
+    text = json.dumps(payload, sort_keys=True)
+    hits = [name for name, pattern in SECRET_PATTERNS if pattern.search(text)]
+    safe_shape = (
+        payload.get("package_version") == "1.0.0rc1"
+        and payload.get("database_url_recorded") is False
+        and payload.get("private_evidence_included") is False
+        and bool(payload.get("artifact_hashes", {}).get("wheel_sha256"))
+        and bool(payload.get("manifest_hashes", {}).get("release_manifest_hash"))
+    )
+    return safe_shape and not hits, {
+        "path": relative,
+        "secret_pattern_hits": hits,
+        "safe_shape": safe_shape,
+    }
+
+
+def km1_file_manifest_safe() -> tuple[bool, dict[str, Any]]:
+    relative = "reports/core_release_candidate/km1_release_file_manifest.json"
+    path = ROOT / relative
+    if not path.is_file():
+        return False, {"path": relative, "reason": "missing"}
+    try:
+        payload = json.loads(path.read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError):
+        return False, {"path": relative, "reason": "invalid_json"}
+    text = json.dumps(payload, sort_keys=True)
+    hits = [name for name, pattern in SECRET_PATTERNS if pattern.search(text)]
+    entries = payload.get("entries", [])
+    safe_shape = (
+        payload.get("manifest_revision") == "km1_release_file_manifest_v1"
+        and payload.get("secret_values_recorded") is False
+        and isinstance(entries, list)
+        and payload.get("changed_or_untracked_path_count") == len(entries)
+    )
+    return safe_shape and not hits, {
+        "path": relative,
+        "secret_pattern_hits": hits,
+        "safe_shape": safe_shape,
+        "classified_path_count": len(entries),
+    }
 
 
 def env_example_placeholder_only() -> tuple[bool, list[str]]:
@@ -212,7 +294,7 @@ def real_client_data_hits(files: list[str]) -> list[dict[str, str]]:
     suspicious = [
         re.compile(r"\b\d{3}-\d{2}-\d{4}\b"),
         re.compile(r"\b(?:4[0-9]{12}(?:[0-9]{3})?|5[1-5][0-9]{14})\b"),
-        re.compile(r"\b[A-Za-z0-9._%+-]+@(?!example\.test\b)(?!example\.com\b)(?!afternum\.test\b)[A-Za-z0-9.-]+\.[A-Za-z]{2,}\b"),
+        re.compile(r"\b[A-Za-z0-9._%+-]+@(?!example\.test\b)(?!example\.com\b)(?!afternum\.test\b)(?![A-Za-z0-9.-]+\.example\b)(?![A-Za-z0-9.-]+\.invalid\b)[A-Za-z0-9.-]+\.[A-Za-z]{2,}\b"),
     ]
     allowed_prefixes = ("frontend/package-lock.json",)
     for path in files:
@@ -290,7 +372,21 @@ def main() -> int:
         matches = tracked_matching(tracked, prefix)
         if prefix == "data/":
             matches = [path for path in matches if not path.startswith("frontend/data/")]
+        if prefix == "config/":
+            matches = [path for path in matches if path not in ALLOWED_TRACKED_CONFIGS]
+        if prefix == "reports/":
+            matches = [path for path in matches if path not in ALLOWED_TRACKED_REPORTS]
         add_check(checks, f"{prefix.replace('/', '').replace('.', 'dot')}_not_tracked", not matches, {"count": len(matches), "paths": matches[:10]})
+
+    km1_safe, km1_detail = km1_lock_artifact_safe()
+    add_check(checks, "allowed_km1_release_lock_is_public_safe", km1_safe, km1_detail)
+    file_manifest_safe, file_manifest_detail = km1_file_manifest_safe()
+    add_check(
+        checks,
+        "allowed_km1_release_file_manifest_is_secret_safe",
+        file_manifest_safe,
+        file_manifest_detail,
+    )
 
     frontend_data = [path for path in tracked if path.startswith("frontend/data/")]
     add_check(checks, "frontend_data_public_source_allowed", bool(frontend_data), {"count": len(frontend_data), "sample": frontend_data[:10]})

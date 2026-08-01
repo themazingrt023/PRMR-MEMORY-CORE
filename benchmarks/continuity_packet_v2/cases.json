@@ -1,0 +1,4002 @@
+[
+  {
+    "assertions": [
+      {
+        "assertion_id": "epistemic_separation.1.1",
+        "description": "explicit memory remains asserted",
+        "passed": true
+      },
+      {
+        "assertion_id": "epistemic_separation.1.2",
+        "description": "derived memory remains derived",
+        "passed": true
+      },
+      {
+        "assertion_id": "epistemic_separation.1.3",
+        "description": "inferred memory remains tentative",
+        "passed": true
+      },
+      {
+        "assertion_id": "epistemic_separation.1.4",
+        "description": "unknown memory remains unknown",
+        "passed": true
+      },
+      {
+        "assertion_id": "epistemic_separation.1.5",
+        "description": "explicit milestone is primary",
+        "passed": true
+      }
+    ],
+    "case_id": "cpv2_epistemic_separation_01",
+    "domain": "epistemic_separation",
+    "fixture_variant": 1,
+    "passed": true
+  },
+  {
+    "assertions": [
+      {
+        "assertion_id": "epistemic_separation.2.1",
+        "description": "explicit memory remains asserted",
+        "passed": true
+      },
+      {
+        "assertion_id": "epistemic_separation.2.2",
+        "description": "derived memory remains derived",
+        "passed": true
+      },
+      {
+        "assertion_id": "epistemic_separation.2.3",
+        "description": "inferred memory remains tentative",
+        "passed": true
+      },
+      {
+        "assertion_id": "epistemic_separation.2.4",
+        "description": "unknown memory remains unknown",
+        "passed": true
+      },
+      {
+        "assertion_id": "epistemic_separation.2.5",
+        "description": "explicit milestone is primary",
+        "passed": true
+      }
+    ],
+    "case_id": "cpv2_epistemic_separation_02",
+    "domain": "epistemic_separation",
+    "fixture_variant": 2,
+    "passed": true
+  },
+  {
+    "assertions": [
+      {
+        "assertion_id": "epistemic_separation.3.1",
+        "description": "explicit memory remains asserted",
+        "passed": true
+      },
+      {
+        "assertion_id": "epistemic_separation.3.2",
+        "description": "derived memory remains derived",
+        "passed": true
+      },
+      {
+        "assertion_id": "epistemic_separation.3.3",
+        "description": "inferred memory remains tentative",
+        "passed": true
+      },
+      {
+        "assertion_id": "epistemic_separation.3.4",
+        "description": "unknown memory remains unknown",
+        "passed": true
+      },
+      {
+        "assertion_id": "epistemic_separation.3.5",
+        "description": "explicit milestone is primary",
+        "passed": true
+      }
+    ],
+    "case_id": "cpv2_epistemic_separation_03",
+    "domain": "epistemic_separation",
+    "fixture_variant": 3,
+    "passed": true
+  },
+  {
+    "assertions": [
+      {
+        "assertion_id": "epistemic_separation.4.1",
+        "description": "explicit memory remains asserted",
+        "passed": true
+      },
+      {
+        "assertion_id": "epistemic_separation.4.2",
+        "description": "derived memory remains derived",
+        "passed": true
+      },
+      {
+        "assertion_id": "epistemic_separation.4.3",
+        "description": "inferred memory remains tentative",
+        "passed": true
+      },
+      {
+        "assertion_id": "epistemic_separation.4.4",
+        "description": "unknown memory remains unknown",
+        "passed": true
+      },
+      {
+        "assertion_id": "epistemic_separation.4.5",
+        "description": "explicit milestone is primary",
+        "passed": true
+      }
+    ],
+    "case_id": "cpv2_epistemic_separation_04",
+    "domain": "epistemic_separation",
+    "fixture_variant": 4,
+    "passed": true
+  },
+  {
+    "assertions": [
+      {
+        "assertion_id": "epistemic_separation.5.1",
+        "description": "explicit memory remains asserted",
+        "passed": true
+      },
+      {
+        "assertion_id": "epistemic_separation.5.2",
+        "description": "derived memory remains derived",
+        "passed": true
+      },
+      {
+        "assertion_id": "epistemic_separation.5.3",
+        "description": "inferred memory remains tentative",
+        "passed": true
+      },
+      {
+        "assertion_id": "epistemic_separation.5.4",
+        "description": "unknown memory remains unknown",
+        "passed": true
+      },
+      {
+        "assertion_id": "epistemic_separation.5.5",
+        "description": "explicit milestone is primary",
+        "passed": true
+      }
+    ],
+    "case_id": "cpv2_epistemic_separation_05",
+    "domain": "epistemic_separation",
+    "fixture_variant": 5,
+    "passed": true
+  },
+  {
+    "assertions": [
+      {
+        "assertion_id": "epistemic_separation.6.1",
+        "description": "explicit memory remains asserted",
+        "passed": true
+      },
+      {
+        "assertion_id": "epistemic_separation.6.2",
+        "description": "derived memory remains derived",
+        "passed": true
+      },
+      {
+        "assertion_id": "epistemic_separation.6.3",
+        "description": "inferred memory remains tentative",
+        "passed": true
+      },
+      {
+        "assertion_id": "epistemic_separation.6.4",
+        "description": "unknown memory remains unknown",
+        "passed": true
+      },
+      {
+        "assertion_id": "epistemic_separation.6.5",
+        "description": "explicit milestone is primary",
+        "passed": true
+      }
+    ],
+    "case_id": "cpv2_epistemic_separation_06",
+    "domain": "epistemic_separation",
+    "fixture_variant": 6,
+    "passed": true
+  },
+  {
+    "assertions": [
+      {
+        "assertion_id": "epistemic_separation.7.1",
+        "description": "explicit memory remains asserted",
+        "passed": true
+      },
+      {
+        "assertion_id": "epistemic_separation.7.2",
+        "description": "derived memory remains derived",
+        "passed": true
+      },
+      {
+        "assertion_id": "epistemic_separation.7.3",
+        "description": "inferred memory remains tentative",
+        "passed": true
+      },
+      {
+        "assertion_id": "epistemic_separation.7.4",
+        "description": "unknown memory remains unknown",
+        "passed": true
+      },
+      {
+        "assertion_id": "epistemic_separation.7.5",
+        "description": "explicit milestone is primary",
+        "passed": true
+      }
+    ],
+    "case_id": "cpv2_epistemic_separation_07",
+    "domain": "epistemic_separation",
+    "fixture_variant": 7,
+    "passed": true
+  },
+  {
+    "assertions": [
+      {
+        "assertion_id": "epistemic_separation.8.1",
+        "description": "explicit memory remains asserted",
+        "passed": true
+      },
+      {
+        "assertion_id": "epistemic_separation.8.2",
+        "description": "derived memory remains derived",
+        "passed": true
+      },
+      {
+        "assertion_id": "epistemic_separation.8.3",
+        "description": "inferred memory remains tentative",
+        "passed": true
+      },
+      {
+        "assertion_id": "epistemic_separation.8.4",
+        "description": "unknown memory remains unknown",
+        "passed": true
+      },
+      {
+        "assertion_id": "epistemic_separation.8.5",
+        "description": "explicit milestone is primary",
+        "passed": true
+      }
+    ],
+    "case_id": "cpv2_epistemic_separation_08",
+    "domain": "epistemic_separation",
+    "fixture_variant": 8,
+    "passed": true
+  },
+  {
+    "assertions": [
+      {
+        "assertion_id": "open_conflict.1.1",
+        "description": "open conflict status preserved",
+        "passed": true
+      },
+      {
+        "assertion_id": "open_conflict.1.2",
+        "description": "open conflict chooses no current value",
+        "passed": true
+      },
+      {
+        "assertion_id": "open_conflict.1.3",
+        "description": "open conflict chooses no asserted event",
+        "passed": true
+      },
+      {
+        "assertion_id": "open_conflict.1.4",
+        "description": "both conflict participants retained",
+        "passed": true
+      },
+      {
+        "assertion_id": "open_conflict.1.5",
+        "description": "conflict context identifies declaration",
+        "passed": true
+      }
+    ],
+    "case_id": "cpv2_open_conflict_01",
+    "domain": "open_conflict",
+    "fixture_variant": 1,
+    "passed": true
+  },
+  {
+    "assertions": [
+      {
+        "assertion_id": "open_conflict.2.1",
+        "description": "open conflict status preserved",
+        "passed": true
+      },
+      {
+        "assertion_id": "open_conflict.2.2",
+        "description": "open conflict chooses no current value",
+        "passed": true
+      },
+      {
+        "assertion_id": "open_conflict.2.3",
+        "description": "open conflict chooses no asserted event",
+        "passed": true
+      },
+      {
+        "assertion_id": "open_conflict.2.4",
+        "description": "both conflict participants retained",
+        "passed": true
+      },
+      {
+        "assertion_id": "open_conflict.2.5",
+        "description": "conflict context identifies declaration",
+        "passed": true
+      }
+    ],
+    "case_id": "cpv2_open_conflict_02",
+    "domain": "open_conflict",
+    "fixture_variant": 2,
+    "passed": true
+  },
+  {
+    "assertions": [
+      {
+        "assertion_id": "open_conflict.3.1",
+        "description": "open conflict status preserved",
+        "passed": true
+      },
+      {
+        "assertion_id": "open_conflict.3.2",
+        "description": "open conflict chooses no current value",
+        "passed": true
+      },
+      {
+        "assertion_id": "open_conflict.3.3",
+        "description": "open conflict chooses no asserted event",
+        "passed": true
+      },
+      {
+        "assertion_id": "open_conflict.3.4",
+        "description": "both conflict participants retained",
+        "passed": true
+      },
+      {
+        "assertion_id": "open_conflict.3.5",
+        "description": "conflict context identifies declaration",
+        "passed": true
+      }
+    ],
+    "case_id": "cpv2_open_conflict_03",
+    "domain": "open_conflict",
+    "fixture_variant": 3,
+    "passed": true
+  },
+  {
+    "assertions": [
+      {
+        "assertion_id": "open_conflict.4.1",
+        "description": "open conflict status preserved",
+        "passed": true
+      },
+      {
+        "assertion_id": "open_conflict.4.2",
+        "description": "open conflict chooses no current value",
+        "passed": true
+      },
+      {
+        "assertion_id": "open_conflict.4.3",
+        "description": "open conflict chooses no asserted event",
+        "passed": true
+      },
+      {
+        "assertion_id": "open_conflict.4.4",
+        "description": "both conflict participants retained",
+        "passed": true
+      },
+      {
+        "assertion_id": "open_conflict.4.5",
+        "description": "conflict context identifies declaration",
+        "passed": true
+      }
+    ],
+    "case_id": "cpv2_open_conflict_04",
+    "domain": "open_conflict",
+    "fixture_variant": 4,
+    "passed": true
+  },
+  {
+    "assertions": [
+      {
+        "assertion_id": "open_conflict.5.1",
+        "description": "open conflict status preserved",
+        "passed": true
+      },
+      {
+        "assertion_id": "open_conflict.5.2",
+        "description": "open conflict chooses no current value",
+        "passed": true
+      },
+      {
+        "assertion_id": "open_conflict.5.3",
+        "description": "open conflict chooses no asserted event",
+        "passed": true
+      },
+      {
+        "assertion_id": "open_conflict.5.4",
+        "description": "both conflict participants retained",
+        "passed": true
+      },
+      {
+        "assertion_id": "open_conflict.5.5",
+        "description": "conflict context identifies declaration",
+        "passed": true
+      }
+    ],
+    "case_id": "cpv2_open_conflict_05",
+    "domain": "open_conflict",
+    "fixture_variant": 5,
+    "passed": true
+  },
+  {
+    "assertions": [
+      {
+        "assertion_id": "open_conflict.6.1",
+        "description": "open conflict status preserved",
+        "passed": true
+      },
+      {
+        "assertion_id": "open_conflict.6.2",
+        "description": "open conflict chooses no current value",
+        "passed": true
+      },
+      {
+        "assertion_id": "open_conflict.6.3",
+        "description": "open conflict chooses no asserted event",
+        "passed": true
+      },
+      {
+        "assertion_id": "open_conflict.6.4",
+        "description": "both conflict participants retained",
+        "passed": true
+      },
+      {
+        "assertion_id": "open_conflict.6.5",
+        "description": "conflict context identifies declaration",
+        "passed": true
+      }
+    ],
+    "case_id": "cpv2_open_conflict_06",
+    "domain": "open_conflict",
+    "fixture_variant": 6,
+    "passed": true
+  },
+  {
+    "assertions": [
+      {
+        "assertion_id": "open_conflict.7.1",
+        "description": "open conflict status preserved",
+        "passed": true
+      },
+      {
+        "assertion_id": "open_conflict.7.2",
+        "description": "open conflict chooses no current value",
+        "passed": true
+      },
+      {
+        "assertion_id": "open_conflict.7.3",
+        "description": "open conflict chooses no asserted event",
+        "passed": true
+      },
+      {
+        "assertion_id": "open_conflict.7.4",
+        "description": "both conflict participants retained",
+        "passed": true
+      },
+      {
+        "assertion_id": "open_conflict.7.5",
+        "description": "conflict context identifies declaration",
+        "passed": true
+      }
+    ],
+    "case_id": "cpv2_open_conflict_07",
+    "domain": "open_conflict",
+    "fixture_variant": 7,
+    "passed": true
+  },
+  {
+    "assertions": [
+      {
+        "assertion_id": "open_conflict.8.1",
+        "description": "open conflict status preserved",
+        "passed": true
+      },
+      {
+        "assertion_id": "open_conflict.8.2",
+        "description": "open conflict chooses no current value",
+        "passed": true
+      },
+      {
+        "assertion_id": "open_conflict.8.3",
+        "description": "open conflict chooses no asserted event",
+        "passed": true
+      },
+      {
+        "assertion_id": "open_conflict.8.4",
+        "description": "both conflict participants retained",
+        "passed": true
+      },
+      {
+        "assertion_id": "open_conflict.8.5",
+        "description": "conflict context identifies declaration",
+        "passed": true
+      }
+    ],
+    "case_id": "cpv2_open_conflict_08",
+    "domain": "open_conflict",
+    "fixture_variant": 8,
+    "passed": true
+  },
+  {
+    "assertions": [
+      {
+        "assertion_id": "resolved_conflict.1.1",
+        "description": "historical boundary remains conflicted",
+        "passed": true
+      },
+      {
+        "assertion_id": "resolved_conflict.1.2",
+        "description": "current conflict status resolved",
+        "passed": true
+      },
+      {
+        "assertion_id": "resolved_conflict.1.3",
+        "description": "resolution event becomes supported state",
+        "passed": true
+      },
+      {
+        "assertion_id": "resolved_conflict.1.4",
+        "description": "original conflict retained in lineage",
+        "passed": true
+      },
+      {
+        "assertion_id": "resolved_conflict.1.5",
+        "description": "resolution retained in lineage",
+        "passed": true
+      }
+    ],
+    "case_id": "cpv2_resolved_conflict_01",
+    "domain": "resolved_conflict",
+    "fixture_variant": 1,
+    "passed": true
+  },
+  {
+    "assertions": [
+      {
+        "assertion_id": "resolved_conflict.2.1",
+        "description": "historical boundary remains conflicted",
+        "passed": true
+      },
+      {
+        "assertion_id": "resolved_conflict.2.2",
+        "description": "current conflict status resolved",
+        "passed": true
+      },
+      {
+        "assertion_id": "resolved_conflict.2.3",
+        "description": "resolution event becomes supported state",
+        "passed": true
+      },
+      {
+        "assertion_id": "resolved_conflict.2.4",
+        "description": "original conflict retained in lineage",
+        "passed": true
+      },
+      {
+        "assertion_id": "resolved_conflict.2.5",
+        "description": "resolution retained in lineage",
+        "passed": true
+      }
+    ],
+    "case_id": "cpv2_resolved_conflict_02",
+    "domain": "resolved_conflict",
+    "fixture_variant": 2,
+    "passed": true
+  },
+  {
+    "assertions": [
+      {
+        "assertion_id": "resolved_conflict.3.1",
+        "description": "historical boundary remains conflicted",
+        "passed": true
+      },
+      {
+        "assertion_id": "resolved_conflict.3.2",
+        "description": "current conflict status resolved",
+        "passed": true
+      },
+      {
+        "assertion_id": "resolved_conflict.3.3",
+        "description": "resolution event becomes supported state",
+        "passed": true
+      },
+      {
+        "assertion_id": "resolved_conflict.3.4",
+        "description": "original conflict retained in lineage",
+        "passed": true
+      },
+      {
+        "assertion_id": "resolved_conflict.3.5",
+        "description": "resolution retained in lineage",
+        "passed": true
+      }
+    ],
+    "case_id": "cpv2_resolved_conflict_03",
+    "domain": "resolved_conflict",
+    "fixture_variant": 3,
+    "passed": true
+  },
+  {
+    "assertions": [
+      {
+        "assertion_id": "resolved_conflict.4.1",
+        "description": "historical boundary remains conflicted",
+        "passed": true
+      },
+      {
+        "assertion_id": "resolved_conflict.4.2",
+        "description": "current conflict status resolved",
+        "passed": true
+      },
+      {
+        "assertion_id": "resolved_conflict.4.3",
+        "description": "resolution event becomes supported state",
+        "passed": true
+      },
+      {
+        "assertion_id": "resolved_conflict.4.4",
+        "description": "original conflict retained in lineage",
+        "passed": true
+      },
+      {
+        "assertion_id": "resolved_conflict.4.5",
+        "description": "resolution retained in lineage",
+        "passed": true
+      }
+    ],
+    "case_id": "cpv2_resolved_conflict_04",
+    "domain": "resolved_conflict",
+    "fixture_variant": 4,
+    "passed": true
+  },
+  {
+    "assertions": [
+      {
+        "assertion_id": "resolved_conflict.5.1",
+        "description": "historical boundary remains conflicted",
+        "passed": true
+      },
+      {
+        "assertion_id": "resolved_conflict.5.2",
+        "description": "current conflict status resolved",
+        "passed": true
+      },
+      {
+        "assertion_id": "resolved_conflict.5.3",
+        "description": "resolution event becomes supported state",
+        "passed": true
+      },
+      {
+        "assertion_id": "resolved_conflict.5.4",
+        "description": "original conflict retained in lineage",
+        "passed": true
+      },
+      {
+        "assertion_id": "resolved_conflict.5.5",
+        "description": "resolution retained in lineage",
+        "passed": true
+      }
+    ],
+    "case_id": "cpv2_resolved_conflict_05",
+    "domain": "resolved_conflict",
+    "fixture_variant": 5,
+    "passed": true
+  },
+  {
+    "assertions": [
+      {
+        "assertion_id": "resolved_conflict.6.1",
+        "description": "historical boundary remains conflicted",
+        "passed": true
+      },
+      {
+        "assertion_id": "resolved_conflict.6.2",
+        "description": "current conflict status resolved",
+        "passed": true
+      },
+      {
+        "assertion_id": "resolved_conflict.6.3",
+        "description": "resolution event becomes supported state",
+        "passed": true
+      },
+      {
+        "assertion_id": "resolved_conflict.6.4",
+        "description": "original conflict retained in lineage",
+        "passed": true
+      },
+      {
+        "assertion_id": "resolved_conflict.6.5",
+        "description": "resolution retained in lineage",
+        "passed": true
+      }
+    ],
+    "case_id": "cpv2_resolved_conflict_06",
+    "domain": "resolved_conflict",
+    "fixture_variant": 6,
+    "passed": true
+  },
+  {
+    "assertions": [
+      {
+        "assertion_id": "resolved_conflict.7.1",
+        "description": "historical boundary remains conflicted",
+        "passed": true
+      },
+      {
+        "assertion_id": "resolved_conflict.7.2",
+        "description": "current conflict status resolved",
+        "passed": true
+      },
+      {
+        "assertion_id": "resolved_conflict.7.3",
+        "description": "resolution event becomes supported state",
+        "passed": true
+      },
+      {
+        "assertion_id": "resolved_conflict.7.4",
+        "description": "original conflict retained in lineage",
+        "passed": true
+      },
+      {
+        "assertion_id": "resolved_conflict.7.5",
+        "description": "resolution retained in lineage",
+        "passed": true
+      }
+    ],
+    "case_id": "cpv2_resolved_conflict_07",
+    "domain": "resolved_conflict",
+    "fixture_variant": 7,
+    "passed": true
+  },
+  {
+    "assertions": [
+      {
+        "assertion_id": "resolved_conflict.8.1",
+        "description": "historical boundary remains conflicted",
+        "passed": true
+      },
+      {
+        "assertion_id": "resolved_conflict.8.2",
+        "description": "current conflict status resolved",
+        "passed": true
+      },
+      {
+        "assertion_id": "resolved_conflict.8.3",
+        "description": "resolution event becomes supported state",
+        "passed": true
+      },
+      {
+        "assertion_id": "resolved_conflict.8.4",
+        "description": "original conflict retained in lineage",
+        "passed": true
+      },
+      {
+        "assertion_id": "resolved_conflict.8.5",
+        "description": "resolution retained in lineage",
+        "passed": true
+      }
+    ],
+    "case_id": "cpv2_resolved_conflict_08",
+    "domain": "resolved_conflict",
+    "fixture_variant": 8,
+    "passed": true
+  },
+  {
+    "assertions": [
+      {
+        "assertion_id": "tentative_overlays.1.1",
+        "description": "asserted overlay base retained",
+        "passed": true
+      },
+      {
+        "assertion_id": "tentative_overlays.1.2",
+        "description": "tentative overlay separately retained",
+        "passed": true
+      },
+      {
+        "assertion_id": "tentative_overlays.1.3",
+        "description": "tentative event is inferred",
+        "passed": true
+      },
+      {
+        "assertion_id": "tentative_overlays.1.4",
+        "description": "inferred event not asserted",
+        "passed": true
+      },
+      {
+        "assertion_id": "tentative_overlays.1.5",
+        "description": "packet remains supported",
+        "passed": true
+      }
+    ],
+    "case_id": "cpv2_tentative_overlays_01",
+    "domain": "tentative_overlays",
+    "fixture_variant": 1,
+    "passed": true
+  },
+  {
+    "assertions": [
+      {
+        "assertion_id": "tentative_overlays.2.1",
+        "description": "asserted overlay base retained",
+        "passed": true
+      },
+      {
+        "assertion_id": "tentative_overlays.2.2",
+        "description": "tentative overlay separately retained",
+        "passed": true
+      },
+      {
+        "assertion_id": "tentative_overlays.2.3",
+        "description": "tentative event is inferred",
+        "passed": true
+      },
+      {
+        "assertion_id": "tentative_overlays.2.4",
+        "description": "inferred event not asserted",
+        "passed": true
+      },
+      {
+        "assertion_id": "tentative_overlays.2.5",
+        "description": "packet remains supported",
+        "passed": true
+      }
+    ],
+    "case_id": "cpv2_tentative_overlays_02",
+    "domain": "tentative_overlays",
+    "fixture_variant": 2,
+    "passed": true
+  },
+  {
+    "assertions": [
+      {
+        "assertion_id": "tentative_overlays.3.1",
+        "description": "asserted overlay base retained",
+        "passed": true
+      },
+      {
+        "assertion_id": "tentative_overlays.3.2",
+        "description": "tentative overlay separately retained",
+        "passed": true
+      },
+      {
+        "assertion_id": "tentative_overlays.3.3",
+        "description": "tentative event is inferred",
+        "passed": true
+      },
+      {
+        "assertion_id": "tentative_overlays.3.4",
+        "description": "inferred event not asserted",
+        "passed": true
+      },
+      {
+        "assertion_id": "tentative_overlays.3.5",
+        "description": "packet remains supported",
+        "passed": true
+      }
+    ],
+    "case_id": "cpv2_tentative_overlays_03",
+    "domain": "tentative_overlays",
+    "fixture_variant": 3,
+    "passed": true
+  },
+  {
+    "assertions": [
+      {
+        "assertion_id": "tentative_overlays.4.1",
+        "description": "asserted overlay base retained",
+        "passed": true
+      },
+      {
+        "assertion_id": "tentative_overlays.4.2",
+        "description": "tentative overlay separately retained",
+        "passed": true
+      },
+      {
+        "assertion_id": "tentative_overlays.4.3",
+        "description": "tentative event is inferred",
+        "passed": true
+      },
+      {
+        "assertion_id": "tentative_overlays.4.4",
+        "description": "inferred event not asserted",
+        "passed": true
+      },
+      {
+        "assertion_id": "tentative_overlays.4.5",
+        "description": "packet remains supported",
+        "passed": true
+      }
+    ],
+    "case_id": "cpv2_tentative_overlays_04",
+    "domain": "tentative_overlays",
+    "fixture_variant": 4,
+    "passed": true
+  },
+  {
+    "assertions": [
+      {
+        "assertion_id": "tentative_overlays.5.1",
+        "description": "asserted overlay base retained",
+        "passed": true
+      },
+      {
+        "assertion_id": "tentative_overlays.5.2",
+        "description": "tentative overlay separately retained",
+        "passed": true
+      },
+      {
+        "assertion_id": "tentative_overlays.5.3",
+        "description": "tentative event is inferred",
+        "passed": true
+      },
+      {
+        "assertion_id": "tentative_overlays.5.4",
+        "description": "inferred event not asserted",
+        "passed": true
+      },
+      {
+        "assertion_id": "tentative_overlays.5.5",
+        "description": "packet remains supported",
+        "passed": true
+      }
+    ],
+    "case_id": "cpv2_tentative_overlays_05",
+    "domain": "tentative_overlays",
+    "fixture_variant": 5,
+    "passed": true
+  },
+  {
+    "assertions": [
+      {
+        "assertion_id": "tentative_overlays.6.1",
+        "description": "asserted overlay base retained",
+        "passed": true
+      },
+      {
+        "assertion_id": "tentative_overlays.6.2",
+        "description": "tentative overlay separately retained",
+        "passed": true
+      },
+      {
+        "assertion_id": "tentative_overlays.6.3",
+        "description": "tentative event is inferred",
+        "passed": true
+      },
+      {
+        "assertion_id": "tentative_overlays.6.4",
+        "description": "inferred event not asserted",
+        "passed": true
+      },
+      {
+        "assertion_id": "tentative_overlays.6.5",
+        "description": "packet remains supported",
+        "passed": true
+      }
+    ],
+    "case_id": "cpv2_tentative_overlays_06",
+    "domain": "tentative_overlays",
+    "fixture_variant": 6,
+    "passed": true
+  },
+  {
+    "assertions": [
+      {
+        "assertion_id": "tentative_overlays.7.1",
+        "description": "asserted overlay base retained",
+        "passed": true
+      },
+      {
+        "assertion_id": "tentative_overlays.7.2",
+        "description": "tentative overlay separately retained",
+        "passed": true
+      },
+      {
+        "assertion_id": "tentative_overlays.7.3",
+        "description": "tentative event is inferred",
+        "passed": true
+      },
+      {
+        "assertion_id": "tentative_overlays.7.4",
+        "description": "inferred event not asserted",
+        "passed": true
+      },
+      {
+        "assertion_id": "tentative_overlays.7.5",
+        "description": "packet remains supported",
+        "passed": true
+      }
+    ],
+    "case_id": "cpv2_tentative_overlays_07",
+    "domain": "tentative_overlays",
+    "fixture_variant": 7,
+    "passed": true
+  },
+  {
+    "assertions": [
+      {
+        "assertion_id": "tentative_overlays.8.1",
+        "description": "asserted overlay base retained",
+        "passed": true
+      },
+      {
+        "assertion_id": "tentative_overlays.8.2",
+        "description": "tentative overlay separately retained",
+        "passed": true
+      },
+      {
+        "assertion_id": "tentative_overlays.8.3",
+        "description": "tentative event is inferred",
+        "passed": true
+      },
+      {
+        "assertion_id": "tentative_overlays.8.4",
+        "description": "inferred event not asserted",
+        "passed": true
+      },
+      {
+        "assertion_id": "tentative_overlays.8.5",
+        "description": "packet remains supported",
+        "passed": true
+      }
+    ],
+    "case_id": "cpv2_tentative_overlays_08",
+    "domain": "tentative_overlays",
+    "fixture_variant": 8,
+    "passed": true
+  },
+  {
+    "assertions": [
+      {
+        "assertion_id": "unknown_preservation.1.1",
+        "description": "unknown-only packet status",
+        "passed": true
+      },
+      {
+        "assertion_id": "unknown_preservation.1.2",
+        "description": "unknown has no asserted value",
+        "passed": true
+      },
+      {
+        "assertion_id": "unknown_preservation.1.3",
+        "description": "unknown statement exact",
+        "passed": true
+      },
+      {
+        "assertion_id": "unknown_preservation.1.4",
+        "description": "unknown assertive influence zero",
+        "passed": true
+      },
+      {
+        "assertion_id": "unknown_preservation.1.5",
+        "description": "unknown is not invented state",
+        "passed": true
+      }
+    ],
+    "case_id": "cpv2_unknown_preservation_01",
+    "domain": "unknown_preservation",
+    "fixture_variant": 1,
+    "passed": true
+  },
+  {
+    "assertions": [
+      {
+        "assertion_id": "unknown_preservation.2.1",
+        "description": "unknown-only packet status",
+        "passed": true
+      },
+      {
+        "assertion_id": "unknown_preservation.2.2",
+        "description": "unknown has no asserted value",
+        "passed": true
+      },
+      {
+        "assertion_id": "unknown_preservation.2.3",
+        "description": "unknown statement exact",
+        "passed": true
+      },
+      {
+        "assertion_id": "unknown_preservation.2.4",
+        "description": "unknown assertive influence zero",
+        "passed": true
+      },
+      {
+        "assertion_id": "unknown_preservation.2.5",
+        "description": "unknown is not invented state",
+        "passed": true
+      }
+    ],
+    "case_id": "cpv2_unknown_preservation_02",
+    "domain": "unknown_preservation",
+    "fixture_variant": 2,
+    "passed": true
+  },
+  {
+    "assertions": [
+      {
+        "assertion_id": "unknown_preservation.3.1",
+        "description": "unknown-only packet status",
+        "passed": true
+      },
+      {
+        "assertion_id": "unknown_preservation.3.2",
+        "description": "unknown has no asserted value",
+        "passed": true
+      },
+      {
+        "assertion_id": "unknown_preservation.3.3",
+        "description": "unknown statement exact",
+        "passed": true
+      },
+      {
+        "assertion_id": "unknown_preservation.3.4",
+        "description": "unknown assertive influence zero",
+        "passed": true
+      },
+      {
+        "assertion_id": "unknown_preservation.3.5",
+        "description": "unknown is not invented state",
+        "passed": true
+      }
+    ],
+    "case_id": "cpv2_unknown_preservation_03",
+    "domain": "unknown_preservation",
+    "fixture_variant": 3,
+    "passed": true
+  },
+  {
+    "assertions": [
+      {
+        "assertion_id": "unknown_preservation.4.1",
+        "description": "unknown-only packet status",
+        "passed": true
+      },
+      {
+        "assertion_id": "unknown_preservation.4.2",
+        "description": "unknown has no asserted value",
+        "passed": true
+      },
+      {
+        "assertion_id": "unknown_preservation.4.3",
+        "description": "unknown statement exact",
+        "passed": true
+      },
+      {
+        "assertion_id": "unknown_preservation.4.4",
+        "description": "unknown assertive influence zero",
+        "passed": true
+      },
+      {
+        "assertion_id": "unknown_preservation.4.5",
+        "description": "unknown is not invented state",
+        "passed": true
+      }
+    ],
+    "case_id": "cpv2_unknown_preservation_04",
+    "domain": "unknown_preservation",
+    "fixture_variant": 4,
+    "passed": true
+  },
+  {
+    "assertions": [
+      {
+        "assertion_id": "unknown_preservation.5.1",
+        "description": "unknown-only packet status",
+        "passed": true
+      },
+      {
+        "assertion_id": "unknown_preservation.5.2",
+        "description": "unknown has no asserted value",
+        "passed": true
+      },
+      {
+        "assertion_id": "unknown_preservation.5.3",
+        "description": "unknown statement exact",
+        "passed": true
+      },
+      {
+        "assertion_id": "unknown_preservation.5.4",
+        "description": "unknown assertive influence zero",
+        "passed": true
+      },
+      {
+        "assertion_id": "unknown_preservation.5.5",
+        "description": "unknown is not invented state",
+        "passed": true
+      }
+    ],
+    "case_id": "cpv2_unknown_preservation_05",
+    "domain": "unknown_preservation",
+    "fixture_variant": 5,
+    "passed": true
+  },
+  {
+    "assertions": [
+      {
+        "assertion_id": "unknown_preservation.6.1",
+        "description": "unknown-only packet status",
+        "passed": true
+      },
+      {
+        "assertion_id": "unknown_preservation.6.2",
+        "description": "unknown has no asserted value",
+        "passed": true
+      },
+      {
+        "assertion_id": "unknown_preservation.6.3",
+        "description": "unknown statement exact",
+        "passed": true
+      },
+      {
+        "assertion_id": "unknown_preservation.6.4",
+        "description": "unknown assertive influence zero",
+        "passed": true
+      },
+      {
+        "assertion_id": "unknown_preservation.6.5",
+        "description": "unknown is not invented state",
+        "passed": true
+      }
+    ],
+    "case_id": "cpv2_unknown_preservation_06",
+    "domain": "unknown_preservation",
+    "fixture_variant": 6,
+    "passed": true
+  },
+  {
+    "assertions": [
+      {
+        "assertion_id": "unknown_preservation.7.1",
+        "description": "unknown-only packet status",
+        "passed": true
+      },
+      {
+        "assertion_id": "unknown_preservation.7.2",
+        "description": "unknown has no asserted value",
+        "passed": true
+      },
+      {
+        "assertion_id": "unknown_preservation.7.3",
+        "description": "unknown statement exact",
+        "passed": true
+      },
+      {
+        "assertion_id": "unknown_preservation.7.4",
+        "description": "unknown assertive influence zero",
+        "passed": true
+      },
+      {
+        "assertion_id": "unknown_preservation.7.5",
+        "description": "unknown is not invented state",
+        "passed": true
+      }
+    ],
+    "case_id": "cpv2_unknown_preservation_07",
+    "domain": "unknown_preservation",
+    "fixture_variant": 7,
+    "passed": true
+  },
+  {
+    "assertions": [
+      {
+        "assertion_id": "unknown_preservation.8.1",
+        "description": "unknown-only packet status",
+        "passed": true
+      },
+      {
+        "assertion_id": "unknown_preservation.8.2",
+        "description": "unknown has no asserted value",
+        "passed": true
+      },
+      {
+        "assertion_id": "unknown_preservation.8.3",
+        "description": "unknown statement exact",
+        "passed": true
+      },
+      {
+        "assertion_id": "unknown_preservation.8.4",
+        "description": "unknown assertive influence zero",
+        "passed": true
+      },
+      {
+        "assertion_id": "unknown_preservation.8.5",
+        "description": "unknown is not invented state",
+        "passed": true
+      }
+    ],
+    "case_id": "cpv2_unknown_preservation_08",
+    "domain": "unknown_preservation",
+    "fixture_variant": 8,
+    "passed": true
+  },
+  {
+    "assertions": [
+      {
+        "assertion_id": "temporal_phases.1.1",
+        "description": "active phase classified",
+        "passed": true
+      },
+      {
+        "assertion_id": "temporal_phases.1.2",
+        "description": "latent phase classified",
+        "passed": true
+      },
+      {
+        "assertion_id": "temporal_phases.1.3",
+        "description": "dormant phase classified",
+        "passed": true
+      },
+      {
+        "assertion_id": "temporal_phases.1.4",
+        "description": "decayed phase classified",
+        "passed": true
+      },
+      {
+        "assertion_id": "temporal_phases.1.5",
+        "description": "epistemic status stable across time",
+        "passed": true
+      }
+    ],
+    "case_id": "cpv2_temporal_phases_01",
+    "domain": "temporal_phases",
+    "fixture_variant": 1,
+    "passed": true
+  },
+  {
+    "assertions": [
+      {
+        "assertion_id": "temporal_phases.2.1",
+        "description": "active phase classified",
+        "passed": true
+      },
+      {
+        "assertion_id": "temporal_phases.2.2",
+        "description": "latent phase classified",
+        "passed": true
+      },
+      {
+        "assertion_id": "temporal_phases.2.3",
+        "description": "dormant phase classified",
+        "passed": true
+      },
+      {
+        "assertion_id": "temporal_phases.2.4",
+        "description": "decayed phase classified",
+        "passed": true
+      },
+      {
+        "assertion_id": "temporal_phases.2.5",
+        "description": "epistemic status stable across time",
+        "passed": true
+      }
+    ],
+    "case_id": "cpv2_temporal_phases_02",
+    "domain": "temporal_phases",
+    "fixture_variant": 2,
+    "passed": true
+  },
+  {
+    "assertions": [
+      {
+        "assertion_id": "temporal_phases.3.1",
+        "description": "active phase classified",
+        "passed": true
+      },
+      {
+        "assertion_id": "temporal_phases.3.2",
+        "description": "latent phase classified",
+        "passed": true
+      },
+      {
+        "assertion_id": "temporal_phases.3.3",
+        "description": "dormant phase classified",
+        "passed": true
+      },
+      {
+        "assertion_id": "temporal_phases.3.4",
+        "description": "decayed phase classified",
+        "passed": true
+      },
+      {
+        "assertion_id": "temporal_phases.3.5",
+        "description": "epistemic status stable across time",
+        "passed": true
+      }
+    ],
+    "case_id": "cpv2_temporal_phases_03",
+    "domain": "temporal_phases",
+    "fixture_variant": 3,
+    "passed": true
+  },
+  {
+    "assertions": [
+      {
+        "assertion_id": "temporal_phases.4.1",
+        "description": "active phase classified",
+        "passed": true
+      },
+      {
+        "assertion_id": "temporal_phases.4.2",
+        "description": "latent phase classified",
+        "passed": true
+      },
+      {
+        "assertion_id": "temporal_phases.4.3",
+        "description": "dormant phase classified",
+        "passed": true
+      },
+      {
+        "assertion_id": "temporal_phases.4.4",
+        "description": "decayed phase classified",
+        "passed": true
+      },
+      {
+        "assertion_id": "temporal_phases.4.5",
+        "description": "epistemic status stable across time",
+        "passed": true
+      }
+    ],
+    "case_id": "cpv2_temporal_phases_04",
+    "domain": "temporal_phases",
+    "fixture_variant": 4,
+    "passed": true
+  },
+  {
+    "assertions": [
+      {
+        "assertion_id": "temporal_phases.5.1",
+        "description": "active phase classified",
+        "passed": true
+      },
+      {
+        "assertion_id": "temporal_phases.5.2",
+        "description": "latent phase classified",
+        "passed": true
+      },
+      {
+        "assertion_id": "temporal_phases.5.3",
+        "description": "dormant phase classified",
+        "passed": true
+      },
+      {
+        "assertion_id": "temporal_phases.5.4",
+        "description": "decayed phase classified",
+        "passed": true
+      },
+      {
+        "assertion_id": "temporal_phases.5.5",
+        "description": "epistemic status stable across time",
+        "passed": true
+      }
+    ],
+    "case_id": "cpv2_temporal_phases_05",
+    "domain": "temporal_phases",
+    "fixture_variant": 5,
+    "passed": true
+  },
+  {
+    "assertions": [
+      {
+        "assertion_id": "temporal_phases.6.1",
+        "description": "active phase classified",
+        "passed": true
+      },
+      {
+        "assertion_id": "temporal_phases.6.2",
+        "description": "latent phase classified",
+        "passed": true
+      },
+      {
+        "assertion_id": "temporal_phases.6.3",
+        "description": "dormant phase classified",
+        "passed": true
+      },
+      {
+        "assertion_id": "temporal_phases.6.4",
+        "description": "decayed phase classified",
+        "passed": true
+      },
+      {
+        "assertion_id": "temporal_phases.6.5",
+        "description": "epistemic status stable across time",
+        "passed": true
+      }
+    ],
+    "case_id": "cpv2_temporal_phases_06",
+    "domain": "temporal_phases",
+    "fixture_variant": 6,
+    "passed": true
+  },
+  {
+    "assertions": [
+      {
+        "assertion_id": "temporal_phases.7.1",
+        "description": "active phase classified",
+        "passed": true
+      },
+      {
+        "assertion_id": "temporal_phases.7.2",
+        "description": "latent phase classified",
+        "passed": true
+      },
+      {
+        "assertion_id": "temporal_phases.7.3",
+        "description": "dormant phase classified",
+        "passed": true
+      },
+      {
+        "assertion_id": "temporal_phases.7.4",
+        "description": "decayed phase classified",
+        "passed": true
+      },
+      {
+        "assertion_id": "temporal_phases.7.5",
+        "description": "epistemic status stable across time",
+        "passed": true
+      }
+    ],
+    "case_id": "cpv2_temporal_phases_07",
+    "domain": "temporal_phases",
+    "fixture_variant": 7,
+    "passed": true
+  },
+  {
+    "assertions": [
+      {
+        "assertion_id": "temporal_phases.8.1",
+        "description": "active phase classified",
+        "passed": true
+      },
+      {
+        "assertion_id": "temporal_phases.8.2",
+        "description": "latent phase classified",
+        "passed": true
+      },
+      {
+        "assertion_id": "temporal_phases.8.3",
+        "description": "dormant phase classified",
+        "passed": true
+      },
+      {
+        "assertion_id": "temporal_phases.8.4",
+        "description": "decayed phase classified",
+        "passed": true
+      },
+      {
+        "assertion_id": "temporal_phases.8.5",
+        "description": "epistemic status stable across time",
+        "passed": true
+      }
+    ],
+    "case_id": "cpv2_temporal_phases_08",
+    "domain": "temporal_phases",
+    "fixture_variant": 8,
+    "passed": true
+  },
+  {
+    "assertions": [
+      {
+        "assertion_id": "re_emergence.1.1",
+        "description": "explicit signal re-emerges",
+        "passed": true
+      },
+      {
+        "assertion_id": "re_emergence.1.2",
+        "description": "inferred signal re-emerges",
+        "passed": true
+      },
+      {
+        "assertion_id": "re_emergence.1.3",
+        "description": "re-emerging explicit remains explicit",
+        "passed": true
+      },
+      {
+        "assertion_id": "re_emergence.1.4",
+        "description": "re-emerging inferred remains inferred",
+        "passed": true
+      },
+      {
+        "assertion_id": "re_emergence.1.5",
+        "description": "epistemic influence differs",
+        "passed": true
+      }
+    ],
+    "case_id": "cpv2_re_emergence_01",
+    "domain": "re_emergence",
+    "fixture_variant": 1,
+    "passed": true
+  },
+  {
+    "assertions": [
+      {
+        "assertion_id": "re_emergence.2.1",
+        "description": "explicit signal re-emerges",
+        "passed": true
+      },
+      {
+        "assertion_id": "re_emergence.2.2",
+        "description": "inferred signal re-emerges",
+        "passed": true
+      },
+      {
+        "assertion_id": "re_emergence.2.3",
+        "description": "re-emerging explicit remains explicit",
+        "passed": true
+      },
+      {
+        "assertion_id": "re_emergence.2.4",
+        "description": "re-emerging inferred remains inferred",
+        "passed": true
+      },
+      {
+        "assertion_id": "re_emergence.2.5",
+        "description": "epistemic influence differs",
+        "passed": true
+      }
+    ],
+    "case_id": "cpv2_re_emergence_02",
+    "domain": "re_emergence",
+    "fixture_variant": 2,
+    "passed": true
+  },
+  {
+    "assertions": [
+      {
+        "assertion_id": "re_emergence.3.1",
+        "description": "explicit signal re-emerges",
+        "passed": true
+      },
+      {
+        "assertion_id": "re_emergence.3.2",
+        "description": "inferred signal re-emerges",
+        "passed": true
+      },
+      {
+        "assertion_id": "re_emergence.3.3",
+        "description": "re-emerging explicit remains explicit",
+        "passed": true
+      },
+      {
+        "assertion_id": "re_emergence.3.4",
+        "description": "re-emerging inferred remains inferred",
+        "passed": true
+      },
+      {
+        "assertion_id": "re_emergence.3.5",
+        "description": "epistemic influence differs",
+        "passed": true
+      }
+    ],
+    "case_id": "cpv2_re_emergence_03",
+    "domain": "re_emergence",
+    "fixture_variant": 3,
+    "passed": true
+  },
+  {
+    "assertions": [
+      {
+        "assertion_id": "re_emergence.4.1",
+        "description": "explicit signal re-emerges",
+        "passed": true
+      },
+      {
+        "assertion_id": "re_emergence.4.2",
+        "description": "inferred signal re-emerges",
+        "passed": true
+      },
+      {
+        "assertion_id": "re_emergence.4.3",
+        "description": "re-emerging explicit remains explicit",
+        "passed": true
+      },
+      {
+        "assertion_id": "re_emergence.4.4",
+        "description": "re-emerging inferred remains inferred",
+        "passed": true
+      },
+      {
+        "assertion_id": "re_emergence.4.5",
+        "description": "epistemic influence differs",
+        "passed": true
+      }
+    ],
+    "case_id": "cpv2_re_emergence_04",
+    "domain": "re_emergence",
+    "fixture_variant": 4,
+    "passed": true
+  },
+  {
+    "assertions": [
+      {
+        "assertion_id": "re_emergence.5.1",
+        "description": "explicit signal re-emerges",
+        "passed": true
+      },
+      {
+        "assertion_id": "re_emergence.5.2",
+        "description": "inferred signal re-emerges",
+        "passed": true
+      },
+      {
+        "assertion_id": "re_emergence.5.3",
+        "description": "re-emerging explicit remains explicit",
+        "passed": true
+      },
+      {
+        "assertion_id": "re_emergence.5.4",
+        "description": "re-emerging inferred remains inferred",
+        "passed": true
+      },
+      {
+        "assertion_id": "re_emergence.5.5",
+        "description": "epistemic influence differs",
+        "passed": true
+      }
+    ],
+    "case_id": "cpv2_re_emergence_05",
+    "domain": "re_emergence",
+    "fixture_variant": 5,
+    "passed": true
+  },
+  {
+    "assertions": [
+      {
+        "assertion_id": "re_emergence.6.1",
+        "description": "explicit signal re-emerges",
+        "passed": true
+      },
+      {
+        "assertion_id": "re_emergence.6.2",
+        "description": "inferred signal re-emerges",
+        "passed": true
+      },
+      {
+        "assertion_id": "re_emergence.6.3",
+        "description": "re-emerging explicit remains explicit",
+        "passed": true
+      },
+      {
+        "assertion_id": "re_emergence.6.4",
+        "description": "re-emerging inferred remains inferred",
+        "passed": true
+      },
+      {
+        "assertion_id": "re_emergence.6.5",
+        "description": "epistemic influence differs",
+        "passed": true
+      }
+    ],
+    "case_id": "cpv2_re_emergence_06",
+    "domain": "re_emergence",
+    "fixture_variant": 6,
+    "passed": true
+  },
+  {
+    "assertions": [
+      {
+        "assertion_id": "re_emergence.7.1",
+        "description": "explicit signal re-emerges",
+        "passed": true
+      },
+      {
+        "assertion_id": "re_emergence.7.2",
+        "description": "inferred signal re-emerges",
+        "passed": true
+      },
+      {
+        "assertion_id": "re_emergence.7.3",
+        "description": "re-emerging explicit remains explicit",
+        "passed": true
+      },
+      {
+        "assertion_id": "re_emergence.7.4",
+        "description": "re-emerging inferred remains inferred",
+        "passed": true
+      },
+      {
+        "assertion_id": "re_emergence.7.5",
+        "description": "epistemic influence differs",
+        "passed": true
+      }
+    ],
+    "case_id": "cpv2_re_emergence_07",
+    "domain": "re_emergence",
+    "fixture_variant": 7,
+    "passed": true
+  },
+  {
+    "assertions": [
+      {
+        "assertion_id": "re_emergence.8.1",
+        "description": "explicit signal re-emerges",
+        "passed": true
+      },
+      {
+        "assertion_id": "re_emergence.8.2",
+        "description": "inferred signal re-emerges",
+        "passed": true
+      },
+      {
+        "assertion_id": "re_emergence.8.3",
+        "description": "re-emerging explicit remains explicit",
+        "passed": true
+      },
+      {
+        "assertion_id": "re_emergence.8.4",
+        "description": "re-emerging inferred remains inferred",
+        "passed": true
+      },
+      {
+        "assertion_id": "re_emergence.8.5",
+        "description": "epistemic influence differs",
+        "passed": true
+      }
+    ],
+    "case_id": "cpv2_re_emergence_08",
+    "domain": "re_emergence",
+    "fixture_variant": 8,
+    "passed": true
+  },
+  {
+    "assertions": [
+      {
+        "assertion_id": "entity_isolation.1.1",
+        "description": "same-name entities have distinct IDs",
+        "passed": true
+      },
+      {
+        "assertion_id": "entity_isolation.1.2",
+        "description": "entity packet IDs differ",
+        "passed": true
+      },
+      {
+        "assertion_id": "entity_isolation.1.3",
+        "description": "first entity packet has one event",
+        "passed": true
+      },
+      {
+        "assertion_id": "entity_isolation.1.4",
+        "description": "second entity packet has one event",
+        "passed": true
+      },
+      {
+        "assertion_id": "entity_isolation.1.5",
+        "description": "entity events do not leak",
+        "passed": true
+      }
+    ],
+    "case_id": "cpv2_entity_isolation_01",
+    "domain": "entity_isolation",
+    "fixture_variant": 1,
+    "passed": true
+  },
+  {
+    "assertions": [
+      {
+        "assertion_id": "entity_isolation.2.1",
+        "description": "same-name entities have distinct IDs",
+        "passed": true
+      },
+      {
+        "assertion_id": "entity_isolation.2.2",
+        "description": "entity packet IDs differ",
+        "passed": true
+      },
+      {
+        "assertion_id": "entity_isolation.2.3",
+        "description": "first entity packet has one event",
+        "passed": true
+      },
+      {
+        "assertion_id": "entity_isolation.2.4",
+        "description": "second entity packet has one event",
+        "passed": true
+      },
+      {
+        "assertion_id": "entity_isolation.2.5",
+        "description": "entity events do not leak",
+        "passed": true
+      }
+    ],
+    "case_id": "cpv2_entity_isolation_02",
+    "domain": "entity_isolation",
+    "fixture_variant": 2,
+    "passed": true
+  },
+  {
+    "assertions": [
+      {
+        "assertion_id": "entity_isolation.3.1",
+        "description": "same-name entities have distinct IDs",
+        "passed": true
+      },
+      {
+        "assertion_id": "entity_isolation.3.2",
+        "description": "entity packet IDs differ",
+        "passed": true
+      },
+      {
+        "assertion_id": "entity_isolation.3.3",
+        "description": "first entity packet has one event",
+        "passed": true
+      },
+      {
+        "assertion_id": "entity_isolation.3.4",
+        "description": "second entity packet has one event",
+        "passed": true
+      },
+      {
+        "assertion_id": "entity_isolation.3.5",
+        "description": "entity events do not leak",
+        "passed": true
+      }
+    ],
+    "case_id": "cpv2_entity_isolation_03",
+    "domain": "entity_isolation",
+    "fixture_variant": 3,
+    "passed": true
+  },
+  {
+    "assertions": [
+      {
+        "assertion_id": "entity_isolation.4.1",
+        "description": "same-name entities have distinct IDs",
+        "passed": true
+      },
+      {
+        "assertion_id": "entity_isolation.4.2",
+        "description": "entity packet IDs differ",
+        "passed": true
+      },
+      {
+        "assertion_id": "entity_isolation.4.3",
+        "description": "first entity packet has one event",
+        "passed": true
+      },
+      {
+        "assertion_id": "entity_isolation.4.4",
+        "description": "second entity packet has one event",
+        "passed": true
+      },
+      {
+        "assertion_id": "entity_isolation.4.5",
+        "description": "entity events do not leak",
+        "passed": true
+      }
+    ],
+    "case_id": "cpv2_entity_isolation_04",
+    "domain": "entity_isolation",
+    "fixture_variant": 4,
+    "passed": true
+  },
+  {
+    "assertions": [
+      {
+        "assertion_id": "entity_isolation.5.1",
+        "description": "same-name entities have distinct IDs",
+        "passed": true
+      },
+      {
+        "assertion_id": "entity_isolation.5.2",
+        "description": "entity packet IDs differ",
+        "passed": true
+      },
+      {
+        "assertion_id": "entity_isolation.5.3",
+        "description": "first entity packet has one event",
+        "passed": true
+      },
+      {
+        "assertion_id": "entity_isolation.5.4",
+        "description": "second entity packet has one event",
+        "passed": true
+      },
+      {
+        "assertion_id": "entity_isolation.5.5",
+        "description": "entity events do not leak",
+        "passed": true
+      }
+    ],
+    "case_id": "cpv2_entity_isolation_05",
+    "domain": "entity_isolation",
+    "fixture_variant": 5,
+    "passed": true
+  },
+  {
+    "assertions": [
+      {
+        "assertion_id": "entity_isolation.6.1",
+        "description": "same-name entities have distinct IDs",
+        "passed": true
+      },
+      {
+        "assertion_id": "entity_isolation.6.2",
+        "description": "entity packet IDs differ",
+        "passed": true
+      },
+      {
+        "assertion_id": "entity_isolation.6.3",
+        "description": "first entity packet has one event",
+        "passed": true
+      },
+      {
+        "assertion_id": "entity_isolation.6.4",
+        "description": "second entity packet has one event",
+        "passed": true
+      },
+      {
+        "assertion_id": "entity_isolation.6.5",
+        "description": "entity events do not leak",
+        "passed": true
+      }
+    ],
+    "case_id": "cpv2_entity_isolation_06",
+    "domain": "entity_isolation",
+    "fixture_variant": 6,
+    "passed": true
+  },
+  {
+    "assertions": [
+      {
+        "assertion_id": "entity_isolation.7.1",
+        "description": "same-name entities have distinct IDs",
+        "passed": true
+      },
+      {
+        "assertion_id": "entity_isolation.7.2",
+        "description": "entity packet IDs differ",
+        "passed": true
+      },
+      {
+        "assertion_id": "entity_isolation.7.3",
+        "description": "first entity packet has one event",
+        "passed": true
+      },
+      {
+        "assertion_id": "entity_isolation.7.4",
+        "description": "second entity packet has one event",
+        "passed": true
+      },
+      {
+        "assertion_id": "entity_isolation.7.5",
+        "description": "entity events do not leak",
+        "passed": true
+      }
+    ],
+    "case_id": "cpv2_entity_isolation_07",
+    "domain": "entity_isolation",
+    "fixture_variant": 7,
+    "passed": true
+  },
+  {
+    "assertions": [
+      {
+        "assertion_id": "entity_isolation.8.1",
+        "description": "same-name entities have distinct IDs",
+        "passed": true
+      },
+      {
+        "assertion_id": "entity_isolation.8.2",
+        "description": "entity packet IDs differ",
+        "passed": true
+      },
+      {
+        "assertion_id": "entity_isolation.8.3",
+        "description": "first entity packet has one event",
+        "passed": true
+      },
+      {
+        "assertion_id": "entity_isolation.8.4",
+        "description": "second entity packet has one event",
+        "passed": true
+      },
+      {
+        "assertion_id": "entity_isolation.8.5",
+        "description": "entity events do not leak",
+        "passed": true
+      }
+    ],
+    "case_id": "cpv2_entity_isolation_08",
+    "domain": "entity_isolation",
+    "fixture_variant": 8,
+    "passed": true
+  },
+  {
+    "assertions": [
+      {
+        "assertion_id": "relationship_uncertainty.1.1",
+        "description": "explicit relationship asserted",
+        "passed": true
+      },
+      {
+        "assertion_id": "relationship_uncertainty.1.2",
+        "description": "inferred relationship tentative",
+        "passed": true
+      },
+      {
+        "assertion_id": "relationship_uncertainty.1.3",
+        "description": "inferred relationship not asserted",
+        "passed": true
+      },
+      {
+        "assertion_id": "relationship_uncertainty.1.4",
+        "description": "relationship epistemic status preserved",
+        "passed": true
+      },
+      {
+        "assertion_id": "relationship_uncertainty.1.5",
+        "description": "no causal relationship invented",
+        "passed": true
+      }
+    ],
+    "case_id": "cpv2_relationship_uncertainty_01",
+    "domain": "relationship_uncertainty",
+    "fixture_variant": 1,
+    "passed": true
+  },
+  {
+    "assertions": [
+      {
+        "assertion_id": "relationship_uncertainty.2.1",
+        "description": "explicit relationship asserted",
+        "passed": true
+      },
+      {
+        "assertion_id": "relationship_uncertainty.2.2",
+        "description": "inferred relationship tentative",
+        "passed": true
+      },
+      {
+        "assertion_id": "relationship_uncertainty.2.3",
+        "description": "inferred relationship not asserted",
+        "passed": true
+      },
+      {
+        "assertion_id": "relationship_uncertainty.2.4",
+        "description": "relationship epistemic status preserved",
+        "passed": true
+      },
+      {
+        "assertion_id": "relationship_uncertainty.2.5",
+        "description": "no causal relationship invented",
+        "passed": true
+      }
+    ],
+    "case_id": "cpv2_relationship_uncertainty_02",
+    "domain": "relationship_uncertainty",
+    "fixture_variant": 2,
+    "passed": true
+  },
+  {
+    "assertions": [
+      {
+        "assertion_id": "relationship_uncertainty.3.1",
+        "description": "explicit relationship asserted",
+        "passed": true
+      },
+      {
+        "assertion_id": "relationship_uncertainty.3.2",
+        "description": "inferred relationship tentative",
+        "passed": true
+      },
+      {
+        "assertion_id": "relationship_uncertainty.3.3",
+        "description": "inferred relationship not asserted",
+        "passed": true
+      },
+      {
+        "assertion_id": "relationship_uncertainty.3.4",
+        "description": "relationship epistemic status preserved",
+        "passed": true
+      },
+      {
+        "assertion_id": "relationship_uncertainty.3.5",
+        "description": "no causal relationship invented",
+        "passed": true
+      }
+    ],
+    "case_id": "cpv2_relationship_uncertainty_03",
+    "domain": "relationship_uncertainty",
+    "fixture_variant": 3,
+    "passed": true
+  },
+  {
+    "assertions": [
+      {
+        "assertion_id": "relationship_uncertainty.4.1",
+        "description": "explicit relationship asserted",
+        "passed": true
+      },
+      {
+        "assertion_id": "relationship_uncertainty.4.2",
+        "description": "inferred relationship tentative",
+        "passed": true
+      },
+      {
+        "assertion_id": "relationship_uncertainty.4.3",
+        "description": "inferred relationship not asserted",
+        "passed": true
+      },
+      {
+        "assertion_id": "relationship_uncertainty.4.4",
+        "description": "relationship epistemic status preserved",
+        "passed": true
+      },
+      {
+        "assertion_id": "relationship_uncertainty.4.5",
+        "description": "no causal relationship invented",
+        "passed": true
+      }
+    ],
+    "case_id": "cpv2_relationship_uncertainty_04",
+    "domain": "relationship_uncertainty",
+    "fixture_variant": 4,
+    "passed": true
+  },
+  {
+    "assertions": [
+      {
+        "assertion_id": "relationship_uncertainty.5.1",
+        "description": "explicit relationship asserted",
+        "passed": true
+      },
+      {
+        "assertion_id": "relationship_uncertainty.5.2",
+        "description": "inferred relationship tentative",
+        "passed": true
+      },
+      {
+        "assertion_id": "relationship_uncertainty.5.3",
+        "description": "inferred relationship not asserted",
+        "passed": true
+      },
+      {
+        "assertion_id": "relationship_uncertainty.5.4",
+        "description": "relationship epistemic status preserved",
+        "passed": true
+      },
+      {
+        "assertion_id": "relationship_uncertainty.5.5",
+        "description": "no causal relationship invented",
+        "passed": true
+      }
+    ],
+    "case_id": "cpv2_relationship_uncertainty_05",
+    "domain": "relationship_uncertainty",
+    "fixture_variant": 5,
+    "passed": true
+  },
+  {
+    "assertions": [
+      {
+        "assertion_id": "relationship_uncertainty.6.1",
+        "description": "explicit relationship asserted",
+        "passed": true
+      },
+      {
+        "assertion_id": "relationship_uncertainty.6.2",
+        "description": "inferred relationship tentative",
+        "passed": true
+      },
+      {
+        "assertion_id": "relationship_uncertainty.6.3",
+        "description": "inferred relationship not asserted",
+        "passed": true
+      },
+      {
+        "assertion_id": "relationship_uncertainty.6.4",
+        "description": "relationship epistemic status preserved",
+        "passed": true
+      },
+      {
+        "assertion_id": "relationship_uncertainty.6.5",
+        "description": "no causal relationship invented",
+        "passed": true
+      }
+    ],
+    "case_id": "cpv2_relationship_uncertainty_06",
+    "domain": "relationship_uncertainty",
+    "fixture_variant": 6,
+    "passed": true
+  },
+  {
+    "assertions": [
+      {
+        "assertion_id": "relationship_uncertainty.7.1",
+        "description": "explicit relationship asserted",
+        "passed": true
+      },
+      {
+        "assertion_id": "relationship_uncertainty.7.2",
+        "description": "inferred relationship tentative",
+        "passed": true
+      },
+      {
+        "assertion_id": "relationship_uncertainty.7.3",
+        "description": "inferred relationship not asserted",
+        "passed": true
+      },
+      {
+        "assertion_id": "relationship_uncertainty.7.4",
+        "description": "relationship epistemic status preserved",
+        "passed": true
+      },
+      {
+        "assertion_id": "relationship_uncertainty.7.5",
+        "description": "no causal relationship invented",
+        "passed": true
+      }
+    ],
+    "case_id": "cpv2_relationship_uncertainty_07",
+    "domain": "relationship_uncertainty",
+    "fixture_variant": 7,
+    "passed": true
+  },
+  {
+    "assertions": [
+      {
+        "assertion_id": "relationship_uncertainty.8.1",
+        "description": "explicit relationship asserted",
+        "passed": true
+      },
+      {
+        "assertion_id": "relationship_uncertainty.8.2",
+        "description": "inferred relationship tentative",
+        "passed": true
+      },
+      {
+        "assertion_id": "relationship_uncertainty.8.3",
+        "description": "inferred relationship not asserted",
+        "passed": true
+      },
+      {
+        "assertion_id": "relationship_uncertainty.8.4",
+        "description": "relationship epistemic status preserved",
+        "passed": true
+      },
+      {
+        "assertion_id": "relationship_uncertainty.8.5",
+        "description": "no causal relationship invented",
+        "passed": true
+      }
+    ],
+    "case_id": "cpv2_relationship_uncertainty_08",
+    "domain": "relationship_uncertainty",
+    "fixture_variant": 8,
+    "passed": true
+  },
+  {
+    "assertions": [
+      {
+        "assertion_id": "canonical_signals.1.1",
+        "description": "exact mode preserves three dimensions",
+        "passed": true
+      },
+      {
+        "assertion_id": "canonical_signals.1.2",
+        "description": "canonical mode groups dimensions",
+        "passed": true
+      },
+      {
+        "assertion_id": "canonical_signals.1.3",
+        "description": "original signal distribution retained",
+        "passed": true
+      },
+      {
+        "assertion_id": "canonical_signals.1.4",
+        "description": "pending mapping has no effect",
+        "passed": true
+      },
+      {
+        "assertion_id": "canonical_signals.1.5",
+        "description": "mapping manifest revision bound",
+        "passed": true
+      }
+    ],
+    "case_id": "cpv2_canonical_signals_01",
+    "domain": "canonical_signals",
+    "fixture_variant": 1,
+    "passed": true
+  },
+  {
+    "assertions": [
+      {
+        "assertion_id": "canonical_signals.2.1",
+        "description": "exact mode preserves three dimensions",
+        "passed": true
+      },
+      {
+        "assertion_id": "canonical_signals.2.2",
+        "description": "canonical mode groups dimensions",
+        "passed": true
+      },
+      {
+        "assertion_id": "canonical_signals.2.3",
+        "description": "original signal distribution retained",
+        "passed": true
+      },
+      {
+        "assertion_id": "canonical_signals.2.4",
+        "description": "pending mapping has no effect",
+        "passed": true
+      },
+      {
+        "assertion_id": "canonical_signals.2.5",
+        "description": "mapping manifest revision bound",
+        "passed": true
+      }
+    ],
+    "case_id": "cpv2_canonical_signals_02",
+    "domain": "canonical_signals",
+    "fixture_variant": 2,
+    "passed": true
+  },
+  {
+    "assertions": [
+      {
+        "assertion_id": "canonical_signals.3.1",
+        "description": "exact mode preserves three dimensions",
+        "passed": true
+      },
+      {
+        "assertion_id": "canonical_signals.3.2",
+        "description": "canonical mode groups dimensions",
+        "passed": true
+      },
+      {
+        "assertion_id": "canonical_signals.3.3",
+        "description": "original signal distribution retained",
+        "passed": true
+      },
+      {
+        "assertion_id": "canonical_signals.3.4",
+        "description": "pending mapping has no effect",
+        "passed": true
+      },
+      {
+        "assertion_id": "canonical_signals.3.5",
+        "description": "mapping manifest revision bound",
+        "passed": true
+      }
+    ],
+    "case_id": "cpv2_canonical_signals_03",
+    "domain": "canonical_signals",
+    "fixture_variant": 3,
+    "passed": true
+  },
+  {
+    "assertions": [
+      {
+        "assertion_id": "canonical_signals.4.1",
+        "description": "exact mode preserves three dimensions",
+        "passed": true
+      },
+      {
+        "assertion_id": "canonical_signals.4.2",
+        "description": "canonical mode groups dimensions",
+        "passed": true
+      },
+      {
+        "assertion_id": "canonical_signals.4.3",
+        "description": "original signal distribution retained",
+        "passed": true
+      },
+      {
+        "assertion_id": "canonical_signals.4.4",
+        "description": "pending mapping has no effect",
+        "passed": true
+      },
+      {
+        "assertion_id": "canonical_signals.4.5",
+        "description": "mapping manifest revision bound",
+        "passed": true
+      }
+    ],
+    "case_id": "cpv2_canonical_signals_04",
+    "domain": "canonical_signals",
+    "fixture_variant": 4,
+    "passed": true
+  },
+  {
+    "assertions": [
+      {
+        "assertion_id": "canonical_signals.5.1",
+        "description": "exact mode preserves three dimensions",
+        "passed": true
+      },
+      {
+        "assertion_id": "canonical_signals.5.2",
+        "description": "canonical mode groups dimensions",
+        "passed": true
+      },
+      {
+        "assertion_id": "canonical_signals.5.3",
+        "description": "original signal distribution retained",
+        "passed": true
+      },
+      {
+        "assertion_id": "canonical_signals.5.4",
+        "description": "pending mapping has no effect",
+        "passed": true
+      },
+      {
+        "assertion_id": "canonical_signals.5.5",
+        "description": "mapping manifest revision bound",
+        "passed": true
+      }
+    ],
+    "case_id": "cpv2_canonical_signals_05",
+    "domain": "canonical_signals",
+    "fixture_variant": 5,
+    "passed": true
+  },
+  {
+    "assertions": [
+      {
+        "assertion_id": "canonical_signals.6.1",
+        "description": "exact mode preserves three dimensions",
+        "passed": true
+      },
+      {
+        "assertion_id": "canonical_signals.6.2",
+        "description": "canonical mode groups dimensions",
+        "passed": true
+      },
+      {
+        "assertion_id": "canonical_signals.6.3",
+        "description": "original signal distribution retained",
+        "passed": true
+      },
+      {
+        "assertion_id": "canonical_signals.6.4",
+        "description": "pending mapping has no effect",
+        "passed": true
+      },
+      {
+        "assertion_id": "canonical_signals.6.5",
+        "description": "mapping manifest revision bound",
+        "passed": true
+      }
+    ],
+    "case_id": "cpv2_canonical_signals_06",
+    "domain": "canonical_signals",
+    "fixture_variant": 6,
+    "passed": true
+  },
+  {
+    "assertions": [
+      {
+        "assertion_id": "canonical_signals.7.1",
+        "description": "exact mode preserves three dimensions",
+        "passed": true
+      },
+      {
+        "assertion_id": "canonical_signals.7.2",
+        "description": "canonical mode groups dimensions",
+        "passed": true
+      },
+      {
+        "assertion_id": "canonical_signals.7.3",
+        "description": "original signal distribution retained",
+        "passed": true
+      },
+      {
+        "assertion_id": "canonical_signals.7.4",
+        "description": "pending mapping has no effect",
+        "passed": true
+      },
+      {
+        "assertion_id": "canonical_signals.7.5",
+        "description": "mapping manifest revision bound",
+        "passed": true
+      }
+    ],
+    "case_id": "cpv2_canonical_signals_07",
+    "domain": "canonical_signals",
+    "fixture_variant": 7,
+    "passed": true
+  },
+  {
+    "assertions": [
+      {
+        "assertion_id": "canonical_signals.8.1",
+        "description": "exact mode preserves three dimensions",
+        "passed": true
+      },
+      {
+        "assertion_id": "canonical_signals.8.2",
+        "description": "canonical mode groups dimensions",
+        "passed": true
+      },
+      {
+        "assertion_id": "canonical_signals.8.3",
+        "description": "original signal distribution retained",
+        "passed": true
+      },
+      {
+        "assertion_id": "canonical_signals.8.4",
+        "description": "pending mapping has no effect",
+        "passed": true
+      },
+      {
+        "assertion_id": "canonical_signals.8.5",
+        "description": "mapping manifest revision bound",
+        "passed": true
+      }
+    ],
+    "case_id": "cpv2_canonical_signals_08",
+    "domain": "canonical_signals",
+    "fixture_variant": 8,
+    "passed": true
+  },
+  {
+    "assertions": [
+      {
+        "assertion_id": "legacy_provenance.1.1",
+        "description": "legacy event appears",
+        "passed": true
+      },
+      {
+        "assertion_id": "legacy_provenance.1.2",
+        "description": "legacy provenance labelled",
+        "passed": true
+      },
+      {
+        "assertion_id": "legacy_provenance.1.3",
+        "description": "legacy source not fabricated",
+        "passed": true
+      },
+      {
+        "assertion_id": "legacy_provenance.1.4",
+        "description": "legacy packet partially recoverable",
+        "passed": true
+      },
+      {
+        "assertion_id": "legacy_provenance.1.5",
+        "description": "legacy scores explicitly unchanged",
+        "passed": true
+      }
+    ],
+    "case_id": "cpv2_legacy_provenance_01",
+    "domain": "legacy_provenance",
+    "fixture_variant": 1,
+    "passed": true
+  },
+  {
+    "assertions": [
+      {
+        "assertion_id": "legacy_provenance.2.1",
+        "description": "legacy event appears",
+        "passed": true
+      },
+      {
+        "assertion_id": "legacy_provenance.2.2",
+        "description": "legacy provenance labelled",
+        "passed": true
+      },
+      {
+        "assertion_id": "legacy_provenance.2.3",
+        "description": "legacy source not fabricated",
+        "passed": true
+      },
+      {
+        "assertion_id": "legacy_provenance.2.4",
+        "description": "legacy packet partially recoverable",
+        "passed": true
+      },
+      {
+        "assertion_id": "legacy_provenance.2.5",
+        "description": "legacy scores explicitly unchanged",
+        "passed": true
+      }
+    ],
+    "case_id": "cpv2_legacy_provenance_02",
+    "domain": "legacy_provenance",
+    "fixture_variant": 2,
+    "passed": true
+  },
+  {
+    "assertions": [
+      {
+        "assertion_id": "legacy_provenance.3.1",
+        "description": "legacy event appears",
+        "passed": true
+      },
+      {
+        "assertion_id": "legacy_provenance.3.2",
+        "description": "legacy provenance labelled",
+        "passed": true
+      },
+      {
+        "assertion_id": "legacy_provenance.3.3",
+        "description": "legacy source not fabricated",
+        "passed": true
+      },
+      {
+        "assertion_id": "legacy_provenance.3.4",
+        "description": "legacy packet partially recoverable",
+        "passed": true
+      },
+      {
+        "assertion_id": "legacy_provenance.3.5",
+        "description": "legacy scores explicitly unchanged",
+        "passed": true
+      }
+    ],
+    "case_id": "cpv2_legacy_provenance_03",
+    "domain": "legacy_provenance",
+    "fixture_variant": 3,
+    "passed": true
+  },
+  {
+    "assertions": [
+      {
+        "assertion_id": "legacy_provenance.4.1",
+        "description": "legacy event appears",
+        "passed": true
+      },
+      {
+        "assertion_id": "legacy_provenance.4.2",
+        "description": "legacy provenance labelled",
+        "passed": true
+      },
+      {
+        "assertion_id": "legacy_provenance.4.3",
+        "description": "legacy source not fabricated",
+        "passed": true
+      },
+      {
+        "assertion_id": "legacy_provenance.4.4",
+        "description": "legacy packet partially recoverable",
+        "passed": true
+      },
+      {
+        "assertion_id": "legacy_provenance.4.5",
+        "description": "legacy scores explicitly unchanged",
+        "passed": true
+      }
+    ],
+    "case_id": "cpv2_legacy_provenance_04",
+    "domain": "legacy_provenance",
+    "fixture_variant": 4,
+    "passed": true
+  },
+  {
+    "assertions": [
+      {
+        "assertion_id": "legacy_provenance.5.1",
+        "description": "legacy event appears",
+        "passed": true
+      },
+      {
+        "assertion_id": "legacy_provenance.5.2",
+        "description": "legacy provenance labelled",
+        "passed": true
+      },
+      {
+        "assertion_id": "legacy_provenance.5.3",
+        "description": "legacy source not fabricated",
+        "passed": true
+      },
+      {
+        "assertion_id": "legacy_provenance.5.4",
+        "description": "legacy packet partially recoverable",
+        "passed": true
+      },
+      {
+        "assertion_id": "legacy_provenance.5.5",
+        "description": "legacy scores explicitly unchanged",
+        "passed": true
+      }
+    ],
+    "case_id": "cpv2_legacy_provenance_05",
+    "domain": "legacy_provenance",
+    "fixture_variant": 5,
+    "passed": true
+  },
+  {
+    "assertions": [
+      {
+        "assertion_id": "legacy_provenance.6.1",
+        "description": "legacy event appears",
+        "passed": true
+      },
+      {
+        "assertion_id": "legacy_provenance.6.2",
+        "description": "legacy provenance labelled",
+        "passed": true
+      },
+      {
+        "assertion_id": "legacy_provenance.6.3",
+        "description": "legacy source not fabricated",
+        "passed": true
+      },
+      {
+        "assertion_id": "legacy_provenance.6.4",
+        "description": "legacy packet partially recoverable",
+        "passed": true
+      },
+      {
+        "assertion_id": "legacy_provenance.6.5",
+        "description": "legacy scores explicitly unchanged",
+        "passed": true
+      }
+    ],
+    "case_id": "cpv2_legacy_provenance_06",
+    "domain": "legacy_provenance",
+    "fixture_variant": 6,
+    "passed": true
+  },
+  {
+    "assertions": [
+      {
+        "assertion_id": "legacy_provenance.7.1",
+        "description": "legacy event appears",
+        "passed": true
+      },
+      {
+        "assertion_id": "legacy_provenance.7.2",
+        "description": "legacy provenance labelled",
+        "passed": true
+      },
+      {
+        "assertion_id": "legacy_provenance.7.3",
+        "description": "legacy source not fabricated",
+        "passed": true
+      },
+      {
+        "assertion_id": "legacy_provenance.7.4",
+        "description": "legacy packet partially recoverable",
+        "passed": true
+      },
+      {
+        "assertion_id": "legacy_provenance.7.5",
+        "description": "legacy scores explicitly unchanged",
+        "passed": true
+      }
+    ],
+    "case_id": "cpv2_legacy_provenance_07",
+    "domain": "legacy_provenance",
+    "fixture_variant": 7,
+    "passed": true
+  },
+  {
+    "assertions": [
+      {
+        "assertion_id": "legacy_provenance.8.1",
+        "description": "legacy event appears",
+        "passed": true
+      },
+      {
+        "assertion_id": "legacy_provenance.8.2",
+        "description": "legacy provenance labelled",
+        "passed": true
+      },
+      {
+        "assertion_id": "legacy_provenance.8.3",
+        "description": "legacy source not fabricated",
+        "passed": true
+      },
+      {
+        "assertion_id": "legacy_provenance.8.4",
+        "description": "legacy packet partially recoverable",
+        "passed": true
+      },
+      {
+        "assertion_id": "legacy_provenance.8.5",
+        "description": "legacy scores explicitly unchanged",
+        "passed": true
+      }
+    ],
+    "case_id": "cpv2_legacy_provenance_08",
+    "domain": "legacy_provenance",
+    "fixture_variant": 8,
+    "passed": true
+  },
+  {
+    "assertions": [
+      {
+        "assertion_id": "governance_erasure.1.1",
+        "description": "governance execution completes",
+        "passed": true
+      },
+      {
+        "assertion_id": "governance_erasure.1.2",
+        "description": "old governed packet unavailable",
+        "passed": true
+      },
+      {
+        "assertion_id": "governance_erasure.1.3",
+        "description": "new packet excludes erased event",
+        "passed": true
+      },
+      {
+        "assertion_id": "governance_erasure.1.4",
+        "description": "governance limitation disclosed",
+        "passed": true
+      },
+      {
+        "assertion_id": "governance_erasure.1.5",
+        "description": "opaque tombstone contains no source content",
+        "passed": true
+      }
+    ],
+    "case_id": "cpv2_governance_erasure_01",
+    "domain": "governance_erasure",
+    "fixture_variant": 1,
+    "passed": true
+  },
+  {
+    "assertions": [
+      {
+        "assertion_id": "governance_erasure.2.1",
+        "description": "governance execution completes",
+        "passed": true
+      },
+      {
+        "assertion_id": "governance_erasure.2.2",
+        "description": "old governed packet unavailable",
+        "passed": true
+      },
+      {
+        "assertion_id": "governance_erasure.2.3",
+        "description": "new packet excludes erased event",
+        "passed": true
+      },
+      {
+        "assertion_id": "governance_erasure.2.4",
+        "description": "governance limitation disclosed",
+        "passed": true
+      },
+      {
+        "assertion_id": "governance_erasure.2.5",
+        "description": "opaque tombstone contains no source content",
+        "passed": true
+      }
+    ],
+    "case_id": "cpv2_governance_erasure_02",
+    "domain": "governance_erasure",
+    "fixture_variant": 2,
+    "passed": true
+  },
+  {
+    "assertions": [
+      {
+        "assertion_id": "governance_erasure.3.1",
+        "description": "governance execution completes",
+        "passed": true
+      },
+      {
+        "assertion_id": "governance_erasure.3.2",
+        "description": "old governed packet unavailable",
+        "passed": true
+      },
+      {
+        "assertion_id": "governance_erasure.3.3",
+        "description": "new packet excludes erased event",
+        "passed": true
+      },
+      {
+        "assertion_id": "governance_erasure.3.4",
+        "description": "governance limitation disclosed",
+        "passed": true
+      },
+      {
+        "assertion_id": "governance_erasure.3.5",
+        "description": "opaque tombstone contains no source content",
+        "passed": true
+      }
+    ],
+    "case_id": "cpv2_governance_erasure_03",
+    "domain": "governance_erasure",
+    "fixture_variant": 3,
+    "passed": true
+  },
+  {
+    "assertions": [
+      {
+        "assertion_id": "governance_erasure.4.1",
+        "description": "governance execution completes",
+        "passed": true
+      },
+      {
+        "assertion_id": "governance_erasure.4.2",
+        "description": "old governed packet unavailable",
+        "passed": true
+      },
+      {
+        "assertion_id": "governance_erasure.4.3",
+        "description": "new packet excludes erased event",
+        "passed": true
+      },
+      {
+        "assertion_id": "governance_erasure.4.4",
+        "description": "governance limitation disclosed",
+        "passed": true
+      },
+      {
+        "assertion_id": "governance_erasure.4.5",
+        "description": "opaque tombstone contains no source content",
+        "passed": true
+      }
+    ],
+    "case_id": "cpv2_governance_erasure_04",
+    "domain": "governance_erasure",
+    "fixture_variant": 4,
+    "passed": true
+  },
+  {
+    "assertions": [
+      {
+        "assertion_id": "governance_erasure.5.1",
+        "description": "governance execution completes",
+        "passed": true
+      },
+      {
+        "assertion_id": "governance_erasure.5.2",
+        "description": "old governed packet unavailable",
+        "passed": true
+      },
+      {
+        "assertion_id": "governance_erasure.5.3",
+        "description": "new packet excludes erased event",
+        "passed": true
+      },
+      {
+        "assertion_id": "governance_erasure.5.4",
+        "description": "governance limitation disclosed",
+        "passed": true
+      },
+      {
+        "assertion_id": "governance_erasure.5.5",
+        "description": "opaque tombstone contains no source content",
+        "passed": true
+      }
+    ],
+    "case_id": "cpv2_governance_erasure_05",
+    "domain": "governance_erasure",
+    "fixture_variant": 5,
+    "passed": true
+  },
+  {
+    "assertions": [
+      {
+        "assertion_id": "governance_erasure.6.1",
+        "description": "governance execution completes",
+        "passed": true
+      },
+      {
+        "assertion_id": "governance_erasure.6.2",
+        "description": "old governed packet unavailable",
+        "passed": true
+      },
+      {
+        "assertion_id": "governance_erasure.6.3",
+        "description": "new packet excludes erased event",
+        "passed": true
+      },
+      {
+        "assertion_id": "governance_erasure.6.4",
+        "description": "governance limitation disclosed",
+        "passed": true
+      },
+      {
+        "assertion_id": "governance_erasure.6.5",
+        "description": "opaque tombstone contains no source content",
+        "passed": true
+      }
+    ],
+    "case_id": "cpv2_governance_erasure_06",
+    "domain": "governance_erasure",
+    "fixture_variant": 6,
+    "passed": true
+  },
+  {
+    "assertions": [
+      {
+        "assertion_id": "governance_erasure.7.1",
+        "description": "governance execution completes",
+        "passed": true
+      },
+      {
+        "assertion_id": "governance_erasure.7.2",
+        "description": "old governed packet unavailable",
+        "passed": true
+      },
+      {
+        "assertion_id": "governance_erasure.7.3",
+        "description": "new packet excludes erased event",
+        "passed": true
+      },
+      {
+        "assertion_id": "governance_erasure.7.4",
+        "description": "governance limitation disclosed",
+        "passed": true
+      },
+      {
+        "assertion_id": "governance_erasure.7.5",
+        "description": "opaque tombstone contains no source content",
+        "passed": true
+      }
+    ],
+    "case_id": "cpv2_governance_erasure_07",
+    "domain": "governance_erasure",
+    "fixture_variant": 7,
+    "passed": true
+  },
+  {
+    "assertions": [
+      {
+        "assertion_id": "governance_erasure.8.1",
+        "description": "governance execution completes",
+        "passed": true
+      },
+      {
+        "assertion_id": "governance_erasure.8.2",
+        "description": "old governed packet unavailable",
+        "passed": true
+      },
+      {
+        "assertion_id": "governance_erasure.8.3",
+        "description": "new packet excludes erased event",
+        "passed": true
+      },
+      {
+        "assertion_id": "governance_erasure.8.4",
+        "description": "governance limitation disclosed",
+        "passed": true
+      },
+      {
+        "assertion_id": "governance_erasure.8.5",
+        "description": "opaque tombstone contains no source content",
+        "passed": true
+      }
+    ],
+    "case_id": "cpv2_governance_erasure_08",
+    "domain": "governance_erasure",
+    "fixture_variant": 8,
+    "passed": true
+  },
+  {
+    "assertions": [
+      {
+        "assertion_id": "state_dimension_resolution.1.1",
+        "description": "packet ID deterministic",
+        "passed": true
+      },
+      {
+        "assertion_id": "state_dimension_resolution.1.2",
+        "description": "packet hash deterministic",
+        "passed": true
+      },
+      {
+        "assertion_id": "state_dimension_resolution.1.3",
+        "description": "packet content deterministic",
+        "passed": true
+      },
+      {
+        "assertion_id": "state_dimension_resolution.1.4",
+        "description": "integrity remains verified",
+        "passed": true
+      },
+      {
+        "assertion_id": "state_dimension_resolution.1.5",
+        "description": "policy revisions bound",
+        "passed": true
+      }
+    ],
+    "case_id": "cpv2_state_dimension_resolution_01",
+    "domain": "state_dimension_resolution",
+    "fixture_variant": 1,
+    "passed": true
+  },
+  {
+    "assertions": [
+      {
+        "assertion_id": "state_dimension_resolution.2.1",
+        "description": "packet ID deterministic",
+        "passed": true
+      },
+      {
+        "assertion_id": "state_dimension_resolution.2.2",
+        "description": "packet hash deterministic",
+        "passed": true
+      },
+      {
+        "assertion_id": "state_dimension_resolution.2.3",
+        "description": "packet content deterministic",
+        "passed": true
+      },
+      {
+        "assertion_id": "state_dimension_resolution.2.4",
+        "description": "integrity remains verified",
+        "passed": true
+      },
+      {
+        "assertion_id": "state_dimension_resolution.2.5",
+        "description": "policy revisions bound",
+        "passed": true
+      }
+    ],
+    "case_id": "cpv2_state_dimension_resolution_02",
+    "domain": "state_dimension_resolution",
+    "fixture_variant": 2,
+    "passed": true
+  },
+  {
+    "assertions": [
+      {
+        "assertion_id": "state_dimension_resolution.3.1",
+        "description": "packet ID deterministic",
+        "passed": true
+      },
+      {
+        "assertion_id": "state_dimension_resolution.3.2",
+        "description": "packet hash deterministic",
+        "passed": true
+      },
+      {
+        "assertion_id": "state_dimension_resolution.3.3",
+        "description": "packet content deterministic",
+        "passed": true
+      },
+      {
+        "assertion_id": "state_dimension_resolution.3.4",
+        "description": "integrity remains verified",
+        "passed": true
+      },
+      {
+        "assertion_id": "state_dimension_resolution.3.5",
+        "description": "policy revisions bound",
+        "passed": true
+      }
+    ],
+    "case_id": "cpv2_state_dimension_resolution_03",
+    "domain": "state_dimension_resolution",
+    "fixture_variant": 3,
+    "passed": true
+  },
+  {
+    "assertions": [
+      {
+        "assertion_id": "state_dimension_resolution.4.1",
+        "description": "packet ID deterministic",
+        "passed": true
+      },
+      {
+        "assertion_id": "state_dimension_resolution.4.2",
+        "description": "packet hash deterministic",
+        "passed": true
+      },
+      {
+        "assertion_id": "state_dimension_resolution.4.3",
+        "description": "packet content deterministic",
+        "passed": true
+      },
+      {
+        "assertion_id": "state_dimension_resolution.4.4",
+        "description": "integrity remains verified",
+        "passed": true
+      },
+      {
+        "assertion_id": "state_dimension_resolution.4.5",
+        "description": "policy revisions bound",
+        "passed": true
+      }
+    ],
+    "case_id": "cpv2_state_dimension_resolution_04",
+    "domain": "state_dimension_resolution",
+    "fixture_variant": 4,
+    "passed": true
+  },
+  {
+    "assertions": [
+      {
+        "assertion_id": "state_dimension_resolution.5.1",
+        "description": "packet ID deterministic",
+        "passed": true
+      },
+      {
+        "assertion_id": "state_dimension_resolution.5.2",
+        "description": "packet hash deterministic",
+        "passed": true
+      },
+      {
+        "assertion_id": "state_dimension_resolution.5.3",
+        "description": "packet content deterministic",
+        "passed": true
+      },
+      {
+        "assertion_id": "state_dimension_resolution.5.4",
+        "description": "integrity remains verified",
+        "passed": true
+      },
+      {
+        "assertion_id": "state_dimension_resolution.5.5",
+        "description": "policy revisions bound",
+        "passed": true
+      }
+    ],
+    "case_id": "cpv2_state_dimension_resolution_05",
+    "domain": "state_dimension_resolution",
+    "fixture_variant": 5,
+    "passed": true
+  },
+  {
+    "assertions": [
+      {
+        "assertion_id": "state_dimension_resolution.6.1",
+        "description": "packet ID deterministic",
+        "passed": true
+      },
+      {
+        "assertion_id": "state_dimension_resolution.6.2",
+        "description": "packet hash deterministic",
+        "passed": true
+      },
+      {
+        "assertion_id": "state_dimension_resolution.6.3",
+        "description": "packet content deterministic",
+        "passed": true
+      },
+      {
+        "assertion_id": "state_dimension_resolution.6.4",
+        "description": "integrity remains verified",
+        "passed": true
+      },
+      {
+        "assertion_id": "state_dimension_resolution.6.5",
+        "description": "policy revisions bound",
+        "passed": true
+      }
+    ],
+    "case_id": "cpv2_state_dimension_resolution_06",
+    "domain": "state_dimension_resolution",
+    "fixture_variant": 6,
+    "passed": true
+  },
+  {
+    "assertions": [
+      {
+        "assertion_id": "state_dimension_resolution.7.1",
+        "description": "packet ID deterministic",
+        "passed": true
+      },
+      {
+        "assertion_id": "state_dimension_resolution.7.2",
+        "description": "packet hash deterministic",
+        "passed": true
+      },
+      {
+        "assertion_id": "state_dimension_resolution.7.3",
+        "description": "packet content deterministic",
+        "passed": true
+      },
+      {
+        "assertion_id": "state_dimension_resolution.7.4",
+        "description": "integrity remains verified",
+        "passed": true
+      },
+      {
+        "assertion_id": "state_dimension_resolution.7.5",
+        "description": "policy revisions bound",
+        "passed": true
+      }
+    ],
+    "case_id": "cpv2_state_dimension_resolution_07",
+    "domain": "state_dimension_resolution",
+    "fixture_variant": 7,
+    "passed": true
+  },
+  {
+    "assertions": [
+      {
+        "assertion_id": "state_dimension_resolution.8.1",
+        "description": "packet ID deterministic",
+        "passed": true
+      },
+      {
+        "assertion_id": "state_dimension_resolution.8.2",
+        "description": "packet hash deterministic",
+        "passed": true
+      },
+      {
+        "assertion_id": "state_dimension_resolution.8.3",
+        "description": "packet content deterministic",
+        "passed": true
+      },
+      {
+        "assertion_id": "state_dimension_resolution.8.4",
+        "description": "integrity remains verified",
+        "passed": true
+      },
+      {
+        "assertion_id": "state_dimension_resolution.8.5",
+        "description": "policy revisions bound",
+        "passed": true
+      }
+    ],
+    "case_id": "cpv2_state_dimension_resolution_08",
+    "domain": "state_dimension_resolution",
+    "fixture_variant": 8,
+    "passed": true
+  },
+  {
+    "assertions": [
+      {
+        "assertion_id": "acceleration_equivalence.1.1",
+        "description": "self comparison has no state change",
+        "passed": true
+      },
+      {
+        "assertion_id": "acceleration_equivalence.1.2",
+        "description": "self comparison has no item additions",
+        "passed": true
+      },
+      {
+        "assertion_id": "acceleration_equivalence.1.3",
+        "description": "comparison hash deterministic",
+        "passed": true
+      },
+      {
+        "assertion_id": "acceleration_equivalence.1.4",
+        "description": "provenance trace available",
+        "passed": true
+      },
+      {
+        "assertion_id": "acceleration_equivalence.1.5",
+        "description": "cross-scope packet lookup denied",
+        "passed": true
+      }
+    ],
+    "case_id": "cpv2_acceleration_equivalence_01",
+    "domain": "acceleration_equivalence",
+    "fixture_variant": 1,
+    "passed": true
+  },
+  {
+    "assertions": [
+      {
+        "assertion_id": "acceleration_equivalence.2.1",
+        "description": "self comparison has no state change",
+        "passed": true
+      },
+      {
+        "assertion_id": "acceleration_equivalence.2.2",
+        "description": "self comparison has no item additions",
+        "passed": true
+      },
+      {
+        "assertion_id": "acceleration_equivalence.2.3",
+        "description": "comparison hash deterministic",
+        "passed": true
+      },
+      {
+        "assertion_id": "acceleration_equivalence.2.4",
+        "description": "provenance trace available",
+        "passed": true
+      },
+      {
+        "assertion_id": "acceleration_equivalence.2.5",
+        "description": "cross-scope packet lookup denied",
+        "passed": true
+      }
+    ],
+    "case_id": "cpv2_acceleration_equivalence_02",
+    "domain": "acceleration_equivalence",
+    "fixture_variant": 2,
+    "passed": true
+  },
+  {
+    "assertions": [
+      {
+        "assertion_id": "acceleration_equivalence.3.1",
+        "description": "self comparison has no state change",
+        "passed": true
+      },
+      {
+        "assertion_id": "acceleration_equivalence.3.2",
+        "description": "self comparison has no item additions",
+        "passed": true
+      },
+      {
+        "assertion_id": "acceleration_equivalence.3.3",
+        "description": "comparison hash deterministic",
+        "passed": true
+      },
+      {
+        "assertion_id": "acceleration_equivalence.3.4",
+        "description": "provenance trace available",
+        "passed": true
+      },
+      {
+        "assertion_id": "acceleration_equivalence.3.5",
+        "description": "cross-scope packet lookup denied",
+        "passed": true
+      }
+    ],
+    "case_id": "cpv2_acceleration_equivalence_03",
+    "domain": "acceleration_equivalence",
+    "fixture_variant": 3,
+    "passed": true
+  },
+  {
+    "assertions": [
+      {
+        "assertion_id": "acceleration_equivalence.4.1",
+        "description": "self comparison has no state change",
+        "passed": true
+      },
+      {
+        "assertion_id": "acceleration_equivalence.4.2",
+        "description": "self comparison has no item additions",
+        "passed": true
+      },
+      {
+        "assertion_id": "acceleration_equivalence.4.3",
+        "description": "comparison hash deterministic",
+        "passed": true
+      },
+      {
+        "assertion_id": "acceleration_equivalence.4.4",
+        "description": "provenance trace available",
+        "passed": true
+      },
+      {
+        "assertion_id": "acceleration_equivalence.4.5",
+        "description": "cross-scope packet lookup denied",
+        "passed": true
+      }
+    ],
+    "case_id": "cpv2_acceleration_equivalence_04",
+    "domain": "acceleration_equivalence",
+    "fixture_variant": 4,
+    "passed": true
+  },
+  {
+    "assertions": [
+      {
+        "assertion_id": "acceleration_equivalence.5.1",
+        "description": "self comparison has no state change",
+        "passed": true
+      },
+      {
+        "assertion_id": "acceleration_equivalence.5.2",
+        "description": "self comparison has no item additions",
+        "passed": true
+      },
+      {
+        "assertion_id": "acceleration_equivalence.5.3",
+        "description": "comparison hash deterministic",
+        "passed": true
+      },
+      {
+        "assertion_id": "acceleration_equivalence.5.4",
+        "description": "provenance trace available",
+        "passed": true
+      },
+      {
+        "assertion_id": "acceleration_equivalence.5.5",
+        "description": "cross-scope packet lookup denied",
+        "passed": true
+      }
+    ],
+    "case_id": "cpv2_acceleration_equivalence_05",
+    "domain": "acceleration_equivalence",
+    "fixture_variant": 5,
+    "passed": true
+  },
+  {
+    "assertions": [
+      {
+        "assertion_id": "acceleration_equivalence.6.1",
+        "description": "self comparison has no state change",
+        "passed": true
+      },
+      {
+        "assertion_id": "acceleration_equivalence.6.2",
+        "description": "self comparison has no item additions",
+        "passed": true
+      },
+      {
+        "assertion_id": "acceleration_equivalence.6.3",
+        "description": "comparison hash deterministic",
+        "passed": true
+      },
+      {
+        "assertion_id": "acceleration_equivalence.6.4",
+        "description": "provenance trace available",
+        "passed": true
+      },
+      {
+        "assertion_id": "acceleration_equivalence.6.5",
+        "description": "cross-scope packet lookup denied",
+        "passed": true
+      }
+    ],
+    "case_id": "cpv2_acceleration_equivalence_06",
+    "domain": "acceleration_equivalence",
+    "fixture_variant": 6,
+    "passed": true
+  },
+  {
+    "assertions": [
+      {
+        "assertion_id": "acceleration_equivalence.7.1",
+        "description": "self comparison has no state change",
+        "passed": true
+      },
+      {
+        "assertion_id": "acceleration_equivalence.7.2",
+        "description": "self comparison has no item additions",
+        "passed": true
+      },
+      {
+        "assertion_id": "acceleration_equivalence.7.3",
+        "description": "comparison hash deterministic",
+        "passed": true
+      },
+      {
+        "assertion_id": "acceleration_equivalence.7.4",
+        "description": "provenance trace available",
+        "passed": true
+      },
+      {
+        "assertion_id": "acceleration_equivalence.7.5",
+        "description": "cross-scope packet lookup denied",
+        "passed": true
+      }
+    ],
+    "case_id": "cpv2_acceleration_equivalence_07",
+    "domain": "acceleration_equivalence",
+    "fixture_variant": 7,
+    "passed": true
+  },
+  {
+    "assertions": [
+      {
+        "assertion_id": "acceleration_equivalence.8.1",
+        "description": "self comparison has no state change",
+        "passed": true
+      },
+      {
+        "assertion_id": "acceleration_equivalence.8.2",
+        "description": "self comparison has no item additions",
+        "passed": true
+      },
+      {
+        "assertion_id": "acceleration_equivalence.8.3",
+        "description": "comparison hash deterministic",
+        "passed": true
+      },
+      {
+        "assertion_id": "acceleration_equivalence.8.4",
+        "description": "provenance trace available",
+        "passed": true
+      },
+      {
+        "assertion_id": "acceleration_equivalence.8.5",
+        "description": "cross-scope packet lookup denied",
+        "passed": true
+      }
+    ],
+    "case_id": "cpv2_acceleration_equivalence_08",
+    "domain": "acceleration_equivalence",
+    "fixture_variant": 8,
+    "passed": true
+  },
+  {
+    "assertions": [
+      {
+        "assertion_id": "sqlite_postgresql_parity.1.1",
+        "description": "SQLite suite passes",
+        "passed": true
+      },
+      {
+        "assertion_id": "sqlite_postgresql_parity.1.2",
+        "description": "PostgreSQL suite passes",
+        "passed": true
+      },
+      {
+        "assertion_id": "sqlite_postgresql_parity.1.3",
+        "description": "backend logical checks match",
+        "passed": true
+      },
+      {
+        "assertion_id": "sqlite_postgresql_parity.1.4",
+        "description": "same-ledger packet ID matches",
+        "passed": true
+      },
+      {
+        "assertion_id": "sqlite_postgresql_parity.1.5",
+        "description": "same-ledger packet hash matches",
+        "passed": true
+      },
+      {
+        "assertion_id": "sqlite_postgresql_parity.1.6",
+        "description": "same-ledger packet contents match",
+        "passed": true
+      }
+    ],
+    "case_id": "cpv2_sqlite_postgresql_parity_01",
+    "domain": "sqlite_postgresql_parity",
+    "fixture_variant": 1,
+    "passed": true
+  },
+  {
+    "assertions": [
+      {
+        "assertion_id": "sqlite_postgresql_parity.2.1",
+        "description": "SQLite suite passes",
+        "passed": true
+      },
+      {
+        "assertion_id": "sqlite_postgresql_parity.2.2",
+        "description": "PostgreSQL suite passes",
+        "passed": true
+      },
+      {
+        "assertion_id": "sqlite_postgresql_parity.2.3",
+        "description": "backend logical checks match",
+        "passed": true
+      },
+      {
+        "assertion_id": "sqlite_postgresql_parity.2.4",
+        "description": "same-ledger packet ID matches",
+        "passed": true
+      },
+      {
+        "assertion_id": "sqlite_postgresql_parity.2.5",
+        "description": "same-ledger packet hash matches",
+        "passed": true
+      },
+      {
+        "assertion_id": "sqlite_postgresql_parity.2.6",
+        "description": "same-ledger packet contents match",
+        "passed": true
+      }
+    ],
+    "case_id": "cpv2_sqlite_postgresql_parity_02",
+    "domain": "sqlite_postgresql_parity",
+    "fixture_variant": 2,
+    "passed": true
+  },
+  {
+    "assertions": [
+      {
+        "assertion_id": "sqlite_postgresql_parity.3.1",
+        "description": "SQLite suite passes",
+        "passed": true
+      },
+      {
+        "assertion_id": "sqlite_postgresql_parity.3.2",
+        "description": "PostgreSQL suite passes",
+        "passed": true
+      },
+      {
+        "assertion_id": "sqlite_postgresql_parity.3.3",
+        "description": "backend logical checks match",
+        "passed": true
+      },
+      {
+        "assertion_id": "sqlite_postgresql_parity.3.4",
+        "description": "same-ledger packet ID matches",
+        "passed": true
+      },
+      {
+        "assertion_id": "sqlite_postgresql_parity.3.5",
+        "description": "same-ledger packet hash matches",
+        "passed": true
+      },
+      {
+        "assertion_id": "sqlite_postgresql_parity.3.6",
+        "description": "same-ledger packet contents match",
+        "passed": true
+      }
+    ],
+    "case_id": "cpv2_sqlite_postgresql_parity_03",
+    "domain": "sqlite_postgresql_parity",
+    "fixture_variant": 3,
+    "passed": true
+  },
+  {
+    "assertions": [
+      {
+        "assertion_id": "sqlite_postgresql_parity.4.1",
+        "description": "SQLite suite passes",
+        "passed": true
+      },
+      {
+        "assertion_id": "sqlite_postgresql_parity.4.2",
+        "description": "PostgreSQL suite passes",
+        "passed": true
+      },
+      {
+        "assertion_id": "sqlite_postgresql_parity.4.3",
+        "description": "backend logical checks match",
+        "passed": true
+      },
+      {
+        "assertion_id": "sqlite_postgresql_parity.4.4",
+        "description": "same-ledger packet ID matches",
+        "passed": true
+      },
+      {
+        "assertion_id": "sqlite_postgresql_parity.4.5",
+        "description": "same-ledger packet hash matches",
+        "passed": true
+      },
+      {
+        "assertion_id": "sqlite_postgresql_parity.4.6",
+        "description": "same-ledger packet contents match",
+        "passed": true
+      }
+    ],
+    "case_id": "cpv2_sqlite_postgresql_parity_04",
+    "domain": "sqlite_postgresql_parity",
+    "fixture_variant": 4,
+    "passed": true
+  },
+  {
+    "assertions": [
+      {
+        "assertion_id": "sqlite_postgresql_parity.5.1",
+        "description": "SQLite suite passes",
+        "passed": true
+      },
+      {
+        "assertion_id": "sqlite_postgresql_parity.5.2",
+        "description": "PostgreSQL suite passes",
+        "passed": true
+      },
+      {
+        "assertion_id": "sqlite_postgresql_parity.5.3",
+        "description": "backend logical checks match",
+        "passed": true
+      },
+      {
+        "assertion_id": "sqlite_postgresql_parity.5.4",
+        "description": "same-ledger packet ID matches",
+        "passed": true
+      },
+      {
+        "assertion_id": "sqlite_postgresql_parity.5.5",
+        "description": "same-ledger packet hash matches",
+        "passed": true
+      },
+      {
+        "assertion_id": "sqlite_postgresql_parity.5.6",
+        "description": "same-ledger packet contents match",
+        "passed": true
+      }
+    ],
+    "case_id": "cpv2_sqlite_postgresql_parity_05",
+    "domain": "sqlite_postgresql_parity",
+    "fixture_variant": 5,
+    "passed": true
+  },
+  {
+    "assertions": [
+      {
+        "assertion_id": "sqlite_postgresql_parity.6.1",
+        "description": "SQLite suite passes",
+        "passed": true
+      },
+      {
+        "assertion_id": "sqlite_postgresql_parity.6.2",
+        "description": "PostgreSQL suite passes",
+        "passed": true
+      },
+      {
+        "assertion_id": "sqlite_postgresql_parity.6.3",
+        "description": "backend logical checks match",
+        "passed": true
+      },
+      {
+        "assertion_id": "sqlite_postgresql_parity.6.4",
+        "description": "same-ledger packet ID matches",
+        "passed": true
+      },
+      {
+        "assertion_id": "sqlite_postgresql_parity.6.5",
+        "description": "same-ledger packet hash matches",
+        "passed": true
+      },
+      {
+        "assertion_id": "sqlite_postgresql_parity.6.6",
+        "description": "same-ledger packet contents match",
+        "passed": true
+      }
+    ],
+    "case_id": "cpv2_sqlite_postgresql_parity_06",
+    "domain": "sqlite_postgresql_parity",
+    "fixture_variant": 6,
+    "passed": true
+  },
+  {
+    "assertions": [
+      {
+        "assertion_id": "sqlite_postgresql_parity.7.1",
+        "description": "SQLite suite passes",
+        "passed": true
+      },
+      {
+        "assertion_id": "sqlite_postgresql_parity.7.2",
+        "description": "PostgreSQL suite passes",
+        "passed": true
+      },
+      {
+        "assertion_id": "sqlite_postgresql_parity.7.3",
+        "description": "backend logical checks match",
+        "passed": true
+      },
+      {
+        "assertion_id": "sqlite_postgresql_parity.7.4",
+        "description": "same-ledger packet ID matches",
+        "passed": true
+      },
+      {
+        "assertion_id": "sqlite_postgresql_parity.7.5",
+        "description": "same-ledger packet hash matches",
+        "passed": true
+      },
+      {
+        "assertion_id": "sqlite_postgresql_parity.7.6",
+        "description": "same-ledger packet contents match",
+        "passed": true
+      }
+    ],
+    "case_id": "cpv2_sqlite_postgresql_parity_07",
+    "domain": "sqlite_postgresql_parity",
+    "fixture_variant": 7,
+    "passed": true
+  },
+  {
+    "assertions": [
+      {
+        "assertion_id": "sqlite_postgresql_parity.8.1",
+        "description": "SQLite suite passes",
+        "passed": true
+      },
+      {
+        "assertion_id": "sqlite_postgresql_parity.8.2",
+        "description": "PostgreSQL suite passes",
+        "passed": true
+      },
+      {
+        "assertion_id": "sqlite_postgresql_parity.8.3",
+        "description": "backend logical checks match",
+        "passed": true
+      },
+      {
+        "assertion_id": "sqlite_postgresql_parity.8.4",
+        "description": "same-ledger packet ID matches",
+        "passed": true
+      },
+      {
+        "assertion_id": "sqlite_postgresql_parity.8.5",
+        "description": "same-ledger packet hash matches",
+        "passed": true
+      },
+      {
+        "assertion_id": "sqlite_postgresql_parity.8.6",
+        "description": "same-ledger packet contents match",
+        "passed": true
+      }
+    ],
+    "case_id": "cpv2_sqlite_postgresql_parity_08",
+    "domain": "sqlite_postgresql_parity",
+    "fixture_variant": 8,
+    "passed": true
+  }
+]

@@ -1,0 +1,20 @@
+[runtime]
+mode = "postgres_single_node"
+test_environment_protection = true
+
+[database]
+backend = "postgres"
+sqlite_path = ""
+database_url_env = "PRMR_DATABASE_URL"
+migration_policy = "explicit_or_init"
+
+[pool]
+minimum = 1
+maximum = 10
+acquisition_timeout_seconds = 10.0
+statement_timeout_ms = 30000
+lock_timeout_ms = 5000
+
+[worker]
+enabled = true
+workers = 2

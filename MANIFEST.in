@@ -1,0 +1,11 @@
+recursive-exclude prmr/product *.py
+include prmr/product/api_key_lifecycle_v070.py
+include prmr/product/controlled_alpha_api_v071.py
+include prmr/product/hosted_backend_foundation_v069.py
+include prmr/product/self_serve_accounts_v092.py
+include prmr/product/self_serve_api_keys_v092.py
+include prmr/product/self_serve_dashboard_v092.py
+include prmr/product/self_serve_plans_v092.py
+include prmr/product/self_serve_repository_postgres_v0941.py
+include prmr/product/self_serve_repository_v093.py
+recursive-exclude prmr/integrations *.py

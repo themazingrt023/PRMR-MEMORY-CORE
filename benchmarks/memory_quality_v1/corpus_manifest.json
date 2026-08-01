@@ -1,0 +1,130 @@
+{
+  "adversarial_file": {
+    "case_count": 33,
+    "derived_index_only": true,
+    "file": "adversarial_cases.jsonl",
+    "sha256": "aa5f7371df813b6491d6202bb04fa3ab9f96290e8c4ae2eccee4fbe39b765c54"
+  },
+  "assertion_count": 1100,
+  "benchmark_domain_distribution": {
+    "admission": 15,
+    "bitemporal_reconstruction": 25,
+    "candidate_memory": 25,
+    "consolidation": 15,
+    "entity_identity": 25,
+    "epistemic_safety": 30,
+    "governance": 20,
+    "interpretation": 20,
+    "query_and_evidence": 25,
+    "relationships": 25,
+    "runtime_backend_parity": 10,
+    "source_fidelity": 15,
+    "temporal_dynamics": 20
+  },
+  "case_count": 270,
+  "case_files": [
+    {
+      "assertion_count": 60,
+      "case_count": 15,
+      "domain": "source_fidelity",
+      "file": "source_fidelity_cases.jsonl",
+      "sha256": "3859a9c4755480df7e103bdfbe154c6d6b41c7affc35a9fd60f7efdad26ca745"
+    },
+    {
+      "assertion_count": 100,
+      "case_count": 25,
+      "domain": "candidate_memory",
+      "file": "candidate_memory_cases.jsonl",
+      "sha256": "38b4d6da2a820de430f52237b7f9080a1e40b9e4779851a94055c61a528efe59"
+    },
+    {
+      "assertion_count": 120,
+      "case_count": 30,
+      "domain": "epistemic_safety",
+      "file": "epistemic_safety_cases.jsonl",
+      "sha256": "677124055dab006fcffe9ca1462f8607f2803452ad650a90cf4c5f627d4d4519"
+    },
+    {
+      "assertion_count": 60,
+      "case_count": 15,
+      "domain": "admission",
+      "file": "admission_cases.jsonl",
+      "sha256": "467f081a25d6f0fc02a6fc3b913586bc21568e5128f7b72275844cef690618a6"
+    },
+    {
+      "assertion_count": 100,
+      "case_count": 25,
+      "domain": "bitemporal_reconstruction",
+      "file": "bitemporal_cases.jsonl",
+      "sha256": "ca94c0dd75a7d69b29958973508c0315673513440617319572c1c88bf26de454"
+    },
+    {
+      "assertion_count": 80,
+      "case_count": 20,
+      "domain": "temporal_dynamics",
+      "file": "temporal_dynamics_cases.jsonl",
+      "sha256": "a718265a8916f9094c68a6f451f6686710ba4231991ec1a17094f5ab8f56dd03"
+    },
+    {
+      "assertion_count": 100,
+      "case_count": 25,
+      "domain": "entity_identity",
+      "file": "entity_identity_cases.jsonl",
+      "sha256": "141a039722fa95ea21d2781dcb17149a97cd9fd5dc1f3a92727a7a5cf7147cb7"
+    },
+    {
+      "assertion_count": 100,
+      "case_count": 25,
+      "domain": "relationships",
+      "file": "relationship_cases.jsonl",
+      "sha256": "0af74c75bffe7d77ed4e5e4763b0a8c2e2f792a5e6f6036df43eb9c1e13f1db4"
+    },
+    {
+      "assertion_count": 100,
+      "case_count": 25,
+      "domain": "query_and_evidence",
+      "file": "query_evidence_cases.jsonl",
+      "sha256": "56d696af20236c2846612f1f6a5987c9fac46632ddfd2e7f0598d7026475b75b"
+    },
+    {
+      "assertion_count": 60,
+      "case_count": 15,
+      "domain": "consolidation",
+      "file": "consolidation_cases.jsonl",
+      "sha256": "f9ba49a7c475e8550534c417e3b7aed38ccf2f9e09e57fddc5b62907c77b08d8"
+    },
+    {
+      "assertion_count": 80,
+      "case_count": 20,
+      "domain": "interpretation",
+      "file": "interpretation_cases.jsonl",
+      "sha256": "ac89292a53422de14c6e8c0e14cafae99eb797e16b1212fa5dc545a39eaa1052"
+    },
+    {
+      "assertion_count": 80,
+      "case_count": 20,
+      "domain": "governance",
+      "file": "governance_cases.jsonl",
+      "sha256": "cd89f98a0e4fd491b189f06813f105126d3ede49b455e46b55d41c841c1b8934"
+    },
+    {
+      "assertion_count": 60,
+      "case_count": 10,
+      "domain": "runtime_backend_parity",
+      "file": "runtime_cases.jsonl",
+      "sha256": "ee48f0ef52d57c2eb4935125ad1d2fdc0ad604c67e8c5d860de11d8eb3206197"
+    }
+  ],
+  "corpus_revision": "memory_quality_corpus_v1",
+  "created_at": "2026-08-01T00:00:00Z",
+  "expected_policy_revisions": [
+    "memory_quality_policy_v1"
+  ],
+  "oracle_revision": "memory_quality_oracle_v1",
+  "policy_revision": "memory_quality_policy_v1",
+  "reviewer_references": [],
+  "root_corpus_hash": "3b9fa7e64522d9b1e8b986d8653829cd46eb0928e966d87858e0811ad907ac99",
+  "severity_distribution": {
+    "critical": 270
+  }
+}

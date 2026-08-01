@@ -1,0 +1,56 @@
+name: Core release candidate
+
+on:
+  push:
+    paths: ["prmr/**", "migrations/**", "examples/run_core_**", "examples/audit_core_**", "pyproject.toml"]
+  pull_request:
+
+jobs:
+  sqlite-package:
+    strategy:
+      matrix:
+        os: [windows-latest, ubuntu-latest]
+        python: ["3.11", "3.12"]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python }}
+      - run: python -m pip install .[dev]
+      - run: python -m compileall prmr examples
+      - run: python -m build
+      - run: python examples/run_core_clean_install.py
+      - run: python examples/run_core_release_failure_tests.py
+      - run: python examples/audit_v0782_secret_cleanup.py
+
+  disposable-postgres:
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:16
+        env:
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_DB: prmr_core_test
+        ports: ["5432:5432"]
+        options: >-
+          --health-cmd "pg_isready -U postgres"
+          --health-interval 10s --health-timeout 5s --health-retries 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: python -m pip install .[postgres,dev]
+      - name: Create isolated guard
+        env:
+          PGURL: postgresql://postgres:postgres@localhost:5432/prmr_core_test
+        run: >-
+          psql "$PGURL" -c "CREATE TABLE prmr_test_environment_guard
+          (environment_kind text primary key, destructive_tests_allowed boolean not null);
+          INSERT INTO prmr_test_environment_guard VALUES ('isolated_test', true);"
+      - name: PostgreSQL release proof
+        env:
+          PRMR_POSTGRES_TEST_DATABASE_URL: postgresql://postgres:postgres@localhost:5432/prmr_core_test
+          PRMR_ALLOW_DESTRUCTIVE_POSTGRES_TESTS: "true"
+        run: python examples/run_core_release_candidate.py --postgres

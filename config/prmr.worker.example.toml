@@ -1,0 +1,6 @@
+[worker]
+enabled = true
+workers = 1
+poll_interval_seconds = 1.0
+lease_seconds = 30
+graceful_timeout_seconds = 15.0

@@ -53,6 +53,14 @@ frontend/tsconfig.tsbuildinfo
 config_REVOKED_DO_NOT_USE_*/
 logs_REVOKED_DO_NOT_USE_*/
 
+# public-safe KM-1 release attestation; all other reports remain ignored
+!/reports/
+/reports/*
+!/reports/core_release_candidate/
+/reports/core_release_candidate/*
+!/reports/core_release_candidate/km1_release_lock.json
+!/reports/core_release_candidate/km1_release_file_manifest.json
+
 # revoked local state
 config_REVOKED_DO_NOT_USE_*/
 logs_REVOKED_DO_NOT_USE_*/

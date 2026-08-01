@@ -1,0 +1,70 @@
+[build-system]
+requires = ["setuptools>=69", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "prmr-memory-core"
+dynamic = ["version"]
+description = "Private PRMR Memory Core release-candidate engine package"
+readme = "README.md"
+requires-python = ">=3.11,<3.13"
+license = "LicenseRef-Proprietary"
+authors = [{ name = "Afternum Industries" }]
+classifiers = [
+  "Development Status :: 4 - Beta",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Operating System :: Microsoft :: Windows",
+  "Topic :: Database",
+]
+dependencies = []
+
+[project.optional-dependencies]
+postgres = ["psycopg[binary]>=3.1,<4", "psycopg-pool>=3.2,<4"]
+dev = ["build>=1.2,<2", "pytest>=8,<9"]
+
+[project.scripts]
+prmr-core = "prmr.cli.main:main"
+
+[project.urls]
+Homepage = "https://afternumindustries.co.uk"
+Repository = "https://github.com/AfternumIndustries/PRMR-Memory-Core"
+
+[tool.setuptools.dynamic]
+version = { attr = "prmr.release.version.__version__" }
+
+[tool.setuptools.packages.find]
+include = ["prmr", "prmr.*", "migrations"]
+
+[tool.setuptools.package-data]
+migrations = ["*.sql"]
+prmr = ["py.typed"]
+
+[tool.setuptools]
+include-package-data = true
+
+[tool.setuptools.data-files]
+"share/prmr-memory-core/docs" = [
+  "docs/architecture.md",
+  "docs/configuration.md",
+  "docs/installation.md",
+  "docs/sqlite-operations.md",
+  "docs/postgres-operations.md",
+  "docs/migrations.md",
+  "docs/workers.md",
+  "docs/integrity.md",
+  "docs/backup-and-restore.md",
+  "docs/governance.md",
+  "docs/continuity-packet-v1.md",
+  "docs/continuity-packet-v2.md",
+  "docs/security-boundaries.md",
+  "docs/troubleshooting.md",
+  "docs/release-process.md",
+  "docs/known-limitations.md",
+  "docs/operations-runbook.md",
+]
+"share/prmr-memory-core/config" = ["config/prmr.*.example.toml"]
+"share/prmr-memory-core/benchmarks/memory_quality_v1" = ["benchmarks/memory_quality_v1/*.json", "benchmarks/memory_quality_v1/*.jsonl"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

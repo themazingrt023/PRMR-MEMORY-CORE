@@ -1,0 +1,22 @@
+{
+  "assertion_count": 608,
+  "case_count": 120,
+  "domains": [
+    "acceleration_equivalence",
+    "canonical_signals",
+    "entity_isolation",
+    "epistemic_separation",
+    "governance_erasure",
+    "legacy_provenance",
+    "open_conflict",
+    "re_emergence",
+    "relationship_uncertainty",
+    "resolved_conflict",
+    "sqlite_postgresql_parity",
+    "state_dimension_resolution",
+    "temporal_phases",
+    "tentative_overlays",
+    "unknown_preservation"
+  ],
+  "fixture_type": "deterministic synthetic source-ledger histories"
+}

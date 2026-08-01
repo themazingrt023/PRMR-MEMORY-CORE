@@ -1,0 +1,1 @@
+# PRMR Memory Core RC1 has no mandatory third-party dependency in SQLite mode.

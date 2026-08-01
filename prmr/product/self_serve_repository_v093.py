@@ -51,6 +51,46 @@ TABLES = (
     "reports",
     "dashboard_snapshots",
     "audit_metadata",
+    "prmr_sources",
+    "prmr_source_segments",
+    "prmr_candidate_extraction_runs",
+    "prmr_candidate_memories",
+    "prmr_candidate_evidence",
+    "prmr_memory_admission_decisions",
+    "prmr_admitted_memory_links",
+    "prmr_memory_ledger_schema_migrations",
+    "prmr_memory_evolution_records",
+    "prmr_memory_conflicts",
+    "prmr_memory_reconstructions",
+    "prmr_memory_temporal_schema_migrations",
+    "prmr_memory_importance_annotations",
+    "prmr_memory_dynamics_snapshots",
+    "prmr_memory_signal_dynamics",
+    "prmr_entity_relationship_schema_migrations",
+    "prmr_entity_candidates",
+    "prmr_entity_evidence",
+    "prmr_entities",
+    "prmr_entity_identifiers",
+    "prmr_entity_mentions",
+    "prmr_entity_alias_assertions",
+    "prmr_entity_resolution_decisions",
+    "prmr_entity_distinctness_assertions",
+    "prmr_entity_merges",
+    "prmr_event_entity_links",
+    "prmr_relationship_candidates",
+    "prmr_relationship_evidence",
+    "prmr_relationship_admission_decisions",
+    "prmr_relationships",
+    "prmr_relationship_evolution_records",
+    "prmr_relationship_conflicts",
+    "prmr_entity_relationship_reconstructions",
+    "prmr_memory_query_schema_migrations",
+    "prmr_memory_query_runs",
+    "prmr_memory_query_results",
+    "prmr_memory_evidence_bundles",
+    "prmr_memory_query_evidence_items",
+    "prmr_memory_explanations",
+    "prmr_memory_query_result_comparisons",
 )
 
 
@@ -61,6 +101,10 @@ class SelfServeRepositoryV093:
         self.storage_path = Path(storage_path).expanduser()
         self.storage_path.parent.mkdir(parents=True, exist_ok=True)
         self.initialize()
+
+    @property
+    def backend_name(self) -> str:
+        return "sqlite"
 
     @contextmanager
     def connect(self) -> Iterator[sqlite3.Connection]:
@@ -257,6 +301,21 @@ class SelfServeRepositoryV093:
                 );
                 """
             )
+            from prmr.core.source_ledger import initialize_sqlite_source_schema
+            from prmr.core.candidate_engine import initialize_sqlite_candidate_schema
+            from prmr.core.admission_service import initialize_sqlite_admission_schema
+            from prmr.core.memory_ledger_service import initialize_sqlite_memory_ledger_schema
+            from prmr.core.memory_importance import initialize_sqlite_temporal_schema
+            from prmr.core.entity_store import initialize_sqlite_entity_relationship_schema
+            from prmr.core.memory_query_store import initialize_sqlite_memory_query_schema
+
+            initialize_sqlite_source_schema(connection)
+            initialize_sqlite_candidate_schema(connection)
+            initialize_sqlite_admission_schema(connection)
+            initialize_sqlite_memory_ledger_schema(connection)
+            initialize_sqlite_temporal_schema(connection)
+            initialize_sqlite_entity_relationship_schema(connection)
+            initialize_sqlite_memory_query_schema(connection)
             connection.execute(
                 """
                 INSERT INTO audit_metadata(metadata_key, metadata_json, updated_at)

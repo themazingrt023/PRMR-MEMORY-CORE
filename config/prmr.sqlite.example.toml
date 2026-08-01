@@ -1,0 +1,16 @@
+[runtime]
+mode = "sqlite_local"
+test_environment_protection = true
+
+[database]
+backend = "sqlite"
+sqlite_path = "data/prmr-memory-core.sqlite3"
+database_url_env = "PRMR_DATABASE_URL"
+migration_policy = "explicit_or_init"
+
+[worker]
+enabled = true
+workers = 1
+poll_interval_seconds = 1.0
+lease_seconds = 30
+graceful_timeout_seconds = 15.0
