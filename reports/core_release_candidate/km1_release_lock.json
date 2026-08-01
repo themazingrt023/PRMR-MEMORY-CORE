@@ -1,0 +1,90 @@
+{
+  "artifact_hashes": {
+    "source_distribution_sha256": "a5f5f4a88861deb5244a2585013b0f5916967d0d54ae6c35be6a5ae0c5e33d69",
+    "wheel_sha256": "5b26d92bcc8ae8d1798ed396d7bb28dcabb8acdca6e3dc1a553b9a5fb7c2605e"
+  },
+  "artifacts": {
+    "source_distribution": "dist/prmr_memory_core-1.0.0rc1.tar.gz",
+    "wheel": "dist/prmr_memory_core-1.0.0rc1-py3-none-any.whl"
+  },
+  "contracts": {
+    "admission_contract": "frozen",
+    "candidate_contract": "frozen",
+    "cli_command_contract": "frozen",
+    "configuration_precedence": "frozen",
+    "continuity_packet_v1": "continuity_packet_v1",
+    "epistemic_continuity_packet_v2": "epistemic_continuity_v2",
+    "event_contract": "frozen",
+    "governance_contract": "frozen",
+    "migration_history": "frozen",
+    "query_contract": "frozen",
+    "release_manifest_schema": "prmr_release_manifest_v1",
+    "source_contract": "frozen"
+  },
+  "database_url_recorded": false,
+  "documented_limitations": [
+    "Private release candidate; no production, scientific, legal, compliance or external security certification.",
+    "SQLite supports bounded single-node operation only.",
+    "PostgreSQL logical backup was not executed because pg_dump tooling is unavailable.",
+    "No automatic failover, multi-region durability or completed external security review.",
+    "The legacy Sprint 1-12 aggregate regression is not claimed as a fresh-schema PostgreSQL pass."
+  ],
+  "evidence": {
+    "core_sprint_11": {
+      "audit_checks": "84/84",
+      "full_postgres_matrix_checks": "74/74",
+      "result": "PASS_FULL_POSTGRES_MATRIX"
+    },
+    "core_sprint_12": {
+      "assertions_per_backend": 1100,
+      "backend_parity": "PASS",
+      "cases_per_backend": 270,
+      "critical_mutations": "18/18",
+      "independent_audit": "39/39 PASS",
+      "result": "PASS WITH DOCUMENTED LIMITATIONS"
+    },
+    "core_sprint_13": {
+      "assertions": 608,
+      "cases": 120,
+      "critical_mutations": "12/12",
+      "packet_checks": "79/79",
+      "postgres_result": "PASS",
+      "result": "PASS"
+    },
+    "core_sprint_14": {
+      "clean_install": "PASS",
+      "independent_audit": "33/33 PASS",
+      "installed_cli_release_check": "15/15 PASS",
+      "installed_wheel_postgres": "PASS",
+      "postgres_release_proof": "PASS",
+      "release_checks": "11/11",
+      "result": "PASS WITH DOCUMENTED LIMITATIONS",
+      "secret_hygiene": "31/31 PASS",
+      "sqlite_release_proof": "PASS"
+    }
+  },
+  "git": {
+    "annotated_tag": "km1-v1.0.0rc1",
+    "release_source_commit_sha": "4f756fe9c50f9700a1dee612c4113901e511f6b5",
+    "tag_target_sha": "4f756fe9c50f9700a1dee612c4113901e511f6b5"
+  },
+  "lock_status": "LOCKED",
+  "maintenance_policy": "feature_frozen_maintenance_only",
+  "manifest_hashes": {
+    "core_revision_manifest_hash": "361203a52618744507c0497aadaf6dcf9fda5e99a4d1a34f4077e8f53df65931",
+    "migration_registry_hash": "c24d05ff4e396563bf3e5f2e71fc93eee0a67aeb0567d0c32f0e691bd3af0ac9",
+    "release_manifest_hash": "f3ca22c827dbedf018b050eedef87eb8fe3e4b72ef5c7fcbe98ab717cc445e65"
+  },
+  "package_version": "1.0.0rc1",
+  "private_evidence_included": false,
+  "release_date": "2026-08-01",
+  "release_name": "PRMR Memory Core v1.0 RC1",
+  "supported_database_backends": [
+    "sqlite",
+    "postgres"
+  ],
+  "supported_python_versions": [
+    "3.11",
+    "3.12"
+  ]
+}

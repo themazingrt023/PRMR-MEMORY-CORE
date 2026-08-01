@@ -1,0 +1,3242 @@
+{
+  "base_commit_sha": "b0ba7e54732200ca5f5a6e97f767cc4763c5d455",
+  "changed_or_untracked_path_count": 394,
+  "classification_summary": {
+    "billing_experiment": 3,
+    "dashboard_or_viewer_candidate": 41,
+    "excluded_with_reason": 6,
+    "hosted_api_legacy": 4,
+    "km1_release_configuration": 6,
+    "km1_release_documentation": 22,
+    "km1_release_test": 61,
+    "km1_required": 193,
+    "public_website": 50,
+    "unrelated_product_work": 8
+  },
+  "entries": [
+    {
+      "classification": "hosted_api_legacy",
+      "git_status": " M",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": false,
+      "path": ".env.example",
+      "reason": "Modified hosted-service environment surface is not required by KM-1 runtime configuration."
+    },
+    {
+      "classification": "km1_release_configuration",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": true,
+      "path": ".github/workflows/core-release-candidate.yml",
+      "reason": "Cross-platform SQLite and guarded PostgreSQL release verification workflow."
+    },
+    {
+      "classification": "km1_release_configuration",
+      "git_status": " M",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": true,
+      "path": ".gitignore",
+      "reason": "Release configuration that tracks only safe KM-1 lock artifacts while preserving broad report ignores."
+    },
+    {
+      "classification": "km1_release_test",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": true,
+      "path": "benchmarks/continuity_packet_v2/cases.json",
+      "reason": "Versioned benchmark or packet corpus required by Core Sprints 12-13 evidence."
+    },
+    {
+      "classification": "km1_release_test",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": true,
+      "path": "benchmarks/continuity_packet_v2/corpus_manifest.json",
+      "reason": "Versioned benchmark or packet corpus required by Core Sprints 12-13 evidence."
+    },
+    {
+      "classification": "km1_release_test",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": true,
+      "path": "benchmarks/memory_quality_v1/admission_cases.jsonl",
+      "reason": "Versioned benchmark or packet corpus required by Core Sprints 12-13 evidence."
+    },
+    {
+      "classification": "km1_release_test",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": true,
+      "path": "benchmarks/memory_quality_v1/adversarial_cases.jsonl",
+      "reason": "Versioned benchmark or packet corpus required by Core Sprints 12-13 evidence."
+    },
+    {
+      "classification": "km1_release_test",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": true,
+      "path": "benchmarks/memory_quality_v1/bitemporal_cases.jsonl",
+      "reason": "Versioned benchmark or packet corpus required by Core Sprints 12-13 evidence."
+    },
+    {
+      "classification": "km1_release_test",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": true,
+      "path": "benchmarks/memory_quality_v1/candidate_memory_cases.jsonl",
+      "reason": "Versioned benchmark or packet corpus required by Core Sprints 12-13 evidence."
+    },
+    {
+      "classification": "km1_release_test",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": true,
+      "path": "benchmarks/memory_quality_v1/consolidation_cases.jsonl",
+      "reason": "Versioned benchmark or packet corpus required by Core Sprints 12-13 evidence."
+    },
+    {
+      "classification": "km1_release_test",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": true,
+      "path": "benchmarks/memory_quality_v1/corpus_manifest.json",
+      "reason": "Versioned benchmark or packet corpus required by Core Sprints 12-13 evidence."
+    },
+    {
+      "classification": "km1_release_test",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": true,
+      "path": "benchmarks/memory_quality_v1/entity_identity_cases.jsonl",
+      "reason": "Versioned benchmark or packet corpus required by Core Sprints 12-13 evidence."
+    },
+    {
+      "classification": "km1_release_test",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": true,
+      "path": "benchmarks/memory_quality_v1/epistemic_safety_cases.jsonl",
+      "reason": "Versioned benchmark or packet corpus required by Core Sprints 12-13 evidence."
+    },
+    {
+      "classification": "km1_release_test",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": true,
+      "path": "benchmarks/memory_quality_v1/governance_cases.jsonl",
+      "reason": "Versioned benchmark or packet corpus required by Core Sprints 12-13 evidence."
+    },
+    {
+      "classification": "km1_release_test",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": true,
+      "path": "benchmarks/memory_quality_v1/interpretation_cases.jsonl",
+      "reason": "Versioned benchmark or packet corpus required by Core Sprints 12-13 evidence."
+    },
+    {
+      "classification": "km1_release_test",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": true,
+      "path": "benchmarks/memory_quality_v1/query_evidence_cases.jsonl",
+      "reason": "Versioned benchmark or packet corpus required by Core Sprints 12-13 evidence."
+    },
+    {
+      "classification": "km1_release_test",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": true,
+      "path": "benchmarks/memory_quality_v1/relationship_cases.jsonl",
+      "reason": "Versioned benchmark or packet corpus required by Core Sprints 12-13 evidence."
+    },
+    {
+      "classification": "km1_release_test",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": true,
+      "path": "benchmarks/memory_quality_v1/runtime_cases.jsonl",
+      "reason": "Versioned benchmark or packet corpus required by Core Sprints 12-13 evidence."
+    },
+    {
+      "classification": "km1_release_test",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": true,
+      "path": "benchmarks/memory_quality_v1/source_fidelity_cases.jsonl",
+      "reason": "Versioned benchmark or packet corpus required by Core Sprints 12-13 evidence."
+    },
+    {
+      "classification": "km1_release_test",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": true,
+      "path": "benchmarks/memory_quality_v1/temporal_dynamics_cases.jsonl",
+      "reason": "Versioned benchmark or packet corpus required by Core Sprints 12-13 evidence."
+    },
+    {
+      "classification": "km1_release_documentation",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": true,
+      "path": "docs/architecture.md",
+      "reason": "KM-1 installation, architecture, operations, contract, or limitation documentation."
+    },
+    {
+      "classification": "km1_release_documentation",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": true,
+      "path": "docs/backup-and-restore.md",
+      "reason": "KM-1 installation, architecture, operations, contract, or limitation documentation."
+    },
+    {
+      "classification": "km1_release_documentation",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": true,
+      "path": "docs/configuration.md",
+      "reason": "KM-1 installation, architecture, operations, contract, or limitation documentation."
+    },
+    {
+      "classification": "km1_release_documentation",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": true,
+      "path": "docs/continuity-packet-v1.md",
+      "reason": "KM-1 installation, architecture, operations, contract, or limitation documentation."
+    },
+    {
+      "classification": "km1_release_documentation",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": true,
+      "path": "docs/continuity-packet-v2.md",
+      "reason": "KM-1 installation, architecture, operations, contract, or limitation documentation."
+    },
+    {
+      "classification": "km1_release_documentation",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": true,
+      "path": "docs/governance.md",
+      "reason": "KM-1 installation, architecture, operations, contract, or limitation documentation."
+    },
+    {
+      "classification": "km1_release_documentation",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": true,
+      "path": "docs/installation.md",
+      "reason": "KM-1 installation, architecture, operations, contract, or limitation documentation."
+    },
+    {
+      "classification": "km1_release_documentation",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": true,
+      "path": "docs/integrity.md",
+      "reason": "KM-1 installation, architecture, operations, contract, or limitation documentation."
+    },
+    {
+      "classification": "km1_release_documentation",
+      "git_status": "??",
+      "include_in_lock_record_commit": true,
+      "include_in_release_source_commit": false,
+      "path": "docs/km1-maintenance-policy.md",
+      "reason": "Permanent KM-1 lock record; committed after the authoritative source commit exists."
+    },
+    {
+      "classification": "km1_release_documentation",
+      "git_status": "??",
+      "include_in_lock_record_commit": true,
+      "include_in_release_source_commit": false,
+      "path": "docs/km1-release-lock.md",
+      "reason": "Permanent KM-1 lock record; committed after the authoritative source commit exists."
+    },
+    {
+      "classification": "km1_release_documentation",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": true,
+      "path": "docs/known-limitations.md",
+      "reason": "KM-1 installation, architecture, operations, contract, or limitation documentation."
+    },
+    {
+      "classification": "km1_release_documentation",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": true,
+      "path": "docs/migrations.md",
+      "reason": "KM-1 installation, architecture, operations, contract, or limitation documentation."
+    },
+    {
+      "classification": "km1_release_documentation",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": true,
+      "path": "docs/operations-runbook.md",
+      "reason": "KM-1 installation, architecture, operations, contract, or limitation documentation."
+    },
+    {
+      "classification": "km1_release_documentation",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": true,
+      "path": "docs/postgres-operations.md",
+      "reason": "KM-1 installation, architecture, operations, contract, or limitation documentation."
+    },
+    {
+      "classification": "km1_release_documentation",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": true,
+      "path": "docs/release-process.md",
+      "reason": "KM-1 installation, architecture, operations, contract, or limitation documentation."
+    },
+    {
+      "classification": "km1_release_documentation",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": true,
+      "path": "docs/security-boundaries.md",
+      "reason": "KM-1 installation, architecture, operations, contract, or limitation documentation."
+    },
+    {
+      "classification": "km1_release_documentation",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": true,
+      "path": "docs/sqlite-operations.md",
+      "reason": "KM-1 installation, architecture, operations, contract, or limitation documentation."
+    },
+    {
+      "classification": "km1_release_documentation",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": true,
+      "path": "docs/troubleshooting.md",
+      "reason": "KM-1 installation, architecture, operations, contract, or limitation documentation."
+    },
+    {
+      "classification": "km1_release_documentation",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": true,
+      "path": "docs/workers.md",
+      "reason": "KM-1 installation, architecture, operations, contract, or limitation documentation."
+    },
+    {
+      "classification": "unrelated_product_work",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": false,
+      "path": "examples/audit_brand_dashboard_error_hotfix.py",
+      "reason": "Changed product or experiment path has no demonstrated KM-1 package dependency."
+    },
+    {
+      "classification": "km1_release_test",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": true,
+      "path": "examples/audit_core_candidate_memory_engine.py",
+      "reason": "Core Sprint 1-14 runner, audit, benchmark, failure, replay, or clean-install proof."
+    },
+    {
+      "classification": "km1_release_test",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": true,
+      "path": "examples/audit_core_continuity_packet_v2.py",
+      "reason": "Core Sprint 1-14 runner, audit, benchmark, failure, replay, or clean-install proof."
+    },
+    {
+      "classification": "km1_release_test",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": true,
+      "path": "examples/audit_core_durable_jobs.py",
+      "reason": "Core Sprint 1-14 runner, audit, benchmark, failure, replay, or clean-install proof."
+    },
+    {
+      "classification": "km1_release_test",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": true,
+      "path": "examples/audit_core_entity_relationship_memory.py",
+      "reason": "Core Sprint 1-14 runner, audit, benchmark, failure, replay, or clean-install proof."
+    },
+    {
+      "classification": "km1_release_test",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": true,
+      "path": "examples/audit_core_memory_admission.py",
+      "reason": "Core Sprint 1-14 runner, audit, benchmark, failure, replay, or clean-install proof."
+    },
+    {
+      "classification": "km1_release_test",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": true,
+      "path": "examples/audit_core_memory_consolidation.py",
+      "reason": "Core Sprint 1-14 runner, audit, benchmark, failure, replay, or clean-install proof."
+    },
+    {
+      "classification": "km1_release_test",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": true,
+      "path": "examples/audit_core_memory_governance.py",
+      "reason": "Core Sprint 1-14 runner, audit, benchmark, failure, replay, or clean-install proof."
+    },
+    {
+      "classification": "km1_release_test",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": true,
+      "path": "examples/audit_core_memory_ledger_evolution.py",
+      "reason": "Core Sprint 1-14 runner, audit, benchmark, failure, replay, or clean-install proof."
+    },
+    {
+      "classification": "km1_release_test",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": true,
+      "path": "examples/audit_core_memory_quality_benchmark.py",
+      "reason": "Core Sprint 1-14 runner, audit, benchmark, failure, replay, or clean-install proof."
+    },
+    {
+      "classification": "km1_release_test",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": true,
+      "path": "examples/audit_core_memory_query.py",
+      "reason": "Core Sprint 1-14 runner, audit, benchmark, failure, replay, or clean-install proof."
+    },
+    {
+      "classification": "km1_release_test",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": true,
+      "path": "examples/audit_core_postgres_runtime_validation.py",
+      "reason": "Core Sprint 1-14 runner, audit, benchmark, failure, replay, or clean-install proof."
+    },
+    {
+      "classification": "km1_release_test",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": true,
+      "path": "examples/audit_core_release_candidate.py",
+      "reason": "Core Sprint 1-14 runner, audit, benchmark, failure, replay, or clean-install proof."
+    },
+    {
+      "classification": "km1_release_test",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": true,
+      "path": "examples/audit_core_semantic_interpretation.py",
+      "reason": "Core Sprint 1-14 runner, audit, benchmark, failure, replay, or clean-install proof."
+    },
+    {
+      "classification": "km1_release_test",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": true,
+      "path": "examples/audit_core_source_ledger_provenance.py",
+      "reason": "Core Sprint 1-14 runner, audit, benchmark, failure, replay, or clean-install proof."
+    },
+    {
+      "classification": "km1_release_test",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": true,
+      "path": "examples/audit_core_temporal_memory_dynamics.py",
+      "reason": "Core Sprint 1-14 runner, audit, benchmark, failure, replay, or clean-install proof."
+    },
+    {
+      "classification": "unrelated_product_work",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": false,
+      "path": "examples/audit_dashboard_duplicate_state_request_race_hotfix.py",
+      "reason": "Changed product or experiment path has no demonstrated KM-1 package dependency."
+    },
+    {
+      "classification": "unrelated_product_work",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": false,
+      "path": "examples/audit_demo_speed_and_console_loading_hotfix.py",
+      "reason": "Changed product or experiment path has no demonstrated KM-1 package dependency."
+    },
+    {
+      "classification": "unrelated_product_work",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": false,
+      "path": "examples/audit_navigation_onboarding_site_simplification.py",
+      "reason": "Changed product or experiment path has no demonstrated KM-1 package dependency."
+    },
+    {
+      "classification": "unrelated_product_work",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": false,
+      "path": "examples/audit_official_hosted_demo_and_hero_cleanup.py",
+      "reason": "Changed product or experiment path has no demonstrated KM-1 package dependency."
+    },
+    {
+      "classification": "unrelated_product_work",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": false,
+      "path": "examples/audit_public_website_product_story_redesign.py",
+      "reason": "Changed product or experiment path has no demonstrated KM-1 package dependency."
+    },
+    {
+      "classification": "unrelated_product_work",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": false,
+      "path": "examples/audit_simple_public_site_redesign.py",
+      "reason": "Changed product or experiment path has no demonstrated KM-1 package dependency."
+    },
+    {
+      "classification": "km1_release_test",
+      "git_status": " M",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": true,
+      "path": "examples/audit_v0782_secret_cleanup.py",
+      "reason": "Required tracked-file and secret-hygiene release gate."
+    },
+    {
+      "classification": "km1_release_test",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": true,
+      "path": "examples/benchmark_core_continuity_packet_v2.py",
+      "reason": "Core Sprint 1-14 runner, audit, benchmark, failure, replay, or clean-install proof."
+    },
+    {
+      "classification": "km1_release_test",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": true,
+      "path": "examples/benchmark_core_memory_consolidation.py",
+      "reason": "Core Sprint 1-14 runner, audit, benchmark, failure, replay, or clean-install proof."
+    },
+    {
+      "classification": "km1_release_test",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": true,
+      "path": "examples/benchmark_core_memory_governance.py",
+      "reason": "Core Sprint 1-14 runner, audit, benchmark, failure, replay, or clean-install proof."
+    },
+    {
+      "classification": "km1_release_test",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": true,
+      "path": "examples/benchmark_core_memory_quality.py",
+      "reason": "Core Sprint 1-14 runner, audit, benchmark, failure, replay, or clean-install proof."
+    },
+    {
+      "classification": "km1_release_test",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": true,
+      "path": "examples/benchmark_core_release_candidate.py",
+      "reason": "Core Sprint 1-14 runner, audit, benchmark, failure, replay, or clean-install proof."
+    },
+    {
+      "classification": "km1_release_test",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": true,
+      "path": "examples/benchmark_core_runtime.py",
+      "reason": "Core Sprint 1-14 runner, audit, benchmark, failure, replay, or clean-install proof."
+    },
+    {
+      "classification": "km1_release_test",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": true,
+      "path": "examples/benchmark_core_semantic_interpretation.py",
+      "reason": "Core Sprint 1-14 runner, audit, benchmark, failure, replay, or clean-install proof."
+    },
+    {
+      "classification": "unrelated_product_work",
+      "git_status": " M",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": false,
+      "path": "examples/run_console_product_experience_reset.py",
+      "reason": "Changed product or experiment path has no demonstrated KM-1 package dependency."
+    },
+    {
+      "classification": "km1_release_test",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": true,
+      "path": "examples/run_core_candidate_memory_engine.py",
+      "reason": "Core Sprint 1-14 runner, audit, benchmark, failure, replay, or clean-install proof."
+    },
+    {
+      "classification": "km1_release_test",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": true,
+      "path": "examples/run_core_clean_install.py",
+      "reason": "Core Sprint 1-14 runner, audit, benchmark, failure, replay, or clean-install proof."
+    },
+    {
+      "classification": "km1_release_test",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": true,
+      "path": "examples/run_core_continuity_packet_v2.py",
+      "reason": "Core Sprint 1-14 runner, audit, benchmark, failure, replay, or clean-install proof."
+    },
+    {
+      "classification": "km1_release_test",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": true,
+      "path": "examples/run_core_continuity_packet_v2_mutations.py",
+      "reason": "Core Sprint 1-14 runner, audit, benchmark, failure, replay, or clean-install proof."
+    },
+    {
+      "classification": "km1_release_test",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": true,
+      "path": "examples/run_core_continuity_packet_v2_regressions.py",
+      "reason": "Core Sprint 1-14 runner, audit, benchmark, failure, replay, or clean-install proof."
+    },
+    {
+      "classification": "km1_release_test",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": true,
+      "path": "examples/run_core_durable_jobs.py",
+      "reason": "Core Sprint 1-14 runner, audit, benchmark, failure, replay, or clean-install proof."
+    },
+    {
+      "classification": "km1_release_test",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": true,
+      "path": "examples/run_core_entity_relationship_memory.py",
+      "reason": "Core Sprint 1-14 runner, audit, benchmark, failure, replay, or clean-install proof."
+    },
+    {
+      "classification": "km1_release_test",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": true,
+      "path": "examples/run_core_failure_recovery.py",
+      "reason": "Core Sprint 1-14 runner, audit, benchmark, failure, replay, or clean-install proof."
+    },
+    {
+      "classification": "km1_release_test",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": true,
+      "path": "examples/run_core_memory_admission.py",
+      "reason": "Core Sprint 1-14 runner, audit, benchmark, failure, replay, or clean-install proof."
+    },
+    {
+      "classification": "km1_release_test",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": true,
+      "path": "examples/run_core_memory_consolidation.py",
+      "reason": "Core Sprint 1-14 runner, audit, benchmark, failure, replay, or clean-install proof."
+    },
+    {
+      "classification": "km1_release_test",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": true,
+      "path": "examples/run_core_memory_governance.py",
+      "reason": "Core Sprint 1-14 runner, audit, benchmark, failure, replay, or clean-install proof."
+    },
+    {
+      "classification": "km1_release_test",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": true,
+      "path": "examples/run_core_memory_ledger_evolution.py",
+      "reason": "Core Sprint 1-14 runner, audit, benchmark, failure, replay, or clean-install proof."
+    },
+    {
+      "classification": "km1_release_test",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": true,
+      "path": "examples/run_core_memory_quality_benchmark.py",
+      "reason": "Core Sprint 1-14 runner, audit, benchmark, failure, replay, or clean-install proof."
+    },
+    {
+      "classification": "km1_release_test",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": true,
+      "path": "examples/run_core_memory_quality_mutations.py",
+      "reason": "Core Sprint 1-14 runner, audit, benchmark, failure, replay, or clean-install proof."
+    },
+    {
+      "classification": "km1_release_test",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": true,
+      "path": "examples/run_core_memory_query.py",
+      "reason": "Core Sprint 1-14 runner, audit, benchmark, failure, replay, or clean-install proof."
+    },
+    {
+      "classification": "km1_release_test",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": true,
+      "path": "examples/run_core_postgres_runtime_validation.py",
+      "reason": "Core Sprint 1-14 runner, audit, benchmark, failure, replay, or clean-install proof."
+    },
+    {
+      "classification": "km1_release_test",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": true,
+      "path": "examples/run_core_release_candidate.py",
+      "reason": "Core Sprint 1-14 runner, audit, benchmark, failure, replay, or clean-install proof."
+    },
+    {
+      "classification": "km1_release_test",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": true,
+      "path": "examples/run_core_release_failure_tests.py",
+      "reason": "Core Sprint 1-14 runner, audit, benchmark, failure, replay, or clean-install proof."
+    },
+    {
+      "classification": "km1_release_test",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": true,
+      "path": "examples/run_core_semantic_interpretation.py",
+      "reason": "Core Sprint 1-14 runner, audit, benchmark, failure, replay, or clean-install proof."
+    },
+    {
+      "classification": "km1_release_test",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": true,
+      "path": "examples/run_core_source_ledger_provenance.py",
+      "reason": "Core Sprint 1-14 runner, audit, benchmark, failure, replay, or clean-install proof."
+    },
+    {
+      "classification": "km1_release_test",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": true,
+      "path": "examples/run_core_temporal_memory_dynamics.py",
+      "reason": "Core Sprint 1-14 runner, audit, benchmark, failure, replay, or clean-install proof."
+    },
+    {
+      "classification": "dashboard_or_viewer_candidate",
+      "git_status": " M",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": false,
+      "path": "frontend/app/api/dashboard/actors/route.ts",
+      "reason": "Dashboard/viewer work is outside KM-1."
+    },
+    {
+      "classification": "dashboard_or_viewer_candidate",
+      "git_status": " M",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": false,
+      "path": "frontend/app/api/dashboard/applications/route.ts",
+      "reason": "Dashboard/viewer work is outside KM-1."
+    },
+    {
+      "classification": "dashboard_or_viewer_candidate",
+      "git_status": " M",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": false,
+      "path": "frontend/app/api/dashboard/events/route.ts",
+      "reason": "Dashboard/viewer work is outside KM-1."
+    },
+    {
+      "classification": "dashboard_or_viewer_candidate",
+      "git_status": " M",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": false,
+      "path": "frontend/app/api/dashboard/keys/route.ts",
+      "reason": "Dashboard/viewer work is outside KM-1."
+    },
+    {
+      "classification": "dashboard_or_viewer_candidate",
+      "git_status": " M",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": false,
+      "path": "frontend/app/api/dashboard/logs/route.ts",
+      "reason": "Dashboard/viewer work is outside KM-1."
+    },
+    {
+      "classification": "dashboard_or_viewer_candidate",
+      "git_status": " M",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": false,
+      "path": "frontend/app/api/dashboard/packet/route.ts",
+      "reason": "Dashboard/viewer work is outside KM-1."
+    },
+    {
+      "classification": "dashboard_or_viewer_candidate",
+      "git_status": " M",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": false,
+      "path": "frontend/app/api/dashboard/packets/[packetId]/route.ts",
+      "reason": "Dashboard/viewer work is outside KM-1."
+    },
+    {
+      "classification": "dashboard_or_viewer_candidate",
+      "git_status": " M",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": false,
+      "path": "frontend/app/api/dashboard/packets/route.ts",
+      "reason": "Dashboard/viewer work is outside KM-1."
+    },
+    {
+      "classification": "dashboard_or_viewer_candidate",
+      "git_status": " M",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": false,
+      "path": "frontend/app/api/dashboard/plan/route.ts",
+      "reason": "Dashboard/viewer work is outside KM-1."
+    },
+    {
+      "classification": "dashboard_or_viewer_candidate",
+      "git_status": " M",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": false,
+      "path": "frontend/app/api/dashboard/playground/event/route.ts",
+      "reason": "Dashboard/viewer work is outside KM-1."
+    },
+    {
+      "classification": "dashboard_or_viewer_candidate",
+      "git_status": " M",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": false,
+      "path": "frontend/app/api/dashboard/playground/packet/route.ts",
+      "reason": "Dashboard/viewer work is outside KM-1."
+    },
+    {
+      "classification": "dashboard_or_viewer_candidate",
+      "git_status": " M",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": false,
+      "path": "frontend/app/api/dashboard/playground/route.ts",
+      "reason": "Dashboard/viewer work is outside KM-1."
+    },
+    {
+      "classification": "dashboard_or_viewer_candidate",
+      "git_status": " M",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": false,
+      "path": "frontend/app/api/dashboard/state/route.ts",
+      "reason": "Dashboard/viewer work is outside KM-1."
+    },
+    {
+      "classification": "dashboard_or_viewer_candidate",
+      "git_status": " M",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": false,
+      "path": "frontend/app/api/dashboard/storage/route.ts",
+      "reason": "Dashboard/viewer work is outside KM-1."
+    },
+    {
+      "classification": "dashboard_or_viewer_candidate",
+      "git_status": " M",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": false,
+      "path": "frontend/app/api/dashboard/usage/live/route.ts",
+      "reason": "Dashboard/viewer work is outside KM-1."
+    },
+    {
+      "classification": "public_website",
+      "git_status": " M",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": false,
+      "path": "frontend/app/api/demo/book/route.ts",
+      "reason": "Public website or hosted demo work is outside KM-1."
+    },
+    {
+      "classification": "public_website",
+      "git_status": " M",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": false,
+      "path": "frontend/app/api/demo/run/route.ts",
+      "reason": "Public website or hosted demo work is outside KM-1."
+    },
+    {
+      "classification": "public_website",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": false,
+      "path": "frontend/app/api/demo/status/route.ts",
+      "reason": "Public website or hosted demo work is outside KM-1."
+    },
+    {
+      "classification": "public_website",
+      "git_status": " M",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": false,
+      "path": "frontend/app/api/self-serve/activate/route.ts",
+      "reason": "Public website or hosted demo work is outside KM-1."
+    },
+    {
+      "classification": "public_website",
+      "git_status": " M",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": false,
+      "path": "frontend/app/auth/callback/route.ts",
+      "reason": "Public website or hosted demo work is outside KM-1."
+    },
+    {
+      "classification": "public_website",
+      "git_status": " M",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": false,
+      "path": "frontend/app/book-demo/page.tsx",
+      "reason": "Public website or hosted demo work is outside KM-1."
+    },
+    {
+      "classification": "public_website",
+      "git_status": " M",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": false,
+      "path": "frontend/app/capabilities/[slug]/page.tsx",
+      "reason": "Public website or hosted demo work is outside KM-1."
+    },
+    {
+      "classification": "dashboard_or_viewer_candidate",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": false,
+      "path": "frontend/app/dashboard/actors/page.tsx",
+      "reason": "Dashboard/viewer work is outside KM-1."
+    },
+    {
+      "classification": "dashboard_or_viewer_candidate",
+      "git_status": " M",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": false,
+      "path": "frontend/app/dashboard/api-keys/page.tsx",
+      "reason": "Dashboard/viewer work is outside KM-1."
+    },
+    {
+      "classification": "billing_experiment",
+      "git_status": " M",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": false,
+      "path": "frontend/app/dashboard/billing/page.tsx",
+      "reason": "Billing/commercial frontend experiment is outside KM-1."
+    },
+    {
+      "classification": "dashboard_or_viewer_candidate",
+      "git_status": " M",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": false,
+      "path": "frontend/app/dashboard/docs/page.tsx",
+      "reason": "Dashboard/viewer work is outside KM-1."
+    },
+    {
+      "classification": "dashboard_or_viewer_candidate",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": false,
+      "path": "frontend/app/dashboard/events/page.tsx",
+      "reason": "Dashboard/viewer work is outside KM-1."
+    },
+    {
+      "classification": "dashboard_or_viewer_candidate",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": false,
+      "path": "frontend/app/dashboard/how-to-use/page.tsx",
+      "reason": "Dashboard/viewer work is outside KM-1."
+    },
+    {
+      "classification": "dashboard_or_viewer_candidate",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": false,
+      "path": "frontend/app/dashboard/layout.tsx",
+      "reason": "Dashboard/viewer work is outside KM-1."
+    },
+    {
+      "classification": "dashboard_or_viewer_candidate",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": false,
+      "path": "frontend/app/dashboard/logs/page.tsx",
+      "reason": "Dashboard/viewer work is outside KM-1."
+    },
+    {
+      "classification": "dashboard_or_viewer_candidate",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": false,
+      "path": "frontend/app/dashboard/packets/page.tsx",
+      "reason": "Dashboard/viewer work is outside KM-1."
+    },
+    {
+      "classification": "dashboard_or_viewer_candidate",
+      "git_status": " M",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": false,
+      "path": "frontend/app/dashboard/page.tsx",
+      "reason": "Dashboard/viewer work is outside KM-1."
+    },
+    {
+      "classification": "dashboard_or_viewer_candidate",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": false,
+      "path": "frontend/app/dashboard/playground/page.tsx",
+      "reason": "Dashboard/viewer work is outside KM-1."
+    },
+    {
+      "classification": "dashboard_or_viewer_candidate",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": false,
+      "path": "frontend/app/dashboard/settings/page.tsx",
+      "reason": "Dashboard/viewer work is outside KM-1."
+    },
+    {
+      "classification": "dashboard_or_viewer_candidate",
+      "git_status": " M",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": false,
+      "path": "frontend/app/dashboard/usage/page.tsx",
+      "reason": "Dashboard/viewer work is outside KM-1."
+    },
+    {
+      "classification": "public_website",
+      "git_status": " M",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": false,
+      "path": "frontend/app/demo/page.tsx",
+      "reason": "Public website or hosted demo work is outside KM-1."
+    },
+    {
+      "classification": "public_website",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": false,
+      "path": "frontend/app/enterprise/page.tsx",
+      "reason": "Public website or hosted demo work is outside KM-1."
+    },
+    {
+      "classification": "public_website",
+      "git_status": " M",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": false,
+      "path": "frontend/app/globals.css",
+      "reason": "Public website or hosted demo work is outside KM-1."
+    },
+    {
+      "classification": "public_website",
+      "git_status": " M",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": false,
+      "path": "frontend/app/layout.tsx",
+      "reason": "Public website or hosted demo work is outside KM-1."
+    },
+    {
+      "classification": "public_website",
+      "git_status": " M",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": false,
+      "path": "frontend/app/login/page.tsx",
+      "reason": "Public website or hosted demo work is outside KM-1."
+    },
+    {
+      "classification": "public_website",
+      "git_status": " M",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": false,
+      "path": "frontend/app/page.tsx",
+      "reason": "Public website or hosted demo work is outside KM-1."
+    },
+    {
+      "classification": "public_website",
+      "git_status": " M",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": false,
+      "path": "frontend/app/signup/page.tsx",
+      "reason": "Public website or hosted demo work is outside KM-1."
+    },
+    {
+      "classification": "public_website",
+      "git_status": " M",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": false,
+      "path": "frontend/app/start/page.tsx",
+      "reason": "Public website or hosted demo work is outside KM-1."
+    },
+    {
+      "classification": "public_website",
+      "git_status": " M",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": false,
+      "path": "frontend/app/verify-email/page.tsx",
+      "reason": "Public website or hosted demo work is outside KM-1."
+    },
+    {
+      "classification": "public_website",
+      "git_status": " M",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": false,
+      "path": "frontend/components/alpha/ControlledAlphaNotice.tsx",
+      "reason": "Public website or hosted demo work is outside KM-1."
+    },
+    {
+      "classification": "dashboard_or_viewer_candidate",
+      "git_status": " M",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": false,
+      "path": "frontend/components/console/ConsoleShell.tsx",
+      "reason": "Dashboard/viewer work is outside KM-1."
+    },
+    {
+      "classification": "dashboard_or_viewer_candidate",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": false,
+      "path": "frontend/components/console/sections/ActorsSection.tsx",
+      "reason": "Dashboard/viewer work is outside KM-1."
+    },
+    {
+      "classification": "dashboard_or_viewer_candidate",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": false,
+      "path": "frontend/components/console/sections/ApiKeysSection.tsx",
+      "reason": "Dashboard/viewer work is outside KM-1."
+    },
+    {
+      "classification": "dashboard_or_viewer_candidate",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": false,
+      "path": "frontend/components/console/sections/EventsSection.tsx",
+      "reason": "Dashboard/viewer work is outside KM-1."
+    },
+    {
+      "classification": "dashboard_or_viewer_candidate",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": false,
+      "path": "frontend/components/console/sections/HomeSection.tsx",
+      "reason": "Dashboard/viewer work is outside KM-1."
+    },
+    {
+      "classification": "dashboard_or_viewer_candidate",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": false,
+      "path": "frontend/components/console/sections/HowToUseSection.tsx",
+      "reason": "Dashboard/viewer work is outside KM-1."
+    },
+    {
+      "classification": "dashboard_or_viewer_candidate",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": false,
+      "path": "frontend/components/console/sections/LogsSection.tsx",
+      "reason": "Dashboard/viewer work is outside KM-1."
+    },
+    {
+      "classification": "dashboard_or_viewer_candidate",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": false,
+      "path": "frontend/components/console/sections/PacketsSection.tsx",
+      "reason": "Dashboard/viewer work is outside KM-1."
+    },
+    {
+      "classification": "dashboard_or_viewer_candidate",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": false,
+      "path": "frontend/components/console/sections/PlaygroundSection.tsx",
+      "reason": "Dashboard/viewer work is outside KM-1."
+    },
+    {
+      "classification": "dashboard_or_viewer_candidate",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": false,
+      "path": "frontend/components/console/sections/SettingsSection.tsx",
+      "reason": "Dashboard/viewer work is outside KM-1."
+    },
+    {
+      "classification": "dashboard_or_viewer_candidate",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": false,
+      "path": "frontend/components/console/sections/UsageSection.tsx",
+      "reason": "Dashboard/viewer work is outside KM-1."
+    },
+    {
+      "classification": "dashboard_or_viewer_candidate",
+      "git_status": " M",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": false,
+      "path": "frontend/components/dashboard/AccountPlanSupport.tsx",
+      "reason": "Dashboard/viewer work is outside KM-1."
+    },
+    {
+      "classification": "dashboard_or_viewer_candidate",
+      "git_status": " M",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": false,
+      "path": "frontend/components/dashboard/ClientOverview.tsx",
+      "reason": "Dashboard/viewer work is outside KM-1."
+    },
+    {
+      "classification": "dashboard_or_viewer_candidate",
+      "git_status": " M",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": false,
+      "path": "frontend/components/dashboard/HostedSelfServeDashboard.tsx",
+      "reason": "Dashboard/viewer work is outside KM-1."
+    },
+    {
+      "classification": "public_website",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": false,
+      "path": "frontend/components/demo/HostedOfficialDemo.tsx",
+      "reason": "Public website or hosted demo work is outside KM-1."
+    },
+    {
+      "classification": "public_website",
+      "git_status": " M",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": false,
+      "path": "frontend/components/demo/LocalDemoRunner.tsx",
+      "reason": "Public website or hosted demo work is outside KM-1."
+    },
+    {
+      "classification": "public_website",
+      "git_status": " M",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": false,
+      "path": "frontend/components/demo/ScenarioSelector.tsx",
+      "reason": "Public website or hosted demo work is outside KM-1."
+    },
+    {
+      "classification": "public_website",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": false,
+      "path": "frontend/components/enterprise/EnterpriseInquiryForm.tsx",
+      "reason": "Public website or hosted demo work is outside KM-1."
+    },
+    {
+      "classification": "public_website",
+      "git_status": " D",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": false,
+      "path": "frontend/components/landing/AlphaAccessSection.tsx",
+      "reason": "Public website or hosted demo work is outside KM-1."
+    },
+    {
+      "classification": "public_website",
+      "git_status": " D",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": false,
+      "path": "frontend/components/landing/ApiFlowSection.tsx",
+      "reason": "Public website or hosted demo work is outside KM-1."
+    },
+    {
+      "classification": "public_website",
+      "git_status": " D",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": false,
+      "path": "frontend/components/landing/CapabilitiesSection.tsx",
+      "reason": "Public website or hosted demo work is outside KM-1."
+    },
+    {
+      "classification": "public_website",
+      "git_status": " D",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": false,
+      "path": "frontend/components/landing/CinematicVisionSection.tsx",
+      "reason": "Public website or hosted demo work is outside KM-1."
+    },
+    {
+      "classification": "public_website",
+      "git_status": " D",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": false,
+      "path": "frontend/components/landing/DemoPreviewSection.tsx",
+      "reason": "Public website or hosted demo work is outside KM-1."
+    },
+    {
+      "classification": "public_website",
+      "git_status": " D",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": false,
+      "path": "frontend/components/landing/EvidenceSection.tsx",
+      "reason": "Public website or hosted demo work is outside KM-1."
+    },
+    {
+      "classification": "public_website",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": false,
+      "path": "frontend/components/landing/FeatureGrid.tsx",
+      "reason": "Public website or hosted demo work is outside KM-1."
+    },
+    {
+      "classification": "public_website",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": false,
+      "path": "frontend/components/landing/FinalCta.tsx",
+      "reason": "Public website or hosted demo work is outside KM-1."
+    },
+    {
+      "classification": "public_website",
+      "git_status": " M",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": false,
+      "path": "frontend/components/landing/Footer.tsx",
+      "reason": "Public website or hosted demo work is outside KM-1."
+    },
+    {
+      "classification": "public_website",
+      "git_status": " D",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": false,
+      "path": "frontend/components/landing/HeroSection.tsx",
+      "reason": "Public website or hosted demo work is outside KM-1."
+    },
+    {
+      "classification": "public_website",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": false,
+      "path": "frontend/components/landing/HowItWorksInteractive.tsx",
+      "reason": "Public website or hosted demo work is outside KM-1."
+    },
+    {
+      "classification": "public_website",
+      "git_status": " D",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": false,
+      "path": "frontend/components/landing/InfrastructureLeverageSection.tsx",
+      "reason": "Public website or hosted demo work is outside KM-1."
+    },
+    {
+      "classification": "public_website",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": false,
+      "path": "frontend/components/landing/MemoryPanelsVisual.tsx",
+      "reason": "Public website or hosted demo work is outside KM-1."
+    },
+    {
+      "classification": "public_website",
+      "git_status": " M",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": false,
+      "path": "frontend/components/landing/Navigation.tsx",
+      "reason": "Public website or hosted demo work is outside KM-1."
+    },
+    {
+      "classification": "public_website",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": false,
+      "path": "frontend/components/landing/OfficialDemoBanner.tsx",
+      "reason": "Public website or hosted demo work is outside KM-1."
+    },
+    {
+      "classification": "public_website",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": false,
+      "path": "frontend/components/landing/PacketShowcase.tsx",
+      "reason": "Public website or hosted demo work is outside KM-1."
+    },
+    {
+      "classification": "public_website",
+      "git_status": " D",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": false,
+      "path": "frontend/components/landing/ProblemSection.tsx",
+      "reason": "Public website or hosted demo work is outside KM-1."
+    },
+    {
+      "classification": "public_website",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": false,
+      "path": "frontend/components/landing/public-site-v2.module.css",
+      "reason": "Public website or hosted demo work is outside KM-1."
+    },
+    {
+      "classification": "public_website",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": false,
+      "path": "frontend/components/landing/PublicFaq.tsx",
+      "reason": "Public website or hosted demo work is outside KM-1."
+    },
+    {
+      "classification": "public_website",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": false,
+      "path": "frontend/components/landing/PublicSiteShell.tsx",
+      "reason": "Public website or hosted demo work is outside KM-1."
+    },
+    {
+      "classification": "public_website",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": false,
+      "path": "frontend/components/landing/SimpleHero.tsx",
+      "reason": "Public website or hosted demo work is outside KM-1."
+    },
+    {
+      "classification": "public_website",
+      "git_status": " D",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": false,
+      "path": "frontend/components/landing/SolutionSection.tsx",
+      "reason": "Public website or hosted demo work is outside KM-1."
+    },
+    {
+      "classification": "public_website",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": false,
+      "path": "frontend/components/landing/UseCaseGrid.tsx",
+      "reason": "Public website or hosted demo work is outside KM-1."
+    },
+    {
+      "classification": "public_website",
+      "git_status": " D",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": false,
+      "path": "frontend/components/landing/UseCasesSection.tsx",
+      "reason": "Public website or hosted demo work is outside KM-1."
+    },
+    {
+      "classification": "public_website",
+      "git_status": " M",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": false,
+      "path": "frontend/components/self-serve/LoginForm.tsx",
+      "reason": "Public website or hosted demo work is outside KM-1."
+    },
+    {
+      "classification": "public_website",
+      "git_status": " M",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": false,
+      "path": "frontend/components/self-serve/SignupForm.tsx",
+      "reason": "Public website or hosted demo work is outside KM-1."
+    },
+    {
+      "classification": "public_website",
+      "git_status": " M",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": false,
+      "path": "frontend/components/self-serve/StartFlow.tsx",
+      "reason": "Public website or hosted demo work is outside KM-1."
+    },
+    {
+      "classification": "billing_experiment",
+      "git_status": " M",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": false,
+      "path": "frontend/data/commercialAlphaCopy.ts",
+      "reason": "Billing/commercial frontend experiment is outside KM-1."
+    },
+    {
+      "classification": "billing_experiment",
+      "git_status": " M",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": false,
+      "path": "frontend/data/whopOfferData.ts",
+      "reason": "Billing/commercial frontend experiment is outside KM-1."
+    },
+    {
+      "classification": "public_website",
+      "git_status": " M",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": false,
+      "path": "frontend/lib/selfServeProxy.ts",
+      "reason": "Public website or hosted demo work is outside KM-1."
+    },
+    {
+      "classification": "public_website",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": false,
+      "path": "frontend/public/brand/prmr-continuity-hero-v1.png",
+      "reason": "Public website or hosted demo work is outside KM-1."
+    },
+    {
+      "classification": "km1_release_documentation",
+      "git_status": "??",
+      "include_in_lock_record_commit": true,
+      "include_in_release_source_commit": false,
+      "path": "KM1_RELEASE_LOCK.md",
+      "reason": "Permanent KM-1 lock record; committed after the authoritative source commit exists."
+    },
+    {
+      "classification": "km1_required",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": true,
+      "path": "migrations/__init__.py",
+      "reason": "Ordered immutable SQLite/PostgreSQL migration registry content."
+    },
+    {
+      "classification": "km1_required",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": true,
+      "path": "migrations/core_candidate_memory_v1_postgres.sql",
+      "reason": "Ordered immutable SQLite/PostgreSQL migration registry content."
+    },
+    {
+      "classification": "km1_required",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": true,
+      "path": "migrations/core_candidate_memory_v1_sqlite.sql",
+      "reason": "Ordered immutable SQLite/PostgreSQL migration registry content."
+    },
+    {
+      "classification": "km1_required",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": true,
+      "path": "migrations/core_continuity_packet_v2_postgres.sql",
+      "reason": "Ordered immutable SQLite/PostgreSQL migration registry content."
+    },
+    {
+      "classification": "km1_required",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": true,
+      "path": "migrations/core_continuity_packet_v2_sqlite.sql",
+      "reason": "Ordered immutable SQLite/PostgreSQL migration registry content."
+    },
+    {
+      "classification": "km1_required",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": true,
+      "path": "migrations/core_entity_relationship_memory_v1_postgres.sql",
+      "reason": "Ordered immutable SQLite/PostgreSQL migration registry content."
+    },
+    {
+      "classification": "km1_required",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": true,
+      "path": "migrations/core_entity_relationship_memory_v1_sqlite.sql",
+      "reason": "Ordered immutable SQLite/PostgreSQL migration registry content."
+    },
+    {
+      "classification": "km1_required",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": true,
+      "path": "migrations/core_memory_admission_v1_postgres.sql",
+      "reason": "Ordered immutable SQLite/PostgreSQL migration registry content."
+    },
+    {
+      "classification": "km1_required",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": true,
+      "path": "migrations/core_memory_admission_v1_sqlite.sql",
+      "reason": "Ordered immutable SQLite/PostgreSQL migration registry content."
+    },
+    {
+      "classification": "km1_required",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": true,
+      "path": "migrations/core_memory_consolidation_v1_postgres.sql",
+      "reason": "Ordered immutable SQLite/PostgreSQL migration registry content."
+    },
+    {
+      "classification": "km1_required",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": true,
+      "path": "migrations/core_memory_consolidation_v1_sqlite.sql",
+      "reason": "Ordered immutable SQLite/PostgreSQL migration registry content."
+    },
+    {
+      "classification": "km1_required",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": true,
+      "path": "migrations/core_memory_governance_v1_postgres.sql",
+      "reason": "Ordered immutable SQLite/PostgreSQL migration registry content."
+    },
+    {
+      "classification": "km1_required",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": true,
+      "path": "migrations/core_memory_governance_v1_sqlite.sql",
+      "reason": "Ordered immutable SQLite/PostgreSQL migration registry content."
+    },
+    {
+      "classification": "km1_required",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": true,
+      "path": "migrations/core_memory_ledger_v2_postgres.sql",
+      "reason": "Ordered immutable SQLite/PostgreSQL migration registry content."
+    },
+    {
+      "classification": "km1_required",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": true,
+      "path": "migrations/core_memory_ledger_v2_sqlite.sql",
+      "reason": "Ordered immutable SQLite/PostgreSQL migration registry content."
+    },
+    {
+      "classification": "km1_required",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": true,
+      "path": "migrations/core_memory_query_v1_postgres.sql",
+      "reason": "Ordered immutable SQLite/PostgreSQL migration registry content."
+    },
+    {
+      "classification": "km1_required",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": true,
+      "path": "migrations/core_memory_query_v1_sqlite.sql",
+      "reason": "Ordered immutable SQLite/PostgreSQL migration registry content."
+    },
+    {
+      "classification": "km1_required",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": true,
+      "path": "migrations/core_memory_runtime_v1_postgres.sql",
+      "reason": "Ordered immutable SQLite/PostgreSQL migration registry content."
+    },
+    {
+      "classification": "km1_required",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": true,
+      "path": "migrations/core_memory_runtime_v1_sqlite.sql",
+      "reason": "Ordered immutable SQLite/PostgreSQL migration registry content."
+    },
+    {
+      "classification": "km1_required",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": true,
+      "path": "migrations/core_semantic_interpretation_v1_postgres.sql",
+      "reason": "Ordered immutable SQLite/PostgreSQL migration registry content."
+    },
+    {
+      "classification": "km1_required",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": true,
+      "path": "migrations/core_semantic_interpretation_v1_sqlite.sql",
+      "reason": "Ordered immutable SQLite/PostgreSQL migration registry content."
+    },
+    {
+      "classification": "km1_required",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": true,
+      "path": "migrations/core_source_ledger_v1_postgres.sql",
+      "reason": "Ordered immutable SQLite/PostgreSQL migration registry content."
+    },
+    {
+      "classification": "km1_required",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": true,
+      "path": "migrations/core_source_ledger_v1_sqlite.sql",
+      "reason": "Ordered immutable SQLite/PostgreSQL migration registry content."
+    },
+    {
+      "classification": "km1_required",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": true,
+      "path": "migrations/core_temporal_memory_v1_postgres.sql",
+      "reason": "Ordered immutable SQLite/PostgreSQL migration registry content."
+    },
+    {
+      "classification": "km1_required",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": true,
+      "path": "migrations/core_temporal_memory_v1_sqlite.sql",
+      "reason": "Ordered immutable SQLite/PostgreSQL migration registry content."
+    },
+    {
+      "classification": "km1_required",
+      "git_status": " M",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": true,
+      "path": "prmr/__init__.py",
+      "reason": "KM-1 package identity, typing marker, or runtime lifecycle implementation."
+    },
+    {
+      "classification": "km1_required",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": true,
+      "path": "prmr/cli/__init__.py",
+      "reason": "KM-1 engine, CLI, release identity, integrity, or operational implementation."
+    },
+    {
+      "classification": "km1_required",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": true,
+      "path": "prmr/cli/main.py",
+      "reason": "KM-1 engine, CLI, release identity, integrity, or operational implementation."
+    },
+    {
+      "classification": "km1_required",
+      "git_status": " M",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": true,
+      "path": "prmr/core/__init__.py",
+      "reason": "KM-1 engine, CLI, release identity, integrity, or operational implementation."
+    },
+    {
+      "classification": "km1_required",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": true,
+      "path": "prmr/core/admission_bridge.py",
+      "reason": "KM-1 engine, CLI, release identity, integrity, or operational implementation."
+    },
+    {
+      "classification": "km1_required",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": true,
+      "path": "prmr/core/admission_fixtures.py",
+      "reason": "KM-1 engine, CLI, release identity, integrity, or operational implementation."
+    },
+    {
+      "classification": "km1_required",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": true,
+      "path": "prmr/core/admission_integrity.py",
+      "reason": "KM-1 engine, CLI, release identity, integrity, or operational implementation."
+    },
+    {
+      "classification": "km1_required",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": true,
+      "path": "prmr/core/admission_models.py",
+      "reason": "KM-1 engine, CLI, release identity, integrity, or operational implementation."
+    },
+    {
+      "classification": "km1_required",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": true,
+      "path": "prmr/core/admission_policy.py",
+      "reason": "KM-1 engine, CLI, release identity, integrity, or operational implementation."
+    },
+    {
+      "classification": "km1_required",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": true,
+      "path": "prmr/core/admission_service.py",
+      "reason": "KM-1 engine, CLI, release identity, integrity, or operational implementation."
+    },
+    {
+      "classification": "km1_required",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": true,
+      "path": "prmr/core/candidate_engine.py",
+      "reason": "KM-1 engine, CLI, release identity, integrity, or operational implementation."
+    },
+    {
+      "classification": "km1_required",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": true,
+      "path": "prmr/core/candidate_evidence.py",
+      "reason": "KM-1 engine, CLI, release identity, integrity, or operational implementation."
+    },
+    {
+      "classification": "km1_required",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": true,
+      "path": "prmr/core/candidate_fixtures.py",
+      "reason": "KM-1 engine, CLI, release identity, integrity, or operational implementation."
+    },
+    {
+      "classification": "km1_required",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": true,
+      "path": "prmr/core/candidate_integrity.py",
+      "reason": "KM-1 engine, CLI, release identity, integrity, or operational implementation."
+    },
+    {
+      "classification": "km1_required",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": true,
+      "path": "prmr/core/candidate_models.py",
+      "reason": "KM-1 engine, CLI, release identity, integrity, or operational implementation."
+    },
+    {
+      "classification": "km1_required",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": true,
+      "path": "prmr/core/candidate_rules.py",
+      "reason": "KM-1 engine, CLI, release identity, integrity, or operational implementation."
+    },
+    {
+      "classification": "km1_required",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": true,
+      "path": "prmr/core/canonical_signal_integration.py",
+      "reason": "KM-1 engine, CLI, release identity, integrity, or operational implementation."
+    },
+    {
+      "classification": "km1_required",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": true,
+      "path": "prmr/core/canonical_signal_integrity.py",
+      "reason": "KM-1 engine, CLI, release identity, integrity, or operational implementation."
+    },
+    {
+      "classification": "km1_required",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": true,
+      "path": "prmr/core/canonical_signal_models.py",
+      "reason": "KM-1 engine, CLI, release identity, integrity, or operational implementation."
+    },
+    {
+      "classification": "km1_required",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": true,
+      "path": "prmr/core/canonical_signal_projection.py",
+      "reason": "KM-1 engine, CLI, release identity, integrity, or operational implementation."
+    },
+    {
+      "classification": "km1_required",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": true,
+      "path": "prmr/core/canonical_signal_registry.py",
+      "reason": "KM-1 engine, CLI, release identity, integrity, or operational implementation."
+    },
+    {
+      "classification": "km1_required",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": true,
+      "path": "prmr/core/continuity_v2_comparison.py",
+      "reason": "KM-1 engine, CLI, release identity, integrity, or operational implementation."
+    },
+    {
+      "classification": "km1_required",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": true,
+      "path": "prmr/core/continuity_v2_entities.py",
+      "reason": "KM-1 engine, CLI, release identity, integrity, or operational implementation."
+    },
+    {
+      "classification": "km1_required",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": true,
+      "path": "prmr/core/continuity_v2_epistemic.py",
+      "reason": "KM-1 engine, CLI, release identity, integrity, or operational implementation."
+    },
+    {
+      "classification": "km1_required",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": true,
+      "path": "prmr/core/continuity_v2_explanation.py",
+      "reason": "KM-1 engine, CLI, release identity, integrity, or operational implementation."
+    },
+    {
+      "classification": "km1_required",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": true,
+      "path": "prmr/core/continuity_v2_fixtures.py",
+      "reason": "KM-1 engine, CLI, release identity, integrity, or operational implementation."
+    },
+    {
+      "classification": "km1_required",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": true,
+      "path": "prmr/core/continuity_v2_integrity.py",
+      "reason": "KM-1 engine, CLI, release identity, integrity, or operational implementation."
+    },
+    {
+      "classification": "km1_required",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": true,
+      "path": "prmr/core/continuity_v2_models.py",
+      "reason": "KM-1 engine, CLI, release identity, integrity, or operational implementation."
+    },
+    {
+      "classification": "km1_required",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": true,
+      "path": "prmr/core/continuity_v2_packet.py",
+      "reason": "KM-1 engine, CLI, release identity, integrity, or operational implementation."
+    },
+    {
+      "classification": "km1_required",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": true,
+      "path": "prmr/core/continuity_v2_policy.py",
+      "reason": "KM-1 engine, CLI, release identity, integrity, or operational implementation."
+    },
+    {
+      "classification": "km1_required",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": true,
+      "path": "prmr/core/continuity_v2_provenance.py",
+      "reason": "KM-1 engine, CLI, release identity, integrity, or operational implementation."
+    },
+    {
+      "classification": "km1_required",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": true,
+      "path": "prmr/core/continuity_v2_relationships.py",
+      "reason": "KM-1 engine, CLI, release identity, integrity, or operational implementation."
+    },
+    {
+      "classification": "km1_required",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": true,
+      "path": "prmr/core/continuity_v2_state_resolver.py",
+      "reason": "KM-1 engine, CLI, release identity, integrity, or operational implementation."
+    },
+    {
+      "classification": "km1_required",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": true,
+      "path": "prmr/core/continuity_v2_temporal.py",
+      "reason": "KM-1 engine, CLI, release identity, integrity, or operational implementation."
+    },
+    {
+      "classification": "km1_required",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": true,
+      "path": "prmr/core/entity_admission.py",
+      "reason": "KM-1 engine, CLI, release identity, integrity, or operational implementation."
+    },
+    {
+      "classification": "km1_required",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": true,
+      "path": "prmr/core/entity_candidates.py",
+      "reason": "KM-1 engine, CLI, release identity, integrity, or operational implementation."
+    },
+    {
+      "classification": "km1_required",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": true,
+      "path": "prmr/core/entity_extraction_rules.py",
+      "reason": "KM-1 engine, CLI, release identity, integrity, or operational implementation."
+    },
+    {
+      "classification": "km1_required",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": true,
+      "path": "prmr/core/entity_identity_service.py",
+      "reason": "KM-1 engine, CLI, release identity, integrity, or operational implementation."
+    },
+    {
+      "classification": "km1_required",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": true,
+      "path": "prmr/core/entity_integrity.py",
+      "reason": "KM-1 engine, CLI, release identity, integrity, or operational implementation."
+    },
+    {
+      "classification": "km1_required",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": true,
+      "path": "prmr/core/entity_memory.py",
+      "reason": "KM-1 engine, CLI, release identity, integrity, or operational implementation."
+    },
+    {
+      "classification": "km1_required",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": true,
+      "path": "prmr/core/entity_memory_fixtures.py",
+      "reason": "KM-1 engine, CLI, release identity, integrity, or operational implementation."
+    },
+    {
+      "classification": "km1_required",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": true,
+      "path": "prmr/core/entity_mentions.py",
+      "reason": "KM-1 engine, CLI, release identity, integrity, or operational implementation."
+    },
+    {
+      "classification": "km1_required",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": true,
+      "path": "prmr/core/entity_models.py",
+      "reason": "KM-1 engine, CLI, release identity, integrity, or operational implementation."
+    },
+    {
+      "classification": "km1_required",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": true,
+      "path": "prmr/core/entity_reconstruction.py",
+      "reason": "KM-1 engine, CLI, release identity, integrity, or operational implementation."
+    },
+    {
+      "classification": "km1_required",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": true,
+      "path": "prmr/core/entity_resolution.py",
+      "reason": "KM-1 engine, CLI, release identity, integrity, or operational implementation."
+    },
+    {
+      "classification": "km1_required",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": true,
+      "path": "prmr/core/entity_store.py",
+      "reason": "KM-1 engine, CLI, release identity, integrity, or operational implementation."
+    },
+    {
+      "classification": "km1_required",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": true,
+      "path": "prmr/core/interpretation_chunking.py",
+      "reason": "KM-1 engine, CLI, release identity, integrity, or operational implementation."
+    },
+    {
+      "classification": "km1_required",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": true,
+      "path": "prmr/core/interpretation_engine.py",
+      "reason": "KM-1 engine, CLI, release identity, integrity, or operational implementation."
+    },
+    {
+      "classification": "km1_required",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": true,
+      "path": "prmr/core/interpretation_fixtures.py",
+      "reason": "KM-1 engine, CLI, release identity, integrity, or operational implementation."
+    },
+    {
+      "classification": "km1_required",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": true,
+      "path": "prmr/core/interpretation_integrity.py",
+      "reason": "KM-1 engine, CLI, release identity, integrity, or operational implementation."
+    },
+    {
+      "classification": "km1_required",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": true,
+      "path": "prmr/core/interpretation_models.py",
+      "reason": "KM-1 engine, CLI, release identity, integrity, or operational implementation."
+    },
+    {
+      "classification": "km1_required",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": true,
+      "path": "prmr/core/interpretation_policy.py",
+      "reason": "KM-1 engine, CLI, release identity, integrity, or operational implementation."
+    },
+    {
+      "classification": "km1_required",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": true,
+      "path": "prmr/core/interpretation_provider.py",
+      "reason": "KM-1 engine, CLI, release identity, integrity, or operational implementation."
+    },
+    {
+      "classification": "km1_required",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": true,
+      "path": "prmr/core/interpretation_validation.py",
+      "reason": "KM-1 engine, CLI, release identity, integrity, or operational implementation."
+    },
+    {
+      "classification": "km1_required",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": true,
+      "path": "prmr/core/job_fixtures.py",
+      "reason": "KM-1 engine, CLI, release identity, integrity, or operational implementation."
+    },
+    {
+      "classification": "km1_required",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": true,
+      "path": "prmr/core/job_handlers.py",
+      "reason": "KM-1 engine, CLI, release identity, integrity, or operational implementation."
+    },
+    {
+      "classification": "km1_required",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": true,
+      "path": "prmr/core/job_integrity.py",
+      "reason": "KM-1 engine, CLI, release identity, integrity, or operational implementation."
+    },
+    {
+      "classification": "km1_required",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": true,
+      "path": "prmr/core/job_models.py",
+      "reason": "KM-1 engine, CLI, release identity, integrity, or operational implementation."
+    },
+    {
+      "classification": "km1_required",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": true,
+      "path": "prmr/core/job_policy.py",
+      "reason": "KM-1 engine, CLI, release identity, integrity, or operational implementation."
+    },
+    {
+      "classification": "km1_required",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": true,
+      "path": "prmr/core/job_queue.py",
+      "reason": "KM-1 engine, CLI, release identity, integrity, or operational implementation."
+    },
+    {
+      "classification": "km1_required",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": true,
+      "path": "prmr/core/job_recovery.py",
+      "reason": "KM-1 engine, CLI, release identity, integrity, or operational implementation."
+    },
+    {
+      "classification": "km1_required",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": true,
+      "path": "prmr/core/job_scheduler.py",
+      "reason": "KM-1 engine, CLI, release identity, integrity, or operational implementation."
+    },
+    {
+      "classification": "km1_required",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": true,
+      "path": "prmr/core/job_store.py",
+      "reason": "KM-1 engine, CLI, release identity, integrity, or operational implementation."
+    },
+    {
+      "classification": "km1_required",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": true,
+      "path": "prmr/core/job_worker.py",
+      "reason": "KM-1 engine, CLI, release identity, integrity, or operational implementation."
+    },
+    {
+      "classification": "km1_required",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": true,
+      "path": "prmr/core/memory_checkpoint.py",
+      "reason": "KM-1 engine, CLI, release identity, integrity, or operational implementation."
+    },
+    {
+      "classification": "km1_required",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": true,
+      "path": "prmr/core/memory_conflicts.py",
+      "reason": "KM-1 engine, CLI, release identity, integrity, or operational implementation."
+    },
+    {
+      "classification": "km1_required",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": true,
+      "path": "prmr/core/memory_consolidation_continuity_adapter.py",
+      "reason": "KM-1 engine, CLI, release identity, integrity, or operational implementation."
+    },
+    {
+      "classification": "km1_required",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": true,
+      "path": "prmr/core/memory_consolidation_engine.py",
+      "reason": "KM-1 engine, CLI, release identity, integrity, or operational implementation."
+    },
+    {
+      "classification": "km1_required",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": true,
+      "path": "prmr/core/memory_consolidation_fixtures.py",
+      "reason": "KM-1 engine, CLI, release identity, integrity, or operational implementation."
+    },
+    {
+      "classification": "km1_required",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": true,
+      "path": "prmr/core/memory_consolidation_integrity.py",
+      "reason": "KM-1 engine, CLI, release identity, integrity, or operational implementation."
+    },
+    {
+      "classification": "km1_required",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": true,
+      "path": "prmr/core/memory_consolidation_invalidation.py",
+      "reason": "KM-1 engine, CLI, release identity, integrity, or operational implementation."
+    },
+    {
+      "classification": "km1_required",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": true,
+      "path": "prmr/core/memory_consolidation_membership.py",
+      "reason": "KM-1 engine, CLI, release identity, integrity, or operational implementation."
+    },
+    {
+      "classification": "km1_required",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": true,
+      "path": "prmr/core/memory_consolidation_models.py",
+      "reason": "KM-1 engine, CLI, release identity, integrity, or operational implementation."
+    },
+    {
+      "classification": "km1_required",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": true,
+      "path": "prmr/core/memory_consolidation_planner.py",
+      "reason": "KM-1 engine, CLI, release identity, integrity, or operational implementation."
+    },
+    {
+      "classification": "km1_required",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": true,
+      "path": "prmr/core/memory_consolidation_policy.py",
+      "reason": "KM-1 engine, CLI, release identity, integrity, or operational implementation."
+    },
+    {
+      "classification": "km1_required",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": true,
+      "path": "prmr/core/memory_consolidation_query_adapter.py",
+      "reason": "KM-1 engine, CLI, release identity, integrity, or operational implementation."
+    },
+    {
+      "classification": "km1_required",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": true,
+      "path": "prmr/core/memory_consolidation_store.py",
+      "reason": "KM-1 engine, CLI, release identity, integrity, or operational implementation."
+    },
+    {
+      "classification": "km1_required",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": true,
+      "path": "prmr/core/memory_correction_requests.py",
+      "reason": "KM-1 engine, CLI, release identity, integrity, or operational implementation."
+    },
+    {
+      "classification": "km1_required",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": true,
+      "path": "prmr/core/memory_dependency_graph.py",
+      "reason": "KM-1 engine, CLI, release identity, integrity, or operational implementation."
+    },
+    {
+      "classification": "km1_required",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": true,
+      "path": "prmr/core/memory_dynamics_engine.py",
+      "reason": "KM-1 engine, CLI, release identity, integrity, or operational implementation."
+    },
+    {
+      "classification": "km1_required",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": true,
+      "path": "prmr/core/memory_dynamics_integrity.py",
+      "reason": "KM-1 engine, CLI, release identity, integrity, or operational implementation."
+    },
+    {
+      "classification": "km1_required",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": true,
+      "path": "prmr/core/memory_evidence_bundle.py",
+      "reason": "KM-1 engine, CLI, release identity, integrity, or operational implementation."
+    },
+    {
+      "classification": "km1_required",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": true,
+      "path": "prmr/core/memory_evolution.py",
+      "reason": "KM-1 engine, CLI, release identity, integrity, or operational implementation."
+    },
+    {
+      "classification": "km1_required",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": true,
+      "path": "prmr/core/memory_explanation.py",
+      "reason": "KM-1 engine, CLI, release identity, integrity, or operational implementation."
+    },
+    {
+      "classification": "km1_required",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": true,
+      "path": "prmr/core/memory_export_service.py",
+      "reason": "KM-1 engine, CLI, release identity, integrity, or operational implementation."
+    },
+    {
+      "classification": "km1_required",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": true,
+      "path": "prmr/core/memory_governance_executor.py",
+      "reason": "KM-1 engine, CLI, release identity, integrity, or operational implementation."
+    },
+    {
+      "classification": "km1_required",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": true,
+      "path": "prmr/core/memory_governance_fixtures.py",
+      "reason": "KM-1 engine, CLI, release identity, integrity, or operational implementation."
+    },
+    {
+      "classification": "km1_required",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": true,
+      "path": "prmr/core/memory_governance_integrity.py",
+      "reason": "KM-1 engine, CLI, release identity, integrity, or operational implementation."
+    },
+    {
+      "classification": "km1_required",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": true,
+      "path": "prmr/core/memory_governance_models.py",
+      "reason": "KM-1 engine, CLI, release identity, integrity, or operational implementation."
+    },
+    {
+      "classification": "km1_required",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": true,
+      "path": "prmr/core/memory_governance_planner.py",
+      "reason": "KM-1 engine, CLI, release identity, integrity, or operational implementation."
+    },
+    {
+      "classification": "km1_required",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": true,
+      "path": "prmr/core/memory_governance_policy.py",
+      "reason": "KM-1 engine, CLI, release identity, integrity, or operational implementation."
+    },
+    {
+      "classification": "km1_required",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": true,
+      "path": "prmr/core/memory_governance_store.py",
+      "reason": "KM-1 engine, CLI, release identity, integrity, or operational implementation."
+    },
+    {
+      "classification": "km1_required",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": true,
+      "path": "prmr/core/memory_governance_verifier.py",
+      "reason": "KM-1 engine, CLI, release identity, integrity, or operational implementation."
+    },
+    {
+      "classification": "km1_required",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": true,
+      "path": "prmr/core/memory_importance.py",
+      "reason": "KM-1 engine, CLI, release identity, integrity, or operational implementation."
+    },
+    {
+      "classification": "km1_required",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": true,
+      "path": "prmr/core/memory_ledger_fixtures.py",
+      "reason": "KM-1 engine, CLI, release identity, integrity, or operational implementation."
+    },
+    {
+      "classification": "km1_required",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": true,
+      "path": "prmr/core/memory_ledger_integrity.py",
+      "reason": "KM-1 engine, CLI, release identity, integrity, or operational implementation."
+    },
+    {
+      "classification": "km1_required",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": true,
+      "path": "prmr/core/memory_ledger_models.py",
+      "reason": "KM-1 engine, CLI, release identity, integrity, or operational implementation."
+    },
+    {
+      "classification": "km1_required",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": true,
+      "path": "prmr/core/memory_ledger_service.py",
+      "reason": "KM-1 engine, CLI, release identity, integrity, or operational implementation."
+    },
+    {
+      "classification": "km1_required",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": true,
+      "path": "prmr/core/memory_preservation_hold.py",
+      "reason": "KM-1 engine, CLI, release identity, integrity, or operational implementation."
+    },
+    {
+      "classification": "km1_required",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": true,
+      "path": "prmr/core/memory_quality_adversarial.py",
+      "reason": "KM-1 engine, CLI, release identity, integrity, or operational implementation."
+    },
+    {
+      "classification": "km1_required",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": true,
+      "path": "prmr/core/memory_quality_assertions.py",
+      "reason": "KM-1 engine, CLI, release identity, integrity, or operational implementation."
+    },
+    {
+      "classification": "km1_required",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": true,
+      "path": "prmr/core/memory_quality_backend_parity.py",
+      "reason": "KM-1 engine, CLI, release identity, integrity, or operational implementation."
+    },
+    {
+      "classification": "km1_required",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": true,
+      "path": "prmr/core/memory_quality_corpus.py",
+      "reason": "KM-1 engine, CLI, release identity, integrity, or operational implementation."
+    },
+    {
+      "classification": "km1_required",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": true,
+      "path": "prmr/core/memory_quality_integrity.py",
+      "reason": "KM-1 engine, CLI, release identity, integrity, or operational implementation."
+    },
+    {
+      "classification": "km1_required",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": true,
+      "path": "prmr/core/memory_quality_metrics.py",
+      "reason": "KM-1 engine, CLI, release identity, integrity, or operational implementation."
+    },
+    {
+      "classification": "km1_required",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": true,
+      "path": "prmr/core/memory_quality_models.py",
+      "reason": "KM-1 engine, CLI, release identity, integrity, or operational implementation."
+    },
+    {
+      "classification": "km1_required",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": true,
+      "path": "prmr/core/memory_quality_mutations.py",
+      "reason": "KM-1 engine, CLI, release identity, integrity, or operational implementation."
+    },
+    {
+      "classification": "km1_required",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": true,
+      "path": "prmr/core/memory_quality_oracle.py",
+      "reason": "KM-1 engine, CLI, release identity, integrity, or operational implementation."
+    },
+    {
+      "classification": "km1_required",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": true,
+      "path": "prmr/core/memory_quality_policy.py",
+      "reason": "KM-1 engine, CLI, release identity, integrity, or operational implementation."
+    },
+    {
+      "classification": "km1_required",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": true,
+      "path": "prmr/core/memory_quality_reports.py",
+      "reason": "KM-1 engine, CLI, release identity, integrity, or operational implementation."
+    },
+    {
+      "classification": "km1_required",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": true,
+      "path": "prmr/core/memory_quality_runner.py",
+      "reason": "KM-1 engine, CLI, release identity, integrity, or operational implementation."
+    },
+    {
+      "classification": "km1_required",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": true,
+      "path": "prmr/core/memory_query_engine.py",
+      "reason": "KM-1 engine, CLI, release identity, integrity, or operational implementation."
+    },
+    {
+      "classification": "km1_required",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": true,
+      "path": "prmr/core/memory_query_fixtures.py",
+      "reason": "KM-1 engine, CLI, release identity, integrity, or operational implementation."
+    },
+    {
+      "classification": "km1_required",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": true,
+      "path": "prmr/core/memory_query_integrity.py",
+      "reason": "KM-1 engine, CLI, release identity, integrity, or operational implementation."
+    },
+    {
+      "classification": "km1_required",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": true,
+      "path": "prmr/core/memory_query_models.py",
+      "reason": "KM-1 engine, CLI, release identity, integrity, or operational implementation."
+    },
+    {
+      "classification": "km1_required",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": true,
+      "path": "prmr/core/memory_query_planner.py",
+      "reason": "KM-1 engine, CLI, release identity, integrity, or operational implementation."
+    },
+    {
+      "classification": "km1_required",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": true,
+      "path": "prmr/core/memory_query_policy.py",
+      "reason": "KM-1 engine, CLI, release identity, integrity, or operational implementation."
+    },
+    {
+      "classification": "km1_required",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": true,
+      "path": "prmr/core/memory_query_results.py",
+      "reason": "KM-1 engine, CLI, release identity, integrity, or operational implementation."
+    },
+    {
+      "classification": "km1_required",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": true,
+      "path": "prmr/core/memory_query_store.py",
+      "reason": "KM-1 engine, CLI, release identity, integrity, or operational implementation."
+    },
+    {
+      "classification": "km1_required",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": true,
+      "path": "prmr/core/memory_reconstruction.py",
+      "reason": "KM-1 engine, CLI, release identity, integrity, or operational implementation."
+    },
+    {
+      "classification": "km1_required",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": true,
+      "path": "prmr/core/memory_recurrence.py",
+      "reason": "KM-1 engine, CLI, release identity, integrity, or operational implementation."
+    },
+    {
+      "classification": "km1_required",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": true,
+      "path": "prmr/core/memory_retention_service.py",
+      "reason": "KM-1 engine, CLI, release identity, integrity, or operational implementation."
+    },
+    {
+      "classification": "km1_required",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": true,
+      "path": "prmr/core/memory_state_resolver.py",
+      "reason": "KM-1 engine, CLI, release identity, integrity, or operational implementation."
+    },
+    {
+      "classification": "km1_required",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": true,
+      "path": "prmr/core/memory_temporal_fixtures.py",
+      "reason": "KM-1 engine, CLI, release identity, integrity, or operational implementation."
+    },
+    {
+      "classification": "km1_required",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": true,
+      "path": "prmr/core/memory_temporal_models.py",
+      "reason": "KM-1 engine, CLI, release identity, integrity, or operational implementation."
+    },
+    {
+      "classification": "km1_required",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": true,
+      "path": "prmr/core/memory_temporal_policy.py",
+      "reason": "KM-1 engine, CLI, release identity, integrity, or operational implementation."
+    },
+    {
+      "classification": "km1_required",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": true,
+      "path": "prmr/core/relationship_admission.py",
+      "reason": "KM-1 engine, CLI, release identity, integrity, or operational implementation."
+    },
+    {
+      "classification": "km1_required",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": true,
+      "path": "prmr/core/relationship_candidates.py",
+      "reason": "KM-1 engine, CLI, release identity, integrity, or operational implementation."
+    },
+    {
+      "classification": "km1_required",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": true,
+      "path": "prmr/core/relationship_integrity.py",
+      "reason": "KM-1 engine, CLI, release identity, integrity, or operational implementation."
+    },
+    {
+      "classification": "km1_required",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": true,
+      "path": "prmr/core/relationship_memory.py",
+      "reason": "KM-1 engine, CLI, release identity, integrity, or operational implementation."
+    },
+    {
+      "classification": "km1_required",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": true,
+      "path": "prmr/core/relationship_models.py",
+      "reason": "KM-1 engine, CLI, release identity, integrity, or operational implementation."
+    },
+    {
+      "classification": "km1_required",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": true,
+      "path": "prmr/core/relationship_rules.py",
+      "reason": "KM-1 engine, CLI, release identity, integrity, or operational implementation."
+    },
+    {
+      "classification": "km1_required",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": true,
+      "path": "prmr/core/runtime_core_lifecycle.py",
+      "reason": "KM-1 engine, CLI, release identity, integrity, or operational implementation."
+    },
+    {
+      "classification": "km1_required",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": true,
+      "path": "prmr/core/runtime_database.py",
+      "reason": "KM-1 engine, CLI, release identity, integrity, or operational implementation."
+    },
+    {
+      "classification": "km1_required",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": true,
+      "path": "prmr/core/runtime_failure_injection.py",
+      "reason": "KM-1 engine, CLI, release identity, integrity, or operational implementation."
+    },
+    {
+      "classification": "km1_required",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": true,
+      "path": "prmr/core/runtime_integrity.py",
+      "reason": "KM-1 engine, CLI, release identity, integrity, or operational implementation."
+    },
+    {
+      "classification": "km1_required",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": true,
+      "path": "prmr/core/runtime_integrity_sweep.py",
+      "reason": "KM-1 engine, CLI, release identity, integrity, or operational implementation."
+    },
+    {
+      "classification": "km1_required",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": true,
+      "path": "prmr/core/runtime_migrations.py",
+      "reason": "KM-1 engine, CLI, release identity, integrity, or operational implementation."
+    },
+    {
+      "classification": "km1_required",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": true,
+      "path": "prmr/core/runtime_models.py",
+      "reason": "KM-1 engine, CLI, release identity, integrity, or operational implementation."
+    },
+    {
+      "classification": "km1_required",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": true,
+      "path": "prmr/core/runtime_performance.py",
+      "reason": "KM-1 engine, CLI, release identity, integrity, or operational implementation."
+    },
+    {
+      "classification": "km1_required",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": true,
+      "path": "prmr/core/runtime_postgres_matrix.py",
+      "reason": "KM-1 engine, CLI, release identity, integrity, or operational implementation."
+    },
+    {
+      "classification": "km1_required",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": true,
+      "path": "prmr/core/runtime_postgres_validation.py",
+      "reason": "KM-1 engine, CLI, release identity, integrity, or operational implementation."
+    },
+    {
+      "classification": "km1_required",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": true,
+      "path": "prmr/core/runtime_repository_parity.py",
+      "reason": "KM-1 engine, CLI, release identity, integrity, or operational implementation."
+    },
+    {
+      "classification": "km1_required",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": true,
+      "path": "prmr/core/source_adapters.py",
+      "reason": "KM-1 engine, CLI, release identity, integrity, or operational implementation."
+    },
+    {
+      "classification": "km1_required",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": true,
+      "path": "prmr/core/source_fixtures.py",
+      "reason": "KM-1 engine, CLI, release identity, integrity, or operational implementation."
+    },
+    {
+      "classification": "km1_required",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": true,
+      "path": "prmr/core/source_integrity.py",
+      "reason": "KM-1 engine, CLI, release identity, integrity, or operational implementation."
+    },
+    {
+      "classification": "km1_required",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": true,
+      "path": "prmr/core/source_ledger.py",
+      "reason": "KM-1 engine, CLI, release identity, integrity, or operational implementation."
+    },
+    {
+      "classification": "km1_required",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": true,
+      "path": "prmr/core/source_models.py",
+      "reason": "KM-1 engine, CLI, release identity, integrity, or operational implementation."
+    },
+    {
+      "classification": "km1_required",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": true,
+      "path": "prmr/core/source_retention.py",
+      "reason": "KM-1 engine, CLI, release identity, integrity, or operational implementation."
+    },
+    {
+      "classification": "hosted_api_legacy",
+      "git_status": " M",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": false,
+      "path": "prmr/product/api_server_v094.py",
+      "reason": "Hosted/self-serve product change is outside the KM-1 engine release delta."
+    },
+    {
+      "classification": "km1_required",
+      "git_status": " M",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": true,
+      "path": "prmr/product/self_serve_repository_postgres_v0941.py",
+      "reason": "Legacy repository adapter genuinely imported by KM-1 runtime parity, backup, and PostgreSQL matrix proofs."
+    },
+    {
+      "classification": "km1_required",
+      "git_status": " M",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": true,
+      "path": "prmr/product/self_serve_repository_v093.py",
+      "reason": "Legacy repository adapter genuinely imported by KM-1 runtime parity, backup, and PostgreSQL matrix proofs."
+    },
+    {
+      "classification": "km1_required",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": true,
+      "path": "prmr/py.typed",
+      "reason": "KM-1 package identity, typing marker, or runtime lifecycle implementation."
+    },
+    {
+      "classification": "km1_required",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": true,
+      "path": "prmr/release/__init__.py",
+      "reason": "KM-1 engine, CLI, release identity, integrity, or operational implementation."
+    },
+    {
+      "classification": "km1_required",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": true,
+      "path": "prmr/release/backup.py",
+      "reason": "KM-1 engine, CLI, release identity, integrity, or operational implementation."
+    },
+    {
+      "classification": "km1_required",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": true,
+      "path": "prmr/release/compatibility.py",
+      "reason": "KM-1 engine, CLI, release identity, integrity, or operational implementation."
+    },
+    {
+      "classification": "km1_required",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": true,
+      "path": "prmr/release/diagnostics.py",
+      "reason": "KM-1 engine, CLI, release identity, integrity, or operational implementation."
+    },
+    {
+      "classification": "km1_required",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": true,
+      "path": "prmr/release/facade.py",
+      "reason": "KM-1 engine, CLI, release identity, integrity, or operational implementation."
+    },
+    {
+      "classification": "km1_required",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": true,
+      "path": "prmr/release/identity.py",
+      "reason": "KM-1 engine, CLI, release identity, integrity, or operational implementation."
+    },
+    {
+      "classification": "km1_required",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": true,
+      "path": "prmr/release/logging.py",
+      "reason": "KM-1 engine, CLI, release identity, integrity, or operational implementation."
+    },
+    {
+      "classification": "km1_required",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": true,
+      "path": "prmr/release/manifest.py",
+      "reason": "KM-1 engine, CLI, release identity, integrity, or operational implementation."
+    },
+    {
+      "classification": "km1_required",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": true,
+      "path": "prmr/release/path_safety.py",
+      "reason": "KM-1 engine, CLI, release identity, integrity, or operational implementation."
+    },
+    {
+      "classification": "km1_required",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": true,
+      "path": "prmr/release/self_test.py",
+      "reason": "KM-1 engine, CLI, release identity, integrity, or operational implementation."
+    },
+    {
+      "classification": "km1_required",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": true,
+      "path": "prmr/release/version.py",
+      "reason": "KM-1 engine, CLI, release identity, integrity, or operational implementation."
+    },
+    {
+      "classification": "km1_required",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": true,
+      "path": "prmr/runtime_bootstrap.py",
+      "reason": "KM-1 package identity, typing marker, or runtime lifecycle implementation."
+    },
+    {
+      "classification": "km1_required",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": true,
+      "path": "prmr/runtime_config.py",
+      "reason": "KM-1 package identity, typing marker, or runtime lifecycle implementation."
+    },
+    {
+      "classification": "km1_required",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": true,
+      "path": "prmr/runtime_context.py",
+      "reason": "KM-1 package identity, typing marker, or runtime lifecycle implementation."
+    },
+    {
+      "classification": "km1_required",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": true,
+      "path": "prmr/runtime_health.py",
+      "reason": "KM-1 package identity, typing marker, or runtime lifecycle implementation."
+    },
+    {
+      "classification": "km1_required",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": true,
+      "path": "prmr/runtime_shutdown.py",
+      "reason": "KM-1 package identity, typing marker, or runtime lifecycle implementation."
+    },
+    {
+      "classification": "excluded_with_reason",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": false,
+      "path": "prmr_memory_core.egg-info/dependency_links.txt",
+      "reason": "Generated packaging metadata; rebuilt from authoritative source."
+    },
+    {
+      "classification": "excluded_with_reason",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": false,
+      "path": "prmr_memory_core.egg-info/entry_points.txt",
+      "reason": "Generated packaging metadata; rebuilt from authoritative source."
+    },
+    {
+      "classification": "excluded_with_reason",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": false,
+      "path": "prmr_memory_core.egg-info/PKG-INFO",
+      "reason": "Generated packaging metadata; rebuilt from authoritative source."
+    },
+    {
+      "classification": "excluded_with_reason",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": false,
+      "path": "prmr_memory_core.egg-info/requires.txt",
+      "reason": "Generated packaging metadata; rebuilt from authoritative source."
+    },
+    {
+      "classification": "excluded_with_reason",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": false,
+      "path": "prmr_memory_core.egg-info/SOURCES.txt",
+      "reason": "Generated packaging metadata; rebuilt from authoritative source."
+    },
+    {
+      "classification": "excluded_with_reason",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": false,
+      "path": "prmr_memory_core.egg-info/top_level.txt",
+      "reason": "Generated packaging metadata; rebuilt from authoritative source."
+    },
+    {
+      "classification": "km1_release_configuration",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": true,
+      "path": "pyproject.toml",
+      "reason": "KM-1 package metadata and bounded runtime/test dependency contract."
+    },
+    {
+      "classification": "km1_release_documentation",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": true,
+      "path": "README.md",
+      "reason": "Package readme required by pyproject and release documentation manifest."
+    },
+    {
+      "classification": "hosted_api_legacy",
+      "git_status": " M",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": false,
+      "path": "render.yaml",
+      "reason": "Hosted API deployment configuration is outside KM-1."
+    },
+    {
+      "classification": "km1_release_documentation",
+      "git_status": "??",
+      "include_in_lock_record_commit": true,
+      "include_in_release_source_commit": false,
+      "path": "reports/core_release_candidate/km1_release_lock.json",
+      "reason": "Machine-readable lock record; committed after source and artifact hashes are final."
+    },
+    {
+      "classification": "hosted_api_legacy",
+      "git_status": " M",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": false,
+      "path": "requirements-api.txt",
+      "reason": "Hosted API deployment configuration is outside KM-1."
+    },
+    {
+      "classification": "km1_release_configuration",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": true,
+      "path": "requirements-dev.txt",
+      "reason": "KM-1 package metadata and bounded runtime/test dependency contract."
+    },
+    {
+      "classification": "km1_release_configuration",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": true,
+      "path": "requirements-postgres.txt",
+      "reason": "KM-1 package metadata and bounded runtime/test dependency contract."
+    },
+    {
+      "classification": "km1_release_configuration",
+      "git_status": "??",
+      "include_in_lock_record_commit": false,
+      "include_in_release_source_commit": true,
+      "path": "requirements-runtime.txt",
+      "reason": "KM-1 package metadata and bounded runtime/test dependency contract."
+    }
+  ],
+  "excluded_count": 112,
+  "ignored_path_inventory": {
+    "__pycache__": 1,
+    "afternum-prmr-controlled-alpha-theme-v2.zip": 1,
+    "afternum-prmr-controlled-alpha-theme-v3.zip": 1,
+    "afternum-prmr-controlled-alpha-theme.zip": 1,
+    "benchmarks": 1,
+    "config": 1,
+    "config_REVOKED_DO_NOT_USE_20260623_181345": 1,
+    "console": 3,
+    "data": 1,
+    "design_sources": 1,
+    "dist": 1,
+    "examples": 1,
+    "frontend": 5,
+    "inputs": 1,
+    "logs": 1,
+    "logs_REVOKED_DO_NOT_USE_20260623_181345": 1,
+    "prmr": 8,
+    "prmr_memory": 1,
+    "reference-client": 3,
+    "reports": 226
+  },
+  "lock_record_included_count": 4,
+  "manifest_revision": "km1_release_file_manifest_v1",
+  "release_source_included_count": 278,
+  "supplemental_ignored_allowlist": [
+    {
+      "classification": "km1_release_configuration",
+      "path": "config/prmr.postgres.example.toml",
+      "reason": "Placeholder-only PostgreSQL configuration required by release redaction and package-data checks."
+    },
+    {
+      "classification": "km1_release_configuration",
+      "path": "config/prmr.sqlite.example.toml",
+      "reason": "Placeholder-only SQLite configuration required by runtime quickstart and release proofs."
+    },
+    {
+      "classification": "km1_release_configuration",
+      "path": "config/prmr.worker.example.toml",
+      "reason": "Placeholder-only worker configuration bundled by the KM-1 package."
+    }
+  ],
+  "supplemental_ignored_allowlist_count": 3,
+  "supplemental_release_files": [
+    {
+      "classification": "km1_release_configuration",
+      "path": ".gitattributes",
+      "reason": "Pins setup.py to LF so the deterministic source archive is reproducible across Windows checkouts."
+    },
+    {
+      "classification": "km1_release_configuration",
+      "path": "MANIFEST.in",
+      "reason": "Prunes unrelated hosted-product and integration modules from the KM-1 source distribution."
+    },
+    {
+      "classification": "km1_release_configuration",
+      "path": "setup.py",
+      "reason": "Limits the wheel to the verified KM-1 import closure and makes SOURCE_DATE_EPOCH source archives byte-reproducible."
+    }
+  ],
+  "supplemental_release_file_count": 3,
+  "total_release_source_included_count": 284,
+  "release_worktree": "C:\\Users\\theam\\PRMR-KM1-FINAL-TAG-VERIFY",
+  "required_legacy_dependency_notes": [
+    "prmr.core admission and temporal modules import constants/types from inherited prmr.product.controlled_alpha_api_v071.",
+    "release backup and PostgreSQL parity proofs import self_serve_repository_v093.",
+    "The two modified self-serve repository adapters are included only to initialize and enumerate KM-1 schema tables for parity proofs.",
+    "No modified hosted API server, Render deployment, frontend, dashboard, or billing file is included."
+  ],
+  "secret_values_recorded": false,
+  "source_worktree": "original_dirty_worktree_preserved"
+}
